@@ -1,4 +1,4 @@
 package org.vanguardhealth.healthyresponse.controllers;
 
-public class CategoryController {
+public class TriggerController {
 }

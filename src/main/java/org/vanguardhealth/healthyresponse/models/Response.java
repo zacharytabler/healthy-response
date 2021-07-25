@@ -14,7 +14,7 @@ public class Response {
     @OneToOne
     private Mood mood;
     @OneToOne
-    private Category category;
+    private Trigger trigger;
     @OneToOne
     private CopingMechanism copingMechanism;
     @OneToOne
@@ -32,8 +32,8 @@ public class Response {
         return mood;
     }
 
-    public Category getCategory() {
-        return category;
+    public Trigger getCategory() {
+        return trigger;
     }
 
     public CopingMechanism getCopingMechanism() {
@@ -54,11 +54,11 @@ public class Response {
 
 
     public Response(){}
-    public Response(Category category,CopingMechanism copingMechanism,
-                    Consequence consequence,Result result, Alternatives alternatives){
+    public Response(Trigger trigger, CopingMechanism copingMechanism,
+                    Consequence consequence, Result result, Alternatives alternatives){
         this.alternatives = alternatives;
         this.mood = mood;
-        this.category = category;
+        this.trigger = trigger;
         this.copingMechanism = copingMechanism;
         this.consequence = consequence;
         this.result = result;

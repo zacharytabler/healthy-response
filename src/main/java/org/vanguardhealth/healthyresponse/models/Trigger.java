@@ -1,13 +1,11 @@
 package org.vanguardhealth.healthyresponse.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
 @Entity
-public class Category {
+public class Trigger {
     @Id
     @GeneratedValue
     private Long id;
@@ -20,7 +18,7 @@ public class Category {
     @OrderColumn
     private Collection<CopingMechanism> copingMechanism;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "trigger")
     private Collection<User> users;
 
     public Collection<User> getUsers() {
@@ -43,9 +41,9 @@ public class Category {
         return id;
     }
 
-    public Category(){}
+    public Trigger(){}
 
-    public Category(String name, String description, CopingMechanism...copingMechanism){
+    public Trigger(String name, String description, CopingMechanism...copingMechanism){
         this.name = name;
         this.description = description;
         this.copingMechanism = Arrays.asList(copingMechanism);
@@ -54,8 +52,8 @@ public class Category {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Category category = (Category) o;
-        return Objects.equals(id, category.id);
+        Trigger trigger = (Trigger) o;
+        return Objects.equals(id, trigger.id);
     }
 
     @Override

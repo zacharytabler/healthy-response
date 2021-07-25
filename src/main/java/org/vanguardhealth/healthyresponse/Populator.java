@@ -14,7 +14,7 @@ public class Populator implements CommandLineRunner {
     @Resource
     private MoodRepo moodRepo;
     @Resource
-    private CategoryRepo categoryRepo;
+    private TriggerRepo triggerRepo;
     @Resource
     private CopingMechanismRepo copingMechanismRepo;
     @Resource
@@ -44,19 +44,19 @@ public class Populator implements CommandLineRunner {
         copingMechanismRepo.save(testCopingMechinism);
 
 
-        Category testCategory = new Category("test title","test description",testCopingMechinism);
-        categoryRepo.save(testCategory);
+        Trigger testTrigger = new Trigger("test title","test description",testCopingMechinism);
+        triggerRepo.save(testTrigger);
 
 
-        Response testResponse = new Response(testCategory,testCopingMechinism,testConsequence,testResult,testAlternative);
+        Response testResponse = new Response(testTrigger,testCopingMechinism,testConsequence,testResult,testAlternative);
         responseRepo.save(testResponse);
 
-        Mood testMood = new Mood("ok",testCategory);
+        Mood testMood = new Mood("ok", testTrigger);
         moodRepo.save(testMood);
 
-        User testUser = new User("username","password",21,testMood,testCopingMechinism,testCategory);
+        User testUser = new User("username","password",21,testMood,testCopingMechinism, testTrigger);
         userRepo.save(testUser);
-        User testUser2 = new User("userName2","password",23,testMood,testCopingMechinism,testCategory);
+        User testUser2 = new User("userName2","password",23,testMood,testCopingMechinism, testTrigger);
         userRepo.save(testUser2);
 
 

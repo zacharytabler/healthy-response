@@ -19,7 +19,7 @@ public class UserController {
     @Resource
     private ConsequenceRepo consequenceRepo;
     @Resource
-    private CategoryRepo categoryRepo;
+    private TriggerRepo triggerRepo;
     @Resource
     private MoodRepo moodRepo;
 
