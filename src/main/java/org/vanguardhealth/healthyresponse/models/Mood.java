@@ -1,8 +1,10 @@
 package org.vanguardhealth.healthyresponse.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -10,18 +12,40 @@ public class Mood {
 
 
     private String mood;
+
     @Id
     @GeneratedValue
     private Long id;
 
-    public Mood(String mood){
-        this.mood = mood;
+    @ManyToMany
+    private Collection<Category> categories;
+
+    @OneToMany(mappedBy = "mood")
+    private Collection<User> users;
+
+    public Long getId() {
+        return id;
     }
-    public Mood(){}
+
+    public Collection<User> getUsers() {
+        return users;
+    }
+
+
+
+    public Collection<Category> getCategory() {
+        return categories;
+    }
 
     public String getMood() {
         return mood;
     }
+
+    public Mood(String mood, Category...category){
+        this.mood = mood;
+        this.categories = Arrays.asList(category);
+    }
+    public Mood(){}
 
     @Override
     public boolean equals(Object o) {
@@ -35,4 +59,6 @@ public class Mood {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
 }

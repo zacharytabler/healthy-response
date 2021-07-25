@@ -1,41 +1,49 @@
 package org.vanguardhealth.healthyresponse.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 public class Result {
 
-    private final String impact;
-    private String title;
-    private String weight;
+    @Id
+    @GeneratedValue
+    private Long id;
 
+    private String impact;
+    private String title;
+    @ManyToMany
+    private Collection<Alternatives> alternatives;
+    @ManyToMany(mappedBy = "results")
+    private Collection<Consequence> consequences;
+
+    public String getImpact() {
+        return impact;
+    }
 
     public String getTitle() {
         return title;
-    }
-
-    public String getWeight() {
-        return weight;
     }
 
     public Long getId() {
         return id;
     }
 
-    @Id
-    @GeneratedValue
-    private Long id;
+    public Collection<Alternatives> getAlternatives() {
+        return alternatives;
+    }
 
-    public Result(String title,String impact){
+    public Result(String title, String impact, Alternatives...alternatives) {
         this.title = title;
         this.impact = impact;
+        this.alternatives = Arrays.asList(alternatives);
     }
-    public Result(String impact){
-        this.impact = impact;
-    }
+
+    public Result() {}
 
     @Override
     public boolean equals(Object o) {
@@ -49,4 +57,7 @@ public class Result {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
+
 }

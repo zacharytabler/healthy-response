@@ -1,9 +1,10 @@
 package org.vanguardhealth.healthyresponse.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -17,8 +18,14 @@ public class User {
     private String userName;
     private String password;
     private int age;
-    @OneToOne
+    @ManyToOne
     private Mood mood;
+
+    @ManyToOne
+    public Category category;
+
+    @ManyToOne
+    private CopingMechanism copingMechanism;
 
 
     public Long getId() {
@@ -36,16 +43,28 @@ public class User {
     public int getAge() {
         return age;
     }
+
+
     public Mood getMood() {
-        return mood;
+        return  mood;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+    public CopingMechanism getCopingMechanism() {
+        return copingMechanism;
     }
 
     public User(){}
-    public User(String userName, String password, int age, Mood mood){
+    public User(String userName, String password, int age, Mood mood,
+                CopingMechanism copingMechanism, Category category){
         this.userName = userName;
         this.password = password;
         this.age = age;
         this.mood = mood;
+        this.category = category;
+        this.copingMechanism =  copingMechanism;
     }
 
     @Override
@@ -60,6 +79,7 @@ public class User {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 
 
 }

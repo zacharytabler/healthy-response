@@ -1,10 +1,11 @@
 package org.vanguardhealth.healthyresponse.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Objects;
 @Entity
 public class Category {
     @Id
@@ -12,6 +13,23 @@ public class Category {
     private Long id;
     private String name;
     private String description;
+    @ManyToMany(mappedBy = "categories")
+    private Collection<Mood> moods;
+
+    @ManyToMany
+    @OrderColumn
+    private Collection<CopingMechanism> copingMechanism;
+
+    @OneToMany(mappedBy = "category")
+    private Collection<User> users;
+
+    public Collection<User> getUsers() {
+        return users;
+    }
+
+    public Collection<CopingMechanism> getCopingMechanism() {
+        return copingMechanism;
+    }
 
     public String getName() {
         return name;
@@ -26,9 +44,11 @@ public class Category {
     }
 
     public Category(){}
-    public Category(String name, String description){
+
+    public Category(String name, String description, CopingMechanism...copingMechanism){
         this.name = name;
         this.description = description;
+        this.copingMechanism = Arrays.asList(copingMechanism);
     }
     @Override
     public boolean equals(Object o) {
@@ -42,4 +62,6 @@ public class Category {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
 }

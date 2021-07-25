@@ -3,6 +3,7 @@ package org.vanguardhealth.healthyresponse.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.util.Objects;
 
 @Entity
@@ -10,11 +11,18 @@ public class Response {
     @Id
     @GeneratedValue
     private Long id;
+    @OneToOne
     private Mood mood;
+    @OneToOne
     private Category category;
+    @OneToOne
     private CopingMechanism copingMechanism;
+    @OneToOne
     private Consequence consequence;
+    @OneToOne
     private Result result;
+    @OneToOne
+    private Alternatives alternatives;
 
     public Long getId() {
         return id;
@@ -40,10 +48,15 @@ public class Response {
         return result;
     }
 
-    public Response(){}
-    public Response(Mood mood,Category category,CopingMechanism copingMechanism,
-                    Consequence consequence,Result result){
+    public Alternatives getAlternatives() {
+        return alternatives;
+    }
 
+
+    public Response(){}
+    public Response(Category category,CopingMechanism copingMechanism,
+                    Consequence consequence,Result result, Alternatives alternatives){
+        this.alternatives = alternatives;
         this.mood = mood;
         this.category = category;
         this.copingMechanism = copingMechanism;
@@ -63,4 +76,6 @@ public class Response {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
 }

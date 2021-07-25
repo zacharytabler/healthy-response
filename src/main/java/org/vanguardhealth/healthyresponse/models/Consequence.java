@@ -1,9 +1,8 @@
 package org.vanguardhealth.healthyresponse.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
@@ -29,6 +28,9 @@ public class Consequence {
 
     @ManyToMany
     private Collection<Result> results;
+
+    @ManyToMany(mappedBy = "consequences")
+    private Collection<CopingMechanism> copingMechanisms;
     public Collection<Result> getResults() {
         return results;
     }
