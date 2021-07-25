@@ -1,4 +1,7 @@
 package org.vanguardhealth.healthyresponse.repositories;
 
-public interface UserRepo {
+import org.springframework.data.repository.CrudRepository;
+import org.vanguardhealth.healthyresponse.models.User;
+
+public interface UserRepo extends CrudRepository<User,Long> {
 }

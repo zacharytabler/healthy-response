@@ -1,4 +1,7 @@
 package org.vanguardhealth.healthyresponse.repositories;
 
-public interface CopingMechanismRepo {
+import org.springframework.data.repository.CrudRepository;
+import org.vanguardhealth.healthyresponse.models.CopingMechanism;
+
+public interface CopingMechanismRepo extends CrudRepository<CopingMechanism,Long> {
 }
