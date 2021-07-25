@@ -1,4 +1,4 @@
 package org.vanguardhealth.healthyresponse.models;
 
-public class test {
+public class Category {
 }
