@@ -47,7 +47,7 @@ public class User {
         return  mood;
     }
 
-    public Trigger getCategory() {
+    public Trigger getTrigger() {
         return trigger;
     }
     public CopingMechanism getCopingMechanism() {

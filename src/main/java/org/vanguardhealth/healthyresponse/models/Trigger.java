@@ -13,8 +13,8 @@ public class Trigger {
     private Long id;
     private String name;
     private String description;
-    @ManyToMany(mappedBy = "categories")
-    private Collection<Mood> moods;
+    @ManyToMany(mappedBy = "trigger")
+    private Collection<Mood> mood;
 
     @ManyToMany
     private Collection<CopingMechanism> copingMechanism;

@@ -32,7 +32,7 @@ public class Response {
         return mood;
     }
 
-    public Trigger getCategory() {
+    public Trigger getTrigger() {
         return trigger;
     }
 
@@ -57,7 +57,6 @@ public class Response {
     public Response(Trigger trigger, CopingMechanism copingMechanism,
                     Consequence consequence, Result result, Alternatives alternatives){
         this.alternatives = alternatives;
-        this.mood = mood;
         this.trigger = trigger;
         this.copingMechanism = copingMechanism;
         this.consequence = consequence;

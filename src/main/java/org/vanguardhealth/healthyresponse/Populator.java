@@ -31,20 +31,20 @@ public class Populator implements CommandLineRunner {
 
 
 
-        Alternatives testAlternative = new Alternatives("test title","test description");
+        Alternatives testAlternative = new Alternatives("test alternatives title","test alternatives description");
         alternativesRepo.save(testAlternative);
 
-        Result testResult = new Result("test title","test impact",testAlternative);
+        Result testResult = new Result("test result title","test result impact",testAlternative);
         resultRepo.save(testResult);
 
-        Consequence testConsequence = new Consequence("test title","test description",testResult);
+        Consequence testConsequence = new Consequence("test consequence title","test consequence description",testResult);
         consequenceRepo.save(testConsequence);
 
-        CopingMechanism testCopingMechinism = new CopingMechanism("test title","test description",testConsequence);
+        CopingMechanism testCopingMechinism = new CopingMechanism("test coping title","test cpoing description",testConsequence);
         copingMechanismRepo.save(testCopingMechinism);
 
 
-        Trigger testTrigger = new Trigger("test title","test description",testCopingMechinism);
+        Trigger testTrigger = new Trigger("test title trigger","test trigger description",testCopingMechinism);
         triggerRepo.save(testTrigger);
 
 

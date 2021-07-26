@@ -18,7 +18,7 @@ public class Mood {
     private Long id;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    private Collection<Trigger> categories;
+    private Collection<Trigger> trigger;
 
     @OneToMany(mappedBy = "mood")
     @JsonIgnore
@@ -34,8 +34,8 @@ public class Mood {
 
 
 
-    public Collection<Trigger> getCategory() {
-        return categories;
+    public Collection<Trigger> getTrigger() {
+        return trigger;
     }
 
     public String getMood() {
@@ -44,7 +44,7 @@ public class Mood {
 
     public Mood(String mood, Trigger... trigger){
         this.mood = mood;
-        this.categories = Arrays.asList(trigger);
+        this.trigger = Arrays.asList(trigger);
     }
     public Mood(){}
 
