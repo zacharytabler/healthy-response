@@ -1,5 +1,7 @@
 package org.vanguardhealth.healthyresponse.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Collection;
@@ -15,10 +17,10 @@ public class Trigger {
     private Collection<Mood> moods;
 
     @ManyToMany
-    @OrderColumn
     private Collection<CopingMechanism> copingMechanism;
 
     @OneToMany(mappedBy = "trigger")
+    @JsonIgnore
     private Collection<User> users;
 
     public Collection<User> getUsers() {

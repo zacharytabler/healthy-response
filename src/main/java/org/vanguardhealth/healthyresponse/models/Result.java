@@ -16,9 +16,9 @@ public class Result {
 
     private String impact;
     private String title;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Alternatives> alternatives;
-    @ManyToMany(mappedBy = "results")
+    @ManyToMany(mappedBy = "results",fetch = FetchType.LAZY)
     private Collection<Consequence> consequences;
 
     public String getImpact() {

@@ -26,10 +26,10 @@ public class Consequence {
         return description;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Result> results;
 
-    @ManyToMany(mappedBy = "consequences")
+    @ManyToMany(mappedBy = "consequences",fetch = FetchType.LAZY)
     private Collection<CopingMechanism> copingMechanisms;
     public Collection<Result> getResults() {
         return results;
