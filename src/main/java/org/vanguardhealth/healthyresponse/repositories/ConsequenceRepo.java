@@ -1,4 +1,7 @@
 package org.vanguardhealth.healthyresponse.repositories;
 
-public interface ConsequenceRepo {
+import org.springframework.data.repository.CrudRepository;
+import org.vanguardhealth.healthyresponse.models.Consequence;
+
+public interface ConsequenceRepo extends CrudRepository<Consequence,Long> {
 }

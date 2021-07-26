@@ -3,13 +3,13 @@ package org.vanguardhealth.healthyresponse.controllers;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.vanguardhealth.healthyresponse.models.Result;
+import org.vanguardhealth.healthyresponse.models.Trigger;
 import org.vanguardhealth.healthyresponse.repositories.*;
 
 import javax.annotation.Resource;
 
 @RestController
-public class ResultController {
+public class TriggerController {
     @Resource
     private UserRepo userRepo;
     @Resource
@@ -23,12 +23,12 @@ public class ResultController {
     @Resource
     private MoodRepo moodRepo;
 
-    @GetMapping("/results")
-    public Iterable<Result> getResults(){
-        return resultRepo.findAll();
+    @GetMapping("/triggers")
+    public Iterable<Trigger> getTriggers(){
+        return triggerRepo.findAll();
     }
-    @GetMapping("/result/{id}")
-    public Result getResult(@PathVariable Long id){
-        return resultRepo.findById(id).get();
+    @GetMapping("/trigger/{id}")
+    public Trigger getTrigger(@PathVariable Long id){
+        return triggerRepo.findById(id).get();
     }
 }
