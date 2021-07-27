@@ -1,6 +1,11 @@
+import "../../css/header_footer.css";
+
 export default function Header() {
   return `
-        <ul class='nav__list'>
+  <nav>
+  	<input type="checkbox">
+	<label>&equiv;</label>
+        <ul>
             <li class='nav__list_home'>Home</li>
             <li class='nav__list_alternatives'>Alternatives</li>
             <li class='nav__list_consequences'>Consequences</li>
@@ -13,5 +18,6 @@ export default function Header() {
             <li class='nav__list_aboutUs'>About Us</li>
             <li class='nav__list_contactUs'>Contact US</li>
         </ul>
-    `;
+    </nav>
+        `;
 }
