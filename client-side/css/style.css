@@ -12,11 +12,14 @@ body {
 }
 
 .nav__list {
+    background-color: red;
+    color: whitesmoke;
 	display: flex;
 	justify-content: center;
 }
 
 .nav__list_home {
+    background-color: red;
 	border-radius: 6px;
 	cursor: pointer;
 	padding: 8px;
