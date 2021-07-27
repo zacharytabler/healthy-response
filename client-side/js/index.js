@@ -10,6 +10,8 @@ buildPage();
 
 function buildPage() {
   renderUserLogin();
+  header();
+  footer();
 }
 
 function header() {
