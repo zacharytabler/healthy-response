@@ -1,0 +1,122 @@
+body {
+	text-align: center;
+}
+
+.footer {
+	margin-top: 2em;
+	margin-bottom: 1em;
+	color: red;
+    font-weight: bold;
+	padding: 1em 0;
+	text-align: center;
+}
+
+.nav__list {
+	display: flex;
+	justify-content: center;
+}
+
+.nav__list_home {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+
+.nav__list_alternatives {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+
+.nav__list_consequences {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+
+.nav__list_coping_mechanisms {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+
+.nav__list_consequences {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+
+
+.nav__list_coping_mechanisms {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+
+.nav__list_moods {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+
+.nav__list_responses {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+
+.nav__list_results {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+
+.nav__list_triggers {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+
+.nav__list_users {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+
+.nav__list_aboutUs {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+
+.nav__list_contactUs {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
