@@ -2,7 +2,6 @@ import apiActions from "./api-actions/api-actions";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
-import AboutUsPage from "./pages/AboutUsPage";
 import user_login from "./pages/LoginPage";
 import userWelcome from "./pages/UserProfilePage";
 import MoodsPage from "./pages/MoodsPage";
@@ -11,6 +10,11 @@ import CopingMechanismsPage from "./pages/CopingMechanismsPage";
 import Consequences from "./pages/ConsequencesPage";
 import ResultsPage from "./pages/ResultsPage";
 import ResponsesPage from "./pages/ResponsesPage";
+import AlternativesPage from "./pages/AlternativesPage";
+import ReviewsPage from "./pages/ReviewsPage";
+import AboutUsPage from "./pages/AboutUsPage";
+import LegalPage from "./pages/LegalPage"
+
 const app = document.querySelector("#app");
 
 buildPage();
@@ -26,8 +30,11 @@ function buildPage() {
   copingMechanisms();
   consequences();
   results();
+  alternatives();
   responses();
+  reviews();
   about();
+  legal();
 }
 
 function header() {
@@ -105,6 +112,13 @@ function results() {
   });
 }
 
+function alternatives() {
+  const alternativesElement = document.querySelector(".nav__list_alternatives");
+  alternativesElement.addEventListener("click", () => {
+    app.innerHTML = AlternativesPage();
+  });
+}
+
 function responses() {
   const responseElement = document.querySelector(".nav__list_responses");
   responseElement.addEventListener("click", () => {
@@ -112,9 +126,23 @@ function responses() {
   });
 }
 
+function reviews() {
+  const reviewElement = document.querySelector(".nav__list_reviews");
+  reviewElement.addEventListener("click", () => {
+    app.innerHTML = ReviewsPage();
+  });
+}
+
 function about() {
   const aboutElement = document.querySelector(".footer_list_aboutUs");
   aboutElement.addEventListener("click", () => {
     app.innerHTML = AboutUsPage();
+  });
+}
+
+function legal() {
+  const legalElement = document.querySelector(".footer_list_legal");
+  legalElement.addEventListener("click", () => {
+    app.innerHTML = LegalPage();
   });
 }
