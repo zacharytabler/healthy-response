@@ -13,7 +13,9 @@ import ResponsesPage from "./pages/ResponsesPage";
 import AlternativesPage from "./pages/AlternativesPage";
 import ReviewsPage from "./pages/ReviewsPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import ContactUsPage from "./pages/ContactUsPage";
 import LegalPage from "./pages/LegalPage"
+
 
 const app = document.querySelector("#app");
 
@@ -24,7 +26,6 @@ function buildPage() {
   footer();
   renderUserLogin();
   home();
-
   moods();
   triggers();
   copingMechanisms();
@@ -34,6 +35,7 @@ function buildPage() {
   responses();
   reviews();
   about();
+  contact();
   legal();
 }
 
@@ -140,9 +142,18 @@ function about() {
   });
 }
 
+function contact() {
+  const contactElement = document.querySelector(".footer_list_contactUs");
+  contactElement.addEventListener("click", () => {
+    const app = document.querySelector("#app");
+    app.innerHTML = ContactUsPage();
+  });
+}
+
 function legal() {
   const legalElement = document.querySelector(".footer_list_legal");
   legalElement.addEventListener("click", () => {
     app.innerHTML = LegalPage();
   });
 }
+
