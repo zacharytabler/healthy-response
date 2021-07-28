@@ -3,7 +3,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import user_login from "./pages/LoginPage";
 import userWelcome from "./pages/UserProfilePage";
-import Contact from './pages/ContactUS';
+import ContactUsPage from "./pages/ContactUsPage";
 
 const app = document.querySelector("#app");
 
@@ -24,14 +24,6 @@ function footer() {
   const footerElement = document.querySelector(".footer");
   footerElement.innerHTML = Footer();
 }
-function contact() {
-  const homeElem = document.querySelector(".nav__list_contactUs");
-  homeElem.addEventListener("click", () => {
-      const app = document.querySelector("#app");
-      app.innerHTML = Contact();
-  });
-}
-
 
 function renderUserLogin() {
   app.innerHTML = userWelcome();
@@ -54,3 +46,11 @@ function renderUserLogin() {
 }
 
 function renderUsers() {}
+
+function contact() {
+  const contactElement = document.querySelector(".footer_list_contactUs");
+  contactElement.addEventListener("click", () => {
+    const app = document.querySelector("#app");
+    app.innerHTML = ContactUsPage();
+  });
+}
