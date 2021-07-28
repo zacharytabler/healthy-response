@@ -1,23 +1,33 @@
 import apiActions from "./api-actions/api-actions";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import HomePage from "./pages/HomePage"
+import HomePage from "./pages/HomePage";
 import AboutUsPage from "./pages/AboutUsPage";
 import user_login from "./pages/LoginPage";
 import userWelcome from "./pages/UserProfilePage";
-
+import MoodsPage from "./pages/MoodsPage";
+import TriggersPage from "./pages/TriggersPage";
+import CopingMechanismsPage from "./pages/CopingMechanismsPage";
+import Consequences from "./pages/ConsequencesPage";
+import ResultsPage from "./pages/ResultsPage";
+import ResponsesPage from "./pages/ResponsesPage";
 const app = document.querySelector("#app");
 
 buildPage();
 
 function buildPage() {
-  
   header();
   footer();
-  home();
-  about();
-  // mood();
   renderUserLogin();
+  home();
+
+  moods();
+  triggers();
+  copingMechanisms();
+  consequences();
+  results();
+  responses();
+  about();
 }
 
 function header() {
@@ -29,25 +39,6 @@ function footer() {
   footerElement.innerHTML = Footer();
 }
 
-function home (){
-  const homeElement = document.querySelector(".nav__list_home");
-  homeElement.addEventListener("click", ()=>{
-    app.innerHTML = HomePage();
-  })
-}
-
-
-function about() {
-  const aboutElement = document.querySelector(".footer_list_aboutUs");
-  aboutElement.addEventListener("click", () => {
-    app.innerHTML = AboutUsPage();
-  });
-}
-
-// function mood() {
-//   const moodElement = document.querySelector()
-// }
-
 function renderUserLogin() {
   app.innerHTML = user_login();
   app.addEventListener("click", (event) => {
@@ -56,7 +47,7 @@ function renderUserLogin() {
         event.target.parentElement.querySelector(".userName").value;
       console.log(userName);
       apiActions.postRequest(
-        "http://localhost:8080/create_user",
+        "http://localhost:8080/create_user_profile",
         {
           userName: userName,
         },
@@ -68,4 +59,62 @@ function renderUserLogin() {
   });
 }
 
-function renderUsers() {}
+function renderUser() {
+  app.innerHTML = userProfilePage();
+}
+
+function home() {
+  const homeElement = document.querySelector(".nav__list_home");
+  homeElement.addEventListener("click", () => {
+    app.innerHTML = HomePage();
+  });
+}
+
+function moods() {
+  const moodElement = document.querySelector(".nav__list_moods");
+  moodElement.addEventListener("click", () => {
+    app.innerHTML = MoodsPage();
+  });
+}
+
+function triggers() {
+  const triggerElement = document.querySelector(".nav__list_triggers");
+  triggerElement.addEventListener("click", () => {
+    app.innerHTML = TriggersPage();
+  });
+}
+
+function copingMechanisms() {
+  const copingElement = document.querySelector(".nav__list_coping_mechanisms");
+  copingElement.addEventListener("click", () => {
+    app.innerHTML = CopingMechanismsPage();
+  });
+}
+
+function consequences() {
+  const consequencesElement = document.querySelector(".nav__list_consequences");
+  consequencesElement.addEventListener("click", () => {
+    app.innerHTML = Consequences();
+  });
+}
+
+function results() {
+  const resultsElement = document.querySelector(".nav__list_results");
+  resultsElement.addEventListener("click", () => {
+    app.innerHTML = ResultsPage();
+  });
+}
+
+function responses() {
+  const responseElement = document.querySelector(".nav__list_responses");
+  responseElement.addEventListener("click", () => {
+    app.innerHTML = ResponsesPage();
+  });
+}
+
+function about() {
+  const aboutElement = document.querySelector(".footer_list_aboutUs");
+  aboutElement.addEventListener("click", () => {
+    app.innerHTML = AboutUsPage();
+  });
+}

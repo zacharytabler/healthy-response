@@ -10,9 +10,9 @@ function postRequest(location, requestBody, callback) {
     method: "Post",
     body: JSON.stringify(requestBody),
   })
-    .then((response) => response.json())
-    .then((data) => callback(data))
-    .catch((err) => console.log(err));
+    .then(response => response.json())
+    .then(data => callback(data))
+    .catch(err => console.log(err));
 }
 
 export default {
