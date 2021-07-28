@@ -1,7 +1,7 @@
 import apiActions from "./api-actions/api-actions";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import HomePage from "./pages/HomePage"
+import HomePage from "./pages/HomePage";
 import AboutUsPage from "./pages/AboutUsPage";
 import user_login from "./pages/LoginPage";
 import userWelcome from "./pages/UserProfilePage";
@@ -11,7 +11,6 @@ const app = document.querySelector("#app");
 buildPage();
 
 function buildPage() {
-  
   header();
   footer();
   home();
@@ -29,13 +28,12 @@ function footer() {
   footerElement.innerHTML = Footer();
 }
 
-function home (){
+function home() {
   const homeElement = document.querySelector(".nav__list_home");
-  homeElement.addEventListener("click", ()=>{
+  homeElement.addEventListener("click", () => {
     app.innerHTML = HomePage();
-  })
+  });
 }
-
 
 function about() {
   const aboutElement = document.querySelector(".footer_list_aboutUs");
@@ -67,5 +65,3 @@ function renderUserLogin() {
     }
   });
 }
-
-function renderUsers() {}
