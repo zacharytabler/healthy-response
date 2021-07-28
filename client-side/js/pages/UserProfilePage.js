@@ -1,10 +1,16 @@
-export default function userWelcome() {
+export default function userWelcome(user) {
   return `
- <h1>Welcome to HR</h1>
-    ${user.map((users) => {
-      return `
-        <p>${users.userName}</p>
+  <div class="userClass"></div>
+    ${user
+      .map((users) => {
+        return `
+      <div class="user_tile">
+      <p class="userName">${users.userName}</p>
+      <input type='hidden' id='userId' value='${users.id}'>
+      </div>
+       
         `;
-    })}
+      })
+      .join("")}
     `;
 }

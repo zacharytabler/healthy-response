@@ -13,7 +13,9 @@ import ResponsesPage from "./pages/ResponsesPage";
 import AlternativesPage from "./pages/AlternativesPage";
 import ReviewsPage from "./pages/ReviewsPage";
 import AboutUsPage from "./pages/AboutUsPage";
-import LegalPage from "./pages/LegalPage"
+import LegalPage from "./pages/LegalPage";
+import userInfo from "./rendering/user_info";
+
 
 const app = document.querySelector("#app");
 
@@ -22,9 +24,7 @@ buildPage();
 function buildPage() {
   header();
   footer();
-  renderUserLogin();
   home();
-
   moods();
   triggers();
   copingMechanisms();
@@ -35,6 +35,7 @@ function buildPage() {
   reviews();
   about();
   legal();
+  renderUserLogin();
 }
 
 function header() {
@@ -58,16 +59,36 @@ function renderUserLogin() {
         {
           userName: userName,
         },
-        () => {
-          console.log("callback firing");
-        }
+        (user) => (app.innerHTML = userWelcome(user))
       );
-    }
+      apiActions.getRequest("http://localhost8080:/users", (user) => {
+        app.innerHTML = userInfo(user);
+      });
+        }
+  });
+}
+
+function navUserProfile() {
+  const profilePage = document.querySelector(".nav_list_profile");
+  profilePage.addEventListener("click", () => {
+    const app = document.querySelector("#app");
+    apiActions.getRequest("http://localhost:8080/users", (user) => {
+      app.innerHTML = userWelcome(user);
+    });
+    renderUser();
   });
 }
 
 function renderUser() {
-  app.innerHTML = userProfilePage();
+  app.innerHTML = userWelcome();
+  app.addEventListener("click", (event) => {
+    if (event.target.classList.contains(".userName")) {
+      const userId = event.target.parentElement.querySelector("#userId").value;
+      apiActions.getRequest(userId, (user) => {
+        app.innerHTML = userInfo(user);
+      });
+    }
+  });
 }
 
 function home() {
