@@ -1,6 +1,5 @@
-export default function user_login() {
+export default function userWelcome() {
   return `
-  
 <h1 class="test">
       Healthy Response
       <h2>Your Personal HR</h2>
@@ -46,5 +45,3 @@ export default function user_login() {
       </section>
 `;
 }
-
-   
