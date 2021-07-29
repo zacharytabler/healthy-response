@@ -16,7 +16,6 @@ import AboutUsPage from "./pages/AboutUsPage";
 import LegalPage from "./pages/LegalPage";
 import userInfo from "./rendering/user_info";
 
-
 const app = document.querySelector("#app");
 
 buildPage();
@@ -53,18 +52,23 @@ function renderUserLogin() {
     if (event.target.classList.contains("create_user")) {
       const userName =
         event.target.parentElement.querySelector(".userName").value;
+      const password =
+        event.target.parentElement.querySelector(".password").value;
+      const age = event.target.parentElement.querySelector(".age").value;
       console.log(userName);
       apiActions.postRequest(
         "http://localhost:8080/create_user_profile",
         {
           userName: userName,
+          password: password,
+          age: age,
         },
         (user) => (app.innerHTML = userWelcome(user))
       );
-      apiActions.getRequest("http://localhost8080:/users", (user) => {
+      apiActions.getRequest("http://localhost:8080:/users", (user) => {
         app.innerHTML = userInfo(user);
       });
-        }
+    }
   });
 }
 
