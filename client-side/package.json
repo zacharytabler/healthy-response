@@ -219,7 +219,6 @@
     "format": "^0.2.2",
     "fragment-cache": "^0.2.1",
     "fs.realpath": "^1.0.0",
-    "fsevents": "^2.3.2",
     "function-bind": "^1.1.1",
     "generic-names": "^2.0.1",
     "gensync": "^1.0.0-beta.2",

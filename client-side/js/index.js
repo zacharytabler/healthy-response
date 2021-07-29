@@ -16,6 +16,8 @@ import AboutUsPage from "./pages/AboutUsPage";
 import LegalPage from "./pages/LegalPage";
 import userInfo from "./rendering/user_info";
 
+
+
 const app = document.querySelector("#app");
 
 buildPage();
@@ -33,6 +35,7 @@ function buildPage() {
   responses();
   reviews();
   about();
+  contact();
   legal();
   renderUserLogin();
 }
@@ -165,9 +168,18 @@ function about() {
   });
 }
 
+function contact() {
+  const contactElement = document.querySelector(".footer_list_contactUs");
+  contactElement.addEventListener("click", () => {
+    const app = document.querySelector("#app");
+    app.innerHTML = ContactUsPage();
+  });
+}
+
 function legal() {
   const legalElement = document.querySelector(".footer_list_legal");
   legalElement.addEventListener("click", () => {
     app.innerHTML = LegalPage();
   });
 }
+
