@@ -13,8 +13,9 @@ import ResponsesPage from "./pages/ResponsesPage";
 import AlternativesPage from "./pages/AlternativesPage";
 import ReviewsPage from "./pages/ReviewsPage";
 import AboutUsPage from "./pages/AboutUsPage";
-import ContactUsPage from "./pages/ContactUsPage";
-import LegalPage from "./pages/LegalPage"
+import LegalPage from "./pages/LegalPage";
+import userInfo from "./rendering/user_info";
+
 
 
 const app = document.querySelector("#app");
@@ -24,7 +25,6 @@ buildPage();
 function buildPage() {
   header();
   footer();
-  renderUserLogin();
   home();
   moods();
   triggers();
@@ -37,6 +37,7 @@ function buildPage() {
   about();
   contact();
   legal();
+  renderUserLogin();
 }
 
 function header() {
@@ -54,22 +55,47 @@ function renderUserLogin() {
     if (event.target.classList.contains("create_user")) {
       const userName =
         event.target.parentElement.querySelector(".userName").value;
+      const password =
+        event.target.parentElement.querySelector(".password").value;
+      const age = event.target.parentElement.querySelector(".age").value;
       console.log(userName);
       apiActions.postRequest(
         "http://localhost:8080/create_user_profile",
         {
           userName: userName,
+          password: password,
+          age: age,
         },
-        () => {
-          console.log("callback firing");
-        }
+        (user) => (app.innerHTML = userWelcome(user))
       );
+      apiActions.getRequest("http://localhost:8080:/users", (user) => {
+        app.innerHTML = userInfo(user);
+      });
     }
   });
 }
 
+function navUserProfile() {
+  const profilePage = document.querySelector(".nav_list_profile");
+  profilePage.addEventListener("click", () => {
+    const app = document.querySelector("#app");
+    apiActions.getRequest("http://localhost:8080/users", (user) => {
+      app.innerHTML = userWelcome(user);
+    });
+    renderUser();
+  });
+}
+
 function renderUser() {
-  app.innerHTML = userProfilePage();
+  app.innerHTML = userWelcome();
+  app.addEventListener("click", (event) => {
+    if (event.target.classList.contains(".userName")) {
+      const userId = event.target.parentElement.querySelector("#userId").value;
+      apiActions.getRequest(userId, (user) => {
+        app.innerHTML = userInfo(user);
+      });
+    }
+  });
 }
 
 function home() {

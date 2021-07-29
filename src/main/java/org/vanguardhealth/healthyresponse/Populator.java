@@ -54,10 +54,9 @@ public class Populator implements CommandLineRunner {
         Mood testMood = new Mood("ok", testTrigger);
         moodRepo.save(testMood);
 
-        User testUser = new User("username","password",21,testMood,testCopingMechinism, testTrigger);
+        User testUser = new User("TESTusername","password",21,testMood,testCopingMechinism, testTrigger);
         userRepo.save(testUser);
-        User testUser2 = new User("userName2","password",23,testMood,testCopingMechinism, testTrigger);
-        userRepo.save(testUser2);
+
 
 
 
