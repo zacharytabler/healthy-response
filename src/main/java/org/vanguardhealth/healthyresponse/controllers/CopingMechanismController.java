@@ -9,8 +9,8 @@ import org.vanguardhealth.healthyresponse.repositories.*;
 
 import javax.annotation.Resource;
 
-@RestController
 @CrossOrigin
+@RestController
 public class CopingMechanismController {
     @Resource
     private UserRepo userRepo;

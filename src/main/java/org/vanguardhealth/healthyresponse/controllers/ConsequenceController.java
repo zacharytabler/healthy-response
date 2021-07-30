@@ -8,7 +8,7 @@ import org.vanguardhealth.healthyresponse.models.Consequence;
 import org.vanguardhealth.healthyresponse.repositories.*;
 
 import javax.annotation.Resource;
-
+@CrossOrigin
 @RestController
 @CrossOrigin
 public class ConsequenceController {

@@ -11,8 +11,8 @@ import org.vanguardhealth.healthyresponse.repositories.*;
 import javax.annotation.Resource;
 import java.util.Optional;
 
-@RestController
 @CrossOrigin
+@RestController
 public class UserController {
 
     @Resource
