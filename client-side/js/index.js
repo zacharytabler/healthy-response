@@ -19,10 +19,7 @@ import InspirationalQuote from "./components/InspirationalQuote";
 
 
 const app = document.querySelector("#app");
-// const affirmation_api_url ="https://zenquotes.io/api/quotes/";
-// const affirmation_api_url = 'https://zenquotes.io/api/today';
 const affirmation_api_url = 'https://type.fit/api/quotes';
-// let inspirationalQuotes = 'jibberish';
 
 buildPage();
 
@@ -190,18 +187,13 @@ function legal() {
 }
 
 function getAffirmationApi(url) {
-    // const homepageDiv = document.querySelector('.homepage__container');
     const quoteDiv = document.querySelector('.inspirational_quote__container');
-    // console.log(quoteDiv);
     quoteDiv.onload = (event) => {
-        console.log('The quote div has loaded');
     };
     apiActions.getRequest(url,
     (quotes) => {
         quotes.forEach((quote, index) => {
-            // console.log(quote);
-            quoteDiv.innerHTML = InspirationalQuote(quote);
-
+            quoteDiv.innerHTML = InspirationalQuote(quote, index);
         });
-    });   
+    });  
 }
