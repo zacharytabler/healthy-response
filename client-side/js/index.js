@@ -167,9 +167,12 @@ function results() {
 function alternatives() {
   const alternativesElement = document.querySelector(".nav__list_alternatives");
   alternativesElement.addEventListener("click", () => {
-    app.innerHTML = AlternativesPage();
-  });
-}
+    apiActions.getRequest('http://localhost:8080/alternatives', alternatives => {
+      console.log(alternatives);
+      app.innerHTML = AlternativesPage(alternatives);
+    })
+  })
+  }
 
 function responses() {
   const responseElement = document.querySelector(".nav__list_responses");
