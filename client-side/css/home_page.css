@@ -63,6 +63,7 @@ body {
           width: 61%;
         }
         .T1 {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);   
             grid-area: T1;
             height: 400px;
         }
@@ -113,6 +114,7 @@ body {
         height: 400px;
     }
     .A2 {
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);   
         grid-area: A2;
         height: 400px;
     }
@@ -136,6 +138,7 @@ body {
           width: 61%;
     }
     .M1 {
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);   
         grid-area: M1;
         height: 400px;
     }

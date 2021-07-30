@@ -68,6 +68,9 @@ export default function HomePage() {
         <button class="memberButton">MEMBER SPOTLIGHT</button>
         </div>
         </div>
+        <div class="text bottom">
+        <h2> INSERT RANDOM CONTENT - INSERT RANDOM CONTENT - INSERT RANDOM CONTENT </h2>
+        </div>
         <div id="slideshow" class="slideshow" data-component="slideshow">
         <div role="list">
           <div class="slideShowGrid">
