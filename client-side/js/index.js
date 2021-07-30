@@ -13,18 +13,20 @@ import ResponsesPage from "./pages/ResponsesPage";
 import AlternativesPage from "./pages/AlternativesPage";
 import ReviewsPage from "./pages/ReviewsPage";
 import AboutUsPage from "./pages/AboutUsPage";
-import LegalPage from "./pages/LegalPage";
-import userInfo from "./rendering/user_info";
-
+import ContactUsPage from "./pages/ContactUsPage";
+import LegalPage from "./pages/LegalPage"
+import InspirationalQuote from "./components/InspirationalQuote";
 
 
 const app = document.querySelector("#app");
+const affirmation_api_url = 'https://type.fit/api/quotes';
 
 buildPage();
 
 function buildPage() {
   header();
   footer();
+  renderUserLogin();
   home();
   moods();
   triggers();
@@ -37,7 +39,6 @@ function buildPage() {
   about();
   contact();
   legal();
-  renderUserLogin();
 }
 
 function header() {
@@ -102,6 +103,8 @@ function home() {
   const homeElement = document.querySelector(".nav__list_home");
   homeElement.addEventListener("click", () => {
     app.innerHTML = HomePage();
+    getAffirmationApi(affirmation_api_url);
+
   });
 }
 
@@ -183,3 +186,14 @@ function legal() {
   });
 }
 
+function getAffirmationApi(url) {
+    const quoteDiv = document.querySelector('.inspirational_quote__container');
+    quoteDiv.onload = (event) => {
+    };
+    apiActions.getRequest(url,
+    (quotes) => {
+        quotes.forEach((quote, index) => {
+            quoteDiv.innerHTML = InspirationalQuote(quote, index);
+        });
+    });  
+}
