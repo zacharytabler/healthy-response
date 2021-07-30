@@ -15,6 +15,7 @@ import ReviewsPage from "./pages/ReviewsPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import LegalPage from "./pages/LegalPage"
+import InspirationalQuote from "./components/InspirationalQuote";
 
 
 const app = document.querySelector("#app");
@@ -41,7 +42,6 @@ function buildPage() {
 //   about();
 //   contact();
 //   legal();
-  getAffirmationApi(affirmation_api_url);
 }
 
 function header() {
@@ -81,6 +81,8 @@ function home() {
   const homeElement = document.querySelector(".nav__list_home");
   homeElement.addEventListener("click", () => {
     app.innerHTML = HomePage();
+    getAffirmationApi(affirmation_api_url);
+
   });
 }
 
@@ -163,14 +165,18 @@ function reviews() {
 // }
 
 function getAffirmationApi(url) {
-    window.onload = (event) => {
-        console.log('The page has fully loaded');
+    // const homepageDiv = document.querySelector('.homepage__container');
+    const quoteDiv = document.querySelector('.inspirational_quote__container');
+    // console.log(quoteDiv);
+    quoteDiv.onload = (event) => {
+        console.log('The quote div has loaded');
     };
-    apiActions.getRequest(
-    url,
+    apiActions.getRequest(url,
     (quotes) => {
         quotes.forEach((quote, index) => {
-            console.log(quote);
+            // console.log(quote);
+            quoteDiv.innerHTML = InspirationalQuote(quote);
+
         });
     });    
 
