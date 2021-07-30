@@ -21,6 +21,7 @@ const app = document.querySelector("#app");
 // const affirmation_api_url ="https://zenquotes.io/api/quotes/";
 // const affirmation_api_url = 'https://zenquotes.io/api/today';
 const affirmation_api_url = 'https://type.fit/api/quotes';
+// let inspirationalQuotes = 'jibberish';
 
 buildPage();
 
@@ -162,9 +163,16 @@ function reviews() {
 // }
 
 function getAffirmationApi(url) {
+    window.onload = (event) => {
+        console.log('The page has fully loaded');
+    };
     apiActions.getRequest(
     url,
     (quotes) => {
-      console.log(quotes);
-    });
+        quotes.forEach((quote, index) => {
+            console.log(quote);
+        });
+    });    
+
+    
 }
