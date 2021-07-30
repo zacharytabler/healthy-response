@@ -4,14 +4,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.vanguardhealth.healthyresponse.models.CopingMechanism;
+import org.vanguardhealth.healthyresponse.models.Alternatives;
 import org.vanguardhealth.healthyresponse.repositories.*;
 
 import javax.annotation.Resource;
 
 @RestController
 @CrossOrigin
-public class CopingMechanismController {
+public class AlternativesController {
     @Resource
     private UserRepo userRepo;
     @Resource
@@ -24,13 +24,15 @@ public class CopingMechanismController {
     private TriggerRepo triggerRepo;
     @Resource
     private MoodRepo moodRepo;
+    @Resource
+    private AlternativesRepo alternativesRepo;
 
-    @GetMapping("/coping")
-    public Iterable<CopingMechanism> getAllCoping(){
-        return  copingRepo.findAll();
+    @GetMapping("/alternatives")
+    public Iterable<Alternatives> getMoods(){
+        return  alternativesRepo.findAll();
     }
-    @GetMapping("coping/{id}")
-    public CopingMechanism getMood(@PathVariable Long id){
-        return copingRepo.findById(id).get();
+    @GetMapping("alternative/{id}")
+    public Alternatives getMood(@PathVariable Long id){
+        return alternativesRepo.findById(id).get();
     }
 }
