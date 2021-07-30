@@ -28,7 +28,7 @@ buildPage();
 
 function buildPage() {
   header();
-//   footer();
+  footer();
   renderUserLogin();
   home();
   moods();
@@ -39,19 +39,19 @@ function buildPage() {
   alternatives();
   responses();
   reviews();
-//   about();
-//   contact();
-//   legal();
+  about();
+  contact();
+  legal();
 }
 
 function header() {
   const headerElement = document.querySelector(".header");
   headerElement.innerHTML = Header();
 }
-// function footer() {
-//   const footerElement = document.querySelector(".footer");
-//   footerElement.innerHTML = Footer();
-// }
+function footer() {
+  const footerElement = document.querySelector(".footer");
+  footerElement.innerHTML = Footer();
+}
 
 function renderUserLogin() {
   app.innerHTML = user_login();
@@ -59,22 +59,47 @@ function renderUserLogin() {
     if (event.target.classList.contains("create_user")) {
       const userName =
         event.target.parentElement.querySelector(".userName").value;
+      const password =
+        event.target.parentElement.querySelector(".password").value;
+      const age = event.target.parentElement.querySelector(".age").value;
       console.log(userName);
       apiActions.postRequest(
         "http://localhost:8080/create_user_profile",
         {
           userName: userName,
+          password: password,
+          age: age,
         },
-        () => {
-          console.log("callback firing");
-        }
+        (user) => (app.innerHTML = userWelcome(user))
       );
+      apiActions.getRequest("http://localhost:8080:/users", (user) => {
+        app.innerHTML = userInfo(user);
+      });
     }
   });
 }
 
+function navUserProfile() {
+  const profilePage = document.querySelector(".nav_list_profile");
+  profilePage.addEventListener("click", () => {
+    const app = document.querySelector("#app");
+    apiActions.getRequest("http://localhost:8080/users", (user) => {
+      app.innerHTML = userWelcome(user);
+    });
+    renderUser();
+  });
+}
+
 function renderUser() {
-  app.innerHTML = userProfilePage();
+  app.innerHTML = userWelcome();
+  app.addEventListener("click", (event) => {
+    if (event.target.classList.contains(".userName")) {
+      const userId = event.target.parentElement.querySelector("#userId").value;
+      apiActions.getRequest(userId, (user) => {
+        app.innerHTML = userInfo(user);
+      });
+    }
+  });
 }
 
 function home() {
@@ -142,27 +167,27 @@ function reviews() {
   });
 }
 
-// function about() {
-//   const aboutElement = document.querySelector(".footer_list_aboutUs");
-//   aboutElement.addEventListener("click", () => {
-//     app.innerHTML = AboutUsPage();
-//   });
-// }
+function about() {
+  const aboutElement = document.querySelector(".footer_list_aboutUs");
+  aboutElement.addEventListener("click", () => {
+    app.innerHTML = AboutUsPage();
+  });
+}
 
-// function contact() {
-//   const contactElement = document.querySelector(".footer_list_contactUs");
-//   contactElement.addEventListener("click", () => {
-//     const app = document.querySelector("#app");
-//     app.innerHTML = ContactUsPage();
-//   });
-// }
+function contact() {
+  const contactElement = document.querySelector(".footer_list_contactUs");
+  contactElement.addEventListener("click", () => {
+    const app = document.querySelector("#app");
+    app.innerHTML = ContactUsPage();
+  });
+}
 
-// function legal() {
-//   const legalElement = document.querySelector(".footer_list_legal");
-//   legalElement.addEventListener("click", () => {
-//     app.innerHTML = LegalPage();
-//   });
-// }
+function legal() {
+  const legalElement = document.querySelector(".footer_list_legal");
+  legalElement.addEventListener("click", () => {
+    app.innerHTML = LegalPage();
+  });
+}
 
 function getAffirmationApi(url) {
     // const homepageDiv = document.querySelector('.homepage__container');
@@ -178,7 +203,5 @@ function getAffirmationApi(url) {
             quoteDiv.innerHTML = InspirationalQuote(quote);
 
         });
-    });    
-
-    
+    });   
 }
