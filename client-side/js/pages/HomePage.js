@@ -49,7 +49,7 @@ export default function HomePage() {
         </div>
         </div>
         <div class="text middle">
-        <h2> INSERT RANDOM CONTENT - INSERT RANDOM CONTENT - INSERT RANDOM CONTENT </h2>
+        <h2> INSERT CONTENT - INSERT CONTENT - INSERT CONTENT - INSERT CONTENT - INSERT CONTENT - INSERT CONTENT </h2>
         </div>
         <div class="articleGrid">
         <div class="boxText A1">
@@ -59,7 +59,7 @@ export default function HomePage() {
         <img class="A2" src="${Article}" alt="" />
         </div>
         <div class="text bottom">
-        <h2> INSERT RANDOM CONTENT - INSERT RANDOM CONTENT - INSERT RANDOM CONTENT </h2>
+        <h2> INSERT CONTENT - INSERT CONTENT - INSERT CONTENT - INSERT CONTENT - INSERT CONTENT - INSERT CONTENT  </h2>
         </div>
         <div class="memberGrid">
         <img class="M1" src="${MemberS}" alt="" />
@@ -69,7 +69,7 @@ export default function HomePage() {
         </div>
         </div>
         <div class="text bottom">
-        <h2> INSERT RANDOM CONTENT - INSERT RANDOM CONTENT - INSERT RANDOM CONTENT </h2>
+        <h2> INSERT CONTENT - INSERT CONTENT - INSERT CONTENT - INSERT CONTENT - INSERT CONTENT - INSERT CONTENT  </h2>
         </div>
         <div id="slideshow" class="slideshow" data-component="slideshow">
         <div role="list">
