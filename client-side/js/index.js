@@ -186,7 +186,6 @@ function responses() {
 }
 
 
-
 function reviews() {
   const reviewElement = document.querySelector(".nav__list_reviews");
   reviewElement.addEventListener("click", () => {

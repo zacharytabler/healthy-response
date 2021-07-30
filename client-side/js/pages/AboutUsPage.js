@@ -14,8 +14,10 @@ export default function about() {
       <span>nickbillhardt@ymail.com</span>
       <p>Nick Bio.</p>
       <div class="btn">
-        <a href="#">Github</a>
         <a href="#">LinkedIn</a>
+        </div>
+      <div class="btn">
+      <a href="#">Github</a> 
       </div>
     </div>
     <div class="member">
@@ -24,9 +26,11 @@ export default function about() {
       <span>jordaneaster222@icloud.com</span>
       <p>Jordan Bio.</p>
       <div class="btn">
-      <a href="#">Github</a>
       <a href="#">LinkedIn</a>
       </div>
+    <div class="btn">
+    <a href="#">Github</a> 
+    </div>
     </div>
     <div class="member">
       <img src="https://i.ibb.co/8dxvcfW/stephen.jpg" alt="Stephen Fafiade Image">
@@ -34,9 +38,11 @@ export default function about() {
       <span>thefaf17@gmail.com</span>
       <p>Stephen Bio.</p>
       <div class="btn">
-      <a href="#">Github</a>
       <a href="#">LinkedIn</a>
       </div>
+    <div class="btn">
+    <a href="#">Github</a> 
+    </div>
     </div>
     <div class="member">
     <img src="" alt="Chelsea James Image">
@@ -44,9 +50,11 @@ export default function about() {
     <span>james.chelsea.m@gmail.com</span>
     <p>Chelsea Bio.</p>
     <div class="btn">
-      <a href="#">Github</a>
-      <a href="#">LinkedIn</a>
-      </div>
+    <a href="#">LinkedIn</a>
+    </div>
+  <div class="btn">
+  <a href="#">Github</a> 
+  </div>
   </div>
   <div class="member">
     <img src="https://i.ibb.co/KrFQZXx/KitSidhu.jpg" alt="Kit Sidhu Image">
@@ -54,9 +62,11 @@ export default function about() {
     <span>kitsidhu@gmail.com</span>
     <p>Kit Bio.</p>
     <div class="btn">
-      <a href="#">Github</a>
-      <a href="#">LinkedIn</a>
-      </div>
+    <a href="#">LinkedIn</a>
+    </div>
+  <div class="btn">
+  <a href="#">Github</a> 
+  </div>
   </div>
   <div class="member">
     <img src="https://i.ibb.co/C9JKdFm/Zachary-Tabler.jpg" alt="Zachary Tabler Image">
@@ -64,9 +74,11 @@ export default function about() {
     <span>zachary.tabler@gmail.com</span>
     <p>Zachary Bio.</p>
     <div class="btn">
-      <a href="#">Github</a>
-      <a href="#">LinkedIn</a>
-      </div>
+    <a href="#">LinkedIn</a>
+    </div>
+  <div class="btn">
+  <a href="#">Github</a> 
+  </div>
   </div>
   </div>
 </div>
