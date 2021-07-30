@@ -11,7 +11,6 @@ import javax.annotation.Resource;
 
 @CrossOrigin
 @RestController
-@CrossOrigin
 public class TriggerController {
     @Resource
     private UserRepo userRepo;

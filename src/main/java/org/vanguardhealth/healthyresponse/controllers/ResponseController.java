@@ -11,7 +11,6 @@ import javax.annotation.Resource;
 
 @CrossOrigin
 @RestController
-@CrossOrigin
 public class ResponseController {
     @Resource
     private UserRepo userRepo;
