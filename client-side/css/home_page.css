@@ -80,6 +80,7 @@ body {
         .testButton {
             background-color: rgb(27, 150, 150);
             border-radius: 15%;
+            font-size: larger;
             height: 30px;
         }
         .boxText {
@@ -120,6 +121,7 @@ body {
     }
     .articleButton {
         background-color: rgb(27, 150, 150);
+        font-size: larger;
         height: 30px;
         border-radius: 15%;
     }
@@ -148,6 +150,7 @@ body {
     }
     .memberButton {
         background-color: rgb(27, 150, 150);
+        font-size: larger;
         height: 30px;
         border-radius: 15%;
     }
