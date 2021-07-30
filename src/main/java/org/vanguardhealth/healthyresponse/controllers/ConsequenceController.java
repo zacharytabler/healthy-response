@@ -10,7 +10,6 @@ import org.vanguardhealth.healthyresponse.repositories.*;
 import javax.annotation.Resource;
 @CrossOrigin
 @RestController
-@CrossOrigin
 public class ConsequenceController {
     @Resource
     private UserRepo userRepo;
