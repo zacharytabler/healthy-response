@@ -13,7 +13,8 @@ import ResponsesPage from "./pages/ResponsesPage";
 import AlternativesPage from "./pages/AlternativesPage";
 import ReviewsPage from "./pages/ReviewsPage";
 import AboutUsPage from "./pages/AboutUsPage";
-import LegalPage from "./pages/LegalPage"
+import LegalPage from "./pages/LegalPage";
+import LoginDraft from "./pages/LoginDraft";
 
 const app = document.querySelector("#app");
 
@@ -35,6 +36,8 @@ function buildPage() {
   reviews();
   about();
   legal();
+  loginDraft();
+
 }
 
 function header() {
@@ -70,12 +73,15 @@ function renderUser() {
   app.innerHTML = userProfilePage();
 }
 
-function home() {
-  const homeElement = document.querySelector(".nav__list_home");
+
+
+function loginDraft() {
+  const homeElement = document.querySelector(".nav__list_loginDraft");
   homeElement.addEventListener("click", () => {
-    app.innerHTML = HomePage();
+    app.innerHTML = LoginDraft();
   });
 }
+
 
 function moods() {
   const moodElement = document.querySelector(".nav__list_moods");
@@ -146,3 +152,28 @@ function legal() {
     app.innerHTML = LegalPage();
   });
 }
+function slideShow() {
+  const slideshows = document.querySelectorAll('.slideshow');
+  console.log(slideshows);
+  slideshows.forEach(initSlideShow);
+    }
+    function initSlideShow(slideshow) {
+      var slides = slideshow.querySelector('div').querySelectorAll('.slideShowGrid');
+      
+      var index = 0, time = 5000;
+      slides[index].classList.add('active');  
+      setInterval( () => {
+        console.log(slides);
+      slides[index].classList.remove('active');
+      index++;
+      if (index === slides.length) index = 0; 
+      slides[index].classList.add('active');
+      }, time);
+      }
+      function home() {
+        const homeElement = document.querySelector(".nav__list_home");
+        homeElement.addEventListener("click", () => {
+          app.innerHTML = HomePage();
+          slideShow();
+        });
+      }

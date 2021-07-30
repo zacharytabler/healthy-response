@@ -5,7 +5,8 @@ export default function Header() {
   <nav>
   	<input type="checkbox">
 	<label>&equiv;</label>
-        <ul>
+        <ul>  
+            <li class='nav__list_loginDraft'>Login Draft</li>
             <li class='nav__list_home'>Home</li>
             <li class='nav__list_profile'>Profile</li>
             <li class='nav__list_moods'>Moods</li>
@@ -16,6 +17,7 @@ export default function Header() {
             <li class='nav__list_alternatives'>Alternatives</li>
             <li class='nav__list_responses'>Responses</li>
             <li class='nav__list_reviews'>Reviews</li>
+          
         </ul>
     </nav>
         `;
