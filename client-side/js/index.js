@@ -7,7 +7,7 @@ import userWelcome from "./pages/UserProfilePage";
 import MoodsPage from "./pages/MoodsPage";
 import TriggersPage from "./pages/TriggersPage";
 import CopingMechanismsPage from "./pages/CopingMechanismsPage";
-import Consequences from "./pages/ConsequencesPage";
+import ConsequencesPage from "./pages/ConsequencesPage";
 import ResultsPage from "./pages/ResultsPage";
 import ResponsesPage from "./pages/ResponsesPage";
 import AlternativesPage from "./pages/AlternativesPage";
@@ -111,37 +111,58 @@ function home() {
 function moods() {
   const moodElement = document.querySelector(".nav__list_moods");
   moodElement.addEventListener("click", () => {
-    app.innerHTML = MoodsPage();
-  });
+  console.log('firing!');
+  apiActions.getRequest('http://localhost:8080/moods', moods => {
+  console.log(moods);
+  app.innerHTML = MoodsPage(moods);
+  })
+  })
 }
 
 function triggers() {
   const triggerElement = document.querySelector(".nav__list_triggers");
   triggerElement.addEventListener("click", () => {
-    app.innerHTML = TriggersPage();
-  });
+    console.log('firing!');
+    apiActions.getRequest('http://localhost:8080/triggers', triggers => {
+    console.log(triggers); 
+    app.innerHTML = TriggersPage(triggers);
+  })
+})
 }
 
 function copingMechanisms() {
   const copingElement = document.querySelector(".nav__list_coping_mechanisms");
   copingElement.addEventListener("click", () => {
-    app.innerHTML = CopingMechanismsPage();
-  });
+    console.log('firing!');
+    apiActions.getRequest('http://localhost:8080/coping', copingMechanisms => {
+    console.log(copingMechanisms);
+    app.innerHTML = CopingMechanismsPage(copingMechanisms);
+  })
+})
 }
 
 function consequences() {
   const consequencesElement = document.querySelector(".nav__list_consequences");
   consequencesElement.addEventListener("click", () => {
-    app.innerHTML = Consequences();
-  });
+    console.log('firing!');
+    apiActions.getRequest('http://localhost:8080/consequences', consequences => {
+    console.log(consequences);
+    app.innerHTML = ConsequencesPage(consequences);
+  })
+})
 }
 
 function results() {
   const resultsElement = document.querySelector(".nav__list_results");
   resultsElement.addEventListener("click", () => {
-    app.innerHTML = ResultsPage();
-  });
+    console.log('firing!');
+    apiActions.getRequest('http://localhost:8080/results', results => {
+    console.log(results);
+    app.innerHTML = ResultsPage(results);
+  })
+})
 }
+
 
 function alternatives() {
   const alternativesElement = document.querySelector(".nav__list_alternatives");
@@ -153,9 +174,15 @@ function alternatives() {
 function responses() {
   const responseElement = document.querySelector(".nav__list_responses");
   responseElement.addEventListener("click", () => {
-    app.innerHTML = ResponsesPage();
-  });
+    console.log('firing!');
+    apiActions.getRequest('http://localhost:8080/responses', responses => {
+    console.log(responses);
+    app.innerHTML = ResponsesPage(responses);
+  })
+})
 }
+
+
 
 function reviews() {
   const reviewElement = document.querySelector(".nav__list_reviews");
