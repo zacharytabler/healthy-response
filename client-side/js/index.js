@@ -18,12 +18,15 @@ import LegalPage from "./pages/LegalPage"
 
 
 const app = document.querySelector("#app");
+// const affirmation_api_url ="https://zenquotes.io/api/quotes/";
+// const affirmation_api_url = 'https://zenquotes.io/api/today';
+const affirmation_api_url = 'https://type.fit/api/quotes';
 
 buildPage();
 
 function buildPage() {
   header();
-  footer();
+//   footer();
   renderUserLogin();
   home();
   moods();
@@ -34,19 +37,20 @@ function buildPage() {
   alternatives();
   responses();
   reviews();
-  about();
-  contact();
-  legal();
+//   about();
+//   contact();
+//   legal();
+  getAffirmationApi(affirmation_api_url);
 }
 
 function header() {
   const headerElement = document.querySelector(".header");
   headerElement.innerHTML = Header();
 }
-function footer() {
-  const footerElement = document.querySelector(".footer");
-  footerElement.innerHTML = Footer();
-}
+// function footer() {
+//   const footerElement = document.querySelector(".footer");
+//   footerElement.innerHTML = Footer();
+// }
 
 function renderUserLogin() {
   app.innerHTML = user_login();
@@ -135,25 +139,32 @@ function reviews() {
   });
 }
 
-function about() {
-  const aboutElement = document.querySelector(".footer_list_aboutUs");
-  aboutElement.addEventListener("click", () => {
-    app.innerHTML = AboutUsPage();
-  });
-}
+// function about() {
+//   const aboutElement = document.querySelector(".footer_list_aboutUs");
+//   aboutElement.addEventListener("click", () => {
+//     app.innerHTML = AboutUsPage();
+//   });
+// }
 
-function contact() {
-  const contactElement = document.querySelector(".footer_list_contactUs");
-  contactElement.addEventListener("click", () => {
-    const app = document.querySelector("#app");
-    app.innerHTML = ContactUsPage();
-  });
-}
+// function contact() {
+//   const contactElement = document.querySelector(".footer_list_contactUs");
+//   contactElement.addEventListener("click", () => {
+//     const app = document.querySelector("#app");
+//     app.innerHTML = ContactUsPage();
+//   });
+// }
 
-function legal() {
-  const legalElement = document.querySelector(".footer_list_legal");
-  legalElement.addEventListener("click", () => {
-    app.innerHTML = LegalPage();
-  });
-}
+// function legal() {
+//   const legalElement = document.querySelector(".footer_list_legal");
+//   legalElement.addEventListener("click", () => {
+//     app.innerHTML = LegalPage();
+//   });
+// }
 
+function getAffirmationApi(url) {
+    apiActions.getRequest(
+    url,
+    (quotes) => {
+      console.log(quotes);
+    });
+}
