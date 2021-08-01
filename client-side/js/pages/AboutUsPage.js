@@ -46,7 +46,7 @@ export default function about() {
     </div>
     </div>
     <div class="member">
-    <img src="" alt="Chelsea James Image">
+    <img src="https://ca.slack-edge.com/T14LST83D-U01RR9PQM8X-f2527b93550e-512" alt="Chelsea James Image">
     <h3>Chelsea James</h3>
     <a href = "mailto: james.chelsea.m@gmail.com">james.chelsea.m@gmail.com</a>
     <p>Chelsea Bio.</p>
