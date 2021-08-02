@@ -19,7 +19,10 @@ import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
 
 const app = document.querySelector("#app");
+<<<<<<< Updated upstream
 const affirmation_api_url = "https://type.fit/api/quotes";
+// const affirmation_api_url ="https://zenquotes.io/api/quotes/";
+// const affirmation_api_url = 'https://zenquotes.io/api/today';
 
 buildPage();
 
