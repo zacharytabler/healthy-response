@@ -15,9 +15,10 @@ export default function Header() {
             <li class='nav__list_results'>Results</li>
             <li class='nav__list_triggers'>Triggers</li>
             <li class='nav__list_users'>Users</li>
+            <li class='nav__list_appointment'>Appointment</li>
             <li class='nav__list_aboutUs'>About Us</li>
             <li class='nav__list_contactUs'>Contact US</li>
-            <li class='nav__list_appointment'>Appointment</li>
+            
         </ul>
     </nav>
         `;
