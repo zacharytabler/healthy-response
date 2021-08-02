@@ -13,7 +13,7 @@ export default function about() {
       <img src="https://i.ibb.co/P465vsM/nickpic.jpg" alt="Nick Billhardt Image">
       <h3>Nick Billhardt</h3>
       <a href = "mailto: nickbillhardt@ymail.com">nickbillhardt@ymail.com</a>
-      <p>Nick Bio.</p>
+      <p>Software developer who is a seasoned customer service-oriented worker. With the ambition to transfer my skills into being a web / software programmer. Some of the skills I have acquired that will transfer are problem solving, adaptability, and teamwork. I am willing to put in the work to get the results. I also understand that sometimes we have to help others in order to succeed as a whole.</p>
       <div class="btn">
         <a href="https://www.linkedin.com/in/nick-billhardt" target="_blank">LinkedIn</a>
         </div>
@@ -73,7 +73,12 @@ export default function about() {
     <img src="https://i.ibb.co/C9JKdFm/Zachary-Tabler.jpg" alt="Zachary Tabler Image">
     <h3>Zachary Tabler</h3>
     <a href = "mailto: zachary.tabler@gmail.com">zachary.tabler@gmail.com</a>
-    <p>Zachary Bio.</p>
+    <p> My name is Zachary Tabler and I am a current Java boot camp
+    student at We Can Code It in Columbus, Ohio. I am optimistic my time at We Can Code will allow me to make a career transition into software development. Prior to We Can Code It, I spent the
+    last 15 years as a sales agent, and sales executive for two of the
+    largest personal lines insurance companies in the United States.
+    I've had a lot of success in insurance, but I am now ready to
+    pursue new endeavors.</p>
     <div class="btn">
     <a href="https://www.linkedin.com/in/zacharytabler"target="_blank">LinkedIn</a>
     </div>
