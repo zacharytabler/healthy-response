@@ -5,7 +5,7 @@ export default function about() {
   <div class="container">
     <div class="header">
     <h1 class = "aboutTitle">Vanguard Health Solutions</h1>
-    <p class = "valueProp">Vanguard Health Solutions was formed in 2021 to assist individuals with making positive life choices daily. <br> Healthly Response assistant is a fully customizable app designed to help you navigate your unique life circumstances. <br> We want to be your go to resource when you're uncertain how to respond.  </p>
+    <p class = "valueProp">Vanguard Health Solutions was formed in 2021 to assist individuals with making positive life choices daily. <br> Healthly Response assistant is a fully customizable app designed to help you navigate your life's most challenging circumstances. <br> We want to be your go to resource when you're uncertain what to do next.  </p>
     <h2 class = "aboutTeam">Meet The Team</h2>
     </div>
     <div class="team">
