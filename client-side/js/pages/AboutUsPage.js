@@ -15,10 +15,10 @@ export default function about() {
       <a href = "mailto: nickbillhardt@ymail.com">nickbillhardt@ymail.com</a>
       <p>Nick Bio.</p>
       <div class="btn">
-        <a href="https://www.linkedin.com/in/nick-billhardt">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/nick-billhardt" target="_blank">LinkedIn</a>
         </div>
       <div class="btn">
-      <a href="https://github.com/nbillhardt">Github</a> 
+      <a href="https://github.com/nbillhardt" target="_blank">Github</a>
       </div>
     </div>
     <div class="member">
@@ -27,10 +27,10 @@ export default function about() {
       <a href = "mailto: jordaneaster222@icloud.com">jordaneaster222@icloud.com</a>
       <p>Jordan Bio.</p>
       <div class="btn">
-      <a href="https://www.linkedin.com/in/jordan-erik-easter">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/jordan-erik-easter" target="_blank">LinkedIn</a>
       </div>
     <div class="btn">
-    <a href="https://github.com/jordaneaster">Github</a> 
+    <a href="https://github.com/jordaneaster" target="_blank">Github</a> 
     </div>
     </div>
     <div class="member">
@@ -39,10 +39,10 @@ export default function about() {
       <a href = "mailto: thefaf17@gmail.com">thefaf17@gmail.com</a>
       <p>Stephen Bio.</p>
       <div class="btn">
-      <a href="https://www.linkedin.com/in/stephen-fafiade">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/stephen-fafiade" target="_blank">LinkedIn</a>
       </div>
     <div class="btn">
-    <a href="https://github.com/sfafiade">Github</a>
+    <a href="https://github.com/sfafiade" target="_blank">Github</a>
     </div>
     </div>
     <div class="member">
@@ -51,10 +51,10 @@ export default function about() {
     <a href = "mailto: james.chelsea.m@gmail.com">james.chelsea.m@gmail.com</a>
     <p>Chelsea Bio.</p>
     <div class="btn">
-    <a href="https://www.linkedin.com/in/chelseamjames">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/chelseamjames" target="_blank">LinkedIn</a>
     </div>
   <div class="btn">
-  <a href="https://github.com/ChelsMarea1">Github</a>
+  <a href="https://github.com/ChelsMarea1"target="_blank">Github</a>
   </div>
   </div>
   <div class="member">
@@ -63,10 +63,10 @@ export default function about() {
     <a href = "mailto: kitsidhu@gmail.com">kitsidhu@gmail.com</a>
     <p>Kit Bio.</p>
     <div class="btn">
-    <a href="https://www.linkedin.com/in/kitsidhu">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/kitsidhu"target="_blank">LinkedIn</a>
     </div>
   <div class="btn">
-  <a href="https://github.com/kitsi">Github</a> 
+  <a href="https://github.com/kitsi" target="_blank">Github</a> 
   </div>
   </div>
   <div class="member">
@@ -75,10 +75,10 @@ export default function about() {
     <a href = "mailto: zachary.tabler@gmail.com">zachary.tabler@gmail.com</a>
     <p>Zachary Bio.</p>
     <div class="btn">
-    <a href="https://www.linkedin.com/in/zacharytabler">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/zacharytabler"target="_blank">LinkedIn</a>
     </div>
   <div class="btn">
-  <a href="https://github.com/zacharytabler">Github</a> 
+  <a href="https://github.com/zacharytabler" target="_blank">Github</a>
   </div>
   </div>
   </div>
