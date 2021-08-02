@@ -1,4 +1,4 @@
-export default function Contact() {
+export default function ContactUsPage() {
     return `
     <link rel="stylesheet" href="css/form.css">
       

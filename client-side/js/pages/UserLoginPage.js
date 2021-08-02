@@ -1,6 +1,5 @@
-export default function LoginPage() {
+export default function userWelcome() {
   return `
-  
 <h1 class="test">
       Healthy Response
       <h2>Your Personal HR</h2>
@@ -8,7 +7,7 @@ export default function LoginPage() {
     <section class="login">
       <input type="text" class="userName" placeholder="Username" />
       <input type="text" class="password" placeholder="Password" />
-      <input type="text" class="age" placeholder="Age" />
+      <input type="number" class="age" placeholder="Age" />
       <select name="cbtMood" id="assessMood" class="intake">
         <option value="userMood" class="cbt1">I feel..</option>
         <option value="Lonely" class="cbt2">Lonely</option>

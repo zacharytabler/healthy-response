@@ -89,7 +89,7 @@
 	list-style-type: none;
 }
 
-.nav__list_users {
+.nav__list_profile {
 	border-radius: 6px;
 	cursor: pointer;
 	padding: 8px;
@@ -97,7 +97,7 @@
 	list-style-type: none;
 }
 
-.nav__list_aboutUs {
+.nav__list_reviews {
 	border-radius: 6px;
 	cursor: pointer;
 	padding: 8px;
@@ -105,7 +105,7 @@
 	list-style-type: none;
 }
 
-.nav__list_contactUs {
+.footer_list_aboutUs {
 	border-radius: 6px;
 	cursor: pointer;
 	padding: 8px;
@@ -114,12 +114,34 @@
 }
 
 .nav__list_appointment {
+  border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+
+.footer_list_contactUs {
 	border-radius: 6px;
 	cursor: pointer;
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
 }
+
+.footer_list_legal {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+}
+
+.footer_nav{
+  display: flex;
+	justify-content: center;
+}
+
 
 /* horizontal navigation: define the navigation font and basic background */
 nav {
