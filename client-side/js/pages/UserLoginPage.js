@@ -10,14 +10,14 @@ export default function userWelcome() {
       <input type="number" class="age" placeholder="Age" />
       <select name="cbtMood" id="assessMood" class="intake">
         <option value="userMood" class="cbt1">I feel..</option>
-        <option value="userMood" class="cbt2">Lonely</option>
-        <option value="userMood" class="cbt3">Sad</option>
-        <option value="userMood" class="cbt4">Depressed</option>
-        <option value="userMood" class="cbt5">Hopeless</option>
-        <option value="userMood" class="cbt6">Suicidal</option>
-        <option value="userMood" class="cbt7">Violent</option>
-        <option value="userMood" class="cbt8">Exhausted</option>
-        <option value="userMood" class="cbt9">Misunderstood</option>
+        <option value="Lonely" class="cbt2">Lonely</option>
+        <option value="Sad" class="cbt3">Sad</option>
+        <option value="Depressed" class="cbt4">Depressed</option>
+        <option value="Hopeless" class="cbt5">Hopeless</option>
+        <option value="Suicidal" class="cbt6">Suicidal</option>
+        <option value="Violent" class="cbt7">Violent</option>
+        <option value="Exhausted" class="cbt8">Exhausted</option>
+        <option value="Misunderstood" class="cbt9">Misunderstood</option>
       </select>
       <select name="cbtTrigger" id="assessTrigger" class="intake">
         <option value="userTrigger" class="cbt">Beause of...</option>
