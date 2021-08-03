@@ -17,6 +17,7 @@ import ContactUsPage from "./pages/ContactUsPage";
 import LegalPage from "./pages/LegalPage";
 import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
+import Appointment from "./pages/Appointment";
 
 const app = document.querySelector("#app");
 const affirmation_api_url = "https://type.fit/api/quotes";
@@ -39,6 +40,7 @@ function buildPage() {
   about();
   contact();
   legal();
+  appointment();
 }
 
 function header() {
@@ -215,6 +217,14 @@ function contact() {
   contactElement.addEventListener("click", () => {
     const app = document.querySelector("#app");
     app.innerHTML = ContactUsPage();
+  });
+}
+
+function appointment() {
+  const homeElem = document.querySelector(".nav-list__appointment");
+  appointmentElem.addEventListener("click", () => {
+      const app = document.querySelector("#app");
+      app.innerHTML = Appointment();
   });
 }
 
