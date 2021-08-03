@@ -21,6 +21,8 @@ import Appointment from "./pages/Appointment";
 
 const app = document.querySelector("#app");
 const affirmation_api_url = "https://type.fit/api/quotes";
+// const affirmation_api_url ="https://zenquotes.io/api/quotes/";
+// const affirmation_api_url = 'https://zenquotes.io/api/today/';
 
 buildPage();
 
@@ -238,9 +240,17 @@ function legal() {
 function getAffirmationApi(url) {
   const quoteDiv = document.querySelector(".inspirational_quote__container");
   quoteDiv.onload = (event) => {};
+
   apiActions.getRequest(url, (quotes) => {
-    quotes.forEach((quote, index) => {
-      quoteDiv.innerHTML = InspirationalQuote(quote, index);
-    });
+      quoteDiv.innerHTML = InspirationalQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+    // quotes.forEach((quote, index) => {
+    //   quoteDiv.innerHTML = InspirationalQuote(quote);
+    // });
   });
+
+// apiActions.getRequest(url, (quote) => {
+//     console.log(quote);
+//     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
+// });
+
 }
