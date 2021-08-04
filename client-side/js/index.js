@@ -13,11 +13,12 @@ import ResponsesPage from "./pages/ResponsesPage";
 import AlternativesPage from "./pages/AlternativesPage";
 import ReviewsPage from "./pages/ReviewsPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import AppointmentPage from "./pages/AppointmentPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import LegalPage from "./pages/LegalPage";
 import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
-import Appointment from "./pages/Appointment";
+
 
 const app = document.querySelector("#app");
 const affirmation_api_url = "https://type.fit/api/quotes";
@@ -39,8 +40,8 @@ function buildPage() {
   reviews();
   about();
   contact();
-  legal();
   appointment();
+  legal();
 }
 
 function header() {
@@ -221,12 +222,12 @@ function contact() {
 }
 
 function appointment() {
-  const homeElem = document.querySelector(".nav-list__appointment");
-  appointmentElem.addEventListener("click", () => {
-      const app = document.querySelector("#app");
-      app.innerHTML = Appointment();
-  });
-}
+  const appointmentElement = document.querySelector(".nav__list_appointment");
+  appointmentElement.addEventListener("click", () => {
+    console.log('firing!');
+      app.innerHTML = AppointmentPage();
+    });
+  }
 
 function legal() {
   const legalElement = document.querySelector(".footer_list_legal");
