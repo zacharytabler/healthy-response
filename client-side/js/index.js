@@ -223,7 +223,7 @@ function contact() {
 }
 
 function appointment() {
-  const homeElem = document.querySelector(".nav-list__appointment");
+  const appointmentElem = document.querySelector(".nav_list_appointment");
   appointmentElem.addEventListener("click", () => {
       const app = document.querySelector("#app");
       app.innerHTML = Appointment();
