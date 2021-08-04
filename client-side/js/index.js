@@ -15,6 +15,7 @@ import ReviewsPage from "./pages/ReviewsPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import LegalPage from "./pages/LegalPage";
 import LoginDraft from "./pages/LoginDraft";
+import AssessmentPage from "./pages/AssessmentPage";
 
 const app = document.querySelector("#app");
 
@@ -37,6 +38,7 @@ function buildPage() {
   about();
   legal();
   loginDraft();
+  assessment();
 
 }
 
@@ -76,9 +78,11 @@ function renderUser() {
 
 
 function loginDraft() {
-  const homeElement = document.querySelector(".nav__list_loginDraft");
+  const homeElement = document.querySelector(".loginButton");
   homeElement.addEventListener("click", () => {
-    app.innerHTML = LoginDraft();
+    app.innerHTML = HomePage();
+    slideShow();
+    assessment();
   });
 }
 
@@ -170,10 +174,21 @@ function slideShow() {
       slides[index].classList.add('active');
       }, time);
       }
+      
+      function assessment() {
+      const assessmentElement = document.querySelector(".assessmentButton");
+        assessmentElement.addEventListener("click", () => {
+          console.log('Firing!')
+          app.innerHTML = AssessmentPage();
+        });
+      }
+
       function home() {
         const homeElement = document.querySelector(".nav__list_home");
         homeElement.addEventListener("click", () => {
           app.innerHTML = HomePage();
           slideShow();
+          assessment();
         });
       }
+      
