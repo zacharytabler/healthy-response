@@ -7,17 +7,24 @@ import userWelcome from "./pages/UserProfilePage";
 import MoodsPage from "./pages/MoodsPage";
 import TriggersPage from "./pages/TriggersPage";
 import CopingMechanismsPage from "./pages/CopingMechanismsPage";
-import Consequences from "./pages/ConsequencesPage";
+import ConsequencesPage from "./pages/ConsequencesPage";
 import ResultsPage from "./pages/ResultsPage";
 import ResponsesPage from "./pages/ResponsesPage";
 import AlternativesPage from "./pages/AlternativesPage";
 import ReviewsPage from "./pages/ReviewsPage";
 import AboutUsPage from "./pages/AboutUsPage";
-import LegalPage from "./pages/LegalPage";
-import LoginDraft from "./pages/LoginDraft";
 import AssessmentPage from "./pages/AssessmentPage";
+import AppointmentPage from "./pages/AppointmentPage";
+import ContactUsPage from "./pages/ContactUsPage";
+import LegalPage from "./pages/LegalPage";
+import InspirationalQuote from "./components/InspirationalQuote";
+import LoginPage from "./pages/LoginPage";
+
 
 const app = document.querySelector("#app");
+const affirmation_api_url = "https://type.fit/api/quotes";
+// const affirmation_api_url ="https://zenquotes.io/api/quotes/";
+// const affirmation_api_url = 'https://zenquotes.io/api/today/';
 
 buildPage();
 
@@ -26,7 +33,6 @@ function buildPage() {
   footer();
   renderUserLogin();
   home();
-
   moods();
   triggers();
   copingMechanisms();
@@ -36,6 +42,8 @@ function buildPage() {
   responses();
   reviews();
   about();
+  contact();
+  appointment();
   legal();
   loginDraft();
   assessment();
@@ -52,27 +60,56 @@ function footer() {
 }
 
 function renderUserLogin() {
-  app.innerHTML = user_login();
+  app.innerHTML = LoginPage();
   app.addEventListener("click", (event) => {
+    console.log("firing");
     if (event.target.classList.contains("create_user")) {
       const userName =
         event.target.parentElement.querySelector(".userName").value;
-      console.log(userName);
+      const password =
+        event.target.parentElement.querySelector(".password").value;
+      const age = event.target.parentElement.querySelector(".age").value;
+      const mood = event.target.parentElement.querySelector(".intake").value;
+      console.log(mood);
+      console.log(event.target);
       apiActions.postRequest(
         "http://localhost:8080/create_user_profile",
         {
           userName: userName,
+          password: password,
+          age: age,
+          mood: mood,
         },
-        () => {
-          console.log("callback firing");
-        }
+        (users) => (app.innerHTML = userWelcome(users))
       );
+      apiActions.getRequest("http://localhost:8080:/users", (user) => {
+        app.innerHTML = userInfo(user);
+      });
     }
   });
 }
 
+function navUserProfile() {
+  const profilePage = document.querySelector(".nav_list_profile");
+  profilePage.addEventListener("click", () => {
+    const app = document.querySelector("#app");
+    apiActions.getRequest("http://localhost:8080/users", (user) => {
+      app.innerHTML = userWelcome(user);
+    });
+    renderUser();
+  });
+}
+
 function renderUser() {
-  app.innerHTML = userProfilePage();
+  app.innerHTML = userWelcome();
+  app.addEventListener("click", (event) => {
+    if (event.target.classList.contains(".userName")) {
+      const userId = event.target.parentElement.querySelector("#userId").value;
+      apiActions.getRequest(userId, (user) => {
+        app.innerHTML = userInfo(user);
+      });
+    }
+  });
 }
 
 
@@ -83,6 +120,7 @@ function loginDraft() {
     app.innerHTML = HomePage();
     slideShow();
     assessment();
+    getAffirmationApi(affirmation_api_url);
   });
 }
 
@@ -90,49 +128,87 @@ function loginDraft() {
 function moods() {
   const moodElement = document.querySelector(".nav__list_moods");
   moodElement.addEventListener("click", () => {
-    app.innerHTML = MoodsPage();
+    console.log("firing!");
+    apiActions.getRequest("http://localhost:8080/moods", (moods) => {
+      console.log(moods);
+      app.innerHTML = MoodsPage(moods);
+    });
   });
 }
+
 
 function triggers() {
   const triggerElement = document.querySelector(".nav__list_triggers");
   triggerElement.addEventListener("click", () => {
-    app.innerHTML = TriggersPage();
+    console.log("firing!");
+    apiActions.getRequest("http://localhost:8080/triggers", (triggers) => {
+      console.log(triggers);
+      app.innerHTML = TriggersPage(triggers);
+    });
   });
 }
 
 function copingMechanisms() {
-  const copingElement = document.querySelector(".nav__list_coping_mechanisms");
+  const copingElement = document.querySelector(".nav__list_moods");
   copingElement.addEventListener("click", () => {
-    app.innerHTML = CopingMechanismsPage();
+    console.log("firing!");
+    apiActions.getRequest(
+      "http://localhost:8080/coping",
+      (copingMechanisms) => {
+        console.log(copingMechanisms);
+        app.innerHTML = MoodsPage(copingMechanisms);
+      }
+    );
   });
 }
+
 
 function consequences() {
   const consequencesElement = document.querySelector(".nav__list_consequences");
   consequencesElement.addEventListener("click", () => {
-    app.innerHTML = Consequences();
+    console.log("firing!");
+    apiActions.getRequest(
+      "http://localhost:8080/consequences",
+      (consequences) => {
+        console.log(consequences);
+        app.innerHTML = ConsequencesPage(consequences);
+      }
+    );
   });
 }
 
 function results() {
   const resultsElement = document.querySelector(".nav__list_results");
   resultsElement.addEventListener("click", () => {
-    app.innerHTML = ResultsPage();
+    console.log("firing!");
+    apiActions.getRequest("http://localhost:8080/results", (results) => {
+      console.log(results);
+      app.innerHTML = ResultsPage(results);
+    });
   });
 }
 
 function alternatives() {
   const alternativesElement = document.querySelector(".nav__list_alternatives");
   alternativesElement.addEventListener("click", () => {
-    app.innerHTML = AlternativesPage();
+    apiActions.getRequest(
+      "http://localhost:8080/alternatives",
+      (alternatives) => {
+        console.log(alternatives);
+        app.innerHTML = AlternativesPage(alternatives);
+      }
+    );
   });
 }
 
 function responses() {
   const responseElement = document.querySelector(".nav__list_responses");
   responseElement.addEventListener("click", () => {
-    app.innerHTML = ResponsesPage();
+    console.log("firing!");
+    apiActions.getRequest("http://localhost:8080/responses", (responses) => {
+      console.log(responses);
+      app.innerHTML = ResponsesPage(responses);
+    });
   });
 }
 
@@ -150,6 +226,22 @@ function about() {
   });
 }
 
+function contact() {
+  const contactElement = document.querySelector(".footer_list_contactUs");
+  contactElement.addEventListener("click", () => {
+    const app = document.querySelector("#app");
+    app.innerHTML = ContactUsPage();
+  });
+}
+
+function appointment() {
+  const appointmentElement = document.querySelector(".nav__list_appointment");
+  appointmentElement.addEventListener("click", () => {
+    console.log('firing!');
+      app.innerHTML = AppointmentPage();
+    });
+  }
+
 function legal() {
   const legalElement = document.querySelector(".footer_list_legal");
   legalElement.addEventListener("click", () => {
@@ -163,7 +255,6 @@ function slideShow() {
     }
     function initSlideShow(slideshow) {
       var slides = slideshow.querySelector('div').querySelectorAll('.slideShowGrid');
-      
       var index = 0, time = 5000;
       slides[index].classList.add('active');  
       setInterval( () => {
@@ -192,3 +283,21 @@ function slideShow() {
         });
       }
       
+
+function getAffirmationApi(url) {
+  const quoteDiv = document.querySelector(".inspirational_quote__container");
+  quoteDiv.onload = (event) => {};
+
+  apiActions.getRequest(url, (quotes) => {
+      quoteDiv.innerHTML = InspirationalQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+    // quotes.forEach((quote, index) => {
+    //   quoteDiv.innerHTML = InspirationalQuote(quote);
+    // });
+  });
+
+// apiActions.getRequest(url, (quote) => {
+//     console.log(quote);
+//     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
+// });
+
+}
