@@ -29,11 +29,11 @@ input[type=text], select, textarea {
   }
   
   input[type=submit]:hover {
-    background-color: gray;
+    background-color: blue;
   }
   
   
-   div.container {
+   .container {
     border-radius: 5px;
     background-color: red;
     padding: 20px;

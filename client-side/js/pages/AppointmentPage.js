@@ -19,7 +19,64 @@ export default function AppointmentPage() {
                 <div class="time">
                     <label for="time"> Appointment Time</label> <input id="time" type="time">
                 </div>
+                <span>  Martial Status</span>
+                <select style="width: 280px" id="Mobility" name="Mobility">
+  <option selected="">Please Select</option>
+  <option>Married</option>
+  <option>Single</option>
+  
+</select>
+
+  
+</select>
                 </div>
+                
+<div><span> Any Disability</span>
+                <select style="width: 280px" id="Mobility" name="Mobility">
+  <option selected="">Please Select</option>
+  <option>Yes</option>
+  <option>No</option>
+ </select> </div>
+<div><span>  Veteran Status</span>
+<select style="width: 280px" id="Mobility" name="Mobility">
+<option selected="">Please Select</option>
+<option> Still active</option></option>
+<option> Not active</option>
+<option> Not a an active veteran </option>
+</select> </div>            
+                
+        <div class="message__container">
+            <div class="section">
+                <div class="box">
+                    
+                </div> Any Concerns to Address <span> </span>
+            </div>
+            <textarea placeholder="e.g. Please do .. Also, .." cols="50" rows="5"></textarea>
+        </div>
+        <div class="contact__container">
+            <div class="section">
+                <div class="box">
+                    
+                </div><span>Contact Information</span>
+            </div>
+            <form action="" class="form__contact">
+                <div class="cname">
+                    <label for="cname">Name</label> <input placeholder="e.g. John Doe" id="cname" type="text">
+                </div>
+                <div class="cnum">
+                    <label for="cnum">Phone Number</label> <input id="cnum" type="text">
+                </div>
+                <div class="email">
+                    <label for="cemail">Email</label> <input placeholder="e.g. example@email.com" id="cemail" type="email">
+                </div>
+            </form>
+        </div>
+        <div class="form__confirmation">
+            <button>Confirm Appointment </button>
+        </div>
+    
+
+     </div>
 
     `;
 }
