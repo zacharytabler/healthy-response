@@ -19,7 +19,6 @@ export default function ContactUsPage() {
           <input type="text" id="email" name="email placeholder="Your email..">
           <label for="email"> Your Thoughts </label>
           <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
-          <input type="submit" value="Submit">
           
           <div class="star-rating" >
           <div class="thanks-msg">Thank you for your feedback !!!</div>
