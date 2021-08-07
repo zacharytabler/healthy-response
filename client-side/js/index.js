@@ -19,7 +19,7 @@ import ContactUsPage from "./pages/ContactUsPage";
 import LegalPage from "./pages/LegalPage";
 import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
-
+import LoginDraft from "./pages/LoginPage";
 
 const app = document.querySelector("#app");
 const affirmation_api_url = "https://type.fit/api/quotes";
@@ -29,9 +29,10 @@ const affirmation_api_url = "https://type.fit/api/quotes";
 buildPage();
 
 function buildPage() {
+  renderUserLogin();
   header();
   footer();
-  renderUserLogin();
+  
   home();
   moods();
   triggers();
@@ -47,23 +48,19 @@ function buildPage() {
   appointment();
   legal();
   loginDraft();
-  assessment();
   
-
 }
 
 function navUserProfile() {
   const profilePage = document.querySelector(".nav__list_profile");
   profilePage.addEventListener("click", () => {
-    console.log('firing!');
+    console.log("firing!");
     const app = document.querySelector("#app");
     apiActions.getRequest("http://localhost:8080/users", (user) => {
       app.innerHTML = userWelcome(user);
     });
   });
 }
-
-
 
 function header() {
   const headerElement = document.querySelector(".header");
@@ -75,24 +72,21 @@ function footer() {
 }
 
 function renderUserLogin() {
-  app.innerHTML = LoginPage();
+  app.innerHTML = LoginDraft();
   app.addEventListener("click", (event) => {
     console.log("firing");
-    if (event.target.classList.contains("create_user")) {
+    if (event.target.classList.contains("loginButton")) {
       const userName =
         event.target.parentElement.querySelector(".userName").value;
       const password =
         event.target.parentElement.querySelector(".password").value;
-      const age = event.target.parentElement.querySelector(".age").value;
-      const mood = event.target.parentElement.querySelector(".intake").value;
-      console.log(mood);
+
       console.log(event.target);
       apiActions.postRequest(
         "http://localhost:8080/create_user_profile",
         {
           userName: userName,
           password: password,
-          age: age,
         },
         (users) => (app.innerHTML = userWelcome(users))
       );
@@ -115,18 +109,12 @@ function renderUser() {
   });
 }
 
-
-
 function loginDraft() {
   const homeElement = document.querySelector(".loginButton");
   homeElement.addEventListener("click", () => {
     app.innerHTML = HomePage();
-    slideShow();
-    assessment();
-    getAffirmationApi(affirmation_api_url);
   });
 }
-
 
 function moods() {
   const moodElement = document.querySelector(".nav__list_moods");
@@ -138,7 +126,6 @@ function moods() {
     });
   });
 }
-
 
 function triggers() {
   const triggerElement = document.querySelector(".nav__list_triggers");
@@ -164,7 +151,6 @@ function copingMechanisms() {
     );
   });
 }
-
 
 function consequences() {
   const consequencesElement = document.querySelector(".nav__list_consequences");
@@ -240,10 +226,10 @@ function contact() {
 function appointment() {
   const appointmentElement = document.querySelector(".nav__list_appointment");
   appointmentElement.addEventListener("click", () => {
-    console.log('firing!');
-      app.innerHTML = AppointmentPage();
-    });
-  }
+    console.log("firing!");
+    app.innerHTML = AppointmentPage();
+  });
+}
 
 function legal() {
   const legalElement = document.querySelector(".footer_list_legal");
@@ -252,55 +238,58 @@ function legal() {
   });
 }
 function slideShow() {
-  const slideshows = document.querySelectorAll('.slideshow');
+  const slideshows = document.querySelectorAll(".slideshow");
   console.log(slideshows);
   slideshows.forEach(initSlideShow);
-    }
-    function initSlideShow(slideshow) {
-      var slides = slideshow.querySelector('div').querySelectorAll('.slideShowGrid');
-      var index = 0, time = 5000;
-      slides[index].classList.add('active');  
-      setInterval( () => {
-        console.log(slides);
-      slides[index].classList.remove('active');
-      index++;
-      if (index === slides.length) index = 0; 
-      slides[index].classList.add('active');
-      }, time);
-      }
-      
-      function assessment() {
-      const assessmentElement = document.querySelector(".assessmentButton");
-        assessmentElement.addEventListener("click", () => {
-          console.log('Firing!')
-          app.innerHTML = AssessmentPage();
-        });
-      }
+}
+function initSlideShow(slideshow) {
+  var slides = slideshow
+    .querySelector("div")
+    .querySelectorAll(".slideShowGrid");
+  var index = 0,
+    time = 5000;
+  slides[index].classList.add("active");
+  setInterval(() => {
+    console.log(slides);
+    slides[index].classList.remove("active");
+    index++;
+    if (index === slides.length) index = 0;
+    slides[index].classList.add("active");
+  }, time);
+}
 
-      function home() {
-        const homeElement = document.querySelector(".nav__list_home");
-        homeElement.addEventListener("click", () => {
-          app.innerHTML = HomePage();
-          slideShow();
-          assessment();
-        });
-      }
-      
+function assessment() {
+  const assessmentElement = document.querySelector(".assessmentButton");
+  assessmentElement.addEventListener("click", () => {
+    console.log("Firing!");
+    app.innerHTML = AssessmentPage();
+  });
+}
+
+function home() {
+  const homeElement = document.querySelector(".nav__list_home");
+  homeElement.addEventListener("click", () => {
+    app.innerHTML = HomePage();
+    slideShow();
+    assessment();
+  });
+}
 
 function getAffirmationApi(url) {
   const quoteDiv = document.querySelector(".inspirational_quote__container");
   quoteDiv.onload = (event) => {};
 
   apiActions.getRequest(url, (quotes) => {
-      quoteDiv.innerHTML = InspirationalQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+    quoteDiv.innerHTML = InspirationalQuote(
+      quotes[Math.floor(Math.random() * quotes.length)]
+    );
     // quotes.forEach((quote, index) => {
     //   quoteDiv.innerHTML = InspirationalQuote(quote);
     // });
   });
 
-// apiActions.getRequest(url, (quote) => {
-//     console.log(quote);
-//     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
-// });
-
+  // apiActions.getRequest(url, (quote) => {
+  //     console.log(quote);
+  //     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
+  // });
 }
