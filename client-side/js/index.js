@@ -42,13 +42,28 @@ function buildPage() {
   responses();
   reviews();
   about();
+  navUserProfile();
   contact();
   appointment();
   legal();
   loginDraft();
   assessment();
+  
 
 }
+
+function navUserProfile() {
+  const profilePage = document.querySelector(".nav__list_profile");
+  profilePage.addEventListener("click", () => {
+    console.log('firing!');
+    const app = document.querySelector("#app");
+    apiActions.getRequest("http://localhost:8080/users", (user) => {
+      app.innerHTML = userWelcome(user);
+    });
+  });
+}
+
+
 
 function header() {
   const headerElement = document.querySelector(".header");
@@ -78,7 +93,6 @@ function renderUserLogin() {
           userName: userName,
           password: password,
           age: age,
-          mood: mood,
         },
         (users) => (app.innerHTML = userWelcome(users))
       );
@@ -86,17 +100,6 @@ function renderUserLogin() {
         app.innerHTML = userInfo(user);
       });
     }
-  });
-}
-
-function navUserProfile() {
-  const profilePage = document.querySelector(".nav_list_profile");
-  profilePage.addEventListener("click", () => {
-    const app = document.querySelector("#app");
-    apiActions.getRequest("http://localhost:8080/users", (user) => {
-      app.innerHTML = userWelcome(user);
-    });
-    renderUser();
   });
 }
 

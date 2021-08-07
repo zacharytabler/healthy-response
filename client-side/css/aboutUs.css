@@ -33,9 +33,6 @@
   
 }
 
- img{
-   border-radius: 50%;
- }
 .container .team {
   width: auto;
   display: flex;
@@ -55,6 +52,7 @@
 
 .container .team .member img {
   width: 80px;
+  border-radius: 50%;
 }
 
 .container .team .member h3 {
