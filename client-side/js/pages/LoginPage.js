@@ -1,10 +1,12 @@
 
 import '../../css/login.css'
 import LoginLogo from '../../images/hr-logo-login.png'
+import BackgroundLogo from '../../images/login.jpg'
 
 export default function LoginDraft() {
     return `
     <div class="container">
+    <img class="loginLogo" src="${BackgroundLogo}" alt="healthy response logo"/>
      <img class="loginLogo" src="${LoginLogo}" alt="healthy response logo"/>
      <form class="loginFields">
      <div>
