@@ -29,10 +29,9 @@ const affirmation_api_url = "https://type.fit/api/quotes";
 buildPage();
 
 function buildPage() {
-  renderUserLogin();
   header();
   footer();
-  
+  renderUserLogin();
   home();
   moods();
   triggers();
@@ -48,7 +47,6 @@ function buildPage() {
   appointment();
   legal();
   loginDraft();
-  
 }
 
 function navUserProfile() {
@@ -88,11 +86,9 @@ function renderUserLogin() {
           userName: userName,
           password: password,
         },
+        (app.innerHTML = HomePage()),
         (users) => (app.innerHTML = userWelcome(users))
       );
-      apiActions.getRequest("http://localhost:8080:/users", (user) => {
-        app.innerHTML = userInfo(user);
-      });
     }
   });
 }
