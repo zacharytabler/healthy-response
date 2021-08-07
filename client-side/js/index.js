@@ -152,14 +152,14 @@ function triggers() {
 }
 
 function copingMechanisms() {
-  const copingElement = document.querySelector(".nav__list_moods");
+  const copingElement = document.querySelector(".nav__list_coping_mechanisms");
   copingElement.addEventListener("click", () => {
     console.log("firing!");
     apiActions.getRequest(
       "http://localhost:8080/coping",
       (copingMechanisms) => {
         console.log(copingMechanisms);
-        app.innerHTML = MoodsPage(copingMechanisms);
+        app.innerHTML = CopingMechanismsPage(copingMechanisms);
       }
     );
   });
