@@ -81,8 +81,7 @@ public class Populator implements CommandLineRunner {
         moodRepo.save(suicidal);
 
 
-        User testUser = new User("TESTusername","password",21,sad,testCopingMechinism, testTrigger);
-        userRepo.save(testUser);
+        
 
 
 
