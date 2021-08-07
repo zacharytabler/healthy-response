@@ -29,7 +29,7 @@ export default function ContactUsPage() {
                 <input type="radio" name="rating" id="rating-4">
                 <label for="rating-4" class="fas fa-star">Likely recommend </label>
                 <input type="radio" name="rating" id="rating-3">
-                <label for="rating-3" class="fas fa-star">indifferent</label>
+                <label for="rating-3" class="fas fa-star">Indifferent</label>
                 <input type="radio" name="rating" id="rating-2">
                 <label for="rating-2" class="fas fa-star">Unlikely to recommend</label>
                 <input type="radio" name="rating" id="rating-1">
