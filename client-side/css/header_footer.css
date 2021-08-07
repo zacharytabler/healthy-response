@@ -1,3 +1,11 @@
+.nav__list_loginDraft {
+	border-radius: 6px;
+	cursor: pointer;
+	padding: 8px;
+	margin-left: 20px;
+	list-style-type: none;
+	font-size: large;
+}
 
 .footer {
 	margin-top: 2em;
@@ -14,6 +22,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .nav__list_alternatives {
@@ -22,6 +31,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .nav__list_consequences {
@@ -30,6 +40,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .nav__list_coping_mechanisms {
@@ -38,6 +49,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .nav__list_consequences {
@@ -46,6 +58,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 
@@ -55,6 +68,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .nav__list_moods {
@@ -63,6 +77,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .nav__list_responses {
@@ -71,6 +86,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .nav__list_results {
@@ -79,6 +95,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .nav__list_triggers {
@@ -87,6 +104,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .nav__list_profile {
@@ -95,6 +113,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .nav__list_reviews {
@@ -103,6 +122,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .footer_list_aboutUs {
@@ -111,6 +131,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .nav__list_appointment {
@@ -119,6 +140,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .footer_list_contactUs {
@@ -127,6 +149,7 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .footer_list_legal {
@@ -135,30 +158,33 @@
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
+	font-size: large;
 }
 
 .footer_nav{
   display: flex;
 	justify-content: center;
+	font-size: large;
 }
 
 
 /* horizontal navigation: define the navigation font and basic background */
 nav {
-  background-color: red;
+  background-color: rgb(165, 175, 177);
   font:normal bold 11px Arial,Sans-Serif;
   color: whitesmoke;
   height:30px;
   display: flex;
 	justify-content: center;
   margin-bottom: 25px;
+  padding: 15px;
 }
 
 /* lists: remove the nested list margin, padding & bullets */
 nav ul,
 nav li {
   margin:0 0;
-  padding:0 0;
+  padding:10 0;
   list-style:none;
 }
 
@@ -222,7 +248,7 @@ nav label {
     right:0;
     left:0;
     color: black;
-    background-color: red;
+    background-color: rgb(252, 208, 208);
     height:0; /* set the sub menu height to `0` */
     visibility:hidden; /* use `visibility:hidden` instead of `display:none`, so we can animate the sub menu height */
     overflow:hidden;

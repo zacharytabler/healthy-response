@@ -13,6 +13,7 @@ import ResponsesPage from "./pages/ResponsesPage";
 import AlternativesPage from "./pages/AlternativesPage";
 import ReviewsPage from "./pages/ReviewsPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import AssessmentPage from "./pages/AssessmentPage";
 import AppointmentPage from "./pages/AppointmentPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import LegalPage from "./pages/LegalPage";
@@ -41,10 +42,28 @@ function buildPage() {
   responses();
   reviews();
   about();
+  navUserProfile();
   contact();
   appointment();
   legal();
+  loginDraft();
+  assessment();
+  
+
 }
+
+function navUserProfile() {
+  const profilePage = document.querySelector(".nav__list_profile");
+  profilePage.addEventListener("click", () => {
+    console.log('firing!');
+    const app = document.querySelector("#app");
+    apiActions.getRequest("http://localhost:8080/users", (user) => {
+      app.innerHTML = userWelcome(user);
+    });
+  });
+}
+
+
 
 function header() {
   const headerElement = document.querySelector(".header");
@@ -74,7 +93,6 @@ function renderUserLogin() {
           userName: userName,
           password: password,
           age: age,
-          mood: mood,
         },
         (users) => (app.innerHTML = userWelcome(users))
       );
@@ -82,17 +100,6 @@ function renderUserLogin() {
         app.innerHTML = userInfo(user);
       });
     }
-  });
-}
-
-function navUserProfile() {
-  const profilePage = document.querySelector(".nav_list_profile");
-  profilePage.addEventListener("click", () => {
-    const app = document.querySelector("#app");
-    apiActions.getRequest("http://localhost:8080/users", (user) => {
-      app.innerHTML = userWelcome(user);
-    });
-    renderUser();
   });
 }
 
@@ -108,13 +115,18 @@ function renderUser() {
   });
 }
 
-function home() {
-  const homeElement = document.querySelector(".nav__list_home");
+
+
+function loginDraft() {
+  const homeElement = document.querySelector(".loginButton");
   homeElement.addEventListener("click", () => {
     app.innerHTML = HomePage();
+    slideShow();
+    assessment();
     getAffirmationApi(affirmation_api_url);
   });
 }
+
 
 function moods() {
   const moodElement = document.querySelector(".nav__list_moods");
@@ -126,6 +138,7 @@ function moods() {
     });
   });
 }
+
 
 function triggers() {
   const triggerElement = document.querySelector(".nav__list_triggers");
@@ -151,6 +164,7 @@ function copingMechanisms() {
     );
   });
 }
+
 
 function consequences() {
   const consequencesElement = document.querySelector(".nav__list_consequences");
@@ -237,6 +251,41 @@ function legal() {
     app.innerHTML = LegalPage();
   });
 }
+function slideShow() {
+  const slideshows = document.querySelectorAll('.slideshow');
+  console.log(slideshows);
+  slideshows.forEach(initSlideShow);
+    }
+    function initSlideShow(slideshow) {
+      var slides = slideshow.querySelector('div').querySelectorAll('.slideShowGrid');
+      var index = 0, time = 5000;
+      slides[index].classList.add('active');  
+      setInterval( () => {
+        console.log(slides);
+      slides[index].classList.remove('active');
+      index++;
+      if (index === slides.length) index = 0; 
+      slides[index].classList.add('active');
+      }, time);
+      }
+      
+      function assessment() {
+      const assessmentElement = document.querySelector(".assessmentButton");
+        assessmentElement.addEventListener("click", () => {
+          console.log('Firing!')
+          app.innerHTML = AssessmentPage();
+        });
+      }
+
+      function home() {
+        const homeElement = document.querySelector(".nav__list_home");
+        homeElement.addEventListener("click", () => {
+          app.innerHTML = HomePage();
+          slideShow();
+          assessment();
+        });
+      }
+      
 
 function getAffirmationApi(url) {
   const quoteDiv = document.querySelector(".inspirational_quote__container");

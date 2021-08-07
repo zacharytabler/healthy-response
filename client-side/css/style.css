@@ -5,9 +5,8 @@
 }
 
 body {
-	text-align: center;
+  background-color: rgb(156, 156, 156);
 }
-
 .login{
     display: flex;
     flex-direction: row;
