@@ -1,8 +1,7 @@
-.nav__list_loginDraft {
+.nav__header li{
 	border-radius: 6px;
 	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
+	padding: 10px;
 	list-style-type: none;
 	font-size: large;
 }
@@ -16,7 +15,9 @@
 	text-align: center;
 }
 
-.nav__list_home {
+
+
+.footer_nav li{
 	border-radius: 6px;
 	cursor: pointer;
 	padding: 8px;
@@ -25,141 +26,6 @@
 	font-size: large;
 }
 
-.nav__list_alternatives {
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
-
-.nav__list_consequences {
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
-
-.nav__list_coping_mechanisms {
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
-
-.nav__list_consequences {
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
-
-
-.nav__list_coping_mechanisms {
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
-
-.nav__list_moods {
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
-
-.nav__list_responses {
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
-
-.nav__list_results {
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
-
-.nav__list_triggers {
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
-
-.nav__list_profile {
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
-
-.nav__list_reviews {
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
-
-.footer_list_aboutUs {
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
-
-.nav__list_appointment {
-  border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
-
-.footer_list_contactUs {
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
-
-.footer_list_legal {
-	border-radius: 6px;
-	cursor: pointer;
-	padding: 8px;
-	margin-left: 20px;
-	list-style-type: none;
-	font-size: large;
-}
 
 .footer_nav{
   display: flex;
@@ -168,7 +34,6 @@
 }
 
 
-/* horizontal navigation: define the navigation font and basic background */
 nav {
   background-color: rgb(165, 175, 177);
   font:normal bold 11px Arial,Sans-Serif;
@@ -180,7 +45,6 @@ nav {
   padding: 15px;
 }
 
-/* lists: remove the nested list margin, padding & bullets */
 nav ul,
 nav li {
   margin:0 0;
@@ -188,16 +52,15 @@ nav li {
   list-style:none;
 }
 
-/* navigation height */
+
 nav ul {height:30px}
 
-/* inline layout menu */
+
 nav li {
   float:left;
   display:inline;
 }
 
-/* the anchor */
 nav a {
   display:block;
   line-height:30px;

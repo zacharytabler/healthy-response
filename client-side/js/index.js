@@ -21,6 +21,12 @@ import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
 import ActivitiesPage from "./pages/ActivitiesPage";
 
+import "../css/header_footer.css";
+import "../css/aboutUS.css";
+import "../css/form.css";
+import "../css/style.css";
+import "../css/home_page.css";
+import "../css/login.css";
 
 const app = document.querySelector("#app");
 const affirmation_api_url = "https://type.fit/api/quotes";
@@ -49,7 +55,6 @@ function buildPage() {
   legal();
   loginDraft();
   assessment();
-  
 
 }
 
