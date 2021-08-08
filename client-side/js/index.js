@@ -44,15 +44,15 @@ function buildPage() {
   consequences();
   results();
   alternatives();
-  responses();
+  // responses();
   reviews();
   about();
   navUserProfile();
   contact();
   appointment();
   legal();
-  loginDraft();
-  assessment();
+  // loginDraft();
+  // assessment();
   
 
 }
@@ -60,7 +60,6 @@ function buildPage() {
 function navUserProfile() {
   const profilePage = document.querySelector(".nav__list_profile");
   profilePage.addEventListener("click", () => {
-    console.log('firing!');
     const app = document.querySelector("#app");
     apiActions.getRequest("http://localhost:8080/users", (user) => {
       app.innerHTML = userWelcome(user);
@@ -82,7 +81,6 @@ function footer() {
 function renderUserLogin() {
   app.innerHTML = LoginPage();
   app.addEventListener("click", (event) => {
-    console.log("firing");
     if (event.target.classList.contains("create_user")) {
       const userName =
         event.target.parentElement.querySelector(".userName").value;
@@ -90,8 +88,6 @@ function renderUserLogin() {
         event.target.parentElement.querySelector(".password").value;
       const age = event.target.parentElement.querySelector(".age").value;
       const mood = event.target.parentElement.querySelector(".intake").value;
-      console.log(mood);
-      console.log(event.target);
       apiActions.postRequest(
         "http://localhost:8080/create_user_profile",
         {
@@ -136,9 +132,7 @@ function loginDraft() {
 function moods() {
   const moodElement = document.querySelector(".nav__list_moods");
   moodElement.addEventListener("click", () => {
-    console.log("firing!");
     apiActions.getRequest("http://localhost:8080/moods", (moods) => {
-      console.log(moods);
       app.innerHTML = MoodsPage(moods);
     });
   });
@@ -148,9 +142,7 @@ function moods() {
 function triggers() {
   const triggerElement = document.querySelector(".nav__list_triggers");
   triggerElement.addEventListener("click", () => {
-    console.log("firing!");
     apiActions.getRequest("http://localhost:8080/triggers", (triggers) => {
-      console.log(triggers);
       app.innerHTML = TriggersPage(triggers);
     });
   });
@@ -159,11 +151,9 @@ function triggers() {
 function copingMechanisms() {
   const copingElement = document.querySelector(".nav__list_coping_mechanisms");
   copingElement.addEventListener("click", () => {
-    console.log("firing!");
     apiActions.getRequest(
       "http://localhost:8080/coping",
       (copingMechanisms) => {
-        console.log(copingMechanisms);
         app.innerHTML = CopingMechanismsPage(copingMechanisms);
       }
     );
@@ -174,11 +164,9 @@ function copingMechanisms() {
 function consequences() {
   const consequencesElement = document.querySelector(".nav__list_consequences");
   consequencesElement.addEventListener("click", () => {
-    console.log("firing!");
     apiActions.getRequest(
       "http://localhost:8080/consequences",
       (consequences) => {
-        console.log(consequences);
         app.innerHTML = ConsequencesPage(consequences);
       }
     );
@@ -188,9 +176,7 @@ function consequences() {
 function results() {
   const resultsElement = document.querySelector(".nav__list_results");
   resultsElement.addEventListener("click", () => {
-    console.log("firing!");
     apiActions.getRequest("http://localhost:8080/results", (results) => {
-      console.log(results);
       app.innerHTML = ResultsPage(results);
     });
   });
@@ -202,7 +188,6 @@ function alternatives() {
     apiActions.getRequest(
       "http://localhost:8080/alternatives",
       (alternatives) => {
-        console.log(alternatives);
         app.innerHTML = AlternativesPage(alternatives);
       }
     );
@@ -212,9 +197,7 @@ function alternatives() {
 function responses() {
   const responseElement = document.querySelector(".nav__list_responses");
   responseElement.addEventListener("click", () => {
-    console.log("firing!");
     apiActions.getRequest("http://localhost:8080/responses", (responses) => {
-      console.log(responses);
       app.innerHTML = ResponsesPage(responses);
     });
   });
@@ -237,7 +220,6 @@ function about() {
 function contact() {
   const contactElement = document.querySelector(".footer_list_contactUs");
   contactElement.addEventListener("click", () => {
-    const app = document.querySelector("#app");
     app.innerHTML = ContactUsPage();
   });
 }
@@ -245,7 +227,6 @@ function contact() {
 function appointment() {
   const appointmentElement = document.querySelector(".nav__list_appointment");
   appointmentElement.addEventListener("click", () => {
-    console.log('firing!');
       app.innerHTML = AppointmentPage();
     });
   }
@@ -258,7 +239,6 @@ function legal() {
 }
 function slideShow() {
   const slideshows = document.querySelectorAll('.slideshow');
-  console.log(slideshows);
   slideshows.forEach(initSlideShow);
     }
     function initSlideShow(slideshow) {
@@ -266,7 +246,6 @@ function slideShow() {
       var index = 0, time = 5000;
       slides[index].classList.add('active');  
       setInterval( () => {
-        console.log(slides);
       slides[index].classList.remove('active');
       index++;
       if (index === slides.length) index = 0; 
@@ -277,7 +256,6 @@ function slideShow() {
       function assessment() {
       const assessmentElement = document.querySelector(".assessmentButton");
         assessmentElement.addEventListener("click", () => {
-          console.log('Firing!')
           app.innerHTML = AssessmentPage();
         });
       }
