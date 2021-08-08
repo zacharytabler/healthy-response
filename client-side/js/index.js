@@ -19,6 +19,7 @@ import ContactUsPage from "./pages/ContactUsPage";
 import LegalPage from "./pages/LegalPage";
 import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
+import ActivitiesPage from "./pages/ActivitiesPage";
 
 
 const app = document.querySelector("#app");
@@ -272,7 +273,6 @@ function slideShow() {
       function assessment() {
       const assessmentElement = document.querySelector(".assessmentButton");
         assessmentElement.addEventListener("click", () => {
-          console.log('Firing!')
           app.innerHTML = AssessmentPage();
         });
       }
@@ -288,19 +288,30 @@ function slideShow() {
       
 
 function getAffirmationApi(url) {
-  const quoteDiv = document.querySelector(".inspirational_quote__container");
-  quoteDiv.onload = (event) => {};
+  const quoteElement = document.querySelector(".inspirational_quote__container");
+  quoteElement.onload = (event) => {};
 
   apiActions.getRequest(url, (quotes) => {
-      quoteDiv.innerHTML = InspirationalQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+      quoteElement.innerHTML = InspirationalQuote(quotes[Math.floor(Math.random() * quotes.length)]);
     // quotes.forEach((quote, index) => {
-    //   quoteDiv.innerHTML = InspirationalQuote(quote);
+    //   quoteElement.innerHTML = InspirationalQuote(quote);
     // });
   });
 
 // apiActions.getRequest(url, (quote) => {
 //     console.log(quote);
-//     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
+//     quoteElement.innerHTML = InspirationalQuote(quote[0]);
 // });
 
+}
+
+function activities() {
+  const activitiesElement = document.querySelector(".nav__list_activities");
+  activitiesElement.addEventListener("click", () => {
+    console.log("activities firing");
+    apiActions.getRequest("http://localhost:8080/activities", (activities) => {
+      console.log(activities);
+      app.innerHTML = ActivitiesPage(activities);
+    });
+  });
 }

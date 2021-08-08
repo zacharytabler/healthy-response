@@ -17,6 +17,7 @@ export default function Header() {
             <li class='nav__list_responses'>Responses</li>
             <li class='nav__list_reviews'>Reviews</li>
             <li class='nav__list_appointment'>Appointment</li>
+            <li class='nav__list_activities'>Activities</li>
 
         </ul>
     </nav>
