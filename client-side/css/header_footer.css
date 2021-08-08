@@ -1,7 +1,7 @@
-.nav__header{
+.nav__header li{
 	border-radius: 6px;
 	cursor: pointer;
-	padding: 8px;
+	padding: 10px;
 	list-style-type: none;
 	font-size: large;
 }
