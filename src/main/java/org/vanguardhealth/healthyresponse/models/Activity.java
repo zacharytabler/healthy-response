@@ -14,18 +14,19 @@ public class Activity {
     private String title;
     private String description;
 //    @OneToMany
-//    private Collection<Journal> journals;
+//    private Collection<Worksheet> worksheets;
+//    private Worksheet worksheet;
 
     @ManyToOne
     private User user;
 
     public Activity() {}
 
-    public Activity(long id, String title, String description, boolean hasWorksheet) {
-        this.id = id;
+    public Activity(String title, String description) {
         this.title = title;
         this.description = description;
-//        this.journals = new ArrayList<>(Arrays.asList(journals));
+//        this.worksheets = new ArrayList<>(Arrays.asList(worksheets));
+//        this.worksheet = worksheet;
     }
 
     public long getId() {
@@ -40,8 +41,12 @@ public class Activity {
         return description;
     }
 
-//    public Collection<Journal> getJournals() {
-//        return journals;
+//    public Collection<Worksheet> getWorksheets() {
+//        return worksheets;
+//    }
+
+//    public pubic getWorksheet() {
+//        return worksheet;
 //    }
 
     @Override

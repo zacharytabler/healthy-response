@@ -25,6 +25,7 @@ public class Populator implements CommandLineRunner {
     private ResponseRepo responseRepo;
     @Resource
     private AlternativesRepo alternativesRepo;
+    @Resource ActivityRepo activityRepo;
     @Override
     public void run(String... args) throws Exception {
 
@@ -79,6 +80,18 @@ public class Populator implements CommandLineRunner {
         moodRepo.save(lonely);
         moodRepo.save(sad);
         moodRepo.save(suicidal);
+
+        String activityDescription1 = "Self-criticism can be regarded as the opposite of self-compassion.";
+//                "Whereas self-compassion involves a positive and accepting relationship with the self, self-criticism can be construed as negative and punishing thoughts directed toward one‘s personal characteristics. Self-criticism typically concerns judgment and self-blame regarding shortcomings, such as the inability to accomplish personal goals or meet other people’s expectations.The goal of this exercise is to increase awareness of inner criticism and promote a more self-compassionate stance towards the self.";
+
+        String activityDescription2 = "A key technique in Positive CBT is borrowed from solution-focused therapy, namely first identifying and then analysing times when a client’s presenting complaint or problem did not happen.";
+//                "The practitioner invites the client to consider what was different when the problem was absent (Molnar and de Shazer, 1987). Rather than focusing on the who, what, when, and where of problems, exception finding about focusing on the who, what, when, and where of exception times. Consequently, clients become aware of their strengths relative to their goals, rather than their deficiencies relative to their problems.";
+
+        Activity activity1 = new Activity("Reframing Critical Self Talk", activityDescription1);
+        Activity activity2 = new Activity("Strengths Spotting by Exception Finding", activityDescription2);
+
+        activityRepo.save(activity1);
+        activityRepo.save(activity2);
 
 
         User testUser = new User("TESTusername","password",21,sad,testCopingMechinism, testTrigger);
