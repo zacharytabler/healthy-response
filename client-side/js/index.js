@@ -46,15 +46,15 @@ function buildPage() {
   consequences();
   results();
   alternatives();
-  responses();
+  // responses();
   reviews();
   about();
   navUserProfile();
   contact();
   appointment();
   legal();
-  loginDraft();
-  assessment();
+  // loginDraft();
+  // assessment();
 
 }
 
@@ -221,7 +221,6 @@ function about() {
 function contact() {
   const contactElement = document.querySelector(".footer_list_contactUs");
   contactElement.addEventListener("click", () => {
-    const app = document.querySelector("#app");
     app.innerHTML = ContactUsPage();
   });
 }
