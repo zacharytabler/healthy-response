@@ -55,6 +55,7 @@
 .aboutUsContainer .team .member a {
   font-size: 12px;
   color: #999;
+  text-decoration: none;
 }
 
 .aboutUsContainer .team .member p {
