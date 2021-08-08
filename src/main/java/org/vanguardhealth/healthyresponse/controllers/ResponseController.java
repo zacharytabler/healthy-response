@@ -1,13 +1,14 @@
 package org.vanguardhealth.healthyresponse.controllers;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.springframework.web.bind.annotation.*;
+import org.vanguardhealth.healthyresponse.models.Mood;
 import org.vanguardhealth.healthyresponse.models.Response;
 import org.vanguardhealth.healthyresponse.repositories.*;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -35,4 +36,19 @@ public class ResponseController {
     public Response getResponse(@PathVariable Long id){
         return responseRepo.findById(id).get();
     }
+
+    @PostMapping(value = "/send_response")
+    public Iterable<Response> postResponse(@RequestBody String body)throws JSONException{
+        JSONObject newResponse = new JSONObject(body);
+        String mood = newResponse.getString("mood");
+        Mood moodSelected = moodRepo.findByMood(mood);
+        Optional<Response> responseOptional = responseRepo.findByMood(moodSelected);
+        if(responseOptional.isEmpty()){
+            Response responseToAdd = new Response(moodSelected);
+            responseRepo.save(responseToAdd);
+        }
+        return responseRepo.findAll();
+    }
+
+
 }

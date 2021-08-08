@@ -20,6 +20,7 @@ import LegalPage from "./pages/LegalPage";
 import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
 import LoginDraft from "./pages/LoginPage";
+import AssesmentMenu from "./rendering/AssessMenu";
 
 const app = document.querySelector("#app");
 const affirmation_api_url = "https://type.fit/api/quotes";
@@ -48,6 +49,8 @@ function buildPage() {
   legal();
   loginDraft();
 }
+
+const getMood = new AssesmentMenu();
 
 function navUserProfile() {
   const profilePage = document.querySelector(".nav__list_profile");
@@ -89,6 +92,36 @@ function renderUserLogin() {
         (app.innerHTML = HomePage()),
         (users) => (app.innerHTML = userWelcome(users))
       );
+    }
+  });
+}
+function populateAssessmentMenu() {
+  app.innerHTML = AssessmentPage();
+  const assessmentButton = document.querySelector(".assessBtn");
+  assessmentButton.addEventListener("click", (event) => {
+    if (event.target.parentElement.querySelector(".intakeMood")) {
+      const moodMenu = document.getElementsByTagName("option");
+
+      if (moodMenu[1].selected) {
+        getMood.getAfraid();
+        
+      } else if (moodMenu[2].selected) {
+        getMood.getAnxious();
+      } else if (moodMenu[3].selected) {
+        getMood.getSad();
+      } else if (moodMenu[4].selected) {
+        getMood.getLonely();
+      } else if (moodMenu[5].selected) {
+        getMood.getDepressed();
+      } else if (moodMenu[6].selected) {
+        getMood.getHopeless();
+      } else if (moodMenu[7].selected) {
+        getMood.getSuicidal();
+      } else if (moodMenu[8].selected) {
+        getMood.getHomicidal();
+      } else if (moodMenu[9].selected) {
+        getMood.getExhausted();
+      }
     }
   });
 }
@@ -222,7 +255,6 @@ function contact() {
 function appointment() {
   const appointmentElement = document.querySelector(".nav__list_appointment");
   appointmentElement.addEventListener("click", () => {
-    console.log("firing!");
     app.innerHTML = AppointmentPage();
   });
 }
@@ -235,7 +267,6 @@ function legal() {
 }
 function slideShow() {
   const slideshows = document.querySelectorAll(".slideshow");
-  console.log(slideshows);
   slideshows.forEach(initSlideShow);
 }
 function initSlideShow(slideshow) {
@@ -246,7 +277,6 @@ function initSlideShow(slideshow) {
     time = 5000;
   slides[index].classList.add("active");
   setInterval(() => {
-    console.log(slides);
     slides[index].classList.remove("active");
     index++;
     if (index === slides.length) index = 0;
@@ -259,6 +289,7 @@ function assessment() {
   assessmentElement.addEventListener("click", () => {
     console.log("Firing!");
     app.innerHTML = AssessmentPage();
+    populateAssessmentMenu();
   });
 }
 
@@ -273,19 +304,20 @@ function home() {
 
 function getAffirmationApi(url) {
   const quoteDiv = document.querySelector(".inspirational_quote__container");
-  quoteDiv.onload = (event) => {};
+  quoteDiv.onload = () => {
+    apiActions.getRequest(url, (quotes) => {
+      quoteDiv.innerHTML = InspirationalQuote(
+        quotes[Math.floor(Math.random() * quotes.length)]
+      );
 
-  apiActions.getRequest(url, (quotes) => {
-    quoteDiv.innerHTML = InspirationalQuote(
-      quotes[Math.floor(Math.random() * quotes.length)]
-    );
-    // quotes.forEach((quote, index) => {
-    //   quoteDiv.innerHTML = InspirationalQuote(quote);
-    // });
-  });
+      // quotes.forEach((quote, index) => {
+      //   quoteDiv.innerHTML = InspirationalQuote(quote);
+      // });
 
-  // apiActions.getRequest(url, (quote) => {
-  //     console.log(quote);
-  //     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
-  // });
+      // apiActions.getRequest(url, (quote) => {
+      //     console.log(quote);
+      //     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
+      // });
+    });
+  };
 }
