@@ -1,9 +1,12 @@
+import AssesmentMenu from "../rendering/AssessMenu";
+
 export default function AssessmentPage() {
+  const getMood = new AssesmentMenu();
   return `
         <div class="assessmentMenu">
         <select name="cbtMood" id="assessMood" class="intakeMood">
         <option value="userMood" class="cbt1">I feel..</option>
-        <option value="afraid" class="cbt2">Afraid</option>
+        <option value="${getMood.getAfraid()}" class="cbt2">Afraid</option>
         <option value="anxious" class="cbt3">Anxious</option>
         <option value="sad" class="cbt4">Sad</option>
         <option value="lonely" class="cbt5">Lonely</option>

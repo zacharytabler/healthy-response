@@ -82,7 +82,6 @@ function renderUserLogin() {
       const password =
         event.target.parentElement.querySelector(".password").value;
 
-      console.log(event.target);
       apiActions.postRequest(
         "http://localhost:8080/create_user_profile",
         {
@@ -104,7 +103,14 @@ function populateAssessmentMenu() {
 
       if (moodMenu[1].selected) {
         getMood.getAfraid();
-        
+        apiActions.postRequest(
+          "http://localhost:8080/send_response",
+          {
+            mood: moodMenu[1].value,
+          },
+
+          (responses) => (app.innerHTML = ResponsesPage(responses))
+        );
       } else if (moodMenu[2].selected) {
         getMood.getAnxious();
       } else if (moodMenu[3].selected) {

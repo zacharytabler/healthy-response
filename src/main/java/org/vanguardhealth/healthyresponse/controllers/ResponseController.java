@@ -37,7 +37,7 @@ public class ResponseController {
         return responseRepo.findById(id).get();
     }
 
-    @PostMapping(value = "/send_response")
+    @PostMapping("/send_response")
     public Iterable<Response> postResponse(@RequestBody String body)throws JSONException{
         JSONObject newResponse = new JSONObject(body);
         String mood = newResponse.getString("mood");
