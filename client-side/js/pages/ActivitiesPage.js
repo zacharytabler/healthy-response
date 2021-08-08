@@ -1,7 +1,7 @@
 export default function ActivitiesPage(activities) {
     return `
-    <h1>Activitie</h1>
-    <div class="activities-list">
+    <h1>Activities Page</h1>
+    <div class='activities-list'>
         ${activities.map(activity => {
             return `
                 <h2 class="activities-list__title">${activities.title}</h2>

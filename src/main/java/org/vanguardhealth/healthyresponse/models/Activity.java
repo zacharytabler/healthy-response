@@ -12,6 +12,7 @@ public class Activity {
     @GeneratedValue
     private long id;
     private String title;
+    @Lob
     private String description;
 //    @OneToMany
 //    private Collection<Worksheet> worksheets;
