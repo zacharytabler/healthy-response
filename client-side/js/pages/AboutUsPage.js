@@ -1,5 +1,3 @@
-import "../../css/aboutUS.css"
-
 export default function about() {
   return `
   <div class="container">

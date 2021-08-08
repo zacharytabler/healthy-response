@@ -1,8 +1,7 @@
-.nav__list_loginDraft {
+.nav__header{
 	border-radius: 6px;
 	cursor: pointer;
 	padding: 8px;
-	margin-left: 20px;
 	list-style-type: none;
 	font-size: large;
 }
@@ -15,16 +14,16 @@
 	padding: 1em 0;
 	text-align: center;
 }
-
-.nav__list_home {
+ 
+/* .nav__list_home {
 	border-radius: 6px;
 	cursor: pointer;
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
 	font-size: large;
-}
-
+}  */
+/*
 .nav__list_alternatives {
 	border-radius: 6px;
 	cursor: pointer;
@@ -123,7 +122,7 @@
 	margin-left: 20px;
 	list-style-type: none;
 	font-size: large;
-}
+} */
 
 .footer_list_aboutUs {
 	border-radius: 6px;
@@ -134,14 +133,14 @@
 	font-size: large;
 }
 
-.nav__list_appointment {
+/* .nav__list_appointment {
   border-radius: 6px;
 	cursor: pointer;
 	padding: 8px;
 	margin-left: 20px;
 	list-style-type: none;
 	font-size: large;
-}
+} */
 
 .footer_list_contactUs {
 	border-radius: 6px;
