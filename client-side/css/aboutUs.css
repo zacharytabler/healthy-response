@@ -17,16 +17,16 @@
     padding-top: 6px;
 }
 
-.aboutUSContainer {
+.aboutUsContainer {
   background: #f4f4f4;
 }
 
-.aboutUSContainer {
+.aboutUsContainer {
   margin-top: 50px;
   
 }
 
-.aboutUSContainer .team {
+.aboutUsContainer .team {
   width: auto;
   display: flex;
   justify-content: space-evenly;
@@ -34,7 +34,7 @@
   flex-wrap: wrap;
 }
 
-.aboutUSContainer .team .member {
+.aboutUsContainer .team .member {
   width: 325px;
   margin: 10px;
   background: #fff;
@@ -43,21 +43,21 @@
   padding: 25px;
 }
 
-.aboutUSContainer .team .member img {
+.aboutUsContainer .team .member img {
   width: 80px;
   border-radius: 50%;
 }
 
-.aboutUSContainer .team .member h3 {
+.aboutUsContainer .team .member h3 {
   color: #444;
 }
 
-.aboutUSContainer .team .member a {
+.aboutUsContainer .team .member a {
   font-size: 12px;
   color: #999;
 }
 
-.aboutUSContainer .team .member p {
+.aboutUsContainer .team .member p {
   margin: 15px 0;
   font-weight: 400;
   color: #999;
@@ -65,7 +65,7 @@
   text-align: center;
 }
  
-.aboutUSContainer .team .member .btn a {
+.aboutUsContainer .team .member .btn a {
   background: #ddd;
   display: block;
   float: right;
@@ -78,7 +78,7 @@
   transition: all 0.3s ease;
 }
 
-.aboutUSContainer .team .member .btn a:hover {
+.aboutUsContainer .team .member .btn a:hover {
   background: red;
   color: #fff;
 }
