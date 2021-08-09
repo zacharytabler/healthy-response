@@ -20,7 +20,6 @@ import LegalPage from "./pages/LegalPage";
 import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
 import LoginDraft from "./pages/LoginPage";
-import AssesmentMenu from "./rendering/AssessMenu";
 
 const app = document.querySelector("#app");
 const affirmation_api_url = "https://type.fit/api/quotes";
@@ -49,8 +48,6 @@ function buildPage() {
   legal();
   loginDraft();
 }
-
-const getMood = new AssesmentMenu();
 
 function navUserProfile() {
   const profilePage = document.querySelector(".nav__list_profile");
@@ -98,36 +95,27 @@ function populateAssessmentMenu() {
   app.innerHTML = AssessmentPage();
   const assessmentButton = document.querySelector(".assessBtn");
   assessmentButton.addEventListener("click", (event) => {
-    if (event.target.parentElement.querySelector(".intakeMood")) {
-      const moodMenu = document.getElementsByTagName("option");
-
-      if (moodMenu[1].selected) {
-        getMood.getAfraid();
-        apiActions.postRequest(
-          "http://localhost:8080/send_response",
-          {
-            mood: moodMenu[1].value,
-          },
-
-          (responses) => (app.innerHTML = ResponsesPage(responses))
-        );
-      } else if (moodMenu[2].selected) {
-        getMood.getAnxious();
-      } else if (moodMenu[3].selected) {
-        getMood.getSad();
-      } else if (moodMenu[4].selected) {
-        getMood.getLonely();
-      } else if (moodMenu[5].selected) {
-        getMood.getDepressed();
-      } else if (moodMenu[6].selected) {
-        getMood.getHopeless();
-      } else if (moodMenu[7].selected) {
-        getMood.getSuicidal();
-      } else if (moodMenu[8].selected) {
-        getMood.getHomicidal();
-      } else if (moodMenu[9].selected) {
-        getMood.getExhausted();
-      }
+    if (
+      event.target.parentElement.parentElement.querySelector(".assessmentMenu")
+    ) {
+      const mood =
+        event.target.parentElement.querySelector(".intakeMood").value;
+      console.log(mood);
+      const trigger =
+        event.target.parentElement.querySelector(".intakeTrigger").value;
+      console.log(trigger);
+      const copingMechanism =
+        event.target.parentElement.querySelector(".intakeCoping").value;
+      console.log(copingMechanism);
+      apiActions.postRequest(
+        "http://localhost:8080/send_response",
+        {
+          mood: mood,
+          trigger: trigger,
+          copingMechanism: copingMechanism,
+        },
+        (responses) => (app.innerHTML = ResponsesPage(responses))
+      );
     }
   });
 }

@@ -3,8 +3,10 @@ package org.vanguardhealth.healthyresponse.controllers;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
+import org.vanguardhealth.healthyresponse.models.CopingMechanism;
 import org.vanguardhealth.healthyresponse.models.Mood;
 import org.vanguardhealth.healthyresponse.models.Response;
+import org.vanguardhealth.healthyresponse.models.Trigger;
 import org.vanguardhealth.healthyresponse.repositories.*;
 
 import javax.annotation.Resource;
@@ -42,11 +44,14 @@ public class ResponseController {
         JSONObject newResponse = new JSONObject(body);
         String mood = newResponse.getString("mood");
         Mood moodSelected = moodRepo.findByMood(mood);
-        Optional<Response> responseOptional = responseRepo.findByMood(moodSelected);
-        if(responseOptional.isEmpty()){
-            Response responseToAdd = new Response(moodSelected);
-            responseRepo.save(responseToAdd);
-        }
+        String trigger = newResponse.getString("trigger");
+        Trigger triggerSelected = triggerRepo.findByName(trigger);
+        String copingMechanism = newResponse.getString("copingMechanism");
+        CopingMechanism copingSelected = copingRepo.findByTitle(copingMechanism);
+
+        Response responseToAdd = new Response(moodSelected,triggerSelected,copingSelected);
+        responseRepo.save(responseToAdd);
+
         return responseRepo.findAll();
     }
 
