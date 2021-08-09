@@ -19,20 +19,15 @@ import ContactUsPage from "./pages/ContactUsPage";
 import LegalPage from "./pages/LegalPage";
 import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
-<<<<<<< HEAD
 import ActivitiesPage from "./pages/ActivitiesPage";
-
-||||||| 7fea8bf
-=======
 import LoginDraft from "./pages/LoginPage";
->>>>>>> 16bcc0e6ab0e810630fee2efdacbabb246d3a2a9
+
 import "../css/header_footer.css";
 import "../css/aboutUS.css";
 import "../css/form.css";
 import "../css/style.css";
 import "../css/home_page.css";
 import "../css/login.css";
-
 
 const app = document.querySelector("#app");
 const affirmation_api_url = "https://type.fit/api/quotes";
@@ -59,18 +54,7 @@ function buildPage() {
   contact();
   appointment();
   legal();
-<<<<<<< HEAD
-  // loginDraft();
-  // assessment();
-
-||||||| 7fea8bf
-  // loginDraft();
-  // assessment();
-  
-
-=======
   loginDraft();
->>>>>>> 16bcc0e6ab0e810630fee2efdacbabb246d3a2a9
 }
 
 function navUserProfile() {
@@ -291,79 +275,43 @@ function legal() {
       }
 
 
-<<<<<<< HEAD
-function getAffirmationApi(url) {
-  const quoteElement = document.querySelector(".inspirational_quote__container");
-  quoteElement.onload = (event) => {};
-||||||| 7fea8bf
-function getAffirmationApi(url) {
-  const quoteDiv = document.querySelector(".inspirational_quote__container");
-  quoteDiv.onload = (event) => {};
-=======
-function assessment() {
-  const assessmentElement = document.querySelector(".assessmentButton");
-  assessmentElement.addEventListener("click", () => {
-    console.log("Firing!");
-    app.innerHTML = AssessmentPage();
-    populateAssessmentMenu();
-  });
-}
->>>>>>> 16bcc0e6ab0e810630fee2efdacbabb246d3a2a9
-
-<<<<<<< HEAD
-  apiActions.getRequest(url, (quotes) => {
-      quoteElement.innerHTML = InspirationalQuote(quotes[Math.floor(Math.random() * quotes.length)]);
-    // quotes.forEach((quote, index) => {
-    //   quoteElement.innerHTML = InspirationalQuote(quote);
-    // });
-||||||| 7fea8bf
-  apiActions.getRequest(url, (quotes) => {
-      quoteDiv.innerHTML = InspirationalQuote(quotes[Math.floor(Math.random() * quotes.length)]);
-    // quotes.forEach((quote, index) => {
-    //   quoteDiv.innerHTML = InspirationalQuote(quote);
-    // });
-=======
-function home() {
-  const homeElement = document.querySelector(".nav__list_home");
-  homeElement.addEventListener("click", () => {
-    app.innerHTML = HomePage();
-    slideShow();
-    assessment();
->>>>>>> 16bcc0e6ab0e810630fee2efdacbabb246d3a2a9
-  });
-}
-
-<<<<<<< HEAD
-// apiActions.getRequest(url, (quote) => {
-//     console.log(quote);
-//     quoteElement.innerHTML = InspirationalQuote(quote[0]);
-// });
-||||||| 7fea8bf
-// apiActions.getRequest(url, (quote) => {
-//     console.log(quote);
-//     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
-// });
-=======
-function getAffirmationApi(url) {
-  const quoteDiv = document.querySelector(".inspirational_quote__container");
-  quoteDiv.onload = () => {
-    apiActions.getRequest(url, (quotes) => {
-      quoteDiv.innerHTML = InspirationalQuote(
-        quotes[Math.floor(Math.random() * quotes.length)]
-      );
->>>>>>> 16bcc0e6ab0e810630fee2efdacbabb246d3a2a9
-
-      // quotes.forEach((quote, index) => {
-      //   quoteDiv.innerHTML = InspirationalQuote(quote);
-      // });
-
-      // apiActions.getRequest(url, (quote) => {
-      //     console.log(quote);
-      //     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
-      // });
-    });
-  };
-}
+      function assessment() {
+        const assessmentElement = document.querySelector(".assessmentButton");
+        assessmentElement.addEventListener("click", () => {
+          console.log("Firing!");
+          app.innerHTML = AssessmentPage();
+          populateAssessmentMenu();
+        });
+      }
+      
+      function home() {
+        const homeElement = document.querySelector(".nav__list_home");
+        homeElement.addEventListener("click", () => {
+          app.innerHTML = HomePage();
+          slideShow();
+          assessment();
+        });
+      }
+      
+      function getAffirmationApi(url) {
+        const quoteDiv = document.querySelector(".inspirational_quote__container");
+        quoteDiv.onload = () => {
+          apiActions.getRequest(url, (quotes) => {
+            quoteDiv.innerHTML = InspirationalQuote(
+              quotes[Math.floor(Math.random() * quotes.length)]
+            );
+      
+            // quotes.forEach((quote, index) => {
+            //   quoteDiv.innerHTML = InspirationalQuote(quote);
+            // });
+      
+            // apiActions.getRequest(url, (quote) => {
+            //     console.log(quote);
+            //     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
+            // });
+          });
+        };
+      }
 
 function activities() {
   const activitiesElement = document.querySelector(".nav__list_activities");
