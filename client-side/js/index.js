@@ -19,8 +19,8 @@ import ContactUsPage from "./pages/ContactUsPage";
 import LegalPage from "./pages/LegalPage";
 import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
-import ActivitiesPage from "./pages/ActivitiesPage";
 import LoginDraft from "./pages/LoginPage";
+import ActivitiesPage from "./pages/ActivitiesPage";
 
 import "../css/header_footer.css";
 import "../css/aboutUS.css";
@@ -30,9 +30,6 @@ import "../css/home_page.css";
 import "../css/login.css";
 
 const app = document.querySelector("#app");
-const affirmation_api_url = "https://type.fit/api/quotes";
-// const affirmation_api_url ="https://zenquotes.io/api/quotes/";
-// const affirmation_api_url = 'https://zenquotes.io/api/today/';
 
 buildPage();
 
@@ -275,43 +272,46 @@ function legal() {
       }
 
 
-      function assessment() {
-        const assessmentElement = document.querySelector(".assessmentButton");
-        assessmentElement.addEventListener("click", () => {
-          console.log("Firing!");
-          app.innerHTML = AssessmentPage();
-          populateAssessmentMenu();
-        });
-      }
-      
-      function home() {
-        const homeElement = document.querySelector(".nav__list_home");
-        homeElement.addEventListener("click", () => {
-          app.innerHTML = HomePage();
-          slideShow();
-          assessment();
-        });
-      }
-      
-      function getAffirmationApi(url) {
-        const quoteDiv = document.querySelector(".inspirational_quote__container");
-        quoteDiv.onload = () => {
-          apiActions.getRequest(url, (quotes) => {
-            quoteDiv.innerHTML = InspirationalQuote(
-              quotes[Math.floor(Math.random() * quotes.length)]
-            );
-      
-            // quotes.forEach((quote, index) => {
-            //   quoteDiv.innerHTML = InspirationalQuote(quote);
-            // });
-      
-            // apiActions.getRequest(url, (quote) => {
-            //     console.log(quote);
-            //     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
-            // });
-          });
-        };
-      }
+function assessment() {
+  const assessmentElement = document.querySelector(".assessmentButton");
+  assessmentElement.addEventListener("click", () => {
+    console.log("Firing!");
+    app.innerHTML = AssessmentPage();
+    populateAssessmentMenu();
+  });
+}
+
+function home() {
+  const homeElement = document.querySelector(".nav__list_home");
+  homeElement.addEventListener("click", () => {
+    app.innerHTML = HomePage();
+    slideShow();
+    assessment();
+  });
+}
+
+function getAffirmationApi(url) {
+  const affirmation_api_url = "https://type.fit/api/quotes";
+// const affirmation_api_url ="https://zenquotes.io/api/quotes/";
+// const affirmation_api_url = 'https://zenquotes.io/api/today/';
+  const quoteDiv = document.querySelector(".inspirational_quote__container");
+  quoteDiv.onload = () => {
+    apiActions.getRequest(url, (quotes) => {
+      quoteDiv.innerHTML = InspirationalQuote(
+        quotes[Math.floor(Math.random() * quotes.length)]
+      );
+
+      // quotes.forEach((quote, index) => {
+      //   quoteDiv.innerHTML = InspirationalQuote(quote);
+      // });
+
+      // apiActions.getRequest(url, (quote) => {
+      //     console.log(quote);
+      //     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
+      // });
+    });
+  };
+}
 
 function activities() {
   const activitiesElement = document.querySelector(".nav__list_activities");
