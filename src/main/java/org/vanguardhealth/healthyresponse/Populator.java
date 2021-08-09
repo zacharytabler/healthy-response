@@ -31,35 +31,14 @@ public class Populator implements CommandLineRunner {
 
 
 
-        Alternatives testAlternative = new Alternatives("test alternatives title","test alternatives description");
-        alternativesRepo.save(testAlternative);
 
-        Result testResult = new Result("test result title","test result impact",testAlternative);
-        resultRepo.save(testResult);
-
-        Consequence testConsequence = new Consequence("test consequence title","test consequence description",testResult);
-        consequenceRepo.save(testConsequence);
-
-        CopingMechanism testCopingMechinism = new CopingMechanism("test coping title","test cpoing description",testConsequence);
-        copingMechanismRepo.save(testCopingMechinism);
+        Consequence jail = new Consequence("Jail","no bueno");
+        consequenceRepo.save(jail);
 
 
-        Trigger testTrigger = new Trigger("test title trigger","test trigger description",testCopingMechinism);
-        Trigger finances = new Trigger("Financial Issues","Having financial problems means being unable to pay debts over the short or long term. ... " +
-                "Financial difficulties become a source of stress until all debts are paid.");
-        Trigger domestic = new Trigger("Domestic Relationship","\"domestic relationship\" means a personal relationship between 2 adults in which one " +
-                "provides personal or financial commitment and support of a domestic nature for the material benefit of the other and includes a domestic partnership " +
-                "but does not include a legal marriage.");
-        Trigger occupation = new Trigger("Workplace Stress","A term commonly used in the professional business industry, occupational stress refers to " +
-                "the ongoing or progressing stress an employee experiences due to the responsibilities, conditions, environment, or other pressures of the workplace.");
-        triggerRepo.save(domestic);
-        triggerRepo.save(finances);
-        triggerRepo.save(occupation);
-        triggerRepo.save(testTrigger);
 
 
-        Response testResponse = new Response(testTrigger,testCopingMechinism,testConsequence,testResult,testAlternative);
-        responseRepo.save(testResponse);
+
 
         Mood afraid = new Mood("Afraid");
         Mood anxious = new Mood("Anxious");
@@ -68,7 +47,7 @@ public class Populator implements CommandLineRunner {
         Mood depressed = new Mood("Depressed");
         Mood hopeless = new Mood("Hopeless");
         Mood suicidal = new Mood("Suicidal");
-        Mood homicidal = new Mood("Homicidal");
+        Mood homicidal = new Mood("Violent");
         Mood exhausted = new Mood("Exhausted");
         moodRepo.save(afraid);
         moodRepo.save(anxious);
@@ -80,9 +59,38 @@ public class Populator implements CommandLineRunner {
         moodRepo.save(sad);
         moodRepo.save(suicidal);
 
-
-        User testUser = new User("TESTusername","password",21,sad,testCopingMechinism, testTrigger);
-        userRepo.save(testUser);
+        Trigger finances = new Trigger("Financial Issues","Having financial problems means being unable to pay debts over the short or long term. ... " +
+                "Financial difficulties become a source of stress until all debts are paid.");
+        Trigger domestic = new Trigger("Relationship Issues","\"domestic relationship\" means a personal relationship between 2 adults in which one " +
+                "provides personal or financial commitment and support of a domestic nature for the material benefit of the other and includes a domestic partnership " +
+                "but does not include a legal marriage.");
+        Trigger occupation = new Trigger("Occupational Stress","A term commonly used in the professional business industry, occupational stress refers to " +
+                "the ongoing or progressing stress an employee experiences due to the responsibilities, conditions, environment, or other pressures of the workplace.");
+        Trigger parental = new Trigger("Parental Stress","parental stress description");
+        Trigger gunViolence = new Trigger("Gun Violence","gun violence description");
+        Trigger domesticViolence = new Trigger("Domestic Violence","domestic violence description");
+        Trigger bullying = new Trigger("Bullying","bullying description");
+        triggerRepo.save(bullying);
+        triggerRepo.save(domesticViolence);
+        triggerRepo.save(gunViolence);
+        triggerRepo.save(parental);
+        triggerRepo.save(domestic);
+        triggerRepo.save(finances);
+        triggerRepo.save(occupation);
+        CopingMechanism doDrugs = new CopingMechanism("Abuse Drugs","drug abuse description");
+        CopingMechanism drinkAlcohol = new CopingMechanism("Consume Alcohol","Alcoholism");
+        CopingMechanism violence = new CopingMechanism("Commit Violence","violence description",jail);
+        CopingMechanism suicide = new CopingMechanism("Self-Harm","self harm description and help line");
+        CopingMechanism isolate = new CopingMechanism("Isolate","isolate definition");
+        CopingMechanism eatStarve = new CopingMechanism("Eat/Starve","eating disorders help");
+        CopingMechanism divorce = new CopingMechanism("File for Divorce","divorce effects description");
+        copingMechanismRepo.save(isolate);
+        copingMechanismRepo.save(eatStarve);
+        copingMechanismRepo.save(divorce);
+        copingMechanismRepo.save(suicide);
+        copingMechanismRepo.save(violence);
+        copingMechanismRepo.save(doDrugs);
+        copingMechanismRepo.save(drinkAlcohol);
 
 
 

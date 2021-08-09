@@ -2,12 +2,12 @@ export default function ResponsesPage(responses) {
   return `
     <h1>Responses page</h1>
     <div class='responses-constructor'>
-    ${responses.trigger.map(trigger => {
+    ${responses.moods.map(mood => {
       return `
-      <p class='responses-constructor__trigger-name'>Trigger Name: ${trigger.name}
-      <input type='hidden' id='triggerId' value='${trigger.id}'>
+      <p class='responses-constructor__trigger-name'>Trigger Name: ${mood.mood}
+      <input type='hidden' id='triggerId' value='${mood.id}'>
       </p>
-      <p class='responses-constructor__trigger-description'> Trigger Description: ${trigger.description}</p>
+      // <p class='responses-constructor__trigger-description'> Trigger Description: ${trigger.description}</p>
   ${responses.copingMechanism.map(coping => {
       return `
       <p class='responses-constructor__coping-Mechanism-title'>Coping Mechanism Title: ${coping.title}

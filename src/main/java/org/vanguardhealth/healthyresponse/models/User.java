@@ -15,7 +15,7 @@ public class User {
 
     private String userName;
     private String password;
-    private int age;
+    private String role;
     @ManyToOne
     private Mood mood;
 
@@ -25,18 +25,9 @@ public class User {
     @ManyToOne
     private CopingMechanism copingMechanism;
 
-    public User(String userName, String password, int age, Mood mood) {
-        this.userName = userName;
-        this.password = password;
-        this.age = age;
-        this.mood = mood;
-    }
 
-    public User(String userName, String password, int age) {
-        this.userName=userName;
-        this.password=password;
-        this.age=age;
-    }
+
+
 
 
     public Long getId() {
@@ -51,8 +42,8 @@ public class User {
         return password;
     }
 
-    public int getAge() {
-        return age;
+    public String getRole() {
+        return role;
     }
 
 
@@ -68,17 +59,14 @@ public class User {
     }
 
     public User(){}
-    public User(String userName){
-        this.userName = userName;
-    }
-    public User(String userName, String password, int age, Mood mood,
-                CopingMechanism copingMechanism, Trigger trigger){
+    public User(String userName,String password){
         this.userName = userName;
         this.password = password;
-        this.age = age;
-        this.mood = mood;
-        this.trigger = trigger;
-        this.copingMechanism =  copingMechanism;
+    }
+    public User(String userName, String password, String Role) {
+        this.userName=userName;
+        this.password=password;
+        this.role = role;
     }
 
     @Override

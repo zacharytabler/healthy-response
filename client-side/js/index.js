@@ -19,12 +19,14 @@ import ContactUsPage from "./pages/ContactUsPage";
 import LegalPage from "./pages/LegalPage";
 import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
+import LoginDraft from "./pages/LoginPage";
 import "../css/header_footer.css";
 import "../css/aboutUS.css";
 import "../css/form.css";
 import "../css/style.css";
 import "../css/home_page.css";
 import "../css/login.css";
+
 
 const app = document.querySelector("#app");
 const affirmation_api_url = "https://type.fit/api/quotes";
@@ -44,30 +46,26 @@ function buildPage() {
   consequences();
   results();
   alternatives();
-  // responses();
+  responses();
   reviews();
   about();
   navUserProfile();
   contact();
   appointment();
   legal();
-  // loginDraft();
-  // assessment();
-  
-
+  loginDraft();
 }
 
 function navUserProfile() {
   const profilePage = document.querySelector(".nav__list_profile");
   profilePage.addEventListener("click", () => {
+
     const app = document.querySelector("#app");
     apiActions.getRequest("http://localhost:8080/users", (user) => {
       app.innerHTML = userWelcome(user);
     });
   });
 }
-
-
 
 function header() {
   const headerElement = document.querySelector(".header");
@@ -79,27 +77,50 @@ function footer() {
 }
 
 function renderUserLogin() {
-  app.innerHTML = LoginPage();
+  app.innerHTML = LoginDraft();
   app.addEventListener("click", (event) => {
-    if (event.target.classList.contains("create_user")) {
+    if (event.target.classList.contains("loginButton")) {
       const userName =
         event.target.parentElement.querySelector(".userName").value;
       const password =
         event.target.parentElement.querySelector(".password").value;
-      const age = event.target.parentElement.querySelector(".age").value;
-      const mood = event.target.parentElement.querySelector(".intake").value;
       apiActions.postRequest(
         "http://localhost:8080/create_user_profile",
         {
           userName: userName,
           password: password,
-          age: age,
         },
+        (app.innerHTML = HomePage()),
         (users) => (app.innerHTML = userWelcome(users))
       );
-      apiActions.getRequest("http://localhost:8080:/users", (user) => {
-        app.innerHTML = userInfo(user);
-      });
+    }
+  });
+}
+function populateAssessmentMenu() {
+  app.innerHTML = AssessmentPage();
+  const assessmentButton = document.querySelector(".assessBtn");
+  assessmentButton.addEventListener("click", (event) => {
+    if (
+      event.target.parentElement.parentElement.querySelector(".assessmentMenu")
+    ) {
+      const mood =
+        event.target.parentElement.querySelector(".intakeMood").value;
+      console.log(mood);
+      const trigger =
+        event.target.parentElement.querySelector(".intakeTrigger").value;
+      console.log(trigger);
+      const copingMechanism =
+        event.target.parentElement.querySelector(".intakeCoping").value;
+      console.log(copingMechanism);
+      apiActions.postRequest(
+        "http://localhost:8080/send_response",
+        {
+          mood: mood,
+          trigger: trigger,
+          copingMechanism: copingMechanism,
+        },
+        (responses) => (app.innerHTML = ResponsesPage(responses))
+      );
     }
   });
 }
@@ -116,18 +137,12 @@ function renderUser() {
   });
 }
 
-
-
 function loginDraft() {
   const homeElement = document.querySelector(".loginButton");
   homeElement.addEventListener("click", () => {
     app.innerHTML = HomePage();
-    slideShow();
-    assessment();
-    getAffirmationApi(affirmation_api_url);
   });
 }
-
 
 function moods() {
   const moodElement = document.querySelector(".nav__list_moods");
@@ -137,7 +152,6 @@ function moods() {
     });
   });
 }
-
 
 function triggers() {
   const triggerElement = document.querySelector(".nav__list_triggers");
@@ -159,7 +173,6 @@ function copingMechanisms() {
     );
   });
 }
-
 
 function consequences() {
   const consequencesElement = document.querySelector(".nav__list_consequences");
@@ -237,7 +250,7 @@ function legal() {
     app.innerHTML = LegalPage();
   });
 }
-function slideShow() {
+
   const slideshows = document.querySelectorAll('.slideshow');
   slideshows.forEach(initSlideShow);
     }
@@ -260,30 +273,41 @@ function slideShow() {
         });
       }
 
-      function home() {
-        const homeElement = document.querySelector(".nav__list_home");
-        homeElement.addEventListener("click", () => {
-          app.innerHTML = HomePage();
-          slideShow();
-          assessment();
-        });
-      }
-      
+
+function assessment() {
+  const assessmentElement = document.querySelector(".assessmentButton");
+  assessmentElement.addEventListener("click", () => {
+    console.log("Firing!");
+    app.innerHTML = AssessmentPage();
+    populateAssessmentMenu();
+  });
+}
+
+function home() {
+  const homeElement = document.querySelector(".nav__list_home");
+  homeElement.addEventListener("click", () => {
+    app.innerHTML = HomePage();
+    slideShow();
+    assessment();
+  });
+}
 
 function getAffirmationApi(url) {
   const quoteDiv = document.querySelector(".inspirational_quote__container");
-  quoteDiv.onload = (event) => {};
+  quoteDiv.onload = () => {
+    apiActions.getRequest(url, (quotes) => {
+      quoteDiv.innerHTML = InspirationalQuote(
+        quotes[Math.floor(Math.random() * quotes.length)]
+      );
 
-  apiActions.getRequest(url, (quotes) => {
-      quoteDiv.innerHTML = InspirationalQuote(quotes[Math.floor(Math.random() * quotes.length)]);
-    // quotes.forEach((quote, index) => {
-    //   quoteDiv.innerHTML = InspirationalQuote(quote);
-    // });
-  });
+      // quotes.forEach((quote, index) => {
+      //   quoteDiv.innerHTML = InspirationalQuote(quote);
+      // });
 
-// apiActions.getRequest(url, (quote) => {
-//     console.log(quote);
-//     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
-// });
-
+      // apiActions.getRequest(url, (quote) => {
+      //     console.log(quote);
+      //     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
+      // });
+    });
+  };
 }
