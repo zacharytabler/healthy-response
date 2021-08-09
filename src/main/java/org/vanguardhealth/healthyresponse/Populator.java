@@ -29,17 +29,8 @@ public class Populator implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-
-
-
-
         Consequence jail = new Consequence("Jail","no bueno");
         consequenceRepo.save(jail);
-
-
-
-
-
 
         Mood afraid = new Mood("Afraid");
         Mood anxious = new Mood("Anxious");
@@ -60,7 +51,6 @@ public class Populator implements CommandLineRunner {
         moodRepo.save(sad);
         moodRepo.save(suicidal);
 
-<<<<<<< HEAD
         String activityDescription1 = "Self-criticism can be regarded as the opposite of self-compassion. Whereas self-compassion involves a positive and accepting relationship with the self, self-criticism can be construed as negative and punishing thoughts directed toward one‘s personal characteristics. Self-criticism typically concerns judgment and self-blame regarding shortcomings, such as the inability to accomplish personal goals or meet other people’s expectations.The goal of this exercise is to increase awareness of inner criticism and promote a more self-compassionate stance towards the self.";
 
         String activityDescription2 = "A key technique in Positive CBT is borrowed from solution-focused therapy, namely first identifying and then analyzing times when a problem did not exist. Consider what was different when the problem was absent (Molnar and de Shazer, 1987). Rather than focusing on the who, what, when, and where of problems, exception finding about focusing on the who, what, when, and where of exception times. Consequently, this increases awareness of strengths relative to goals, rather than deficiencies relative to problems.";
@@ -71,14 +61,6 @@ public class Populator implements CommandLineRunner {
         activityRepo.save(activity1);
         activityRepo.save(activity2);
 
-
-        User testUser = new User("TESTusername","password",21,sad,testCopingMechinism, testTrigger);
-        userRepo.save(testUser);
-||||||| 7fea8bf
-
-        User testUser = new User("TESTusername","password",21,sad,testCopingMechinism, testTrigger);
-        userRepo.save(testUser);
-=======
         Trigger finances = new Trigger("Financial Issues","Having financial problems means being unable to pay debts over the short or long term. ... " +
                 "Financial difficulties become a source of stress until all debts are paid.");
         Trigger domestic = new Trigger("Relationship Issues","\"domestic relationship\" means a personal relationship between 2 adults in which one " +
@@ -111,10 +93,6 @@ public class Populator implements CommandLineRunner {
         copingMechanismRepo.save(violence);
         copingMechanismRepo.save(doDrugs);
         copingMechanismRepo.save(drinkAlcohol);
->>>>>>> 16bcc0e6ab0e810630fee2efdacbabb246d3a2a9
-
-
-
 
     }
 }
