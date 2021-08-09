@@ -20,6 +20,13 @@ import LegalPage from "./pages/LegalPage";
 import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
 import LoginDraft from "./pages/LoginPage";
+import "../css/header_footer.css";
+import "../css/aboutUS.css";
+import "../css/form.css";
+import "../css/style.css";
+import "../css/home_page.css";
+import "../css/login.css";
+
 
 const app = document.querySelector("#app");
 const affirmation_api_url = "https://type.fit/api/quotes";
@@ -52,7 +59,7 @@ function buildPage() {
 function navUserProfile() {
   const profilePage = document.querySelector(".nav__list_profile");
   profilePage.addEventListener("click", () => {
-    console.log("firing!");
+
     const app = document.querySelector("#app");
     apiActions.getRequest("http://localhost:8080/users", (user) => {
       app.innerHTML = userWelcome(user);
@@ -72,13 +79,11 @@ function footer() {
 function renderUserLogin() {
   app.innerHTML = LoginDraft();
   app.addEventListener("click", (event) => {
-    console.log("firing");
     if (event.target.classList.contains("loginButton")) {
       const userName =
         event.target.parentElement.querySelector(".userName").value;
       const password =
         event.target.parentElement.querySelector(".password").value;
-
       apiActions.postRequest(
         "http://localhost:8080/create_user_profile",
         {
@@ -142,9 +147,7 @@ function loginDraft() {
 function moods() {
   const moodElement = document.querySelector(".nav__list_moods");
   moodElement.addEventListener("click", () => {
-    console.log("firing!");
     apiActions.getRequest("http://localhost:8080/moods", (moods) => {
-      console.log(moods);
       app.innerHTML = MoodsPage(moods);
     });
   });
@@ -153,9 +156,7 @@ function moods() {
 function triggers() {
   const triggerElement = document.querySelector(".nav__list_triggers");
   triggerElement.addEventListener("click", () => {
-    console.log("firing!");
     apiActions.getRequest("http://localhost:8080/triggers", (triggers) => {
-      console.log(triggers);
       app.innerHTML = TriggersPage(triggers);
     });
   });
@@ -164,11 +165,9 @@ function triggers() {
 function copingMechanisms() {
   const copingElement = document.querySelector(".nav__list_coping_mechanisms");
   copingElement.addEventListener("click", () => {
-    console.log("firing!");
     apiActions.getRequest(
       "http://localhost:8080/coping",
       (copingMechanisms) => {
-        console.log(copingMechanisms);
         app.innerHTML = CopingMechanismsPage(copingMechanisms);
       }
     );
@@ -178,11 +177,9 @@ function copingMechanisms() {
 function consequences() {
   const consequencesElement = document.querySelector(".nav__list_consequences");
   consequencesElement.addEventListener("click", () => {
-    console.log("firing!");
     apiActions.getRequest(
       "http://localhost:8080/consequences",
       (consequences) => {
-        console.log(consequences);
         app.innerHTML = ConsequencesPage(consequences);
       }
     );
@@ -192,9 +189,7 @@ function consequences() {
 function results() {
   const resultsElement = document.querySelector(".nav__list_results");
   resultsElement.addEventListener("click", () => {
-    console.log("firing!");
     apiActions.getRequest("http://localhost:8080/results", (results) => {
-      console.log(results);
       app.innerHTML = ResultsPage(results);
     });
   });
@@ -206,7 +201,6 @@ function alternatives() {
     apiActions.getRequest(
       "http://localhost:8080/alternatives",
       (alternatives) => {
-        console.log(alternatives);
         app.innerHTML = AlternativesPage(alternatives);
       }
     );
@@ -216,9 +210,7 @@ function alternatives() {
 function responses() {
   const responseElement = document.querySelector(".nav__list_responses");
   responseElement.addEventListener("click", () => {
-    console.log("firing!");
     apiActions.getRequest("http://localhost:8080/responses", (responses) => {
-      console.log(responses);
       app.innerHTML = ResponsesPage(responses);
     });
   });
@@ -241,7 +233,6 @@ function about() {
 function contact() {
   const contactElement = document.querySelector(".footer_list_contactUs");
   contactElement.addEventListener("click", () => {
-    const app = document.querySelector("#app");
     app.innerHTML = ContactUsPage();
   });
 }
@@ -249,9 +240,9 @@ function contact() {
 function appointment() {
   const appointmentElement = document.querySelector(".nav__list_appointment");
   appointmentElement.addEventListener("click", () => {
-    app.innerHTML = AppointmentPage();
-  });
-}
+      app.innerHTML = AppointmentPage();
+    });
+  }
 
 function legal() {
   const legalElement = document.querySelector(".footer_list_legal");
@@ -259,24 +250,29 @@ function legal() {
     app.innerHTML = LegalPage();
   });
 }
-function slideShow() {
-  const slideshows = document.querySelectorAll(".slideshow");
+
+  const slideshows = document.querySelectorAll('.slideshow');
   slideshows.forEach(initSlideShow);
-}
-function initSlideShow(slideshow) {
-  var slides = slideshow
-    .querySelector("div")
-    .querySelectorAll(".slideShowGrid");
-  var index = 0,
-    time = 5000;
-  slides[index].classList.add("active");
-  setInterval(() => {
-    slides[index].classList.remove("active");
-    index++;
-    if (index === slides.length) index = 0;
-    slides[index].classList.add("active");
-  }, time);
-}
+    }
+    function initSlideShow(slideshow) {
+      var slides = slideshow.querySelector('div').querySelectorAll('.slideShowGrid');
+      var index = 0, time = 5000;
+      slides[index].classList.add('active');  
+      setInterval( () => {
+      slides[index].classList.remove('active');
+      index++;
+      if (index === slides.length) index = 0; 
+      slides[index].classList.add('active');
+      }, time);
+      }
+      
+      function assessment() {
+      const assessmentElement = document.querySelector(".assessmentButton");
+        assessmentElement.addEventListener("click", () => {
+          app.innerHTML = AssessmentPage();
+        });
+      }
+
 
 function assessment() {
   const assessmentElement = document.querySelector(".assessmentButton");
