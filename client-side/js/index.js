@@ -21,13 +21,15 @@ import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
 import LoginDraft from "./pages/LoginPage";
 import ActivitiesPage from "./pages/ActivitiesPage";
-
+import Outbox from "./pages/Outbox";
 import "../css/header_footer.css";
 import "../css/aboutUS.css";
 import "../css/form.css";
 import "../css/style.css";
 import "../css/home_page.css";
 import "../css/login.css";
+import InboxPage from "./pages/InboxPage";
+import MessageBoard from "./pages/MessageBoard";
 
 const app = document.querySelector("#app");
 
@@ -53,6 +55,7 @@ function buildPage() {
   legal();
   loginDraft();
   activities();
+  messageBoard();
 }
 console.log();
 
@@ -119,6 +122,17 @@ function populateAssessmentMenu() {
           trigger: trigger,
           copingMechanism: copingMechanism,
         },
+        function myFunction() {
+          var r = confirm("Would you like to leave a message for an Admin?");
+          if (r == true) {
+            app.innerHTML = Outbox();
+            outbox();
+          } else {
+            apiActions.getRequest("http://localhost:8080/users", (user) => {
+              app.innerHTML = userWelcome(user);
+            });
+          }
+        },
         (responses) => (app.innerHTML = ResponsesPage(responses))
       );
     }
@@ -153,6 +167,55 @@ function moods() {
   });
 }
 
+function outbox() {
+  app.addEventListener("click", (event) => {
+    if (event.target.classList.contains("sendMessage")) {
+      const subject =
+        event.target.parentElement.querySelector("#subject").value;
+      const title = event.target.parentElement.querySelector("#title").value;
+      const content =
+        event.target.parentElement.querySelector("#content").value;
+      apiActions.postRequest(
+        "http://localhost:8080/post_message",
+        {
+          subject: subject,
+          title: title,
+          content: content,
+        },
+        console.log(subject, title, content),
+
+        alert("Message Sent!"),
+        (app.innerHTML = InboxPage()),
+        (messages) => (app.innerHTML = MessageBoard(messages))
+      );
+    }
+  });
+}
+
+function replyPost(){
+  app.addEventListener('click',(event)=>{
+    if(event.target.classList.contains("replyButton")){
+      const content = event.target.parentElement.querySelector('.replycontent').value;
+    }
+  })
+}
+
+
+function messageBoard() {
+  const messageBoard = document.querySelector(".nav__list_messageBoard");
+  messageBoard.addEventListener("click", () => {
+    apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
+      app.innerHTML = MessageBoard(messages);
+    });
+  });
+}
+
+function myInbox(){
+  const myMessages = document.querySelector('.nav__list_message');
+  myMessages.addEventListener("click",()=>{
+    apiActions.getRequest
+  })
+}
 function triggers() {
   const triggerElement = document.querySelector(".nav__list_triggers");
   triggerElement.addEventListener("click", () => {
