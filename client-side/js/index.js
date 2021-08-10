@@ -52,6 +52,7 @@ function buildPage() {
   appointment();
   legal();
   loginDraft();
+  activities();
 }
 
 function navUserProfile() {
@@ -317,9 +318,7 @@ function getAffirmationApi(url) {
 function activities() {
   const activitiesElement = document.querySelector(".nav__list_activities");
   activitiesElement.addEventListener("click", () => {
-    console.log("activities firing");
     apiActions.getRequest("http://localhost:8080/activities", (activities) => {
-      console.log(activities);
       app.innerHTML = ActivitiesPage(activities);
     });
   });

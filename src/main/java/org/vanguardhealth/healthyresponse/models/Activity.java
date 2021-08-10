@@ -1,5 +1,7 @@
 package org.vanguardhealth.healthyresponse.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,13 +21,15 @@ public class Activity {
 //    private Worksheet worksheet;
 
     @ManyToOne
+    @JsonIgnore
     private User user;
 
     public Activity() {}
 
-    public Activity(String title, String description) {
+    public Activity(String title, String description, User user) {
         this.title = title;
         this.description = description;
+        this.user = user;
 //        this.worksheets = new ArrayList<>(Arrays.asList(worksheets));
 //        this.worksheet = worksheet;
     }
@@ -42,7 +46,11 @@ public class Activity {
         return description;
     }
 
-//    public Collection<Worksheet> getWorksheets() {
+    public User getUser() {
+        return user;
+    }
+
+    //    public Collection<Worksheet> getWorksheets() {
 //        return worksheets;
 //    }
 
