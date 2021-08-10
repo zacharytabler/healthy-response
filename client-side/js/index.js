@@ -58,7 +58,6 @@ function buildPage() {
 function navUserProfile() {
   const profilePage = document.querySelector(".nav__list_profile");
   profilePage.addEventListener("click", () => {
-
     const app = document.querySelector("#app");
     apiActions.getRequest("http://localhost:8080/users", (user) => {
       app.innerHTML = userWelcome(user);
@@ -90,6 +89,7 @@ function renderUserLogin() {
           password: password,
         },
         (app.innerHTML = HomePage()),
+        assessment(),
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
@@ -239,9 +239,9 @@ function contact() {
 function appointment() {
   const appointmentElement = document.querySelector(".nav__list_appointment");
   appointmentElement.addEventListener("click", () => {
-      app.innerHTML = AppointmentPage();
-    });
-  }
+    app.innerHTML = AppointmentPage();
+  });
+}
 
 function legal() {
   const legalElement = document.querySelector(".footer_list_legal");
@@ -251,28 +251,30 @@ function legal() {
 }
 
 function slideShow() {
-  const slideshows = document.querySelectorAll('.slideshow');
+  const slideshows = document.querySelectorAll(".slideshow");
   slideshows.forEach(initSlideShow);
 }
-    function initSlideShow(slideshow) {
-      var slides = slideshow.querySelector('div').querySelectorAll('.slideShowGrid');
-      var index = 0, time = 5000;
-      slides[index].classList.add('active');  
-      setInterval( () => {
-      slides[index].classList.remove('active');
-      index++;
-      if (index === slides.length) index = 0; 
-      slides[index].classList.add('active');
-      }, time);
-      }
-      
-      function assessment() {
-      const assessmentElement = document.querySelector(".assessmentButton");
-        assessmentElement.addEventListener("click", () => {
-          app.innerHTML = AssessmentPage();
-        });
-      }
+function initSlideShow(slideshow) {
+  var slides = slideshow
+    .querySelector("div")
+    .querySelectorAll(".slideShowGrid");
+  var index = 0,
+    time = 5000;
+  slides[index].classList.add("active");
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    index++;
+    if (index === slides.length) index = 0;
+    slides[index].classList.add("active");
+  }, time);
+}
 
+function assessment() {
+  const assessmentElement = document.querySelector(".assessmentButton");
+  assessmentElement.addEventListener("click", () => {
+    app.innerHTML = AssessmentPage();
+  });
+}
 
 function assessment() {
   const assessmentElement = document.querySelector(".assessmentButton");
@@ -294,8 +296,8 @@ function home() {
 
 function getAffirmationApi(url) {
   const affirmation_api_url = "https://type.fit/api/quotes";
-// const affirmation_api_url ="https://zenquotes.io/api/quotes/";
-// const affirmation_api_url = 'https://zenquotes.io/api/today/';
+  // const affirmation_api_url ="https://zenquotes.io/api/quotes/";
+  // const affirmation_api_url = 'https://zenquotes.io/api/today/';
   const quoteDiv = document.querySelector(".inspirational_quote__container");
   quoteDiv.onload = () => {
     apiActions.getRequest(url, (quotes) => {
