@@ -52,6 +52,7 @@ function buildPage() {
   appointment();
   legal();
   loginDraft();
+  activities();
 }
 
 function navUserProfile() {

@@ -26,7 +26,7 @@ public class User {
     @ManyToOne
     private CopingMechanism copingMechanism;
 
-    @OneToMany
+    @OneToMany(mappedBy="user")
     private Collection<Activity> activities;
 
     public Long getId() {
@@ -65,7 +65,7 @@ public class User {
         this.userName = userName;
         this.password = password;
     }
-    public User(String userName, String password, String Role) {
+    public User(String userName, String password, String role) {
         this.userName=userName;
         this.password=password;
         this.role = role;

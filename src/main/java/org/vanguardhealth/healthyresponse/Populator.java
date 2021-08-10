@@ -51,12 +51,15 @@ public class Populator implements CommandLineRunner {
         moodRepo.save(sad);
         moodRepo.save(suicidal);
 
+        User user1 = new User("user1", "user1");
+        userRepo.save(user1);
+
         String activityDescription1 = "Self-criticism can be regarded as the opposite of self-compassion. Whereas self-compassion involves a positive and accepting relationship with the self, self-criticism can be construed as negative and punishing thoughts directed toward one‘s personal characteristics. Self-criticism typically concerns judgment and self-blame regarding shortcomings, such as the inability to accomplish personal goals or meet other people’s expectations.The goal of this exercise is to increase awareness of inner criticism and promote a more self-compassionate stance towards the self.";
 
         String activityDescription2 = "A key technique in Positive CBT is borrowed from solution-focused therapy, namely first identifying and then analyzing times when a problem did not exist. Consider what was different when the problem was absent (Molnar and de Shazer, 1987). Rather than focusing on the who, what, when, and where of problems, exception finding about focusing on the who, what, when, and where of exception times. Consequently, this increases awareness of strengths relative to goals, rather than deficiencies relative to problems.";
 
-        Activity activity1 = new Activity("Reframing Critical Self Talk", activityDescription1);
-        Activity activity2 = new Activity("Strengths Spotting by Exception Finding", activityDescription2);
+        Activity activity1 = new Activity("Reframing Critical Self Talk", activityDescription1, user1);
+        Activity activity2 = new Activity("Strengths Spotting by Exception Finding", activityDescription2, user1);
 
         activityRepo.save(activity1);
         activityRepo.save(activity2);
