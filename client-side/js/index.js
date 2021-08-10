@@ -20,6 +20,8 @@ import LegalPage from "./pages/LegalPage";
 import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
 import LoginDraft from "./pages/LoginPage";
+import ActivitiesPage from "./pages/ActivitiesPage";
+
 import "../css/header_footer.css";
 import "../css/aboutUS.css";
 import "../css/form.css";
@@ -27,11 +29,7 @@ import "../css/style.css";
 import "../css/home_page.css";
 import "../css/login.css";
 
-
 const app = document.querySelector("#app");
-const affirmation_api_url = "https://type.fit/api/quotes";
-// const affirmation_api_url ="https://zenquotes.io/api/quotes/";
-// const affirmation_api_url = 'https://zenquotes.io/api/today/';
 
 buildPage();
 
@@ -253,7 +251,7 @@ function legal() {
 
   const slideshows = document.querySelectorAll('.slideshow');
   slideshows.forEach(initSlideShow);
-    }
+  
     function initSlideShow(slideshow) {
       var slides = slideshow.querySelector('div').querySelectorAll('.slideShowGrid');
       var index = 0, time = 5000;
@@ -293,6 +291,9 @@ function home() {
 }
 
 function getAffirmationApi(url) {
+  const affirmation_api_url = "https://type.fit/api/quotes";
+// const affirmation_api_url ="https://zenquotes.io/api/quotes/";
+// const affirmation_api_url = 'https://zenquotes.io/api/today/';
   const quoteDiv = document.querySelector(".inspirational_quote__container");
   quoteDiv.onload = () => {
     apiActions.getRequest(url, (quotes) => {
@@ -310,4 +311,15 @@ function getAffirmationApi(url) {
       // });
     });
   };
+}
+
+function activities() {
+  const activitiesElement = document.querySelector(".nav__list_activities");
+  activitiesElement.addEventListener("click", () => {
+    console.log("activities firing");
+    apiActions.getRequest("http://localhost:8080/activities", (activities) => {
+      console.log(activities);
+      app.innerHTML = ActivitiesPage(activities);
+    });
+  });
 }

@@ -3,6 +3,7 @@ package org.vanguardhealth.healthyresponse.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -25,10 +26,8 @@ public class User {
     @ManyToOne
     private CopingMechanism copingMechanism;
 
-
-
-
-
+    @OneToMany
+    private Collection<Activity> activities;
 
     public Long getId() {
         return id;
@@ -46,7 +45,6 @@ public class User {
         return role;
     }
 
-
     public Mood getMood() {
         return  mood;
     }
@@ -56,6 +54,10 @@ public class User {
     }
     public CopingMechanism getCopingMechanism() {
         return copingMechanism;
+    }
+
+    public Collection<Activity> getActivities() {
+        return activities;
     }
 
     public User(){}
