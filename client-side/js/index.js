@@ -54,6 +54,7 @@ function buildPage() {
   loginDraft();
   activities();
 }
+console.log();
 
 function navUserProfile() {
   const profilePage = document.querySelector(".nav__list_profile");
