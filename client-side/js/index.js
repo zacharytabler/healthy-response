@@ -293,26 +293,21 @@ function home() {
 }
 
 function getAffirmationApi(url) {
-  const affirmation_api_url = "https://type.fit/api/quotes";
-// const affirmation_api_url ="https://zenquotes.io/api/quotes/";
-// const affirmation_api_url = 'https://zenquotes.io/api/today/';
   const quoteDiv = document.querySelector(".inspirational_quote__container");
-  quoteDiv.onload = () => {
-    apiActions.getRequest(url, (quotes) => {
-      quoteDiv.innerHTML = InspirationalQuote(
-        quotes[Math.floor(Math.random() * quotes.length)]
-      );
+  quoteDiv.onload = (event) => {};
 
-      // quotes.forEach((quote, index) => {
-      //   quoteDiv.innerHTML = InspirationalQuote(quote);
-      // });
+  apiActions.getRequest(url, (quotes) => {
+      quoteDiv.innerHTML = InspirationalQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+    // quotes.forEach((quote, index) => {
+    //   quoteDiv.innerHTML = InspirationalQuote(quote);
+    // });
+  });
 
-      // apiActions.getRequest(url, (quote) => {
-      //     console.log(quote);
-      //     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
-      // });
-    });
-  };
+// apiActions.getRequest(url, (quote) => {
+//     console.log(quote);
+//     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
+// });
+
 }
 
 function activities() {
