@@ -249,9 +249,10 @@ function legal() {
   });
 }
 
+function slideShow() {
   const slideshows = document.querySelectorAll('.slideshow');
   slideshows.forEach(initSlideShow);
-  
+}
     function initSlideShow(slideshow) {
       var slides = slideshow.querySelector('div').querySelectorAll('.slideShowGrid');
       var index = 0, time = 5000;
