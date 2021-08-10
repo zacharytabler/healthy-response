@@ -8,21 +8,15 @@ export default function LoginDraft() {
     <div class="container">
     <img class="loginLogo" src="${BackgroundLogo}" alt="healthy response logo"/>
      <img class="loginLogo" src="${LoginLogo}" alt="healthy response logo"/>
-     <form class="loginFields">
-     <div>
-     <div class="userNameLogin">
-     <input type="text" id="userNameLogin" name="username" placeholder="USERNAME">
      </div>
-      <div class="passwordLogin">
-      <input type="text" id="userPasswordLogin" name="password" placeholder="PASSWORD">
-      </div>
-      <div class="loginButton">
-      <input type="submit" value="LOGIN">
-      </div>
+
+     <div class="userNameLogin">
+      <input type="text" id="userNameLogin" class="userName" name="username" placeholder="USERNAME">
+      <input type="text" id="userPasswordLogin" class="password" name="password" placeholder="PASSWORD">
+      <button class="loginButton" type="submit" value="LOGIN"></button>
       <p class="loginTOS">TERMS OF SERVICE</p>
       </div>
-  </form>
-   </div>
+   
       `;
   }
 
