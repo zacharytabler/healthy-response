@@ -21,6 +21,7 @@ import Article from '../../images/article-1.jpg'
 import MemberS from '../../images/member-spotlight.jpg'
 import ReviewScene from '../../images/review-1.jpg'
 import VHSLogoBlack from '../../images/vhs-logo-black.png'
+import InspirationalQuote from '../components/InspirationalQuote'
 
 export default function HomePage() {
   return `
@@ -38,9 +39,7 @@ export default function HomePage() {
         </div>
         </div>
         </div>
-        <div class="inspoQuote">
-        <img class="quote" src="${Quote}" alt=""/>
-        </div>
+        <div class="inspirational_quote__container quote inspoQuote"></div>
         <div class="testGrid">
         <img class="T1" src="${Test1}" alt="" />
         <div class="boxText T2">
@@ -103,3 +102,6 @@ export default function HomePage() {
 
     `;
 }
+{/* <div class="inspoQuote">
+<img class="quote" src="${Quote}" alt=""/>
+</div> */}
