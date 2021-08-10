@@ -293,6 +293,9 @@ function home() {
 }
 
 function getAffirmationApi(url) {
+  const affirmation_api_url = "https://type.fit/api/quotes";
+  // const affirmation_api_url ="https://zenquotes.io/api/quotes/";
+  // const affirmation_api_url = 'https://zenquotes.io/api/today/';
   const quoteDiv = document.querySelector(".inspirational_quote__container");
   quoteDiv.onload = (event) => {};
 
