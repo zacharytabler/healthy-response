@@ -45,7 +45,7 @@ export default function HomePage() {
         <img class="T1" src="${Test1}" alt="" />
         <div class="boxText T2">
         <h3 class="down">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat</h3>
-        <button class="assessmentButton">TAKE THE ASSESSMENT</button>
+       
         </div>
         </div>
         <div class="text middle">
