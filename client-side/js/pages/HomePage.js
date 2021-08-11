@@ -13,7 +13,6 @@ import SS9 from '../../images/top-slideShow-8.jpg'
 import SS10 from '../../images/test-5.jpg'
 import SS11 from '../../images/top-slideShow-9.jpg'
 import SS12 from '../../images/top-slideShow-10.jpg'
-// import Quote from '../../images/inspoQuote.png'
 import Test1 from '../../images/test-1.jpg'
 import Test2 from '../../images/test-2.jpg'
 import Test3 from '../../images/test-3.jpg'
@@ -102,6 +101,3 @@ export default function HomePage() {
 
     `;
 }
-{/* <div class="inspoQuote">
-<img class="quote" src="${Quote}" alt=""/>
-</div> */}
