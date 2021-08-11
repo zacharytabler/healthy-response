@@ -289,15 +289,18 @@ function home() {
     app.innerHTML = HomePage();
     slideShow();
     assessment();
+    const url = "https://type.fit/api/quotes";
+    const quoteDiv = document.querySelector('.inspirational_quote__container');
+    console.log(quoteDiv);
+    getAffirmationApi(url, quoteDiv);
   });
 }
 
-function getAffirmationApi(url) {
-  const affirmation_api_url = "https://type.fit/api/quotes";
+
+function getAffirmationApi(url, quoteDiv) {
   // const affirmation_api_url ="https://zenquotes.io/api/quotes/";
   // const affirmation_api_url = 'https://zenquotes.io/api/today/';
-  const quoteDiv = document.querySelector(".inspirational_quote__container");
-  quoteDiv.onload = (event) => {};
+
 
   apiActions.getRequest(url, (quotes) => {
       quoteDiv.innerHTML = InspirationalQuote(quotes[Math.floor(Math.random() * quotes.length)]);
