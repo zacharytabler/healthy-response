@@ -7,7 +7,9 @@ export default function Header() {
 	<label>&equiv;</label>
         <ul  class="nav__header">
             <li class='nav__list_home'>Home</li>
+            <li class='nav__list_message'>My Messages</li>
             <li class='nav__list_profile'>Profile</li>
+            <li class='nav__list_messageBoard'>Message Board</li>
             <li class='nav__list_moods'>Moods</li>
             <li class='nav__list_triggers'>Triggers</li>
             <li class='nav__list_coping_mechanisms'>Coping Mechanisms</li>
@@ -21,5 +23,4 @@ export default function Header() {
         </ul>
     </nav>
         `;
-       
 }

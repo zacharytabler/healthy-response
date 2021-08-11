@@ -21,13 +21,15 @@ import InspirationalQuote from "./components/InspirationalQuote";
 import LoginPage from "./pages/LoginPage";
 import LoginDraft from "./pages/LoginPage";
 import ActivitiesPage from "./pages/ActivitiesPage";
-
+import Outbox from "./pages/Outbox";
 import "../css/header_footer.css";
 import "../css/aboutUS.css";
 import "../css/form.css";
 import "../css/style.css";
 import "../css/home_page.css";
 import "../css/login.css";
+import InboxPage from "./pages/InboxPage";
+import MessageBoard from "./pages/MessageBoard";
 
 const app = document.querySelector("#app");
 
@@ -53,12 +55,13 @@ function buildPage() {
   legal();
   loginDraft();
   activities();
+  messageBoard();
 }
+console.log();
 
 function navUserProfile() {
   const profilePage = document.querySelector(".nav__list_profile");
   profilePage.addEventListener("click", () => {
-
     const app = document.querySelector("#app");
     apiActions.getRequest("http://localhost:8080/users", (user) => {
       app.innerHTML = userWelcome(user);
@@ -90,6 +93,7 @@ function renderUserLogin() {
           password: password,
         },
         (app.innerHTML = HomePage()),
+        assessment(),
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
@@ -117,6 +121,17 @@ function populateAssessmentMenu() {
           mood: mood,
           trigger: trigger,
           copingMechanism: copingMechanism,
+        },
+        function myFunction() {
+          var r = confirm("Would you like to leave a message for an Admin?");
+          if (r == true) {
+            app.innerHTML = Outbox();
+            outbox();
+          } else {
+            apiActions.getRequest("http://localhost:8080/users", (user) => {
+              app.innerHTML = userWelcome(user);
+            });
+          }
         },
         (responses) => (app.innerHTML = ResponsesPage(responses))
       );
@@ -152,6 +167,55 @@ function moods() {
   });
 }
 
+function outbox() {
+  app.addEventListener("click", (event) => {
+    if (event.target.classList.contains("sendMessage")) {
+      const subject =
+        event.target.parentElement.querySelector("#subject").value;
+      const title = event.target.parentElement.querySelector("#title").value;
+      const content =
+        event.target.parentElement.querySelector("#content").value;
+      apiActions.postRequest(
+        "http://localhost:8080/post_message",
+        {
+          subject: subject,
+          title: title,
+          content: content,
+        },
+        console.log(subject, title, content),
+
+        alert("Message Sent!"),
+        (app.innerHTML = InboxPage()),
+        (messages) => (app.innerHTML = MessageBoard(messages))
+      );
+    }
+  });
+}
+
+function replyPost(){
+  app.addEventListener('click',(event)=>{
+    if(event.target.classList.contains("replyButton")){
+      const content = event.target.parentElement.querySelector('.replycontent').value;
+    }
+  })
+}
+
+
+function messageBoard() {
+  const messageBoard = document.querySelector(".nav__list_messageBoard");
+  messageBoard.addEventListener("click", () => {
+    apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
+      app.innerHTML = MessageBoard(messages);
+    });
+  });
+}
+
+function myInbox(){
+  const myMessages = document.querySelector('.nav__list_message');
+  myMessages.addEventListener("click",()=>{
+    apiActions.getRequest
+  })
+}
 function triggers() {
   const triggerElement = document.querySelector(".nav__list_triggers");
   triggerElement.addEventListener("click", () => {
@@ -239,9 +303,9 @@ function contact() {
 function appointment() {
   const appointmentElement = document.querySelector(".nav__list_appointment");
   appointmentElement.addEventListener("click", () => {
-      app.innerHTML = AppointmentPage();
-    });
-  }
+    app.innerHTML = AppointmentPage();
+  });
+}
 
 function legal() {
   const legalElement = document.querySelector(".footer_list_legal");
@@ -251,28 +315,30 @@ function legal() {
 }
 
 function slideShow() {
-  const slideshows = document.querySelectorAll('.slideshow');
+  const slideshows = document.querySelectorAll(".slideshow");
   slideshows.forEach(initSlideShow);
 }
-    function initSlideShow(slideshow) {
-      var slides = slideshow.querySelector('div').querySelectorAll('.slideShowGrid');
-      var index = 0, time = 5000;
-      slides[index].classList.add('active');  
-      setInterval( () => {
-      slides[index].classList.remove('active');
-      index++;
-      if (index === slides.length) index = 0; 
-      slides[index].classList.add('active');
-      }, time);
-      }
-      
-      function assessment() {
-      const assessmentElement = document.querySelector(".assessmentButton");
-        assessmentElement.addEventListener("click", () => {
-          app.innerHTML = AssessmentPage();
-        });
-      }
+function initSlideShow(slideshow) {
+  var slides = slideshow
+    .querySelector("div")
+    .querySelectorAll(".slideShowGrid");
+  var index = 0,
+    time = 5000;
+  slides[index].classList.add("active");
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    index++;
+    if (index === slides.length) index = 0;
+    slides[index].classList.add("active");
+  }, time);
+}
 
+function assessment() {
+  const assessmentElement = document.querySelector(".assessmentButton");
+  assessmentElement.addEventListener("click", () => {
+    app.innerHTML = AssessmentPage();
+  });
+}
 
 function assessment() {
   const assessmentElement = document.querySelector(".assessmentButton");
@@ -294,8 +360,8 @@ function home() {
 
 function getAffirmationApi(url) {
   const affirmation_api_url = "https://type.fit/api/quotes";
-// const affirmation_api_url ="https://zenquotes.io/api/quotes/";
-// const affirmation_api_url = 'https://zenquotes.io/api/today/';
+  // const affirmation_api_url ="https://zenquotes.io/api/quotes/";
+  // const affirmation_api_url = 'https://zenquotes.io/api/today/';
   const quoteDiv = document.querySelector(".inspirational_quote__container");
   quoteDiv.onload = () => {
     apiActions.getRequest(url, (quotes) => {
