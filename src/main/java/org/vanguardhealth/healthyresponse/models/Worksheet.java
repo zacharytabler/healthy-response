@@ -14,6 +14,7 @@ public class Worksheet {
     private String title;
     private String description;
     private Activity activity;
+    private boolean acceptUserInput;
 
     private String instructions;
     private String question1;
@@ -47,6 +48,7 @@ public class Worksheet {
         this.title = title;
         this.description = description;
         this.activity = activity;
+        this.acceptUserInput = false;
         this.instructions = instructions;
         this.question1 = question1;
         this.answer1 = answer1;
@@ -74,6 +76,7 @@ public class Worksheet {
         this.title = title;
         this.description = description;
         this.activity = activity;
+        this.acceptUserInput = true;
         this.user = user;
         this.question1 = question1;
         this.answer1 = answer1;
