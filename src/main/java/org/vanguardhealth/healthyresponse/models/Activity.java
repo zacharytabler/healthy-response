@@ -1,6 +1,7 @@
 package org.vanguardhealth.healthyresponse.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.jdbc.Work;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -26,18 +27,17 @@ public class Activity {
 
     public Activity() {}
 
-//    public Activity(String title, String description) {
-//        this.title = title;
-//        this.description = description;
-////        this.worksheets = new ArrayList<>(Arrays.asList(worksheets));
-////        this.worksheet = worksheet;
-//    }
+    public Activity(String title, String description, Worksheet worksheet) {
+        this.title = title;
+        this.description = description;
+        this.worksheet = worksheet;
+    }
 
-    public Activity(String title, String description) {
+//    may not be necessary - revisit after worksheets are built out
+    public Activity(String title, String description, Worksheet worksheet, User user) {
         this.title = title;
         this.description = description;
         this.user = user;
-//        this.worksheets = new ArrayList<>(Arrays.asList(worksheets));
         this.worksheet = worksheet;
     }
 
