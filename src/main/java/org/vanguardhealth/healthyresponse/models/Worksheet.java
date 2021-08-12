@@ -15,8 +15,8 @@ public class Worksheet {
     private String description;
     private Activity activity;
 
-    private String q1;
-    private String a1;
+    private String q1; // Question 1 or Instructions in cases with no user input
+    private String a1; // Answer 1
     private String q2;
     private String a2;
     private String q3;
