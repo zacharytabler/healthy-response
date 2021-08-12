@@ -45,10 +45,10 @@ public class Worksheet {
     public Worksheet() {}
 
     public Worksheet(String title, String description, Activity activity) {
+        this.acceptUserInput = acceptUserInput;
         this.title = title;
         this.description = description;
-        this.activity = activity;
-        this.acceptUserInput = false;
+        this.activity = activity
         this.instructions = instructions;
         this.question1 = question1;
         this.answer1 = answer1;
@@ -73,10 +73,10 @@ public class Worksheet {
     }
 
     public Worksheet(String title, String description, Activity activity, User user, String question1, String answer1) {
+        this.acceptUserInput = acceptUserInput;
         this.title = title;
         this.description = description;
         this.activity = activity;
-        this.acceptUserInput = true;
         this.user = user;
         this.question1 = question1;
         this.answer1 = answer1;
