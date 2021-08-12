@@ -2,17 +2,18 @@ package org.vanguardhealth.healthyresponse.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
 public class Worksheet {
     @Id
     @GeneratedValue
     private Long id;
     private String title;
     private String description;
+//    @OneToOne(mappedBy = "worksheet")
+    @OneToOne
     private Activity activity;
     private boolean acceptUserInput;
 
@@ -44,11 +45,10 @@ public class Worksheet {
 
     public Worksheet() {}
 
-    public Worksheet(String title, String description, Activity activity) {
+    public Worksheet(String title, boolean accpetUserInput) {
         this.acceptUserInput = acceptUserInput;
         this.title = title;
         this.description = description;
-        this.activity = activity
         this.instructions = instructions;
         this.question1 = question1;
         this.answer1 = answer1;
@@ -72,31 +72,76 @@ public class Worksheet {
         this.answer10 = answer10;
     }
 
-    public Worksheet(String title, String description, Activity activity, User user, String question1, String answer1) {
+//    public Worksheet(String title, String description, Activity activity) {
+//        this.acceptUserInput = acceptUserInput;
+//        this.title = title;
+//        this.description = description;
+//        this.activity = activity;
+//        this.instructions = instructions;
+//        this.question1 = question1;
+//        this.answer1 = answer1;
+//        this.question2 = question2;
+//        this.answer2 = answer2;
+//        this.question3 = question3;
+//        this.answer3 = answer3;
+//        this.question4 = question4;
+//        this.answer4 = answer4;
+//        this.question5 = question5;
+//        this.answer5 = answer5;
+//        this.question6 = question6;
+//        this.answer6 = answer6;
+//        this.question7 = question7;
+//        this.answer7 = answer7;
+//        this.question8 = question8;
+//        this.answer8 = answer8;
+//        this.question9 = question9;
+//        this.answer9 = answer9;
+//        this.question10 = question10;
+//        this.answer10 = answer10;
+//    }
+
+//    public Worksheet(String title, String description, Activity activity, User user, String question1, String answer1) {
+//        this.acceptUserInput = acceptUserInput;
+//        this.title = title;
+//        this.description = description;
+//        this.activity = activity;
+//        this.user = user;
+//        this.question1 = question1;
+//        this.answer1 = answer1;
+//        this.question2 = question2;
+//        this.answer2 = answer2;
+//        this.question3 = question3;
+//        this.answer3 = answer3;
+//        this.question4 = question4;
+//        this.answer4 = answer4;
+//        this.question5 = question5;
+//        this.answer5 = answer5;
+//        this.question6 = question6;
+//        this.answer6 = answer6;
+//        this.question7 = question7;
+//        this.answer7 = answer7;
+//        this.question8 = question8;
+//        this.answer8 = answer8;
+//        this.question9 = question9;
+//        this.answer9 = answer9;
+//        this.question10 = question10;
+//        this.answer10 = answer10;
+//    }
+
+    public Worksheet(String title, boolean acceptUserInput, User user, String answer1) {
         this.acceptUserInput = acceptUserInput;
         this.title = title;
         this.description = description;
-        this.activity = activity;
         this.user = user;
-        this.question1 = question1;
         this.answer1 = answer1;
-        this.question2 = question2;
         this.answer2 = answer2;
-        this.question3 = question3;
         this.answer3 = answer3;
-        this.question4 = question4;
         this.answer4 = answer4;
-        this.question5 = question5;
         this.answer5 = answer5;
-        this.question6 = question6;
         this.answer6 = answer6;
-        this.question7 = question7;
         this.answer7 = answer7;
-        this.question8 = question8;
         this.answer8 = answer8;
-        this.question9 = question9;
         this.answer9 = answer9;
-        this.question10 = question10;
         this.answer10 = answer10;
     }
 
@@ -112,9 +157,9 @@ public class Worksheet {
         return description;
     }
 
-    public Activity getActivity() {
-        return activity;
-    }
+//    public Activity getActivity() {
+//        return activity;
+//    }
 
     public String getInstructions() {
         return instructions;

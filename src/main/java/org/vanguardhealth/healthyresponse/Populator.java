@@ -25,7 +25,13 @@ public class Populator implements CommandLineRunner {
     private ResponseRepo responseRepo;
     @Resource
     private AlternativesRepo alternativesRepo;
-    @Resource ActivityRepo activityRepo;
+    @Resource
+    private ActivityRepo activityRepo;
+    @Resource
+    private WorksheetRepo worksheetRepo;
+
+
+
     @Override
     public void run(String... args) throws Exception {
 
@@ -58,11 +64,14 @@ public class Populator implements CommandLineRunner {
         userRepo.save(user1);
         userRepo.save(admin1);
 
-        Worksheet worksheet1 = new Worksheet();
-        Worksheet worksheet2 = new Worksheet();
-
         String activityTitle1 = "Reframing Critical Self Talk";
         String activityTitle2 = "Strengths Spotting by Exception Finding";
+
+        Worksheet worksheet1 = new Worksheet(activityTitle1, false);
+        Worksheet worksheet2 = new Worksheet(activityTitle2, true);
+
+        worksheetRepo.save(worksheet1);
+        worksheetRepo.save(worksheet2);
 
         String activityDescription1 = "Self-criticism can be regarded as the opposite of self-compassion. Whereas self-compassion involves a positive and accepting relationship with the self, self-criticism can be construed as negative and punishing thoughts directed toward one‘s personal characteristics. Self-criticism typically concerns judgment and self-blame regarding shortcomings, such as the inability to accomplish personal goals or meet other people’s expectations.The goal of this exercise is to increase awareness of inner criticism and promote a more self-compassionate stance towards the self.";
         String activityDescription2 = "A key technique in Positive CBT is borrowed from solution-focused therapy, namely first identifying and then analyzing times when a problem did not exist. Consider what was different when the problem was absent (Molnar and de Shazer, 1987). Rather than focusing on the who, what, when, and where of problems, exception finding about focusing on the who, what, when, and where of exception times. Consequently, this increases awareness of strengths relative to goals, rather than deficiencies relative to problems.";

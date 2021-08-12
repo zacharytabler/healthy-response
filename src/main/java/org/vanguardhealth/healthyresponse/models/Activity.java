@@ -1,12 +1,8 @@
 package org.vanguardhealth.healthyresponse.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.jdbc.Work;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -17,8 +13,7 @@ public class Activity {
     private String title;
     @Lob
     private String description;
-//    @OneToMany
-//    private Collection<Worksheet> worksheets;
+    @OneToOne
     private Worksheet worksheet;
 
     @ManyToOne
@@ -41,7 +36,7 @@ public class Activity {
         this.worksheet = worksheet;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -60,7 +55,6 @@ public class Activity {
     //    public Collection<Worksheet> getWorksheets() {
 //        return worksheets;
 //    }
-
     public Worksheet getWorksheet() {
         return worksheet;
     }

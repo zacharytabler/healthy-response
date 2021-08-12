@@ -22,7 +22,7 @@ public class WorksheetController {
     private UserRepo userRepo;
 
     @GetMapping("/worksheets")
-    public Collection<Worksheet> getWorksheets(@PathVariable Long id) {
+    public Collection<Worksheet> getWorksheets() {
         return (Collection<Worksheet>) worksheetRepo.findAll();
     }
 
