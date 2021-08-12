@@ -11,7 +11,7 @@ export default function IntakeForm() {
     <input type='text' class='aboutMe' placeholder='About Me [Enter Profile Description]'>
     <button class="submitProfile">Continue</button>
     </div>
-    <button class="assessmentButton">TAKE THE ASSESSMENT</button>
+   
     
     `;
 }

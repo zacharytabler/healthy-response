@@ -59,7 +59,6 @@ function buildPage() {
   messageBoard();
   myInbox();
   replyPost();
- 
 }
 console.log();
 
@@ -98,7 +97,6 @@ function renderUserLogin() {
         },
         (app.innerHTML = IntakeForm()),
         createIntakeProfile(),
-        assessment(),
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
@@ -164,19 +162,21 @@ function populateAssessmentMenu() {
           if (r == true) {
             app.innerHTML = Outbox();
             outbox();
-          } else {
-            apiActions.getRequest("http://localhost:8080/intake_profile", (user) => {
-              app.innerHTML = userWelcome(user);
-            });
+          } else if (r == false) {
+            apiActions.getRequest(
+              "http://localhost:8080/intake_profile",
+              (user) => {
+                app.innerHTML = userWelcome(user);
+              }
+            );
           }
         },
         (responses) => (app.innerHTML = ResponsesPage(responses))
       );
     }
   });
+  (messages) => (app.innerHTML = MessageBoard(messages));
 }
-
-
 
 function loginDraft() {
   const homeElement = document.querySelector(".loginButton");
@@ -209,9 +209,16 @@ function outbox() {
           title: title,
           content: content,
         },
-        console.log(subject, title, content),
-        alert("Message Sent!"),
-        (app.innerHTML = InboxPage()),
+        
+        apiActions.getRequest(
+          "http://localhost:8080/view_messages",
+          (messages) => {
+            app.innerHTML = MessageBoard(messages);
+            alert("Message Sent!")
+          }
+        ),
+
+        (messages) => (app.innerHTML = InboxPage(messages)),
         (messages) => (app.innerHTML = MessageBoard(messages))
       );
     }
@@ -373,13 +380,6 @@ function initSlideShow(slideshow) {
     if (index === slides.length) index = 0;
     slides[index].classList.add("active");
   }, time);
-}
-
-function assessment() {
-  const assessmentElement = document.querySelector(".assessmentButton");
-  assessmentElement.addEventListener("click", () => {
-    app.innerHTML = AssessmentPage();
-  });
 }
 
 function assessment() {
