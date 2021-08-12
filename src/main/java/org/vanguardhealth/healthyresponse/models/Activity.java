@@ -12,13 +12,13 @@ import java.util.Objects;
 public class Activity {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     private String title;
     @Lob
     private String description;
 //    @OneToMany
 //    private Collection<Worksheet> worksheets;
-//    private Worksheet worksheet;
+    private Worksheet worksheet;
 
     @ManyToOne
     @JsonIgnore
@@ -26,12 +26,19 @@ public class Activity {
 
     public Activity() {}
 
-    public Activity(String title, String description, User user) {
+//    public Activity(String title, String description) {
+//        this.title = title;
+//        this.description = description;
+////        this.worksheets = new ArrayList<>(Arrays.asList(worksheets));
+////        this.worksheet = worksheet;
+//    }
+
+    public Activity(String title, String description) {
         this.title = title;
         this.description = description;
         this.user = user;
 //        this.worksheets = new ArrayList<>(Arrays.asList(worksheets));
-//        this.worksheet = worksheet;
+        this.worksheet = worksheet;
     }
 
     public long getId() {
@@ -54,9 +61,9 @@ public class Activity {
 //        return worksheets;
 //    }
 
-//    public pubic getWorksheet() {
-//        return worksheet;
-//    }
+    public Worksheet getWorksheet() {
+        return worksheet;
+    }
 
     @Override
     public boolean equals(Object o) {
