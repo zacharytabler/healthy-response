@@ -38,7 +38,7 @@ export default function HomePage() {
         </div>
         </div>
         </div>
-        <div class="inspirational_quote__container quote inspoQuote"></div>
+        <div class="inspirational_quote__container"></div>
         <div class="testGrid">
         <img class="T1" src="${Test1}" alt="" />
         <div class="boxText T2">
