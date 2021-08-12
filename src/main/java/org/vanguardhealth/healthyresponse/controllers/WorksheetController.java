@@ -27,7 +27,7 @@ public class WorksheetController {
     }
 
     @GetMapping("/worksheets/{id}")
-    public Collection<Worksheet> getWorksheets(@PathVariable Long id) {
-        return worksheetRepo.findById().get();
+    public Worksheet getWorksheet(@PathVariable Long id) {
+        return worksheetRepo.findById(id).get();
     }
 }
