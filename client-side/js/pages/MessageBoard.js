@@ -10,8 +10,10 @@ export default function MessageBoard(messages) {
         <p class="subject">${post.content}</p>
         </div>
         <div class="reply">
-        <input type="text" class="replyContent" placeholder="Enter Reply">
-        <button class="replyButton">Send</button>
+        <input type="text" class="replyTitlet" placeholder="Reply Title">
+        <input type="text" class="replySubject" placeholder="Reply Subject">
+        <input type="text" class="replyContent" placeholder="Reply Content">
+        <button class="replyButton"></button>
         </div>
         `;
       })
