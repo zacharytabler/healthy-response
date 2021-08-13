@@ -67,8 +67,8 @@ public class Populator implements CommandLineRunner {
         String activityTitle1 = "Reframing Critical Self Talk";
         String activityTitle2 = "Strengths Spotting by Exception Finding";
 
-        Worksheet worksheet1 = new Worksheet(activityTitle1, false);
-        Worksheet worksheet2 = new Worksheet(activityTitle2, true);
+        Worksheet worksheet1 = new Worksheet(activityTitle1 + " Worksheet", false);
+        Worksheet worksheet2 = new Worksheet(activityTitle2 + " Worksheet", true);
 
         worksheetRepo.save(worksheet1);
         worksheetRepo.save(worksheet2);
@@ -78,8 +78,6 @@ public class Populator implements CommandLineRunner {
 
         Activity activity1 = new Activity(activityTitle1, activityDescription1, worksheet1);
         Activity activity2 = new Activity(activityTitle2, activityDescription2, worksheet2);
-
-
 
         activityRepo.save(activity1);
         activityRepo.save(activity2);
