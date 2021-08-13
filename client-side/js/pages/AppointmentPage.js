@@ -1,6 +1,8 @@
 export default function AppointmentPage() {
   return `
   <link rel="stylesheet" href="css/form.css">
+  
+
     <h1>Schedule an appointment</h1>
     
     <div class="container">
