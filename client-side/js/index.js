@@ -151,6 +151,12 @@ function createIntakeProfile() {
           status: status,
           aboutMe: aboutMe,
         },
+        (users) => (app.innerHTML = userWelcome(users))
+      );
+    }
+  });
+}
+
 
 function populateAssessmentMenu() {
   app.innerHTML = AssessmentPage();
