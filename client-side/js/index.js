@@ -60,7 +60,6 @@ function buildPage() {
   myInbox();
   replyPost();
 }
-console.log();
 
 function navUserProfile() {
   const profilePage = document.querySelector(".nav__list_profile");
@@ -167,13 +166,10 @@ function populateAssessmentMenu() {
     ) {
       const mood =
         event.target.parentElement.querySelector(".intakeMood").value;
-      console.log(mood);
       const trigger =
         event.target.parentElement.querySelector(".intakeTrigger").value;
-      console.log(trigger);
       const copingMechanism =
         event.target.parentElement.querySelector(".intakeCoping").value;
-      console.log(copingMechanism);
       apiActions.postRequest(
         "http://localhost:8080/send_response",
         {
@@ -414,10 +410,10 @@ function initSlideShow(slideshow) {
   }, time);
 }
 
+
 function assessment() {
   const assessmentElement = document.querySelector(".assessmentButton");
   assessmentElement.addEventListener("click", () => {
-    console.log("Firing!");
     app.innerHTML = AssessmentPage();
     populateAssessmentMenu();
   });
@@ -429,30 +425,29 @@ function home() {
     app.innerHTML = HomePage();
     slideShow();
     assessment();
+    const url = "https://type.fit/api/quotes";
+    const quoteDiv = document.querySelector('.inspirational_quote__container');
+    getAffirmationApi(url, quoteDiv);
   });
 }
 
-function getAffirmationApi(url) {
-  const affirmation_api_url = "https://type.fit/api/quotes";
+function getAffirmationApi(url, quoteDiv) {
   // const affirmation_api_url ="https://zenquotes.io/api/quotes/";
   // const affirmation_api_url = 'https://zenquotes.io/api/today/';
-  const quoteDiv = document.querySelector(".inspirational_quote__container");
-  quoteDiv.onload = () => {
-    apiActions.getRequest(url, (quotes) => {
-      quoteDiv.innerHTML = InspirationalQuote(
-        quotes[Math.floor(Math.random() * quotes.length)]
-      );
 
-      // quotes.forEach((quote, index) => {
-      //   quoteDiv.innerHTML = InspirationalQuote(quote);
-      // });
 
-      // apiActions.getRequest(url, (quote) => {
-      //     console.log(quote);
-      //     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
-      // });
-    });
-  };
+  apiActions.getRequest(url, (quotes) => {
+      quoteDiv.innerHTML = InspirationalQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+    // quotes.forEach((quote, index) => {
+    //   quoteDiv.innerHTML = InspirationalQuote(quote);
+    // });
+  });
+
+// apiActions.getRequest(url, (quote) => {
+//     console.log(quote);
+//     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
+// });
+
 }
 
 function activities() {
