@@ -98,6 +98,10 @@ function renderUserLogin() {
       );
     }
   });
+    const headerElement = document.querySelector(".header");
+    headerElement.innerHTML = "";
+    const footerElement = document.querySelector(".footer");
+    footerElement.innerHTML = "";
 }
 function populateAssessmentMenu() {
   app.innerHTML = AssessmentPage();
