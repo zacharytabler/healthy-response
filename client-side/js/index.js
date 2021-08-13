@@ -30,6 +30,7 @@ import "../css/home_page.css";
 import "../css/login.css";
 import InboxPage from "./pages/InboxPage";
 import MessageBoard from "./pages/MessageBoard";
+import IntakeForm from "./IntakeForm";
 
 const app = document.querySelector("#app");
 
@@ -56,13 +57,15 @@ function buildPage() {
   loginDraft();
   activities();
   messageBoard();
+  myInbox();
+  replyPost();
 }
 
 function navUserProfile() {
   const profilePage = document.querySelector(".nav__list_profile");
   profilePage.addEventListener("click", () => {
     const app = document.querySelector("#app");
-    apiActions.getRequest("http://localhost:8080/users", (user) => {
+    apiActions.getRequest("http://localhost:8080/intake_profile", (user) => {
       app.innerHTML = userWelcome(user);
     });
   });
@@ -91,13 +94,69 @@ function renderUserLogin() {
           userName: userName,
           password: password,
         },
-        (app.innerHTML = HomePage()),
-        assessment(),
+        (app.innerHTML = IntakeForm()),
+        createIntakeProfile(),
+        header(),
+        footer(),
+        home(),
+        moods(),
+        triggers(),
+        copingMechanisms(),
+        consequences(),
+        results(),
+        alternatives(),
+        responses(),
+        reviews(),
+        about(),
+        navUserProfile(),
+        contact(),
+        appointment(),
+        legal(),
+        activities(),
+        messageBoard(),
+        (users) => (app.innerHTML = userWelcome(users))
+      );
+    }
+  });
+    const headerElement = document.querySelector(".header");
+  headerElement.innerHTML = "";
+  const footerElement = document.querySelector(".footer");
+  footerElement.innerHTML = "";
+}
+
+function createIntakeProfile() {
+  app.innerHTML = IntakeForm();
+  app.addEventListener("click", (event) => {
+    if (event.target.classList.contains("submitProfile")) {
+      const firstName =
+        event.target.parentElement.querySelector(".firstName").value;
+      const lastName =
+        event.target.parentElement.querySelector(".lastName").value;
+      const ethnicity =
+        event.target.parentElement.querySelector(".ethnicity").value;
+      const city = event.target.parentElement.querySelector(".city").value;
+      const state = event.target.parentElement.querySelector(".state").value;
+      const status = event.target.parentElement.querySelector(".status").value;
+      const aboutMe =
+        event.target.parentElement.querySelector(".aboutMe").value;
+      apiActions.postRequest(
+        "http://localhost:8080/create_intake_profile",
+        {
+          firstName: firstName,
+          lastName: lastName,
+          ethnicity: ethnicity,
+          city: city,
+          state: state,
+          status: status,
+          aboutMe: aboutMe,
+        },
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
   });
 }
+
+
 function populateAssessmentMenu() {
   app.innerHTML = AssessmentPage();
   const assessmentButton = document.querySelector(".assessBtn");
@@ -123,28 +182,20 @@ function populateAssessmentMenu() {
           if (r == true) {
             app.innerHTML = Outbox();
             outbox();
-          } else {
-            apiActions.getRequest("http://localhost:8080/users", (user) => {
-              app.innerHTML = userWelcome(user);
-            });
+          } else if (r == false) {
+            apiActions.getRequest(
+              "http://localhost:8080/intake_profile",
+              (user) => {
+                app.innerHTML = userWelcome(user);
+              }
+            );
           }
         },
         (responses) => (app.innerHTML = ResponsesPage(responses))
       );
     }
   });
-}
-
-function renderUser() {
-  app.innerHTML = userWelcome();
-  app.addEventListener("click", (event) => {
-    if (event.target.classList.contains(".userName")) {
-      const userId = event.target.parentElement.querySelector("#userId").value;
-      apiActions.getRequest(userId, (user) => {
-        app.innerHTML = userInfo(user);
-      });
-    }
-  });
+  (messages) => (app.innerHTML = MessageBoard(messages));
 }
 
 function loginDraft() {
@@ -152,6 +203,10 @@ function loginDraft() {
   homeElement.addEventListener("click", () => {
     app.innerHTML = HomePage();
   });
+  const headerElement = document.querySelector(".header");
+  headerElement.innerHTML = "";
+  const footerElement = document.querySelector(".footer");
+  footerElement.innerHTML = "";
 }
 
 function moods() {
@@ -178,23 +233,46 @@ function outbox() {
           title: title,
           content: content,
         },
+        
+        apiActions.getRequest(
+          "http://localhost:8080/view_messages",
+          (messages) => {
+            app.innerHTML = MessageBoard(messages);
+            alert("Message Sent!")
+          }
+        ),
 
-        alert("Message Sent!"),
-        (app.innerHTML = InboxPage()),
+        (messages) => (app.innerHTML = InboxPage(messages)),
         (messages) => (app.innerHTML = MessageBoard(messages))
       );
     }
   });
 }
 
-function replyPost(){
-  app.addEventListener('click',(event)=>{
-    if(event.target.classList.contains("replyButton")){
-      const content = event.target.parentElement.querySelector('.replycontent').value;
-    }
-  })
-}
+function replyPost() {
+  app.addEventListener("click", (event) => {
+    if (event.target.classList.contains("replyButton")) {
+      const content =
+        event.target.parentElement.querySelector(".replycontent").value;
 
+      apiActions.postRequest(
+        "http://localhost:8080/post_message",
+        {
+          subject: subject,
+          title: title,
+          content: content,
+        },
+        console.log(content),
+
+        alert("Reply Sent!"),
+
+        (messages) => (app.innerHTML = MessageBoard(messages)),
+        (message) => (app.innerHTML = InboxPage(message))
+      );
+
+    }
+  });
+}
 
 function messageBoard() {
   const messageBoard = document.querySelector(".nav__list_messageBoard");
@@ -205,11 +283,15 @@ function messageBoard() {
   });
 }
 
-function myInbox(){
-  const myMessages = document.querySelector('.nav__list_message');
-  myMessages.addEventListener("click",()=>{
-    apiActions.getRequest
-  })
+function myInbox() {
+  const myMessages = document.querySelector(".nav__list_message");
+  myMessages.addEventListener("click", () => {
+
+    apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
+      app.innerHTML = InboxPage(messages);
+    });
+
+  });
 }
 function triggers() {
   const triggerElement = document.querySelector(".nav__list_triggers");
@@ -328,12 +410,6 @@ function initSlideShow(slideshow) {
   }, time);
 }
 
-function assessment() {
-  const assessmentElement = document.querySelector(".assessmentButton");
-  assessmentElement.addEventListener("click", () => {
-    app.innerHTML = AssessmentPage();
-  });
-}
 
 function assessment() {
   const assessmentElement = document.querySelector(".assessmentButton");

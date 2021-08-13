@@ -1,18 +1,19 @@
 package org.vanguardhealth.healthyresponse.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class User {
+
 
     @Id
     @GeneratedValue
     private Long id;
 
+    @OneToOne
+    public IntakeProfile intakeProfile;
 
     private String userName;
     private String password;
@@ -28,6 +29,9 @@ public class User {
 
     @OneToMany(mappedBy="user")
     private Collection<Activity> activities;
+
+
+
 
     public Long getId() {
         return id;
@@ -64,6 +68,8 @@ public class User {
     public User(String userName,String password){
         this.userName = userName;
         this.password = password;
+
+
     }
     public User(String userName, String password, String role) {
         this.userName=userName;
@@ -85,5 +91,11 @@ public class User {
     }
 
 
-
+//    public void addProfile(Set<IntakeProfile> profile) {
+//        intakeProfile.add(profile);
+//    }
+//
+//    public Collection<Set<IntakeProfile>> getIntakeProfile() {
+//        return intakeProfile;
+//    }
 }
