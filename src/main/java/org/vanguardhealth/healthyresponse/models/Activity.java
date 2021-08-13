@@ -3,22 +3,18 @@ package org.vanguardhealth.healthyresponse.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 public class Activity {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     private String title;
     @Lob
     private String description;
-//    @OneToMany
-//    private Collection<Worksheet> worksheets;
-//    private Worksheet worksheet;
+    @OneToOne
+    private Worksheet worksheet;
 
     @ManyToOne
     @JsonIgnore
@@ -26,15 +22,21 @@ public class Activity {
 
     public Activity() {}
 
-    public Activity(String title, String description, User user) {
+    public Activity(String title, String description, Worksheet worksheet) {
+        this.title = title;
+        this.description = description;
+        this.worksheet = worksheet;
+    }
+
+//    may not be necessary - revisit after worksheets are built out
+    public Activity(String title, String description, Worksheet worksheet, User user) {
         this.title = title;
         this.description = description;
         this.user = user;
-//        this.worksheets = new ArrayList<>(Arrays.asList(worksheets));
-//        this.worksheet = worksheet;
+        this.worksheet = worksheet;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -53,10 +55,9 @@ public class Activity {
     //    public Collection<Worksheet> getWorksheets() {
 //        return worksheets;
 //    }
-
-//    public pubic getWorksheet() {
-//        return worksheet;
-//    }
+    public Worksheet getWorksheet() {
+        return worksheet;
+    }
 
     @Override
     public boolean equals(Object o) {

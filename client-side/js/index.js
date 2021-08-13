@@ -97,10 +97,32 @@ function renderUserLogin() {
         },
         (app.innerHTML = IntakeForm()),
         createIntakeProfile(),
+        header(),
+        footer(),
+        home(),
+        moods(),
+        triggers(),
+        copingMechanisms(),
+        consequences(),
+        results(),
+        alternatives(),
+        responses(),
+        reviews(),
+        about(),
+        navUserProfile(),
+        contact(),
+        appointment(),
+        legal(),
+        activities(),
+        messageBoard(),
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
   });
+    const headerElement = document.querySelector(".header");
+  headerElement.innerHTML = "";
+  const footerElement = document.querySelector(".footer");
+  footerElement.innerHTML = "";
 }
 
 function createIntakeProfile() {
@@ -129,11 +151,7 @@ function createIntakeProfile() {
           status: status,
           aboutMe: aboutMe,
         },
-        (users) => (app.innerHTML = userWelcome(users))
-      );
-    }
-  });
-}
+
 function populateAssessmentMenu() {
   app.innerHTML = AssessmentPage();
   const assessmentButton = document.querySelector(".assessBtn");
@@ -183,6 +201,10 @@ function loginDraft() {
   homeElement.addEventListener("click", () => {
     app.innerHTML = HomePage();
   });
+  const headerElement = document.querySelector(".header");
+  headerElement.innerHTML = "";
+  const footerElement = document.querySelector(".footer");
+  footerElement.innerHTML = "";
 }
 
 function moods() {
@@ -230,6 +252,7 @@ function replyPost() {
     if (event.target.classList.contains("replyButton")) {
       const content =
         event.target.parentElement.querySelector(".replycontent").value;
+
       apiActions.postRequest(
         "http://localhost:8080/post_message",
         {
@@ -244,6 +267,7 @@ function replyPost() {
         (messages) => (app.innerHTML = MessageBoard(messages)),
         (message) => (app.innerHTML = InboxPage(message))
       );
+
     }
   });
 }
@@ -260,9 +284,11 @@ function messageBoard() {
 function myInbox() {
   const myMessages = document.querySelector(".nav__list_message");
   myMessages.addEventListener("click", () => {
+
     apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
       app.innerHTML = InboxPage(messages);
     });
+
   });
 }
 function triggers() {
