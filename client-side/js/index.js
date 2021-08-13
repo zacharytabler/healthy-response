@@ -94,10 +94,32 @@ function renderUserLogin() {
         },
         (app.innerHTML = HomePage()),
         assessment(),
+        header(),
+        footer(),
+        home(),
+        moods(),
+        triggers(),
+        copingMechanisms(),
+        consequences(),
+        results(),
+        alternatives(),
+        responses(),
+        reviews(),
+        about(),
+        navUserProfile(),
+        contact(),
+        appointment(),
+        legal(),
+        activities(),
+        messageBoard(),
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
   });
+  const headerElement = document.querySelector(".header");
+  headerElement.innerHTML = "";
+  const footerElement = document.querySelector(".footer");
+  footerElement.innerHTML = "";
 }
 function populateAssessmentMenu() {
   app.innerHTML = AssessmentPage();
@@ -156,6 +178,10 @@ function loginDraft() {
   homeElement.addEventListener("click", () => {
     app.innerHTML = HomePage();
   });
+  const headerElement = document.querySelector(".header");
+  headerElement.innerHTML = "";
+  const footerElement = document.querySelector(".footer");
+  footerElement.innerHTML = "";
 }
 
 function moods() {
@@ -192,14 +218,14 @@ function outbox() {
   });
 }
 
-function replyPost(){
-  app.addEventListener('click',(event)=>{
-    if(event.target.classList.contains("replyButton")){
-      const content = event.target.parentElement.querySelector('.replycontent').value;
+function replyPost() {
+  app.addEventListener("click", (event) => {
+    if (event.target.classList.contains("replyButton")) {
+      const content =
+        event.target.parentElement.querySelector(".replycontent").value;
     }
-  })
+  });
 }
-
 
 function messageBoard() {
   const messageBoard = document.querySelector(".nav__list_messageBoard");
@@ -210,11 +236,11 @@ function messageBoard() {
   });
 }
 
-function myInbox(){
-  const myMessages = document.querySelector('.nav__list_message');
-  myMessages.addEventListener("click",()=>{
-    apiActions.getRequest
-  })
+function myInbox() {
+  const myMessages = document.querySelector(".nav__list_message");
+  myMessages.addEventListener("click", () => {
+    apiActions.getRequest;
+  });
 }
 function triggers() {
   const triggerElement = document.querySelector(".nav__list_triggers");
