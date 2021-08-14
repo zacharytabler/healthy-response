@@ -5,8 +5,8 @@ export default function Header() {
   <nav>
   	<input type="checkbox">
 	<label>&equiv;</label>
-        <ul  class="nav__header">
-            <li class='nav__list_home'>Home</li>
+        <ul class="nav__header"  onclick"toggleNav()" id="navLinks">
+            <li class='link nav__list_home' id="toggleNav">Home</li>
             <li class='nav__list_message'>My Messages</li>
             <li class='nav__list_profile'>Profile</li>
             <li class='nav__list_messageBoard'>Message Board</li>
@@ -21,6 +21,9 @@ export default function Header() {
             <li class='nav__list_reviews'>Reviews</li>
             <li class='nav__list_appointment'>Appointment</li>
         </ul>
+        <a class="icon" id="toggleNav">
+    <i class="fa fa-bars"></i>
+  </a>
     </nav>
         `;
 }

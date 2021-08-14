@@ -62,6 +62,29 @@ function buildPage() {
 }
 console.log();
 
+
+
+function toggleNav() {
+  const header = document.querySelector(".header");
+    
+      header.addEventListener("click", (event) => {
+        if (
+          event.target.classList.contains("icon") ||
+          event.target.classList.contains("link")
+        ) {
+          const navItems = document.getElementById("navLinks");
+         console.log(navItems);
+          if (navItems.style.display === "none") {
+            navItems.style.display = "block";
+          } else {
+            navItems.style.display = "none";
+          }
+        }
+      });
+    } 
+ 
+
+
 function navUserProfile() {
   const profilePage = document.querySelector(".nav__list_profile");
   profilePage.addEventListener("click", () => {
@@ -115,6 +138,7 @@ function renderUserLogin() {
         legal(),
         activities(),
         messageBoard(),
+        toggleNav(),
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
