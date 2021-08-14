@@ -1,4 +1,5 @@
 package org.vanguardhealth.healthyresponse.repositories;
 
 public interface AppointmentRepo {
+    Object findAll();
 }
