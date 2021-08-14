@@ -176,6 +176,15 @@ function moods() {
   });
 }
 
+function messageBoard() {
+  const messageBoard = document.querySelector(".nav__list_messageBoard");
+  messageBoard.addEventListener("click", () => {
+    apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
+      app.innerHTML = MessageBoard(messages);
+    });
+  });
+}
+
 function outbox() {
   app.addEventListener("click", (event) => {
     if (event.target.classList.contains("sendMessage")) {
@@ -191,24 +200,11 @@ function outbox() {
           title: title,
           content: content,
         },
-        console.log(subject, title, content),
-
-        alert("Message Sent!"),
-       
-        (messages) => (app.innerHTML = MessageBoard(messages)),
-        app.innerHTML = MessageBoard()
+        (messages) => app.innerHTML = MessageBoard(messages),
+        alert("Message Sent!")
       );
     }
-  });
-}
-
-function messageBoard() {
-  const messageBoard = document.querySelector(".nav__list_messageBoard");
-  messageBoard.addEventListener("click", () => {
-    apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
-      app.innerHTML = MessageBoard(messages);
-    });
-  });
+  })
 }
 
 function myInbox() {
