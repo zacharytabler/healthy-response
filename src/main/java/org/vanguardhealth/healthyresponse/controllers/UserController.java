@@ -3,8 +3,7 @@ package org.vanguardhealth.healthyresponse.controllers;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
-import org.vanguardhealth.healthyresponse.models.CopingMechanism;
-import org.vanguardhealth.healthyresponse.models.Mood;
+import org.vanguardhealth.healthyresponse.models.Message;
 import org.vanguardhealth.healthyresponse.models.User;
 import org.vanguardhealth.healthyresponse.repositories.*;
 
@@ -18,15 +17,7 @@ public class UserController {
     @Resource
     private UserRepo userRepo;
     @Resource
-    private CopingMechanismRepo copingRepo;
-    @Resource
-    private ResultRepo resultRepo;
-    @Resource
-    private ConsequenceRepo consequenceRepo;
-    @Resource
-    private TriggerRepo triggerRepo;
-    @Resource
-    private MoodRepo moodRepo;
+    private MessageRepository messageRepo;
 
 
     @GetMapping("/users")
@@ -38,25 +29,11 @@ public class UserController {
         return userRepo.findById(id).get();
     }
 
-    @GetMapping("users/{userId}/coping/{copingId}")
-    public CopingMechanism getUserByCoping(@PathVariable Long userId, @PathVariable Long copingId){
-        User foundUser = userRepo.findById(userId).get();
-        Optional<CopingMechanism> copingMechanismOpt = copingRepo.findById(copingId);
-        if(copingMechanismOpt.isPresent()){
-            foundUser.getCopingMechanism();
-        }
-
-return foundUser.getCopingMechanism();
-    }
     @PostMapping(value = "/create_user_profile")
     public Iterable<User> createUserProfile(@RequestBody String body)throws JSONException{
         JSONObject newUser = new JSONObject(body);
         String userName = newUser.getString("userName");
         String password = newUser.getString("password");
-
-//        Mood mood = (Mood) newUser.get("mood");
-//        Trigger trigger = (Trigger) newUser.get("trigger");
-//        CopingMechanism copingMechanism = (CopingMechanism) newUser.get("copingMechanism");
         Optional<User> optionalUser = userRepo.findByUserName(userName);
 
         if(optionalUser.isEmpty()){
@@ -65,6 +42,21 @@ return foundUser.getCopingMechanism();
         }
         return userRepo.findAll();
 
+    }
+    @PostMapping(value = "/user/{id}/post_reply")
+    public Optional <User> postMessageReply(@RequestBody String body, @PathVariable Long id)throws JSONException{
+        JSONObject newPost = new JSONObject(body);
+        String content = newPost.getString("content");
+        Optional<Message> optionalMessage = messageRepo.findByContent(content);
+
+        if(optionalMessage.isPresent()){
+            Optional <User> userToAddMessageToOpt = userRepo.findById(id);
+            User userToAddMessageTo = userToAddMessageToOpt.get();
+            userToAddMessageTo.addMessage(optionalMessage.get());
+            userRepo.save(userToAddMessageTo);
+
+        }
+        return userRepo.findById(id);
     }
 
 }

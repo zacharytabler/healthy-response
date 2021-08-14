@@ -23,9 +23,7 @@ public class CopingMechanism {
     @ManyToMany
     private Collection <Consequence> consequences;
 
-    @OneToMany(mappedBy = "copingMechanism",fetch = FetchType.LAZY)
-    @JsonIgnore
-    private Collection<User> users;
+
 
     public Long getId() {
         return id;

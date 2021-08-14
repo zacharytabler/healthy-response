@@ -27,7 +27,9 @@ public class MessageController {
     public Message viewMessage(@PathVariable Long id){
         return messageRepo.findById(id).get();
     }
-    @PostMapping(value = "/post_message")
+
+
+    @PostMapping("/post_message")
     public Iterable<Message> postMessage(@RequestBody String body)throws JSONException{
         JSONObject newPost = new JSONObject(body);
         String subject = newPost.getString("subject");

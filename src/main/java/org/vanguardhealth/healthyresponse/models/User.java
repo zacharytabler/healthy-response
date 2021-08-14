@@ -1,10 +1,7 @@
 package org.vanguardhealth.healthyresponse.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class User {
@@ -16,18 +13,16 @@ public class User {
 
     private String userName;
     private String password;
-    private String role;
-    @ManyToOne
-    private Mood mood;
 
-    @ManyToOne
-    public Trigger trigger;
-
-    @ManyToOne
-    private CopingMechanism copingMechanism;
+    @OneToMany(mappedBy = "user")
+    private Set<Message> myMessages;
 
     @OneToMany(mappedBy="user")
     private Collection<Activity> activities;
+
+    public void addMessage(Message messageToAdd){
+        myMessages.add(messageToAdd);
+    }
 
     public Long getId() {
         return id;
@@ -41,35 +36,20 @@ public class User {
         return password;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public Mood getMood() {
-        return  mood;
-    }
-
-    public Trigger getTrigger() {
-        return trigger;
-    }
-    public CopingMechanism getCopingMechanism() {
-        return copingMechanism;
-    }
-
     public Collection<Activity> getActivities() {
         return activities;
     }
 
     public User(){}
-    public User(String userName,String password){
+    public User(String userName, String password){
         this.userName = userName;
         this.password = password;
+        this.myMessages = new HashSet<>();
     }
-    public User(String userName, String password, String role) {
-        this.userName=userName;
-        this.password=password;
-        this.role = role;
-    }
+//    public User(String userName, String password) {
+//        this.userName=userName;
+//        this.password=password;
+//    }
 
     @Override
     public boolean equals(Object o) {

@@ -138,6 +138,15 @@ function populateAssessmentMenu() {
     }
   });
 }
+function replyPost() {
+  app.innerHTML = MessageBoard();
+  app.addEventListener("click", (event) => {
+    if (event.target.classList.contains("replyButton")) {
+      console.log(event);
+      // const content = event.target.parentElement.querySelector('.replycontent').value;
+    }
+  });
+}
 
 function renderUser() {
   app.innerHTML = userWelcome();
@@ -185,21 +194,13 @@ function outbox() {
         console.log(subject, title, content),
 
         alert("Message Sent!"),
-        (app.innerHTML = InboxPage()),
-        (messages) => (app.innerHTML = MessageBoard(messages))
+       
+        (messages) => (app.innerHTML = MessageBoard(messages)),
+        app.innerHTML = MessageBoard()
       );
     }
   });
 }
-
-function replyPost(){
-  app.addEventListener('click',(event)=>{
-    if(event.target.classList.contains("replyButton")){
-      const content = event.target.parentElement.querySelector('.replycontent').value;
-    }
-  })
-}
-
 
 function messageBoard() {
   const messageBoard = document.querySelector(".nav__list_messageBoard");
@@ -210,11 +211,11 @@ function messageBoard() {
   });
 }
 
-function myInbox(){
-  const myMessages = document.querySelector('.nav__list_message');
-  myMessages.addEventListener("click",()=>{
-    apiActions.getRequest
-  })
+function myInbox() {
+  const myMessages = document.querySelector(".nav__list_message");
+  myMessages.addEventListener("click", () => {
+    apiActions.getRequest;
+  });
 }
 function triggers() {
   const triggerElement = document.querySelector(".nav__list_triggers");
