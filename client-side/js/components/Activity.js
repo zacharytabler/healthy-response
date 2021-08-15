@@ -1,3 +1,5 @@
+import Worksheet from './Worksheet';
+
 export default function Activity(activity) {
     console.log(activity.worksheet.acceptUserInput);
     return `

@@ -1,7 +1,7 @@
-import Activity from './Activity'
+import Activity from './Activity';
 
 export default function Activities(activities) {
-    return`
+    return `
         <div class="activities__container">
             ${activities.map(activity => {
                 console.log(activity);

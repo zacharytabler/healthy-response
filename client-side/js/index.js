@@ -462,13 +462,13 @@ function activities() {
   // putWorksheet();
 }
 
-function activity() {
+function activityWorksheet(activity) {
   app.addEventListener('click', (event) => {
     if (event.target.classList.contains('activity__title')) {
       const worksheetUrl = event.target.parentElement.querySelector('worksheetTitle').value;
-      if ()
-      apiActions.getRequest(worksheetUrl, (worksheet) => {
-        app.innerHTML = 
+      // if (activity.worksheetUrl.)
+      apiActions.getRequest(worksheetUrl, (Worksheet) => {
+        app.innerHTML = WorksheetPage(worksheet);
       }) 
     }
   });

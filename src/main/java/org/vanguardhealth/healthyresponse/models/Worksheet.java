@@ -30,7 +30,6 @@ public class Worksheet {
     private String answer10;
 
     @ManyToOne
-    @JsonIgnore
     private User user;
 
     public Worksheet() {}
