@@ -30,8 +30,6 @@ public class Populator implements CommandLineRunner {
     @Resource
     private WorksheetRepo worksheetRepo;
 
-
-
     @Override
     public void run(String... args) throws Exception {
 
@@ -58,6 +56,7 @@ public class Populator implements CommandLineRunner {
         moodRepo.save(suicidal);
 
 //      =========================================================================================
+
 
         User user1 = new User("user1", "user1");
         User admin1 = new User("admin1", "admin1");
@@ -92,12 +91,7 @@ public class Populator implements CommandLineRunner {
 //        user1.addWorksheet(worksheet2);
 
 //      =========================================================================================
-
-
-
-
-//      =========================================================================================
-
+        
         Trigger finances = new Trigger("Financial Issues","Having financial problems means being unable to pay debts over the short or long term. ... " +
                 "Financial difficulties become a source of stress until all debts are paid.");
         Trigger domestic = new Trigger("Relationship Issues","\"domestic relationship\" means a personal relationship between 2 adults in which one " +
