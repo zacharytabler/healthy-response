@@ -37,10 +37,7 @@ public class Mood {
     public Long getId() {
         return id;
     }
-      
-    public Collection<User> getUsers() {
-        return users;
-    }
+
     public Collection<Trigger> getTrigger() {
         return trigger;
     }
