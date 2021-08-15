@@ -193,7 +193,8 @@ function populateAssessmentMenu() {
             );
           }
         },
-        (responses) => (app.innerHTML = ResponsesPage(responses))
+        (responses) => (app.innerHTML = ResponsesPage(responses)),
+        console.log(responses)
       );
     }
   });
@@ -279,9 +280,6 @@ function myInbox() {
     apiActions.getRequest;
   });
 }
-
-        
-
 
 function replyPost() {
   app.addEventListener("click", (event) => {
@@ -430,6 +428,7 @@ function slideShow() {
   const slideshows = document.querySelectorAll(".slideshow");
   slideshows.forEach(initSlideShow);
 }
+
 function initSlideShow(slideshow) {
   var slides = slideshow
     .querySelector("div")
@@ -444,7 +443,6 @@ function initSlideShow(slideshow) {
     slides[index].classList.add("active");
   }, time);
 }
-
 
 function assessment() {
   const assessmentElement = document.querySelector(".assessmentButton");

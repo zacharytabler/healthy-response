@@ -14,6 +14,13 @@ public class Trigger {
     private String name;
     @Lob
     private String description;
+    private String triggerImage;
+    private String triggerArticle1;
+    private String triggerArticle2;
+    private String triggerArticle3;
+    private String triggerPhoneResource1;
+    private String triggerPhoneResource2;
+    private String triggerPhoneResource3;
     @ManyToMany(mappedBy = "trigger")
     private Collection<Mood> mood;
 
@@ -32,15 +39,50 @@ public class Trigger {
         return description;
     }
 
+    public String getTriggerImage() {
+        return triggerImage;
+    }
+
+    public String getTriggerArticle1() {
+        return triggerArticle1;
+    }
+
+    public String getTriggerArticle2() {
+        return triggerArticle2;
+    }
+
+    public String getTriggerArticle3() {
+        return triggerArticle3;
+    }
+
+    public String getTriggerPhoneResource1() {
+        return triggerPhoneResource1;
+    }
+
+    public String getTriggerPhoneResource2() {
+        return triggerPhoneResource2;
+    }
+
+    public String getTriggerPhoneResource3() {
+        return triggerPhoneResource3;
+    }
+
     public Long getId() {
         return id;
     }
 
     public Trigger(){}
 
-    public Trigger(String name, String description, CopingMechanism...copingMechanism){
+    public Trigger(String name, String description, String triggerImage, String triggerArticle1, String triggerArticle2, String triggerArticle3, String triggerPhoneResource1, String triggerPhoneResource2, String triggerPhoneResource3, CopingMechanism...copingMechanism){
         this.name = name;
         this.description = description;
+        this.triggerImage = triggerImage;
+        this.triggerArticle1 = triggerArticle1;
+        this.triggerArticle2 = triggerArticle2;
+        this.triggerArticle3 = triggerArticle3;
+        this.triggerPhoneResource1 = triggerPhoneResource1;
+        this.triggerPhoneResource2 = triggerPhoneResource2;
+        this.triggerPhoneResource3 = triggerPhoneResource3;
         this.copingMechanism = Arrays.asList(copingMechanism);
     }
     public Trigger(String name,String description){
