@@ -6,7 +6,7 @@ import javax.persistence.Id;
 public class Appointment {
     @Id
     @GeneratedValue
-
+    private final long id;
     private String date;
     private String time;
     private String martialStatus;
@@ -18,7 +18,8 @@ public class Appointment {
     private String email;
 
 
-    public Appointment(String date, String time, String martialStatus, String disability, String veteranStatus, String subject, String contact_name, String phoneNumber, String email) {
+    public Appointment(long id, String date, String time, String martialStatus, String disability, String veteranStatus, String subject, String contact_name, String phoneNumber, String email) {
+        this.id = id;
         this.date = date;
         this.time = time;
         this.martialStatus = martialStatus;
@@ -28,6 +29,10 @@ public class Appointment {
         this.contact_name = contact_name;
         this.phoneNumber = phoneNumber;
         this.email = email;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getDate() {
