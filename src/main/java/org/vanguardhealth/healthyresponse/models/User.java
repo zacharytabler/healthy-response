@@ -27,11 +27,11 @@ public class User {
     @ManyToOne
     private CopingMechanism copingMechanism;
 
+//    @OneToMany(mappedBy="user")
+//    private Collection<Activity> activities;
+
     @OneToMany(mappedBy="user")
-    private Collection<Activity> activities;
-
-
-
+    private Collection<Worksheet> worksheets;
 
     public Long getId() {
         return id;
@@ -60,18 +60,22 @@ public class User {
         return copingMechanism;
     }
 
-    public Collection<Activity> getActivities() {
-        return activities;
+    public Collection<Worksheet> getWorksheets() {
+        return worksheets;
+    }
+
+    public void addWorksheet(Worksheet worksheetToAdd) {
+        worksheets.add(worksheetToAdd);
     }
 
     public User(){}
-    public User(String userName,String password){
+    public User(String userName,String password, Worksheet...worksheets){
         this.userName = userName;
         this.password = password;
 
 
     }
-    public User(String userName, String password, String role) {
+    public User(String userName, String password, String role, Worksheet...worksheets) {
         this.userName=userName;
         this.password=password;
         this.role = role;

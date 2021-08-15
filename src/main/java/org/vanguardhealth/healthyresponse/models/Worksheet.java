@@ -11,10 +11,11 @@ public class Worksheet {
     @GeneratedValue
     private Long id;
     private String title;
-//    @OneToOne(mappedBy = "worksheet")
-    @OneToOne
-    private Activity activity;
+    private int timeStamp;
     private boolean acceptUserInput;
+
+    @ManyToOne
+    private Activity activity;
 
     private String instructions;
     private String answer1;
@@ -37,6 +38,7 @@ public class Worksheet {
     public Worksheet(String title, boolean acceptUserInput) {
         this.title = title;
         this.acceptUserInput = acceptUserInput;
+        this.timeStamp = timeStamp;
         this.activity = activity;
         this.instructions = instructions;
         this.answer1 = answer1;
@@ -54,6 +56,7 @@ public class Worksheet {
     public Worksheet(String title, boolean acceptUserInput, User user, String answer1) {
         this.title = title;
         this.acceptUserInput = acceptUserInput;
+        this.timeStamp = timeStamp;
         this.user = user;
         this.answer1 = answer1;
         this.answer2 = answer2;
@@ -77,6 +80,10 @@ public class Worksheet {
 
     public boolean isAcceptUserInput() {
         return acceptUserInput;
+    }
+
+    public int getTimeStamp() {
+        return timeStamp;
     }
 
     public Activity getActivity() {
