@@ -41,12 +41,6 @@ function buildPage() {
   footer();
   renderUserLogin();
   home();
-  moods();
-  triggers();
-  copingMechanisms();
-  consequences();
-  results();
-  alternatives();
   responses();
   reviews();
   about();
@@ -138,12 +132,6 @@ function renderUserLogin() {
         header(),
         footer(),
         home(),
-        moods(),
-        triggers(),
-        copingMechanisms(),
-        consequences(),
-        results(),
-        alternatives(),
         responses(),
         reviews(),
         about(),
