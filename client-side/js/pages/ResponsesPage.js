@@ -2,7 +2,7 @@ export default function ResponsesPage(responses) {
   return `
   <h1>Resources Page</h1>
   </br>
-  <div class="userClass">
+ <div class="userClassContainer">
   ${responses.map((response) => {
       return `
     <div class="user_response">
@@ -14,7 +14,7 @@ export default function ResponsesPage(responses) {
     <input type='hidden' id='copingMechanismId' value='${response.copingMechanism.id}'>
     </br>
     </br>
-    <h2><center>Resources For Being ${response.mood.mood}</center></h2>
+    <center><h2><center>Resources For Being ${response.mood.mood}</center></h2>
     </br>
     <center><img src = ${response.mood.moodImage} width="300" height="300" ></center>
     <p class = "mood_definition"><center>${response.mood.moodDefinition}</center></p>
@@ -43,9 +43,30 @@ export default function ResponsesPage(responses) {
     <p class = "mood_article">${response.trigger.triggerArticle1}</p>
     <p class = "mood_article">${response.trigger.triggerArticle2}</p>
     <p class = "mood_article">${response.trigger.triggerArticle3}</p>
+    </br>
+    <h4>Free Support Hotlines</h4>
+    <p class = "mood_phoneNumbers">${response.trigger.triggerPhoneResource1}</p>
+    <p class = "mood_phoneNumbers">${response.trigger.triggerPhoneResource2}</p>
+    <p class = "mood_phoneNumbers">${response.trigger.triggerPhoneResource3}</p>
+    </br>
+    </br>
+    <h2><center>${response.copingMechanism.title} Resources</center></h2>
+    <center><img src = ${response.copingMechanism.copingMechanismImage} width="300" height="300" ></center>
+    <p class = "mood_definition"><center>${response.copingMechanism.description}</center></p>
+    </br>
+    </br>
+    <h4>Articles</h4>
+    <p class = "mood_article">${response.copingMechanism.copingMechanismArticle1}</p>
+    <p class = "mood_article">${response.copingMechanism.copingMechanismArticle2}</p>
+    <p class = "mood_article">${response.copingMechanism.copingMechanismArticle3}</p>
+    </br>
+    <h4>Free Support Hotlines</h4>
+    <p class = "mood_phoneNumbers">${response.copingMechanism.copingMechanismPhoneResource1}</p>
+    <p class = "mood_phoneNumbers">${response.copingMechanism.copingMechanismPhoneResource2}</p>
+    <p class = "mood_phoneNumbers">${response.copingMechanism.copingMechanismPhoneResource3}</p>
       `;
     })
     .join("")}
-    </div>
+    </div></center> 
   `;
 }
