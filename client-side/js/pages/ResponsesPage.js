@@ -32,6 +32,17 @@ export default function ResponsesPage(responses) {
     <p class = "mood_phoneNumbers">${response.mood.moodPhoneResource1}</p>
     <p class = "mood_phoneNumbers">${response.mood.moodPhoneResource2}</p>
     <p class = "mood_phoneNumbers">${response.mood.moodPhoneResource3}</p>
+    </br>
+    </br>
+    <h2><center>${response.trigger.name} Resources</center></h2>
+    <center><img src = ${response.trigger.triggerImage} width="300" height="300" ></center>
+    <p class = "mood_definition"><center>${response.trigger.description}</center></p>
+    </br>
+    </br>
+    <h4>Articles</h4>
+    <p class = "mood_article">${response.trigger.triggerArticle1}</p>
+    <p class = "mood_article">${response.trigger.triggerArticle2}</p>
+    <p class = "mood_article">${response.trigger.triggerArticle3}</p>
       `;
     })
     .join("")}

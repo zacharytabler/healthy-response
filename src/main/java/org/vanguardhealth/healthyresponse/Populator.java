@@ -89,8 +89,7 @@ public class Populator implements CommandLineRunner {
 
 //      =========================================================================================
 
-        Trigger finances = new Trigger("Financial Issues","Having financial problems means being unable to pay debts over the short or long term. ... " +
-                "Financial difficulties become a source of stress until all debts are paid.");
+        Trigger finances = new Trigger("Financial Issues", "Financial issues means being unable to pay debts over the short or long term. Financial difficulties become a source of stress until all debts are paid.","https://i.ibb.co/r2S5ZhK/Financial-Issues.jpg", "https://www.verywellmind.com/how-to-handle-the-stress-of-a-financial-crisis-3144545", "https://www.verywellmind.com/understanding-and-preventing-financial-stress-3144546", "https://www.mentalhelp.net/blogs/how-to-untangle-the-money-issues-in-your-relationship/", "","","");
         Trigger domestic = new Trigger("Relationship Issues","\"domestic relationship\" means a personal relationship between 2 adults in which one " +
                 "provides personal or financial commitment and support of a domestic nature for the material benefit of the other and includes a domestic partnership " +
                 "but does not include a legal marriage.");
