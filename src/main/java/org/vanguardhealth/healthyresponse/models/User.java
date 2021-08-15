@@ -1,15 +1,20 @@
 package org.vanguardhealth.healthyresponse.models;
 
+
+
 import javax.persistence.*;
 import java.util.*;
 
 @Entity
 public class User {
 
+
     @Id
     @GeneratedValue
     private Long id;
 
+    @OneToOne
+    public IntakeProfile intakeProfile;
 
     private String userName;
     private String password;
@@ -23,6 +28,7 @@ public class User {
     public void addMessage(Message messageToAdd){
         myMessages.add(messageToAdd);
     }
+
 
     public Long getId() {
         return id;
@@ -45,6 +51,8 @@ public class User {
         this.userName = userName;
         this.password = password;
         this.myMessages = new HashSet<>();
+
+
     }
 //    public User(String userName, String password) {
 //        this.userName=userName;
@@ -65,5 +73,11 @@ public class User {
     }
 
 
-
+//    public void addProfile(Set<IntakeProfile> profile) {
+//        intakeProfile.add(profile);
+//    }
+//
+//    public Collection<Set<IntakeProfile>> getIntakeProfile() {
+//        return intakeProfile;
+//    }
 }
