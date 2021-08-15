@@ -59,10 +59,7 @@ public class Populator implements CommandLineRunner {
 
 //      =========================================================================================
 
-        User user1 = new User("user1", "user1");
-        User admin1 = new User("admin1", "admin1");
-        userRepo.save(user1);
-        userRepo.save(admin1);
+
 
         String activityTitle1 = "Reframing Critical Self Talk";
         String activityTitle2 = "Strengths Spotting by Exception Finding";

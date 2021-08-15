@@ -27,14 +27,6 @@ public class Trigger {
     @ManyToMany
     private Collection<CopingMechanism> copingMechanism;
 
-    @OneToMany(mappedBy = "trigger")
-    @JsonIgnore
-    private Collection<User> users;
-
-    public Collection<User> getUsers() {
-        return users;
-    }
-
     public Collection<CopingMechanism> getCopingMechanism() {
         return copingMechanism;
     }

@@ -196,7 +196,28 @@ function populateAssessmentMenu() {
       );
     }
   });
-  (messages) => (app.innerHTML = MessageBoard(messages));
+
+}
+function replyPost() {
+  app.innerHTML = MessageBoard();
+  app.addEventListener("click", (event) => {
+    if (event.target.classList.contains("replyButton")) {
+      console.log(event);
+      // const content = event.target.parentElement.querySelector('.replycontent').value;
+    }
+  });
+}
+
+function renderUser() {
+  app.innerHTML = userWelcome();
+  app.addEventListener("click", (event) => {
+    if (event.target.classList.contains(".userName")) {
+      const userId = event.target.parentElement.querySelector("#userId").value;
+      apiActions.getRequest(userId, (user) => {
+        app.innerHTML = userInfo(user);
+      });
+    }
+  });
 }
 
 function loginDraft() {
@@ -219,6 +240,15 @@ function moods() {
   });
 }
 
+function messageBoard() {
+  const messageBoard = document.querySelector(".nav__list_messageBoard");
+  messageBoard.addEventListener("click", () => {
+    apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
+      app.innerHTML = MessageBoard(messages);
+    });
+  });
+}
+
 function outbox() {
   app.addEventListener("click", (event) => {
     if (event.target.classList.contains("sendMessage")) {
@@ -234,6 +264,21 @@ function outbox() {
           title: title,
           content: content,
         },
+
+        (messages) => app.innerHTML = MessageBoard(messages),
+        alert("Message Sent!")
+      );
+    }
+  })
+}
+
+function myInbox() {
+  const myMessages = document.querySelector(".nav__list_message");
+  myMessages.addEventListener("click", () => {
+    apiActions.getRequest;
+  });
+}
+
         
         apiActions.getRequest(
           "http://localhost:8080/view_messages",
@@ -294,6 +339,7 @@ function myInbox() {
 
   });
 }
+
 function triggers() {
   const triggerElement = document.querySelector(".nav__list_triggers");
   triggerElement.addEventListener("click", () => {
