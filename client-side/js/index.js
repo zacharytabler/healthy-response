@@ -59,6 +59,8 @@ function buildPage() {
   messageBoard();
   myInbox();
   replyPost();
+  // putWorksheet();
+  // renderWorksheet();
 }
 
 function navUserProfile() {
@@ -426,6 +428,7 @@ function slideShow() {
   const slideshows = document.querySelectorAll(".slideshow");
   slideshows.forEach(initSlideShow);
 }
+
 function initSlideShow(slideshow) {
   var slides = slideshow
     .querySelector("div")
@@ -440,7 +443,6 @@ function initSlideShow(slideshow) {
     slides[index].classList.add("active");
   }, time);
 }
-
 
 function assessment() {
   const assessmentElement = document.querySelector(".assessmentButton");
@@ -488,4 +490,40 @@ function activities() {
       app.innerHTML = ActivitiesPage(activities);
     });
   });
+  // putWorksheet();
 }
+
+function activityWorksheet(activity) {
+  app.addEventListener('click', (event) => {
+    if (event.target.classList.contains('activity__title')) {
+      const worksheetUrl = event.target.parentElement.querySelector('worksheetTitle').value;
+      // if (activity.worksheetUrl.)
+      apiActions.getRequest(worksheetUrl, (Worksheet) => {
+        app.innerHTML = WorksheetPage(worksheet);
+      }) 
+    }
+  });
+}
+
+// function putWorksheet() {
+//   app.addEventListener('click', (event) => {
+//     console.log('Event target classlist: ' + event.target.classList)
+//     if (event.target.classList.contains('activity__title')) {
+//       const activity = event.target;
+//       console.log('Activity: ' + activity);
+//       // if (activity.)
+//     }
+//   });
+//   // renderWorksheet();
+// }
+
+// function renderWorksheet() {
+//   app.addEventListener('click', (event) => {
+//     console.log('Event target classlist: ' + event.target.classList)
+//     if (event.target.classList.contains('activity__title')) {
+//       const activity = event.target;
+//       console.log('Activity: ' + activity);
+//       // if (activity.)
+//     }
+//   });
+// }
