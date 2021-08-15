@@ -279,9 +279,6 @@ function myInbox() {
   });
 }
 
-        
-     
-
 function replyPost() {
   app.addEventListener("click", (event) => {
     if (event.target.classList.contains("replyButton")) {
