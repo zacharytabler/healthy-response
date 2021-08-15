@@ -75,6 +75,10 @@ public class Worksheet {
         return title;
     }
 
+    public boolean isAcceptUserInput() {
+        return acceptUserInput;
+    }
+
     public Activity getActivity() {
         return activity;
     }
