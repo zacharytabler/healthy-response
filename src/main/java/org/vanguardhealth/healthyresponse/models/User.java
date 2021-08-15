@@ -22,13 +22,12 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Message> myMessages;
 
-    @OneToMany(mappedBy="user")
-    private Collection<Activity> activities;
-
     public void addMessage(Message messageToAdd){
         myMessages.add(messageToAdd);
     }
 
+    @OneToMany(mappedBy="user")
+    private Collection<Worksheet> worksheets;
 
     public Long getId() {
         return id;
@@ -42,22 +41,25 @@ public class User {
         return password;
     }
 
-    public Collection<Activity> getActivities() {
-        return activities;
+    public Collection<Worksheet> getWorksheets() {
+        return worksheets;
+    }
+
+    public void addWorksheet(Worksheet worksheetToAdd) {
+        worksheets.add(worksheetToAdd);
+
+    public String getRole() {
+        return role;
     }
 
     public User(){}
-    public User(String userName, String password){
+
+    public User(String userName,String password, Worksheet...worksheets){
+
         this.userName = userName;
         this.password = password;
         this.myMessages = new HashSet<>();
-
-
     }
-//    public User(String userName, String password) {
-//        this.userName=userName;
-//        this.password=password;
-//    }
 
     @Override
     public boolean equals(Object o) {
@@ -71,7 +73,6 @@ public class User {
     public int hashCode() {
         return Objects.hash(id);
     }
-
 
 //    public void addProfile(Set<IntakeProfile> profile) {
 //        intakeProfile.add(profile);

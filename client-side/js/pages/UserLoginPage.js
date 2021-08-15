@@ -6,7 +6,7 @@ export default function userWelcome() {
     </h1>
     <section class="login">
       <input type="text" class="userName" placeholder="Username" />
-      <input type="text" class="password" placeholder="Password" />
+      <input type="password" class="password" placeholder="Password" />
       <input type="number" class="age" placeholder="Age" />
       <select name="cbtMood" id="assessMood" class="intake">
         <option value="userMood" class="cbt1">I feel..</option>
