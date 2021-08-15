@@ -279,20 +279,7 @@ function myInbox() {
 }
 
         
-        apiActions.getRequest(
-          "http://localhost:8080/view_messages",
-          (messages) => {
-            app.innerHTML = MessageBoard(messages);
-            alert("Message Sent!")
-          }
-        ),
 
-        (messages) => (app.innerHTML = InboxPage(messages)),
-        (messages) => (app.innerHTML = MessageBoard(messages))
-      );
-    }
-  });
-}
 
 function replyPost() {
   app.addEventListener("click", (event) => {
