@@ -191,7 +191,8 @@ function populateAssessmentMenu() {
             );
           }
         },
-        (responses) => (app.innerHTML = ResponsesPage(responses))
+        (responses) => (app.innerHTML = ResponsesPage(responses)),
+        console.log(responses)
       );
     }
   });

@@ -19,6 +19,7 @@ public class Mood {
 
     private String mood;
     private String moodImage;
+    @Lob
     private String moodDefinition;
     private String moodArticle1;
     private String moodArticle2;
