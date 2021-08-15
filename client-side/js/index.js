@@ -59,11 +59,26 @@ function buildPage() {
   messageBoard();
   myInbox();
   replyPost();
+  myFunction();
 }
 console.log();
 
-
-
+function myFunction() {
+  const header = document.querySelector(".header");
+   header.addEventListener("click", (event) => {
+     if (
+       event.target.classList.contains("icon") ||
+       event.target.classList.contains("link")
+     ) {
+       const x = document.getElementById("myLinks");
+       if (x.style.display === "block") {
+         x.style.display = "none";
+       } else {
+         x.style.display = "block";
+       }
+     }
+   });
+    } 
 function toggleNav() {
   const header = document.querySelector(".header");
     
@@ -138,7 +153,7 @@ function renderUserLogin() {
         legal(),
         activities(),
         messageBoard(),
-        toggleNav(),
+        myFunction(),
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
