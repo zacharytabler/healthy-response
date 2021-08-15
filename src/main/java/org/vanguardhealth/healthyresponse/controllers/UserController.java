@@ -50,18 +50,6 @@ public class UserController {
         return userRepo.findById(id).get();
     }
 
-    @GetMapping("users/{userId}/coping/{copingId}")
-    public CopingMechanism getUserByCoping(@PathVariable Long userId, @PathVariable Long copingId) {
-        User foundUser = userRepo.findById(userId).get();
-        Optional<CopingMechanism> copingMechanismOpt = copingRepo.findById(copingId);
-        if (copingMechanismOpt.isPresent()) {
-            foundUser.getCopingMechanism();
-        }
-
-        return foundUser.getCopingMechanism();
-    }
-
-
     @PostMapping(value = "/create_user_profile")
     public Iterable<User> createUserProfile(@RequestBody String body) throws JSONException {
         JSONObject newUser = new JSONObject(body);

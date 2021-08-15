@@ -191,7 +191,8 @@ function populateAssessmentMenu() {
             );
           }
         },
-        (responses) => (app.innerHTML = ResponsesPage(responses))
+        (responses) => (app.innerHTML = ResponsesPage(responses)),
+        console.log(responses)
       );
     }
   });
@@ -277,9 +278,6 @@ function myInbox() {
     apiActions.getRequest;
   });
 }
-
-        
-
 
 function replyPost() {
   app.addEventListener("click", (event) => {
