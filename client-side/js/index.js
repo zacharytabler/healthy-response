@@ -489,9 +489,13 @@ function resourcesCard() {
   resources.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/responses", (responses) => {
       app.innerHTML = ResponsesPage(responses);
+      moodCard();
+      triggerCard();
+      copingCard();
     });
   });
 }
+
 function blogCard() {
   const blog = document.querySelector("#blog");
   blog.addEventListener("click", () => {
@@ -584,6 +588,8 @@ function copingCard() {
     });
   });
 }
+
+
 
 // function putWorksheet() {
 //   app.addEventListener('click', (event) => {

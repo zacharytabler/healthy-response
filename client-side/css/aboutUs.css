@@ -18,12 +18,12 @@
 }
 
 .aboutUsContainer {
-  background: #f4f4f4;
+  background-color: rgb(236, 231, 231);
+  background-repeat: repeat;
 }
 
 .aboutUsContainer {
   margin-top: 50px;
-  
 }
 
 .aboutUsContainer .team {
