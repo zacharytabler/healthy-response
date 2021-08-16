@@ -501,10 +501,19 @@ function getAffirmationApi(url, quoteDiv) {
 }
 
 function activities() {
-  const activitiesElement = document.querySelector(".nav__list_activities");
+  const activitiesElement = document.querySelector('.nav__list_activities');
   activitiesElement.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/activities", (activities) => {
       app.innerHTML = ActivitiesPage(activities);
+      const activityTitles = document.querySelectorAll('.activity__title');
+      activityTitles.forEach((activityTitle) => {
+        // console.log(activityTitle);
+        activityTitle.addEventListener('click', (event) => {
+          const worksheetUrl = event.target.parentElement.parentElement.querySelector('.worksheetPage').value;
+          console.log(worksheetUrl);
+          // app.innerHTML = 
+        });
+      });
     });
   });
   // putWorksheet();
