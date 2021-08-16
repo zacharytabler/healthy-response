@@ -31,6 +31,8 @@ import "../css/login.css";
 import InboxPage from "./pages/InboxPage";
 import MessageBoard from "./pages/MessageBoard";
 import IntakeForm from "./IntakeForm";
+import WorksheetPage from "./pages/WorksheetPage";
+import InstructionsPage from "./pages/InstructionsPage";
 
 const app = document.querySelector("#app");
 
@@ -507,29 +509,32 @@ function activities() {
       app.innerHTML = ActivitiesPage(activities);
       const activityTitles = document.querySelectorAll('.activity__title');
       activityTitles.forEach((activityTitle) => {
-        // console.log(activityTitle);
         activityTitle.addEventListener('click', (event) => {
-          const worksheetUrl = event.target.parentElement.parentElement.querySelector('.worksheetPage').value;
-          console.log(worksheetUrl);
-          // app.innerHTML = 
+          // const url = event.target.parentElement.parentElement.querySelector('.worksheetPage').value;
+          // console.log(url);
+          const pageType = event.target.parentElement.parentElement.querySelector('.page').value;
+          if (pageType === 'forms') {
+            app.innerHTML = WorksheetPage();
+          } else if (pageType === 'instructions') {
+            app.innerHTML = InstructionsPage(instructions);
+          }
         });
       });
     });
   });
-  // putWorksheet();
 }
 
-function activityWorksheet(activity) {
-  app.addEventListener('click', (event) => {
-    if (event.target.classList.contains('activity__title')) {
-      const worksheetUrl = event.target.parentElement.querySelector('worksheetTitle').value;
-      // if (activity.worksheetUrl.)
-      apiActions.getRequest(worksheetUrl, (Worksheet) => {
-        app.innerHTML = WorksheetPage(worksheet);
-      }) 
-    }
-  });
-}
+// function activityWorksheet(activity) {
+//   app.addEventListener('click', (event) => {
+//     if (event.target.classList.contains('activity__title')) {
+//       const worksheetUrl = event.target.parentElement.querySelector('.worksheetTitle').value;
+//       // if (activity.worksheetUrl.)
+//       apiActions.getRequest(worksheetUrl, (Worksheet) => {
+//         app.innerHTML = WorksheetPage(worksheet);
+//       }) 
+//     }
+//   });
+// }
 
 // function putWorksheet() {
 //   app.addEventListener('click', (event) => {
