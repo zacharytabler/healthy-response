@@ -76,7 +76,8 @@ public class CopingMechanism {
         return consequences;
     }
     public CopingMechanism(){}
-    public CopingMechanism(String title,String description, String copingMechanismImage, String copingMechanismArticle1, String copingMechanismArticle2, String copingMechanismArticle3, String copingMechanismPhoneResource1, String copingMechanismPhoneResource2, String copingMechanismPhoneResource3, Consequence...consequences){
+    public CopingMechanism(String title,String description, String copingMechanismImage, String copingMechanismArticle1, String copingMechanismArticle2, String copingMechanismArticle3, String copingMechanismPhoneResource1,
+                           String copingMechanismPhoneResource2, String copingMechanismPhoneResource3, Consequence...consequences){
         this.title = title;
         this.description = description;
         this.copingMechanismImage = copingMechanismImage;
