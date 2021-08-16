@@ -40,7 +40,7 @@ public class ReplyController {
         String title = newPost.getString("title");
         String content = newPost.getString("content");
 
-        Optional<Reply> optionalReply = replyRepo.findBySubject(subject);
+        Optional<Reply> optionalReply = replyRepo.findByTitle(title);
         if(optionalReply.isEmpty()){
             Reply replyToPost = new Reply(subject,title,content);
             replyRepo.save(replyToPost);

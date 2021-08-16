@@ -54,6 +54,7 @@ function buildPage() {
   myInbox();
   assessmentHeader();
   reviews();
+  replyPost();
 }
 
 function navUserProfile() {
@@ -197,7 +198,6 @@ function populateAssessmentMenu() {
   });
 }
 
-
 function loginDraft() {
   const homeElement = document.querySelector(".loginButton");
   homeElement.addEventListener("click", () => {
@@ -245,29 +245,23 @@ function outbox() {
 
         (messages) => (app.innerHTML = MessageBoard(messages)),
         alert("Message Sent!"),
-        
+        replyPost()
       );
     }
   });
 }
 
-function myInbox() {
-  const myMessages = document.querySelector(".nav__list_message");
-  myMessages.addEventListener("click", () => {
-    apiActions.getRequest;
-  });
-}
+
 
 function replyPost() {
-  
   app.addEventListener("click", (event) => {
     if (event.target.classList.contains("replyButton")) {
-      const title = event.target.parentElement.querySelector('.replyTitle').value;
-      const subject = event.target.parentElement.querySelector('.replySubject').value;
+      const title =
+        event.target.parentElement.querySelector(".replyTitle").value;
+      const subject =
+        event.target.parentElement.querySelector(".replySubject").value;
       const content =
         event.target.parentElement.querySelector(".replyContent").value;
-      
-
       apiActions.postRequest(
         "http://localhost:8080/post_reply",
         {
@@ -275,12 +269,10 @@ function replyPost() {
           title: title,
           content: content,
         },
-        console.log(subject,title,content),
-
-        alert("Reply Sent!"),
-        apiActions.getRequest('http://localhost:8080/view_reply',(reply=>{
+        console.log(subject, title, content),
+        apiActions.getRequest("http://localhost:8080/view_reply",(reply)=>{
           app.innerHTML = InboxPage(reply)
-        }))
+        })
       );
     }
   });
@@ -298,8 +290,8 @@ function messageBoard() {
 function myInbox() {
   const myMessages = document.querySelector(".nav__list_message");
   myMessages.addEventListener("click", () => {
-    apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
-      app.innerHTML = InboxPage(messages);
+    apiActions.getRequest("http://localhost:8080/view_reply", (replies) => {
+      app.innerHTML = InboxPage(replies);
     });
   });
 }
@@ -370,7 +362,6 @@ function initSlideShow(slideshow) {
 function assessmentHeader() {
   const assessElement = document.querySelector(".nav__list_assessment");
   assessElement.addEventListener("click", () => {
-    console.log("Firing!");
     app.innerHTML = AssessmentPage();
     populateAssessmentMenu();
   });
@@ -388,6 +379,7 @@ function assessmentCardHome() {
   const assessmentCard = document.querySelector("#assessment");
   assessmentCard.addEventListener("click", () => {
     app.innerHTML = AssessmentPage();
+    populateAssessmentMenu();
   });
 }
 function activitiesCardHome() {

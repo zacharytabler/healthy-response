@@ -6,5 +6,6 @@ import org.vanguardhealth.healthyresponse.models.Reply;
 import java.util.Optional;
 
 public interface ReplyRepository extends CrudRepository<Reply,Long> {
-    Optional<Reply> findBySubject(String subject);
+
+    Optional<Reply> findByTitle(String title);
 }
