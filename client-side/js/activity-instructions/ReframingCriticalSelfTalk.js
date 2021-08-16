@@ -1,6 +1,6 @@
 import Activity from '../components/Activity';
 
-export default function Instructions(instructions) {
+export default function Display(display) {
     return `
         <input type='hidden' class='instructions' value='${activity.worksheet.title}'/>
         <h1 >Reframing Critical Self Talk</h1>

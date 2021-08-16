@@ -16,13 +16,13 @@ export default function Activity(activity) {
 function returnUrlAndPageType(activity) {
     if (activity.worksheet.acceptUserInput) {
         return `
-        <input type='hidden' class='worksheetPage' value='./activity-instructions/${activity.worksheet.title}.js'/>
-        <input type='hidden' class='page' value='instructions'/>
+        <input type='hidden' class='worksheetPage' value='./worksheet-forms/${activity.worksheet.title}.js'/>
+        <input type='hidden' class='page' value='forms'/>
         `
     } else {
         return `
-        <input type='hidden' class='worksheetPage' value='./worksheet-forms/${activity.worksheet.title}.js'/>
-        <input type='hidden' class='page' value='forms'/>
+        <input type='hidden' class='worksheetPage' value='./activity-instructions/${activity.worksheet.title}.js'/>
+        <input type='hidden' class='page' value='instructions'/>
         `
     }
 }
