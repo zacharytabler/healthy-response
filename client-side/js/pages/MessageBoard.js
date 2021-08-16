@@ -10,10 +10,11 @@ export default function MessageBoard(messages) {
         <p class="title">${post.title}</p>
         <p class="post">${post.content}</p>
         <div class="reply">
-        <input type="text" class="replyTitlet" placeholder="Reply Title">
+        <input type="text" class="replyTitle" placeholder="Reply Title">
         <input type="text" class="replySubject" placeholder="Reply Subject">
         <input type="text" class="replyContent" placeholder="Reply Content">
-        <button class="replyButton"></button>
+        <button class="replyButton">Reply</button>
+        <input type='hidden' id='profileId' value='${post.id}'>
         </div>
        
         `;

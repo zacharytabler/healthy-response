@@ -1,13 +1,14 @@
-export default function InboxPage(messages) {
+export default function InboxPage(reply) {
   return `
   <div class='myInbox'>
-  ${messages.map((message) => {
+  ${reply.map((replies) => {
     return `
       <h1>My Messages</h1>
       <div class="inbox">
-      <p class="content">${message.subject}</p>
-      <p class="subject">${message.title}</p> 
-      <p class="subject">${message.content}</p>
+      <p class="content">${replies.subject}</p>
+      <p class="subject">${replies.title}</p> 
+      <p class="subject">${replies.content}</p>
+      <input type='hidden' id='messageId' value='${replies.id}>
       </div>
       `;
   })}

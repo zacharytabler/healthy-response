@@ -52,7 +52,6 @@ function buildPage() {
   activities();
   messageBoard();
   myInbox();
-  replyPost();
   assessmentHeader();
   reviews();
 }
@@ -104,10 +103,11 @@ function renderUserLogin() {
         activities(),
         messageBoard(),
         myInbox(),
-        replyPost(),
         assessmentHeader(),
         reviews(),
-        (users) => (app.innerHTML = userWelcome(users))
+        replyPost(),
+        (users) => (app.innerHTML = userWelcome(users)),
+        addBadgeToProfile()
       );
     }
   });
@@ -146,6 +146,13 @@ function createIntakeProfile() {
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
+  });
+}
+
+function addBadgeToProfile() {
+  const badgeButton = document.querySelector(".addBadge");
+  badgeButton.addEventListener("click", () => {
+    console.log("firing");
   });
 }
 
@@ -189,15 +196,7 @@ function populateAssessmentMenu() {
     }
   });
 }
-function replyPost() {
-  app.innerHTML = MessageBoard();
-  app.addEventListener("click", (event) => {
-    if (event.target.classList.contains("replyButton")) {
-      console.log(event);
-      // const content = event.target.parentElement.querySelector('.replycontent').value;
-    }
-  });
-}
+
 
 function loginDraft() {
   const homeElement = document.querySelector(".loginButton");
@@ -245,7 +244,8 @@ function outbox() {
         },
 
         (messages) => (app.innerHTML = MessageBoard(messages)),
-        alert("Message Sent!")
+        alert("Message Sent!"),
+        
       );
     }
   });
@@ -259,24 +259,28 @@ function myInbox() {
 }
 
 function replyPost() {
+  
   app.addEventListener("click", (event) => {
     if (event.target.classList.contains("replyButton")) {
+      const title = event.target.parentElement.querySelector('.replyTitle').value;
+      const subject = event.target.parentElement.querySelector('.replySubject').value;
       const content =
-        event.target.parentElement.querySelector(".replycontent").value;
+        event.target.parentElement.querySelector(".replyContent").value;
+      
 
       apiActions.postRequest(
-        "http://localhost:8080/post_message",
+        "http://localhost:8080/post_reply",
         {
           subject: subject,
           title: title,
           content: content,
         },
-        console.log(content),
+        console.log(subject,title,content),
 
         alert("Reply Sent!"),
-
-        (messages) => (app.innerHTML = MessageBoard(messages)),
-        (message) => (app.innerHTML = InboxPage(message))
+        apiActions.getRequest('http://localhost:8080/view_reply',(reply=>{
+          app.innerHTML = InboxPage(reply)
+        }))
       );
     }
   });
@@ -297,60 +301,6 @@ function myInbox() {
     apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
       app.innerHTML = InboxPage(messages);
     });
-  });
-}
-
-function triggers() {
-  const triggerElement = document.querySelector(".nav__list_triggers");
-  triggerElement.addEventListener("click", () => {
-    apiActions.getRequest("http://localhost:8080/triggers", (triggers) => {
-      app.innerHTML = TriggersPage(triggers);
-    });
-  });
-}
-
-function copingMechanisms() {
-  const copingElement = document.querySelector(".nav__list_coping_mechanisms");
-  copingElement.addEventListener("click", () => {
-    apiActions.getRequest(
-      "http://localhost:8080/coping",
-      (copingMechanisms) => {
-        app.innerHTML = CopingMechanismsPage(copingMechanisms);
-      }
-    );
-  });
-}
-
-function consequences() {
-  const consequencesElement = document.querySelector(".nav__list_consequences");
-  consequencesElement.addEventListener("click", () => {
-    apiActions.getRequest(
-      "http://localhost:8080/consequences",
-      (consequences) => {
-        app.innerHTML = ConsequencesPage(consequences);
-      }
-    );
-  });
-}
-
-function results() {
-  const resultsElement = document.querySelector(".nav__list_results");
-  resultsElement.addEventListener("click", () => {
-    apiActions.getRequest("http://localhost:8080/results", (results) => {
-      app.innerHTML = ResultsPage(results);
-    });
-  });
-}
-
-function alternatives() {
-  const alternativesElement = document.querySelector(".nav__list_alternatives");
-  alternativesElement.addEventListener("click", () => {
-    apiActions.getRequest(
-      "http://localhost:8080/alternatives",
-      (alternatives) => {
-        app.innerHTML = AlternativesPage(alternatives);
-      }
-    );
   });
 }
 
@@ -415,14 +365,6 @@ function initSlideShow(slideshow) {
     if (index === slides.length) index = 0;
     slides[index].classList.add("active");
   }, time);
-}
-
-function assessment() {
-  const assessmentElement = document.querySelector(".assessmentButton");
-  assessmentElement.addEventListener("click", () => {
-    app.innerHTML = AssessmentPage();
-    populateAssessmentMenu();
-  });
 }
 
 function assessmentHeader() {

@@ -29,6 +29,10 @@ public class Populator implements CommandLineRunner {
     private ActivityRepo activityRepo;
     @Resource
     private WorksheetRepo worksheetRepo;
+    @Resource
+    private MessageRepository messageRepo;
+    @Resource
+    private ReplyRepository replyRepo;
 
     @Override
     public void run(String... args) throws Exception {
@@ -54,6 +58,7 @@ public class Populator implements CommandLineRunner {
         moodRepo.save(lonely);
         moodRepo.save(sad);
         moodRepo.save(suicidal);
+
 
 
 
@@ -118,6 +123,11 @@ public class Populator implements CommandLineRunner {
         copingMechanismRepo.save(violence);
         copingMechanismRepo.save(doDrugs);
         copingMechanismRepo.save(drinkAlcohol);
+
+        Message testMessage = new Message("testtitle","testsbbject","testcontent");
+        messageRepo.save(testMessage);
+        Reply testReply = new Reply ("TEST REPLY CONTENT", "TEST REPLY TITLE","TEST REPLY CONTENT");
+        replyRepo.save(testReply);
 
     }
 }
