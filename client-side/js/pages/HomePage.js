@@ -47,6 +47,7 @@ export default function HomePage() {
         <button class="assessmentButton">TAKE THE ASSESSMENT</button>
         </div>
         </div>
+        <button class="blogButton">BLOG</button>
 
     `;
 }

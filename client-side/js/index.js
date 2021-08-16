@@ -409,7 +409,6 @@ function contact() {
     app.innerHTML = ContactUsPage();
   });
 }
-
 function appointment() {
   const appointmentElement = document.querySelector(".nav__list_appointment");
   appointmentElement.addEventListener("click", () => {
@@ -461,6 +460,7 @@ function home() {
     const url = "https://type.fit/api/quotes";
     const quoteDiv = document.querySelector('.inspirational_quote__container');
     getAffirmationApi(url, quoteDiv);
+    blog();
   });
 }
 
