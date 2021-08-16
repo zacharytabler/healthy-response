@@ -1,6 +1,7 @@
 import "../../css/response_page.css";
 
 import HRLogoLong from "../../images/hr-logo-long.png";
+import ResetButton from "../../images/Reset.png";
 
 export default function ResponsesPage(responses) {
   return `

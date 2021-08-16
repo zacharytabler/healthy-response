@@ -23,7 +23,7 @@ import LoginDraft from "./pages/LoginPage";
 import ActivitiesPage from "./pages/ActivitiesPage";
 import Outbox from "./pages/Outbox";
 import "../css/header_footer.css";
-import "../css/aboutUS.css";
+import "../css/aboutUs.css";
 import "../css/form.css";
 import "../css/style.css";
 import "../css/home_page.css";
@@ -58,6 +58,7 @@ function buildPage() {
   replyPost();
   assessmentHeader();
   reviews();
+  reset();
 }
 
 function navUserProfile() {
@@ -365,6 +366,7 @@ function responses() {
       moodCard();
       triggerCard();
       copingCard();
+      reset();
     });
   });
 }
@@ -492,6 +494,7 @@ function resourcesCard() {
       moodCard();
       triggerCard();
       copingCard();
+      reset();
     });
   });
 }
@@ -588,6 +591,13 @@ function copingCard() {
     });
   });
 }
+
+// function reset() {
+//   const resetElement = document.querySelector(".reset-button");
+//   resetElement.addEventListener("click", () => {
+//     console.log("firing!"),
+//     location.reload();
+//   })}
 
 
 
