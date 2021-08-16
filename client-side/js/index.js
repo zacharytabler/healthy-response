@@ -54,44 +54,16 @@ function buildPage() {
   myInbox();
   replyPost();
   myFunction();
+  moods();
+  triggers();
+  copingMechanisms();
+  consequences();
+  results();
+  alternatives();
+  assessmentHeader();
 }
-console.log();
 
-function myFunction() {
-  const header = document.querySelector(".header");
-   header.addEventListener("click", (event) => {
-     if (
-       event.target.classList.contains("icon") ||
-       event.target.classList.contains("link")
-     ) {
-       const x = document.getElementById("myLinks");
-       if (x.style.display === "block") {
-         x.style.display = "none";
-       } else {
-         x.style.display = "block";
-       }
-     }
-   });
-    } 
-function toggleNav() {
-  const header = document.querySelector(".header");
-    
-      header.addEventListener("click", (event) => {
-        if (
-          event.target.classList.contains("icon") ||
-          event.target.classList.contains("link")
-        ) {
-          const navItems = document.getElementById("navLinks");
-         console.log(navItems);
-          if (navItems.style.display === "none") {
-            navItems.style.display = "block";
-          } else {
-            navItems.style.display = "none";
-          }
-        }
-      });
-    } 
- 
+
 
 
 function navUserProfile() {
@@ -141,7 +113,16 @@ function renderUserLogin() {
         legal(),
         activities(),
         messageBoard(),
+        myInbox(),
+        replyPost(),
         myFunction(),
+        moods(),
+        triggers(),
+        copingMechanisms(),
+        consequences(),
+        results(),
+        alternatives(),
+        assessmentHeader(),
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
@@ -388,7 +369,7 @@ function responses() {
 }
 
 function reviews() {
-  const reviewElement = document.querySelector(".nav__list_reviews");
+  const reviewElement = document.querySelector(".footer_list_reviews");
   reviewElement.addEventListener("click", () => {
     app.innerHTML = ReviewsPage();
   });
@@ -444,6 +425,15 @@ function initSlideShow(slideshow) {
 function assessment() {
   const assessmentElement = document.querySelector(".assessmentButton");
   assessmentElement.addEventListener("click", () => {
+    console.log("Firing!");
+    app.innerHTML = AssessmentPage();
+    populateAssessmentMenu();
+  });
+}
+
+function assessmentHeader() {
+  const assessElement = document.querySelector(".nav__list_assessment");
+  assessElement.addEventListener("click", () => {
     console.log("Firing!");
     app.innerHTML = AssessmentPage();
     populateAssessmentMenu();

@@ -1,5 +1,6 @@
 export default function MessageBoard(messages) {
   return `
+  <h1>Message Board</h1>
     <div class="messageBoard">
     ${messages
       .map((post) => {
