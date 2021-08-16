@@ -55,7 +55,6 @@ public class Populator implements CommandLineRunner {
         moodRepo.save(sad);
         moodRepo.save(suicidal);
 
-//      =========================================================================================
 
 
         User user1 = new User("user1", "user1");
@@ -90,7 +89,6 @@ public class Populator implements CommandLineRunner {
 //        user1.addWorksheet(worksheet1);
 //        user1.addWorksheet(worksheet2);
 
-//      =========================================================================================
 
         Trigger finances = new Trigger("Financial Issues", "Financial issues means being unable to pay debts over the short or long term. Financial difficulties become a source of stress until all debts are paid.","https://i.ibb.co/r2S5ZhK/Financial-Issues.jpg", "https://www.verywellmind.com/how-to-handle-the-stress-of-a-financial-crisis-3144545", "https://www.verywellmind.com/understanding-and-preventing-financial-stress-3144546", "https://www.mentalhelp.net/blogs/how-to-untangle-the-money-issues-in-your-relationship/", "","","");
         Trigger domestic = new Trigger("Relationship Issues","Relationship issues are issues between two individuals in an interpersonal relationship. Relationship issues may include infidelity, loss of intimacy, communication difficulties, coping with stress challenges, financial pressures, boundary violations, difficulty balancing individual and couple expectations, divorce, separation and breaking up.", "https://i.ibb.co/v4GMTdn/Relationship-Issues.jpg", "https://www.verywellmind.com/all-about-healthy-relationship-4774802", "https://www.verywellmind.com/the-toll-of-conflict-in-relationships-3144952", "https://www.mentalhelp.net/articles/relationship-problems/", "Love Is Respect: 1-866-331-9474", "", "");

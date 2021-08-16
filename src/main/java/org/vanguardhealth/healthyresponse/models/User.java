@@ -47,12 +47,10 @@ public class User {
 
     public void addWorksheet(Worksheet worksheetToAdd) {
         worksheets.add(worksheetToAdd);
-
-    public String getRole() {
-        return role;
     }
 
-    public User(){}
+
+
 
     public User(String userName,String password, Worksheet...worksheets){
 

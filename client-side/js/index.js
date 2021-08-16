@@ -41,12 +41,6 @@ function buildPage() {
   footer();
   renderUserLogin();
   home();
-  moods();
-  triggers();
-  copingMechanisms();
-  consequences();
-  results();
-  alternatives();
   responses();
   reviews();
   about();
@@ -59,9 +53,19 @@ function buildPage() {
   messageBoard();
   myInbox();
   replyPost();
-  // putWorksheet();
-  // renderWorksheet();
+  myFunction();
+  moods();
+  triggers();
+  copingMechanisms();
+  consequences();
+  results();
+  alternatives();
+  assessmentHeader();
 }
+
+
+
+
 
 function navUserProfile() {
   const profilePage = document.querySelector(".nav__list_profile");
@@ -101,12 +105,6 @@ function renderUserLogin() {
         header(),
         footer(),
         home(),
-        moods(),
-        triggers(),
-        copingMechanisms(),
-        consequences(),
-        results(),
-        alternatives(),
         responses(),
         reviews(),
         about(),
@@ -116,6 +114,16 @@ function renderUserLogin() {
         legal(),
         activities(),
         messageBoard(),
+        myInbox(),
+        replyPost(),
+        myFunction(),
+        moods(),
+        triggers(),
+        copingMechanisms(),
+        consequences(),
+        results(),
+        alternatives(),
+        assessmentHeader(),
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
@@ -390,7 +398,7 @@ function responses() {
 }
 
 function reviews() {
-  const reviewElement = document.querySelector(".nav__list_reviews");
+  const reviewElement = document.querySelector(".footer_list_reviews");
   reviewElement.addEventListener("click", () => {
     app.innerHTML = ReviewsPage();
   });
@@ -409,7 +417,6 @@ function contact() {
     app.innerHTML = ContactUsPage();
   });
 }
-
 function appointment() {
   const appointmentElement = document.querySelector(".nav__list_appointment");
   appointmentElement.addEventListener("click", () => {
@@ -452,6 +459,15 @@ function assessment() {
   });
 }
 
+function assessmentHeader() {
+  const assessElement = document.querySelector(".nav__list_assessment");
+  assessElement.addEventListener("click", () => {
+    console.log("Firing!");
+    app.innerHTML = AssessmentPage();
+    populateAssessmentMenu();
+  });
+}
+
 function home() {
   const homeElement = document.querySelector(".nav__list_home");
   homeElement.addEventListener("click", () => {
@@ -461,6 +477,7 @@ function home() {
     const url = "https://type.fit/api/quotes";
     const quoteDiv = document.querySelector('.inspirational_quote__container');
     getAffirmationApi(url, quoteDiv);
+    blog();
   });
 }
 
