@@ -1,6 +1,7 @@
 package org.vanguardhealth.healthyresponse.models;
 
 
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -17,21 +18,16 @@ public class User {
 
     private String userName;
     private String password;
-    private String role;
-    @ManyToOne
-    private Mood mood;
 
-    @ManyToOne
-    public Trigger trigger;
+    @OneToMany(mappedBy = "user")
+    private Set<Message> myMessages;
 
-    @ManyToOne
-    private CopingMechanism copingMechanism;
+    public void addMessage(Message messageToAdd){
+        myMessages.add(messageToAdd);
+    }
 
     @OneToMany(mappedBy="user")
-    private Collection<Activity> activities;
-
-
-
+    private Collection<Worksheet> worksheets;
 
     public Long getId() {
         return id;
@@ -45,36 +41,22 @@ public class User {
         return password;
     }
 
-    public String getRole() {
-        return role;
+    public Collection<Worksheet> getWorksheets() {
+        return worksheets;
     }
 
-    public Mood getMood() {
-        return  mood;
+    public void addWorksheet(Worksheet worksheetToAdd) {
+        worksheets.add(worksheetToAdd);
     }
 
-    public Trigger getTrigger() {
-        return trigger;
-    }
-    public CopingMechanism getCopingMechanism() {
-        return copingMechanism;
-    }
 
-    public Collection<Activity> getActivities() {
-        return activities;
-    }
 
-    public User(){}
-    public User(String userName,String password){
+
+    public User(String userName,String password, Worksheet...worksheets){
+
         this.userName = userName;
         this.password = password;
-
-
-    }
-    public User(String userName, String password, String role) {
-        this.userName=userName;
-        this.password=password;
-        this.role = role;
+        this.myMessages = new HashSet<>();
     }
 
     @Override
@@ -89,7 +71,6 @@ public class User {
     public int hashCode() {
         return Objects.hash(id);
     }
-
 
 //    public void addProfile(Set<IntakeProfile> profile) {
 //        intakeProfile.add(profile);

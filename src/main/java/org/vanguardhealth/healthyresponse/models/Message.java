@@ -1,6 +1,8 @@
 package org.vanguardhealth.healthyresponse.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -16,7 +18,14 @@ public class Message {
     private String content;
 
     @ManyToOne
+    @JsonIgnore
     public User user;
+
+    public Message(String subject, String title, String content) {
+        this.subject = subject;
+        this.title = title;
+        this.content = content;
+    }
 
     public User getUser() {
         return user;
@@ -42,10 +51,11 @@ public class Message {
     public Message(String content){
         this.content = content;
     }
-    public Message (String subject,String title,String content){
+    public Message (String subject,String title,String content, User user){
         this.subject = subject;
         this.title = title;
         this.content = content;
+        this.user = user;
     }
 
     @Override

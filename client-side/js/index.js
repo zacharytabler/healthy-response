@@ -66,6 +66,7 @@ function buildPage() {
 
 
 
+
 function navUserProfile() {
   const profilePage = document.querySelector(".nav__list_profile");
   profilePage.addEventListener("click", () => {
@@ -175,13 +176,10 @@ function populateAssessmentMenu() {
     ) {
       const mood =
         event.target.parentElement.querySelector(".intakeMood").value;
-      console.log(mood);
       const trigger =
         event.target.parentElement.querySelector(".intakeTrigger").value;
-      console.log(trigger);
       const copingMechanism =
         event.target.parentElement.querySelector(".intakeCoping").value;
-      console.log(copingMechanism);
       apiActions.postRequest(
         "http://localhost:8080/send_response",
         {
@@ -203,11 +201,33 @@ function populateAssessmentMenu() {
             );
           }
         },
-        (responses) => (app.innerHTML = ResponsesPage(responses))
+        (responses) => (app.innerHTML = ResponsesPage(responses)),
+        console.log(responses)
       );
     }
   });
-  (messages) => (app.innerHTML = MessageBoard(messages));
+
+}
+function replyPost() {
+  app.innerHTML = MessageBoard();
+  app.addEventListener("click", (event) => {
+    if (event.target.classList.contains("replyButton")) {
+      console.log(event);
+      // const content = event.target.parentElement.querySelector('.replycontent').value;
+    }
+  });
+}
+
+function renderUser() {
+  app.innerHTML = userWelcome();
+  app.addEventListener("click", (event) => {
+    if (event.target.classList.contains(".userName")) {
+      const userId = event.target.parentElement.querySelector("#userId").value;
+      apiActions.getRequest(userId, (user) => {
+        app.innerHTML = userInfo(user);
+      });
+    }
+  });
 }
 
 function loginDraft() {
@@ -230,6 +250,15 @@ function moods() {
   });
 }
 
+function messageBoard() {
+  const messageBoard = document.querySelector(".nav__list_messageBoard");
+  messageBoard.addEventListener("click", () => {
+    apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
+      app.innerHTML = MessageBoard(messages);
+    });
+  });
+}
+
 function outbox() {
   app.addEventListener("click", (event) => {
     if (event.target.classList.contains("sendMessage")) {
@@ -245,19 +274,18 @@ function outbox() {
           title: title,
           content: content,
         },
-        
-        apiActions.getRequest(
-          "http://localhost:8080/view_messages",
-          (messages) => {
-            app.innerHTML = MessageBoard(messages);
-            alert("Message Sent!")
-          }
-        ),
 
-        (messages) => (app.innerHTML = InboxPage(messages)),
-        (messages) => (app.innerHTML = MessageBoard(messages))
+        (messages) => app.innerHTML = MessageBoard(messages),
+        alert("Message Sent!")
       );
     }
+  })
+}
+
+function myInbox() {
+  const myMessages = document.querySelector(".nav__list_message");
+  myMessages.addEventListener("click", () => {
+    apiActions.getRequest;
   });
 }
 
@@ -305,6 +333,7 @@ function myInbox() {
 
   });
 }
+
 function triggers() {
   const triggerElement = document.querySelector(".nav__list_triggers");
   triggerElement.addEventListener("click", () => {
@@ -407,6 +436,7 @@ function slideShow() {
   const slideshows = document.querySelectorAll(".slideshow");
   slideshows.forEach(initSlideShow);
 }
+
 function initSlideShow(slideshow) {
   var slides = slideshow
     .querySelector("div")
@@ -425,7 +455,6 @@ function initSlideShow(slideshow) {
 function assessment() {
   const assessmentElement = document.querySelector(".assessmentButton");
   assessmentElement.addEventListener("click", () => {
-    console.log("Firing!");
     app.innerHTML = AssessmentPage();
     populateAssessmentMenu();
   });
@@ -446,30 +475,29 @@ function home() {
     app.innerHTML = HomePage();
     slideShow();
     assessment();
+    const url = "https://type.fit/api/quotes";
+    const quoteDiv = document.querySelector('.inspirational_quote__container');
+    getAffirmationApi(url, quoteDiv);
   });
 }
 
-function getAffirmationApi(url) {
-  const affirmation_api_url = "https://type.fit/api/quotes";
+function getAffirmationApi(url, quoteDiv) {
   // const affirmation_api_url ="https://zenquotes.io/api/quotes/";
   // const affirmation_api_url = 'https://zenquotes.io/api/today/';
-  const quoteDiv = document.querySelector(".inspirational_quote__container");
-  quoteDiv.onload = () => {
-    apiActions.getRequest(url, (quotes) => {
-      quoteDiv.innerHTML = InspirationalQuote(
-        quotes[Math.floor(Math.random() * quotes.length)]
-      );
 
-      // quotes.forEach((quote, index) => {
-      //   quoteDiv.innerHTML = InspirationalQuote(quote);
-      // });
 
-      // apiActions.getRequest(url, (quote) => {
-      //     console.log(quote);
-      //     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
-      // });
-    });
-  };
+  apiActions.getRequest(url, (quotes) => {
+      quoteDiv.innerHTML = InspirationalQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+    // quotes.forEach((quote, index) => {
+    //   quoteDiv.innerHTML = InspirationalQuote(quote);
+    // });
+  });
+
+// apiActions.getRequest(url, (quote) => {
+//     console.log(quote);
+//     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
+// });
+
 }
 
 function activities() {
@@ -479,4 +507,40 @@ function activities() {
       app.innerHTML = ActivitiesPage(activities);
     });
   });
+  // putWorksheet();
 }
+
+function activityWorksheet(activity) {
+  app.addEventListener('click', (event) => {
+    if (event.target.classList.contains('activity__title')) {
+      const worksheetUrl = event.target.parentElement.querySelector('worksheetTitle').value;
+      // if (activity.worksheetUrl.)
+      apiActions.getRequest(worksheetUrl, (Worksheet) => {
+        app.innerHTML = WorksheetPage(worksheet);
+      }) 
+    }
+  });
+}
+
+// function putWorksheet() {
+//   app.addEventListener('click', (event) => {
+//     console.log('Event target classlist: ' + event.target.classList)
+//     if (event.target.classList.contains('activity__title')) {
+//       const activity = event.target;
+//       console.log('Activity: ' + activity);
+//       // if (activity.)
+//     }
+//   });
+//   // renderWorksheet();
+// }
+
+// function renderWorksheet() {
+//   app.addEventListener('click', (event) => {
+//     console.log('Event target classlist: ' + event.target.classList)
+//     if (event.target.classList.contains('activity__title')) {
+//       const activity = event.target;
+//       console.log('Activity: ' + activity);
+//       // if (activity.)
+//     }
+//   });
+// }

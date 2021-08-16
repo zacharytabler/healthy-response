@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface MessageRepository extends CrudRepository<Message,Long> {
     Optional<Message> findBySubject(String subject);
+
+    Optional<Message> findByContent(String content);
 }
