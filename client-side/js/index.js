@@ -32,6 +32,9 @@ import InboxPage from "./pages/InboxPage";
 import MessageBoard from "./pages/MessageBoard";
 import IntakeForm from "./IntakeForm";
 import BlogPage from "./pages/BlogPage";
+import MoodResourcePage from "./pages/MoodResourcePage";
+import TriggerResourcePage from "./pages/TriggerResourcePage";
+import CopingResourcePage from "./pages/CopingResourcePage";
 
 const app = document.querySelector("#app");
 
@@ -359,6 +362,9 @@ function responses() {
   responseElement.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/responses", (responses) => {
       app.innerHTML = ResponsesPage(responses);
+      moodCard();
+      triggerCard();
+      copingCard();
     });
   });
 }
@@ -549,6 +555,33 @@ function activityWorksheet(activity) {
         app.innerHTML = WorksheetPage(worksheet);
       });
     }
+  });
+}
+
+function moodCard() {
+  const moodCard = document.querySelector("#moodCard");
+  moodCard.addEventListener("click", () => {
+    apiActions.getRequest("http://localhost:8080/responses", (mood) => {
+      app.innerHTML = MoodResourcePage(mood);
+    });
+  });
+}
+
+function triggerCard() {
+  const triggerCard = document.querySelector("#triggerCard");
+  triggerCard.addEventListener("click", () => {
+    apiActions.getRequest("http://localhost:8080/responses", (trigger) => {
+      app.innerHTML = TriggerResourcePage(trigger);
+    });
+  });
+}
+
+function copingCard() {
+  const copingCard = document.querySelector("#copingCard");
+  copingCard.addEventListener("click", () => {
+    apiActions.getRequest("http://localhost:8080/responses", (coping) => {
+      app.innerHTML = CopingResourcePage(coping);
+    });
   });
 }
 
