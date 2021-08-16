@@ -6,7 +6,7 @@ import javax.persistence.Id;
 public class Appointment {
     @Id
     @GeneratedValue
-    private final long id;
+    private long id;
     private String date;
     private String time;
     private String martialStatus;
@@ -18,8 +18,7 @@ public class Appointment {
     private String email;
 
 
-    public Appointment(long id, String date, String time, String martialStatus, String disability, String veteranStatus, String subject, String contact_name, String phoneNumber, String email) {
-        this.id = id;
+    public Appointment(String date, String time, String martialStatus, String disability, String veteranStatus, String subject, String contact_name, String phoneNumber, String email) {
         this.date = date;
         this.time = time;
         this.martialStatus = martialStatus;

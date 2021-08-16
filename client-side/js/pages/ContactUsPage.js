@@ -7,7 +7,7 @@ export default function ContactUsPage() {
     <div class="row">
       <div class="column">
 
-       <form action="/action_page.php" method="post" target="_blank">
+       <form action="/http://localhost:8080/reviews" method="post" target="_blank">
           <label for="fname">First Name</label>
           <input type="text" id="fname" name="firstname" placeholder="Your name..">
           <span class="invalid" id="name-status"></span>

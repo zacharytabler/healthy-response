@@ -7,7 +7,16 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
 @Entity
-public class Trigger {
+public class
+
+
+
+
+
+
+
+
+Trigger {
     @Id
     @GeneratedValue
     private Long id;

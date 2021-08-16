@@ -11,7 +11,7 @@ export default function AppointmentPage() {
         <div class="time__container">
             <div class="section">
                 <div class="box">
-                    
+               
                 </div><span>Date &amp; Time</span>
             </div>
             <form action="" class="form__time">
