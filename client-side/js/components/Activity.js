@@ -5,7 +5,7 @@ export default function Activity(activity) {
     return `
         <div class="activity__container">
             <input type='hidden' class='activityId' value='${activity.id}'/>
-            <input type='hidden' class='worksheetTitle' value='${activity.worksheet.title}'/>
+            <input type='hidden' class='worksheetId' value='${activity.worksheet.id}'/>
             ${ returnUrlAndPageType(activity) }
             <a class='activity__title' href='#'><h2>${activity.title}</h2></a>
             <p class='activities-list__description'>${activity.description}</p>

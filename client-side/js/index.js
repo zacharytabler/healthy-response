@@ -32,7 +32,7 @@ import InboxPage from "./pages/InboxPage";
 import MessageBoard from "./pages/MessageBoard";
 import IntakeForm from "./IntakeForm";
 import WorksheetPage from "./pages/WorksheetPage";
-import InstructionsPage from "./pages/InstructionsPage";
+import InstructionsPage from "./pages/InstructionPage";
 
 const app = document.querySelector("#app");
 
@@ -503,21 +503,34 @@ function getAffirmationApi(url, quoteDiv) {
 }
 
 function activities() {
+  // let activitiesJson;
+  let worksheetsJson;
+  apiActions.getRequest("http://localhost:8080/worksheets", (worksheets) => {
+    worksheetsJson = worksheets;
+  })
   const activitiesElement = document.querySelector('.nav__list_activities');
   activitiesElement.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/activities", (activities) => {
+      // activitiesJson = activities;
       app.innerHTML = ActivitiesPage(activities);
+      console.log(activities);
       const activityTitles = document.querySelectorAll('.activity__title');
       activityTitles.forEach((activityTitle) => {
         activityTitle.addEventListener('click', (event) => {
           // const url = event.target.parentElement.parentElement.querySelector('.worksheetPage').value;
           // console.log(url);
+          // const activityId = event.target.parentElement.parentElement.querySelector('.activityId').value;
+          // console.log('Activity id: ' + activityId);
+          const worksheetId = event.target.parentElement.parentElement.querySelector('.worksheetId').value;
+          // console.log('Worksheet id: ' + worksheetId);
           const pageType = event.target.parentElement.parentElement.querySelector('.page').value;
-          if (pageType === 'forms') {
-            app.innerHTML = WorksheetPage();
-          } else if (pageType === 'instructions') {
-            app.innerHTML = InstructionsPage(instructions);
-          }
+          worksheetsJson.forEach((worksheet) => {
+            if ((pageType === 'forms') && (worksheetId === worksheet.id)) {
+              app.innerHTML = WorksheetPage(worksheet);
+            } else if ((pageType === 'instructions') && (worksheetId === worksheet.id)) {
+              app.innerHTML = InstructionPage(worksheet);
+            }
+          });
         });
       });
     });
