@@ -11,6 +11,7 @@ export default function TriggerResourcePage(trigger){
   ${trigger.map((trigger) => {
       return `
       <h2><center>${trigger.trigger.name} Resources</center></h2>
+      </br>
       <center><img src = ${trigger.trigger.triggerImage} width="300" height="300" ></center>
       </br>
       </br>
