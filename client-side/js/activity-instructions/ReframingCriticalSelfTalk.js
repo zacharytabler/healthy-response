@@ -1,8 +1,12 @@
-import Activity from '../components/Activity';
+// import Activity from '../components/Activity';
+// import Activity from '../components/Activity';
 
-export default function Display(display) {
+{/* <input type='hidden' class='instruction' value='${activity.worksheet.title}'/>
+<input type='hidden' class='instructionId' value='${activity.worksheet.id}'/> */}
+
+export default function Display() {
     return `
-        <input type='hidden' class='instructions' value='${activity.worksheet.title}'/>
+        
         <h1 >Reframing Critical Self Talk</h1>
 
         <p class='instructions-intro'>Self-criticism can be regarded as the opposite of self-compassion. Whereas self-compassion
@@ -23,9 +27,10 @@ export default function Display(display) {
         <h2>Exercise</h2>
         <ul>
             <li>Give your self-critical voices a name, for example, "inner critic" or "inner bully". Such naming can help to personify & increase awareness of your inner criticism, while also creating distance.</li>
-            <li>While rephrasing per the last instruction, try rubbing your arm, stroking your hair, giving yourself a massage, or some similar self-loving gesture. This physical gesture of affection may tap into your caring side and release oxytocin, a feel-good hormone.<li>
+            <li>While rephrasing per the last instruction, try rubbing your arm, stroking your hair, giving yourself a massage, or some similar self-loving gesture. This physical gesture of affection may tap into your caring side and release oxytocin, a feel-good hormone.</li>
             <li>If you notice yourself fighting the inner critic, try to gently let go. Replying to your negative inner voice with another negative voice is likely to increase frustration and inner conflict, strengthening the inner critic.</li>
             <li>Identify a trigger to remind yourself to do this awareness exercise. The trigger could be a word, a gesture, a physical reminder (e.g. a picture, quote, etc).</li>
         </ul>
     `;
+    // putInstruction(display)
 }

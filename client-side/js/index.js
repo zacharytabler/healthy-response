@@ -518,13 +518,18 @@ function activities() {
         activityTitle.addEventListener('click', (event) => {
           const worksheetId = event.target.parentElement.parentElement.querySelector('.worksheetId').value;
           const pageType = event.target.parentElement.parentElement.querySelector('.page').value;
+          let displayUrl = event.target.parentElement.parentElement.querySelector('.displayUrl').value;
+          // console.log('Display URL: ' + displayUrl);
           worksheetsJson.forEach((sheet) => {
             if ((pageType === 'forms') && (worksheetId == sheet.id)) {
               worksheet = sheet;
-              app.innerHTML = WorksheetPage(worksheet);
+              // console.log('Display URL: ' + displayUrl);
+              app.innerHTML = WorksheetPage(worksheet, displayUrl);
             } else if ((pageType === 'instructions') && (worksheetId == sheet.id)) {
               instruction = sheet;
-              app.innerHTML = InstructionPage(instruction);
+              // console.log('Display URL: ' + displayUrl);
+              // app.innerHTML = InstructionPage(instruction, displayUrl);
+              app.innerHTML = InstructionPage(displayUrl);
             }
           });
         });

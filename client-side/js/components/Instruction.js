@@ -1,15 +1,31 @@
-import Activity from './Activity';
+// import Activity from './Activity';
 import Display from '../activity-instructions/ReframingCriticalSelfTalk';
+import apiActions from '../api-actions/api-actions';
 
+
+
+
+// export default function Instruction(instruction, displayUrl) {
 export default function Instruction(instruction) {
+// export default function Instruction(displayUrl) {
     console.log('hi from instruction.js');
-    console.log(instruction);
-    console.log(activity);
+    // console.log(instruction);
+    // console.log(displayUrl);
+    // putInstructionFromDisplay(instruction);
     return `
-        <h1>Made it to Instruction dot js</h1>
+        ${ getDisplay() }
     `;
 }
 
-// function putInstruction() {
+function getDisplay() {
+    return `
+        ${ Display() }
+    `;
+}
 
+// function putDisplayToInstruction(worksheet) {
+//     const display = Display(worksheet.);
+//     apiActions.putRequest(
+//         ''
+//     )
 // }

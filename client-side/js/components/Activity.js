@@ -1,7 +1,7 @@
 // import Worksheet from './Worksheet';
 
 export default function Activity(activity) {
-    console.log(activity);
+    // console.log(activity);
     return `
         <div class="activity__container">
             <input type='hidden' class='activityId' value='${activity.id}'/>
@@ -16,12 +16,12 @@ export default function Activity(activity) {
 function returnUrlAndPageType(activity) {
     if (activity.worksheet.acceptUserInput) {
         return `
-        <input type='hidden' class='worksheetPage' value='./worksheet-forms/${activity.worksheet.title}.js'/>
+        <input type='hidden' class='displayUrl' value='../worksheet-forms/${activity.worksheet.title}.js'/>
         <input type='hidden' class='page' value='forms'/>
         `
     } else {
         return `
-        <input type='hidden' class='worksheetPage' value='./activity-instructions/${activity.worksheet.title}.js'/>
+        <input type='hidden' class='displayUrl' value='../activity-instructions/${activity.worksheet.title}.js'/>
         <input type='hidden' class='page' value='instructions'/>
         `
     }
