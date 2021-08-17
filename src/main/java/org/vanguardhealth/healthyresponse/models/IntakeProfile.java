@@ -82,7 +82,7 @@ public class IntakeProfile {
 
     public IntakeProfile(){}
     public IntakeProfile(String firstName, String lastName, String ethnicity, String city,
-                         String state,String status, String aboutMe, Worksheet...worksheets) {
+                         String state,String status, String aboutMe) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ethnicity = ethnicity;
@@ -90,7 +90,7 @@ public class IntakeProfile {
         this.state = state;
         this.status = status;
         this.aboutMe = aboutMe;
-        this.worksheets = Arrays.asList(worksheets);
+        this.worksheets = new HashSet<>();
     }
     public IntakeProfile(String firstName, String lastName,String ethnicity, String city,
                          String state, String zipcode, boolean active, String status, String aboutMe) {
