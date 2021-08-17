@@ -13,7 +13,7 @@ export default function MoodResourcePage(moods){
       <center><h2><center>Resources For Being ${response.mood.mood}</center></h2>
     </br>
     <center><img src = ${response.mood.moodImage} width="400" height="400" ></center>
-    <p class = "mood_definition"><center>${response.mood.moodDefinition}</center></p>
+    <h3 class = "mood_definition"><center>${response.mood.moodDisclaimer}</center></h3>
     </br>
     <h4>10 Minute Meditation</h4>
     ${response.mood.moodVideo}
