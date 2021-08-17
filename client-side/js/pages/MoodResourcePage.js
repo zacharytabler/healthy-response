@@ -13,10 +13,7 @@ export default function MoodResourcePage(moods){
       <center><h2><center>Resources For Being ${response.mood.mood}</center></h2>
     </br>
     <center><img src = ${response.mood.moodImage} width="400" height="400" ></center>
-    <h3 class = "mood_definition"><center>Disclaimer: ${response.mood.moodDisclaimer}</center></h3>
-    </br>
-    <h4>10 Minute Meditation</h4>
-    ${response.mood.moodVideo}
+    <h3 class = "mood_disclaimer"><center>Disclaimer: ${response.mood.moodDisclaimer}</center></h3>
     </br>
     </br>
     <h4>Articles</h4>
@@ -24,7 +21,7 @@ export default function MoodResourcePage(moods){
     <p class = "mood_article">A Few Questions To Consider: ${response.mood.moodArticle2}</p>
     <p class = "mood_article">Helpful Tips: ${response.mood.moodArticle3}</p>
     </br>
-    <h4>Free Resources For Support</h4>
+    <h4>Free Resources For Support Hotlines</h4>
     <p class = "mood_phoneNumbers">${response.mood.moodPhoneResource1}</p>
     <p class = "mood_phoneNumbers">${response.mood.moodPhoneResource2}</p>
     <p class = "mood_phoneNumbers">${response.mood.moodPhoneResource3}</p>
