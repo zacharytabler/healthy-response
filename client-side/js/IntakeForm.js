@@ -8,7 +8,7 @@ export default function IntakeForm() {
     </br>
     <input type='text' style="width: 300px;" class='ethnicity' placeholder='Ethnicity'>
     </br>
-    <input type='text' style="width: 300px;"class='city' placeholder='City'>
+    <input type='text' style="width: 300px;" class='city' placeholder='City'>
     </br>
     <input type='text' style="width: 300px;" class='state' placeholder='State'>
     </br>

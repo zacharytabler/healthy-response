@@ -20,9 +20,9 @@ export default function MoodResourcePage(moods){
     </br>
     </br>
     <h4>Articles</h4>
-    <p class = "mood_article">${response.mood.moodArticle1}</p>
-    <p class = "mood_article">${response.mood.moodArticle2}</p>
-    <p class = "mood_article">${response.mood.moodArticle3}</p>
+    <p class = "mood_article">Overview: ${response.mood.moodArticle1}</p>
+    <p class = "mood_article">Quiz: ${response.mood.moodArticle2}</p>
+    <p class = "mood_article">Helpful Tips: ${response.mood.moodArticle3}</p>
     </br>
     <h4>Free Support Hotlines</h4>
     <p class = "mood_phoneNumbers">${response.mood.moodPhoneResource1}</p>

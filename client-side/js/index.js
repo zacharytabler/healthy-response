@@ -58,7 +58,6 @@ function buildPage() {
   replyPost();
   assessmentHeader();
   reviews();
-  reset();
 }
 
 function navUserProfile() {
@@ -366,7 +365,6 @@ function responses() {
       moodCard();
       triggerCard();
       copingCard();
-      reset();
     });
   });
 }
@@ -494,7 +492,6 @@ function resourcesCard() {
       moodCard();
       triggerCard();
       copingCard();
-      reset();
     });
   });
 }
