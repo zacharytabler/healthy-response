@@ -24,7 +24,7 @@ export default function TriggerResourcePage(trigger){
       <p class = "mood_phoneNumbers">${trigger.trigger.triggerPhoneResource2}</p>
       <p class = "mood_phoneNumbers">${trigger.trigger.triggerPhoneResource3}</p>
       </br>
-      <h3 class = "mood_disclaimer"><center>Disclaimer: ${trigger.mood.moodDisclaimer}</center></h3>
+      <h3 class = "mood_disclaimer"><center>Disclaimer: ${trigger.trigger.triggerDisclaimer}</center></h3>
       `;
     })
     .join("")}
