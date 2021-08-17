@@ -31,6 +31,8 @@ import "../css/login.css";
 import InboxPage from "./pages/InboxPage";
 import MessageBoard from "./pages/MessageBoard";
 import IntakeForm from "./IntakeForm";
+import WorksheetPage from "./pages/WorksheetPage";
+import InstructionPage from "./pages/InstructionPage";
 import BlogPage from "./pages/BlogPage";
 
 const app = document.querySelector("#app");
@@ -530,25 +532,38 @@ function getAffirmationApi(url, quoteDiv) {
 }
 
 function activities() {
-  const activitiesElement = document.querySelector(".nav__list_activities");
+  let worksheetsJson;
+  let worksheet;
+  let instruction;
+  apiActions.getRequest("http://localhost:8080/worksheets", (worksheets) => {
+    worksheetsJson = worksheets;
+  })
+  const activitiesElement = document.querySelector('.nav__list_activities');
   activitiesElement.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/activities", (activities) => {
       app.innerHTML = ActivitiesPage(activities);
-    });
-  });
-  // putWorksheet();
-}
-
-function activityWorksheet(activity) {
-  app.addEventListener("click", (event) => {
-    if (event.target.classList.contains("activity__title")) {
-      const worksheetUrl =
-        event.target.parentElement.querySelector("worksheetTitle").value;
-      // if (activity.worksheetUrl.)
-      apiActions.getRequest(worksheetUrl, (Worksheet) => {
-        app.innerHTML = WorksheetPage(worksheet);
+      const activityTitles = document.querySelectorAll('.activity__title');
+      activityTitles.forEach((activityTitle) => {
+        activityTitle.addEventListener('click', (event) => {
+          const worksheetId = event.target.parentElement.parentElement.querySelector('.worksheetId').value;
+          const pageType = event.target.parentElement.parentElement.querySelector('.page').value;
+          let displayUrl = event.target.parentElement.parentElement.querySelector('.displayUrl').value;
+          // console.log('Display URL: ' + displayUrl);
+          worksheetsJson.forEach((sheet) => {
+            if ((pageType === 'forms') && (worksheetId == sheet.id)) {
+              worksheet = sheet;
+              // console.log('Display URL: ' + displayUrl);
+              app.innerHTML = WorksheetPage(worksheet, displayUrl);
+            } else if ((pageType === 'instructions') && (worksheetId == sheet.id)) {
+              instruction = sheet;
+              // console.log('Display URL: ' + displayUrl);
+              // app.innerHTML = InstructionPage(instruction, displayUrl);
+              app.innerHTML = InstructionPage(displayUrl);
+            }
+          });
+        });
       });
-    }
+    });
   });
 }
 
