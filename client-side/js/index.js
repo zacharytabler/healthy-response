@@ -553,7 +553,31 @@ function activities() {
             if ((pageType === 'forms') && (worksheetId == sheet.id)) {
               worksheet = sheet;
               // console.log('Display URL: ' + displayUrl);
-              app.innerHTML = WorksheetPage(worksheet, displayUrl);
+              app.innerHTML = WorksheetPage(worksheet);
+              const submitButton = document.querySelector('.submit');
+              submitButton.addEventListener('click', (event) => {
+                // console.log(event.target.parentElement);
+                const answer1 = event.target.parentElement.querySelector('.answer1').value;
+                const answer2 = event.target.parentElement.querySelector('.answer2').value;
+                const answer3 = event.target.parentElement.querySelector('.answer3').value;
+                const answer4 = event.target.parentElement.querySelector('.answer4').value;
+                apiActions.putRequest('http://localhost:8080/profile/17/addWorksheetAnswers'), {
+                  timestamp: timestamp,
+                  title: title,
+                  answer1: answer1,
+                  answer2: answer2,
+                  answer3: answer3,
+                  answer4: answer4,
+                //   answer5: answer5,
+                //   answer6: answer6,
+                //   answer7: answer7,
+                //   answer8: answer8,
+                //   answer9: answer9,
+                //   answer10: answer10,
+                },
+                console.log(answer1, answer2, answer3, answer4);
+                // (app.innerHTML = IntakeForm()),
+              });
             } else if ((pageType === 'instructions') && (worksheetId == sheet.id)) {
               instruction = sheet;
               // console.log('Display URL: ' + displayUrl);

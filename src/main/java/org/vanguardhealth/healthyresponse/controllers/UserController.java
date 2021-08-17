@@ -1,16 +1,12 @@
 package org.vanguardhealth.healthyresponse.controllers;
 
+import org.hibernate.jdbc.Work;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
-import org.vanguardhealth.healthyresponse.models.Message;
+import org.vanguardhealth.healthyresponse.models.*;
 
-import org.vanguardhealth.healthyresponse.models.CopingMechanism;
-import org.vanguardhealth.healthyresponse.models.IntakeProfile;
-import org.vanguardhealth.healthyresponse.models.Mood;
-
-import org.vanguardhealth.healthyresponse.models.User;
 import org.vanguardhealth.healthyresponse.repositories.*;
 
 import javax.annotation.Resource;
@@ -37,6 +33,8 @@ public class UserController {
     private MoodRepo moodRepo;
     @Resource
     private IntakeProfileRepository intakeRepo;
+    @Resource
+    private WorksheetRepo worksheetRepo;
 
 
 
@@ -80,6 +78,14 @@ public class UserController {
         }
         return userRepo.findById(id);
     }
+
+//    @PutMapping("/worksheets/{id}/addAnswers")
+//    public Worksheet addAnswer(@PathVariable Long id, @RequestBody String answers) {
+//        JSONObject formAnswers = new JSONObject(answers);
+//        Worksheet worksheet = worksheetRepo.findById(id).get();
+//        worksheet.addAnswer(formAnswers.getString());
+//    }
+
 
 //    @PostMapping("/user/{id}/create_profile")
 //    public Optional<User> createProfile(@RequestBody String body, @PathVariable Long id) throws JSONException {

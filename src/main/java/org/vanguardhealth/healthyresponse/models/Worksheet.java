@@ -11,7 +11,7 @@ public class Worksheet {
     @GeneratedValue
     private Long id;
     private String title;
-    private int timeStamp;
+    private long timeStamp;
     private boolean acceptUserInput;
 
     @ManyToOne
@@ -30,7 +30,12 @@ public class Worksheet {
     private String answer10;
 
     @ManyToOne
+    @JsonIgnore
     private User user;
+
+    @ManyToOne
+    @JsonIgnore
+    private IntakeProfile profile;
 
     public Worksheet() {}
 
@@ -81,7 +86,8 @@ public class Worksheet {
         return acceptUserInput;
     }
 
-    public int getTimeStamp() {
+    public long getTimeStamp() {
+        timeStamp = System.currentTimeMillis();
         return timeStamp;
     }
 
@@ -132,6 +138,30 @@ public class Worksheet {
     public String getAnswer10() {
         return answer10;
     }
+
+        public void addWorksheetAnswers(String answer) {
+            if (answer1 == null) {
+                answer1 = answer;
+            } else if (answer2 == null) {
+                answer2 = answer;
+            } else if (answer3 == null) {
+                answer3 = answer;
+            } else if (answer4 == null) {
+                answer4 = answer;
+            } else if (answer5 == null) {
+                answer5 = answer;
+            } else if (answer6 == null) {
+                answer6 = answer;
+            } else if (answer7 == null) {
+                answer7 = answer;
+            } else if (answer8 == null) {
+                answer8 = answer;
+            } else if (answer9 == null) {
+                answer9 = answer;
+            } else if (answer10 == null) {
+                answer10 = answer;
+            }
+        }
 
     public User getUser() {
         return user;

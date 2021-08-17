@@ -6,6 +6,13 @@ export default function Worksheet(worksheet) {
     console.log(worksheet);
     return `
         <h1>Made it to Worksheet dot js</h1>
+        ${ getForm(worksheet) }
+    `;
+}
+
+function getForm(worksheet) {
+    return `
+        ${ Form(worksheet) }
     `;
 }
 

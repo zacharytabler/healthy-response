@@ -1,6 +1,11 @@
 package org.vanguardhealth.healthyresponse.models;
 
+import org.hibernate.jdbc.Work;
+
 import javax.persistence.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 
 @Entity
@@ -19,6 +24,9 @@ public class IntakeProfile {
     private String status;
     @Lob
     private String aboutMe;
+
+    @OneToMany(mappedBy = "profile")
+    private Collection<Worksheet> worksheets;
 
     public Long getId() {
         return id;
@@ -64,9 +72,17 @@ public class IntakeProfile {
         return aboutMe;
     }
 
+    public Collection<Worksheet> getWorksheets() {
+        return worksheets;
+    }
+
+    public void addWorksheet(Worksheet worksheetToAdd) {
+        worksheets.add(worksheetToAdd);
+    }
+
     public IntakeProfile(){}
     public IntakeProfile(String firstName, String lastName, String ethnicity, String city,
-                         String state,String status, String aboutMe) {
+                         String state,String status, String aboutMe, Worksheet...worksheets) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ethnicity = ethnicity;
@@ -74,6 +90,7 @@ public class IntakeProfile {
         this.state = state;
         this.status = status;
         this.aboutMe = aboutMe;
+        this.worksheets = Arrays.asList(worksheets);
     }
     public IntakeProfile(String firstName, String lastName,String ethnicity, String city,
                          String state, String zipcode, boolean active, String status, String aboutMe) {
