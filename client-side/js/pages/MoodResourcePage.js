@@ -21,9 +21,9 @@ export default function MoodResourcePage(moods){
     <p class = "mood_article">Helpful Tips: ${response.mood.moodArticle3}</p>
     </br>
     <h4>Free Resources For Support</h4>
-    <p class = "mood_phoneNumbers">${response.mood.moodPhoneResource1}</p>
-    <p class = "mood_phoneNumbers">${response.mood.moodPhoneResource2}</p>
-    <p class = "mood_phoneNumbers">${response.mood.moodPhoneResource3}</p>
+    <p class = "mood_phoneNumber">${response.mood.moodPhoneResource1}</p>
+    <p class = "mood_phoneNumber">${response.mood.moodPhoneResource2}</p>
+    <p class = "mood_phoneNumber">${response.mood.moodPhoneResource3}</p>
     </br>
     <h3 class = "mood_disclaimer"><center>Disclaimer: ${response.mood.moodDisclaimer}</center></h3>
     `;

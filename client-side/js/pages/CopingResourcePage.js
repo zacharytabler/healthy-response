@@ -16,16 +16,16 @@ export default function CopingResourcePage(coping){
     </br>
     </br>
     <h4>Articles</h4>
-    <p class = "mood_article">${response.copingMechanism.copingMechanismArticle1}</p>
-    <p class = "mood_article">${response.copingMechanism.copingMechanismArticle2}</p>
-    <p class = "mood_article">${response.copingMechanism.copingMechanismArticle3}</p>
+    <p class = "coping_article">${response.copingMechanism.copingMechanismArticle1}</p>
+    <p class = "coping_article">${response.copingMechanism.copingMechanismArticle2}</p>
+    <p class = "coping_article">${response.copingMechanism.copingMechanismArticle3}</p>
     </br>
     <h4>Free Resources For Support</h4>
-    <p class = "mood_phoneNumbers">${response.copingMechanism.copingMechanismPhoneResource1}</p>
-    <p class = "mood_phoneNumbers">${response.copingMechanism.copingMechanismPhoneResource2}</p>
-    <p class = "mood_phoneNumbers">${response.copingMechanism.copingMechanismPhoneResource3}</p>
+    <p class = "coping_phoneNumber">${response.copingMechanism.copingMechanismPhoneResource1}</p>
+    <p class = "coping_phoneNumber">${response.copingMechanism.copingMechanismPhoneResource2}</p>
+    <p class = "coping_phoneNumber">${response.copingMechanism.copingMechanismPhoneResource3}</p>
     </br>
-    <h3 class = "mood_disclaimer"><center>Disclaimer: ${response.copingMechanism.copingDisclaimer}</center></h3>
+    <h3 class = "coping_disclaimer"><center>Disclaimer: ${response.copingMechanism.copingDisclaimer}</center></h3>
     `;
     })
     .join("")}

@@ -16,16 +16,16 @@ export default function TriggerResourcePage(trigger){
       </br>
       </br>
       <h4>Articles</h4>
-      <p class = "mood_article">${trigger.trigger.triggerArticle1}</p>
-      <p class = "mood_article">${trigger.trigger.triggerArticle2}</p>
-      <p class = "mood_article">${trigger.trigger.triggerArticle3}</p>
+      <p class = "trigger_article">${trigger.trigger.triggerArticle1}</p>
+      <p class = "trigger_article">${trigger.trigger.triggerArticle2}</p>
+      <p class = "trigger_article">${trigger.trigger.triggerArticle3}</p>
       </br>
       <h4>Free Support Hotlines</h4>
-      <p class = "mood_phoneNumbers">${trigger.trigger.triggerPhoneResource1}</p>
-      <p class = "mood_phoneNumbers">${trigger.trigger.triggerPhoneResource2}</p>
-      <p class = "mood_phoneNumbers">${trigger.trigger.triggerPhoneResource3}</p>
+      <p class = "trigger_phoneNumber">${trigger.trigger.triggerPhoneResource1}</p>
+      <p class = "trigger_phoneNumber">${trigger.trigger.triggerPhoneResource2}</p>
+      <p class = "trigger_phoneNumber">${trigger.trigger.triggerPhoneResource3}</p>
       </br>
-      <h3 class = "mood_disclaimer"><center>Disclaimer: ${trigger.trigger.triggerDisclaimer}</center></h3>
+      <h3 class = "trigger_disclaimer"><center>Disclaimer: ${trigger.trigger.triggerDisclaimer}</center></h3>
       `;
     })
     .join("")}
