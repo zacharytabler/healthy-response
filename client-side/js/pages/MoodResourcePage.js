@@ -13,7 +13,6 @@ export default function MoodResourcePage(moods){
       <center><h2><center>Resources For Being ${response.mood.mood}</center></h2>
     </br>
     <center><img src = ${response.mood.moodImage} width="400" height="400" ></center>
-    <h3 class = "mood_disclaimer"><center>Disclaimer: ${response.mood.moodDisclaimer}</center></h3>
     </br>
     </br>
     <h4>Articles</h4>
@@ -25,6 +24,8 @@ export default function MoodResourcePage(moods){
     <p class = "mood_phoneNumbers">${response.mood.moodPhoneResource1}</p>
     <p class = "mood_phoneNumbers">${response.mood.moodPhoneResource2}</p>
     <p class = "mood_phoneNumbers">${response.mood.moodPhoneResource3}</p>
+    </br>
+    <h3 class = "mood_disclaimer"><center>Disclaimer: ${response.mood.moodDisclaimer}</center></h3>
     `;
     })
     .join("")}
