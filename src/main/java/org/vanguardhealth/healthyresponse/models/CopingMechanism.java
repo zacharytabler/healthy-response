@@ -16,16 +16,21 @@ public class CopingMechanism {
     private Long id;
     private String title;
     @Lob
-    private String description;
+    private String copingDisclaimer;
+    private String copingMechanismImage;
+    private String copingMechanismArticle1;
+    private String copingMechanismArticle2;
+    private String copingMechanismArticle3;
+    private String copingMechanismPhoneResource1;
+    private String copingMechanismPhoneResource2;
+    private String copingMechanismPhoneResource3;
 
 
 
     @ManyToMany
     private Collection <Consequence> consequences;
 
-    @OneToMany(mappedBy = "copingMechanism",fetch = FetchType.LAZY)
-    @JsonIgnore
-    private Collection<User> users;
+
 
     public Long getId() {
         return id;
@@ -35,22 +40,58 @@ public class CopingMechanism {
         return title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCopingDisclaimer() {
+        return copingDisclaimer;
+    }
+
+    public String getCopingMechanismImage() {
+        return copingMechanismImage;
+    }
+
+    public String getCopingMechanismArticle1() {
+        return copingMechanismArticle1;
+    }
+
+    public String getCopingMechanismArticle2() {
+        return copingMechanismArticle2;
+    }
+
+    public String getCopingMechanismArticle3() {
+        return copingMechanismArticle3;
+    }
+
+    public String getCopingMechanismPhoneResource1() {
+        return copingMechanismPhoneResource1;
+    }
+
+    public String getCopingMechanismPhoneResource2() {
+        return copingMechanismPhoneResource2;
+    }
+
+    public String getCopingMechanismPhoneResource3() {
+        return copingMechanismPhoneResource3;
     }
 
     public Collection<Consequence> getConsequence() {
         return consequences;
     }
     public CopingMechanism(){}
-    public CopingMechanism(String title,String description,Consequence...consequences){
+    public CopingMechanism(String title,String copingDisclaimer, String copingMechanismImage, String copingMechanismArticle1, String copingMechanismArticle2, String copingMechanismArticle3, String copingMechanismPhoneResource1,
+                           String copingMechanismPhoneResource2, String copingMechanismPhoneResource3, Consequence...consequences){
         this.title = title;
-        this.description = description;
+        this.copingDisclaimer = copingDisclaimer;
+        this.copingMechanismImage = copingMechanismImage;
+        this.copingMechanismArticle1 = copingMechanismArticle1;
+        this.copingMechanismArticle2 = copingMechanismArticle2;
+        this.copingMechanismArticle3 = copingMechanismArticle3;
+        this.copingMechanismPhoneResource1 = copingMechanismPhoneResource1;
+        this.copingMechanismPhoneResource2 = copingMechanismPhoneResource2;
+        this.copingMechanismPhoneResource3 = copingMechanismPhoneResource3;
         this.consequences = Arrays.asList(consequences);
     }
     public CopingMechanism(String title,String description){
         this.title = title;
-        this.description = description;
+        this.copingDisclaimer = copingDisclaimer;
     }
 
     @Override

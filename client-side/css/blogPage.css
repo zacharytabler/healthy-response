@@ -1,0 +1,26 @@
+.blog__container {
+    background-color: rgb(236, 231, 231);
+    text-align: center;
+    display: flex;
+}
+.blog_topImg {
+    background-image: url("/images/blogBG.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 50vh;
+    margin: 5px;
+    }
+    .blog_cards {
+        margin-top: 310px; 
+   }
+    .blog__img {
+        border-radius: 10%;
+        transition: 0.3s;
+        width: 23%;
+        margin: 30px;
+    }
+    .blog__img:hover {
+        box-shadow:  0 8px 16px 0 rgba(0,0,0,0.2);
+    }
