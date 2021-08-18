@@ -114,6 +114,7 @@
     "core-js": "^3.15.2",
     "core-js-compat": "^3.15.2",
     "core-util-is": "^1.0.2",
+    "cors": "^2.8.5",
     "cosmiconfig": "^5.2.1",
     "create-ecdh": "^4.0.4",
     "create-hash": "^1.2.0",

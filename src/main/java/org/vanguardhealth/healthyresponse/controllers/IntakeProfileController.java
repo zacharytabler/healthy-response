@@ -52,7 +52,7 @@ public class IntakeProfileController {
             return intakeRepo.findAll();
     }
 
-    @PutMapping(value="/profile/{id}/addWorksheetAnswers")
+    @PutMapping("/profile/{id}/addWorksheetAnswers")
     public Optional <IntakeProfile> addWorksheetAnswers(@PathVariable Long id, @RequestBody Worksheet worksheet) {
 //        User user = userRepo.findById(id).get();
         IntakeProfile intakeProfile = intakeRepo.findById(id).get();

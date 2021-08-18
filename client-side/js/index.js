@@ -573,7 +573,7 @@ function activities() {
                 const answer2 = event.target.parentElement.querySelector('.answer2').value;
                 const answer3 = event.target.parentElement.querySelector('.answer3').value;
                 const answer4 = event.target.parentElement.querySelector('.answer4').value;
-                apiActions.postRequest('http://localhost:8080/profile/17/addWorksheetAnswers'), {
+                apiActions.putRequest('http://localhost:8080/profile/17/addWorksheetAnswers'), {
                   timeStamp: timeStamp,
                   title: title,
                   answer1: answer1,
