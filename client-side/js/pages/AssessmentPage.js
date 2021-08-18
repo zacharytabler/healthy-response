@@ -1,5 +1,6 @@
 export default function AssessmentPage() {
   return `
+        <h2>Help us match you to the right support.</h2>
         <div class="assessmentMenu">
         <select name="cbtMood" id="assessMood" style="width: 100px;" class="intakeMood">
           <option value="userMood" class="cbt1">I feel..</option>

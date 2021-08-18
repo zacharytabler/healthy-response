@@ -13,7 +13,7 @@
     align-items: center;
  }
 .home__card {
-   margin-top: 310px; 
+   margin-top: 10px; 
 }
 .home_card_img {
     transition: 0.3s;
@@ -31,4 +31,9 @@
           display: block;
  margin-left: -10px;
       }
+  }
+
+  .home_card_img {
+      height: 400px;
+      width: 400px;
   }
