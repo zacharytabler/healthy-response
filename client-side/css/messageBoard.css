@@ -1,0 +1,13 @@
+.messageTitle{
+    text-align: center;
+}
+
+.messageBoard__container{
+     background-color: rgb(236, 231, 231);
+    text-align: center;
+}
+
+.replyMB {
+    justify-content: center;
+    width: 300px;
+}

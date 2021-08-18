@@ -1,6 +1,10 @@
+import HRLogoLong from "../../images/hr-logo-long.png";
+
 export default function MessageBoard(messages) {
   return `
-  <h1>Message Board</h1>
+<div class="messageBoard__container">
+  <img class="home__HR_logo" src="${HRLogoLong}">
+  <h1 class="messageTitle">Message Board</h1>
     <div class="messageBoard">
     ${messages
       .map((post) => {
@@ -9,7 +13,7 @@ export default function MessageBoard(messages) {
           <p class="subject">${post.subject}</p>
           <p class="title">${post.title}</p>
           <p class="post">${post.content}</p>
-      <div class="reply">
+      <div class="replyMB">
           <input type="text" class="replyTitle" placeholder="Reply Title">
           <input type="text" class="replySubject" placeholder="Reply Subject">
           <input type="text" class="replyContent" placeholder="Reply Content">
@@ -46,5 +50,6 @@ export default function MessageBoard(messages) {
       .join("")}
     </div> 
     </div>   
+    </div>
     `;
 }
