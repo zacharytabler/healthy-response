@@ -49,6 +49,18 @@ public class Populator implements CommandLineRunner {
         Mood suicidal = new Mood("Suicidal", "https://i.ibb.co/SJZQKSr/Suicidal.png", "The definition of suicidal is deeply unhappy or depressed and likely to commit suicide.", "Suicide: What will happen to you when you ask for help?", "https://www.mentalhelp.net/suicide/why-does-it-seem-like-a-solution/", "https://www.mentalhelp.net/depression/when-to-seek-professional-help/", "National Suicide Prevention Lifeline: 1-800-273-TALK (8255)", "Dial 911", "", "");
         Mood homicidal = new Mood("Violent", "https://i.ibb.co/stzKxDz/Homicidal.jpg", "The definition of violence is using or involving physical force intended to hurt, damage, or kill someone or something.", "https://www.verywellmind.com/is-depression-linked-to-violence-1067393", "https://www.mentalhelp.net/blogs/the-link-between-anger-and-stress/", "https://www.mentalhelp.net/anger/management/deciding-to-do-something/", "Crisis Text Line: Text “home” to 741741", "Substance Abuse and Mental Health Services Administration (SAMHSA): 1-800-662-HELP (4357)", "National Alliance on Mental Illness (NAMI) Helpline: 1-800-950-NAMI (6264)", "<iframe width=\"300\" height=\"300\" src=\"https://www.youtube.com/embed/wkse4PPxkk4\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>");
         Mood exhausted = new Mood("Exhausted", "https://i.ibb.co/d5NLbdW/Exhausted.jpg", "The definition of exhaustion is a state of extreme physical or mental fatigue.", "https://www.verywellmind.com/feeling-exhausted-easy-stress-management-3144713", "https://www.verywellmind.com/stress-relief-for-tired-people-3145199", "https://www.mentalhelp.net/blogs/give-yourself-a-break", "Crisis Text Line: Text “home” to 741741", "Substance Abuse and Mental Health Services Administration (SAMHSA): 1-800-662-HELP (4357)", "National Alliance on Mental Illness (NAMI) Helpline: 1-800-950-NAMI (6264)", "<iframe width=\"300\" height=\"300\" src=\"https://www.youtube.com/embed/z6X5oEIg6Ak\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>");
+
+        Mood happy = new Mood("Happy","","Filled with good feelings","","","","","","","");
+        Mood satisfied = new Mood("Satisfied","","Content with the present circumstances","","","","","","","");
+        Mood calm = new Mood("Calm","","At peace with oneself and surroundings","","","","","","","");
+        Mood forgiving = new Mood("Forgiving","","","","","","","","","");
+        Mood proud = new Mood("Proud","","","","","","","","","");
+
+        moodRepo.save(proud);
+        moodRepo.save(forgiving);
+        moodRepo.save(happy);
+        moodRepo.save(satisfied);
+        moodRepo.save(calm);
         moodRepo.save(afraid);
         moodRepo.save(anxious);
         moodRepo.save(depressed);
@@ -116,6 +128,26 @@ public class Populator implements CommandLineRunner {
         CopingMechanism isolate = new CopingMechanism("Isolate","Isolation is the experience of being separated from others. It may result from being physically separated from others, or it can also result from being emotionally removed from a community", "https://i.ibb.co/GsJ1NjR/Isolate.jpg", "", "", "", "", "", "");
         CopingMechanism eatStarve = new CopingMechanism("Eat/Starve","Eating disorders can be varied but are characterized by abnormal or disturbed eating habits", "https://i.ibb.co/ZKc5Ztw/Eat-Starve.jpg", "", "", "", "", "", "");
         CopingMechanism divorce = new CopingMechanism("File for Divorce","The definition of divorce is the legal dissolution of a marriage by a court or other competent body", "https://i.ibb.co/TvhVNt0/Divorce.jpg", "", "", "", "", "", "");
+
+        CopingMechanism positiveSelfTalk = new CopingMechanism("Positive Self-Talk","Saying good things to and about yourself has proven to boost self-esteem, and drive one to live a happier healthier lifestyle!");
+        CopingMechanism reflection = new CopingMechanism("Reflection","Reflecting upon people, places, and things outside of your immediate control such as: children, grandchildren, favorite vacation memories, anniversaries, weddings etc, has the power to change ones overall stress levels, and can leave a lasting calming effect.");
+        CopingMechanism excercise = new CopingMechanism("Exercise","Physically working out is proven to reduce stressors and chemicals into the brain to promote a healthy mental state");
+        CopingMechanism friends = new CopingMechanism("Positive Friends","When going through a difficult time, a good group of friends who are willing to remain encouraging and positive are all it takes sometimes!");
+        CopingMechanism spirituality = new CopingMechanism("Engage in Spirituality","Reconnecting or leaning more on your faith in spirituality in rough times has the power to bring you back to your feet!");
+        CopingMechanism cleanOrganize = new CopingMechanism("Clean/Organize","Having a cluttered or messy environment only adds to stress! Solving this one problem by taking your angst out by cleaning and organizing your environment, will do wonders. This includes getting rid of all toxic energy and items associated with your mental health!");
+        CopingMechanism setBoundaries = new CopingMechanism("Set Boundaries","Setting boundaries to not allow the ones who cause you stress and anxiety, by simply saying no, is a major key in your mental recovery! Its alright to say no.");
+        CopingMechanism gratitudeList = new CopingMechanism("Gratitude List","Physically writing out the things we are thankful for, has proven to be really helpful to some. This method is designed to bring you face to face with the joys of your life, and give them the attention they deserve.");
+        CopingMechanism prioritizeTasks = new CopingMechanism("Prioritize Tasks","There are only 24 hours in the day, and things become stressful when we cant get all we want to get done. However, this is a fact of nature we must accept. We acept this by prioritizing important tasks, and becoming content with the fact that we are in control of our days and decisions.");
+
+        copingMechanismRepo.save(positiveSelfTalk);
+        copingMechanismRepo.save(reflection);
+        copingMechanismRepo.save(excercise);
+        copingMechanismRepo.save(friends);
+        copingMechanismRepo.save(spirituality);
+        copingMechanismRepo.save(cleanOrganize);
+        copingMechanismRepo.save(setBoundaries);
+        copingMechanismRepo.save(gratitudeList);
+        copingMechanismRepo.save(prioritizeTasks);
         copingMechanismRepo.save(isolate);
         copingMechanismRepo.save(eatStarve);
         copingMechanismRepo.save(divorce);

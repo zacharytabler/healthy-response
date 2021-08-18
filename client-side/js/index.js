@@ -54,7 +54,6 @@ function buildPage() {
   myInbox();
   assessmentHeader();
   reviews();
-  replyPost();
 }
 
 function navUserProfile() {
@@ -107,8 +106,7 @@ function renderUserLogin() {
         assessmentHeader(),
         reviews(),
         replyPost(),
-        (users) => (app.innerHTML = userWelcome(users)),
-        addBadgeToProfile()
+        (users) => (app.innerHTML = userWelcome(users))
       );
     }
   });
@@ -157,6 +155,31 @@ function addBadgeToProfile() {
   });
 }
 
+function replyResponse() {
+  const replyAssessButton = document.querySelector(".assessBtn");
+  replyAssessButton.addEventListener("click", (event) => {
+    if (
+      event.target.parentElement.parentElement.parentElement.querySelector(
+        ".assessmentMenu"
+      )
+    ) {
+      const newMood =
+        event.target.parentElement.querySelector("#assessMood").value;
+      const tryCoping =
+        event.target.parentElement.querySelector("#assessCoping").value;
+
+      apiActions.postRequest(
+        "http://localhost:8080/map/response",
+        {
+          mood: newMood,
+          copingMechanism: tryCoping,
+        },
+        console.log(newMood, tryCoping)
+      );
+    }
+  });
+}
+
 function populateAssessmentMenu() {
   app.innerHTML = AssessmentPage();
   const assessmentButton = document.querySelector(".assessBtn");
@@ -178,7 +201,9 @@ function populateAssessmentMenu() {
           copingMechanism: copingMechanism,
         },
         function myFunction() {
-          var r = confirm("Would you like to leave a message for an Admin?");
+          var r = confirm(
+            "Press Ok to leave a message on the  Community Board!                                                                                                                     Press cancel to go to profile"
+          );
           if (r == true) {
             app.innerHTML = Outbox();
             outbox();
@@ -191,8 +216,7 @@ function populateAssessmentMenu() {
             );
           }
         },
-        (responses) => (app.innerHTML = ResponsesPage(responses)),
-        console.log(responses)
+        (responses) => (app.innerHTML = ResponsesPage(responses))
       );
     }
   });
@@ -243,15 +267,15 @@ function outbox() {
           content: content,
         },
 
-        (messages) => (app.innerHTML = MessageBoard(messages)),
-        alert("Message Sent!"),
-        replyPost()
+        (messages) => (
+          (app.innerHTML = MessageBoard(messages)), replyResponse()
+        ),
+        replyPost(),
+        alert("Message Posted On Community Board, Press Ok to view!")
       );
     }
   });
 }
-
-
 
 function replyPost() {
   app.addEventListener("click", (event) => {
@@ -270,8 +294,8 @@ function replyPost() {
           content: content,
         },
         console.log(subject, title, content),
-        apiActions.getRequest("http://localhost:8080/view_reply",(reply)=>{
-          app.innerHTML = InboxPage(reply)
+        apiActions.getRequest("http://localhost:8080/view_reply", (reply) => {
+          app.innerHTML = InboxPage(reply);
         })
       );
     }
@@ -283,6 +307,7 @@ function messageBoard() {
   messageBoard.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
       app.innerHTML = MessageBoard(messages);
+      replyResponse();
     });
   });
 }
