@@ -57,7 +57,6 @@ function buildPage() {
   activities();
   messageBoard();
   myInbox();
-  replyPost();
   assessmentHeader();
   reviews();
 }
@@ -109,9 +108,9 @@ function renderUserLogin() {
         activities(),
         messageBoard(),
         myInbox(),
-        replyPost(),
         assessmentHeader(),
         reviews(),
+        replyPost(),
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
@@ -154,6 +153,38 @@ function createIntakeProfile() {
   });
 }
 
+function addBadgeToProfile() {
+  const badgeButton = document.querySelector(".addBadge");
+  badgeButton.addEventListener("click", () => {
+    console.log("firing");
+  });
+}
+
+function replyResponse() {
+  const replyAssessButton = document.querySelector(".assessBtn");
+  replyAssessButton.addEventListener("click", (event) => {
+    if (
+      event.target.parentElement.parentElement.parentElement.querySelector(
+        ".assessmentMenu"
+      )
+    ) {
+      const newMood =
+        event.target.parentElement.querySelector("#assessMood").value;
+      const tryCoping =
+        event.target.parentElement.querySelector("#assessCoping").value;
+
+      apiActions.postRequest(
+        "http://localhost:8080/map/response",
+        {
+          mood: newMood,
+          copingMechanism: tryCoping,
+        },
+        console.log(newMood, tryCoping)
+      );
+    }
+  });
+}
+
 function populateAssessmentMenu() {
   app.innerHTML = AssessmentPage();
   const assessmentButton = document.querySelector(".assessBtn");
@@ -175,7 +206,9 @@ function populateAssessmentMenu() {
           copingMechanism: copingMechanism,
         },
         function myFunction() {
-          var r = confirm("Would you like to leave a message for an Admin?");
+          var r = confirm(
+            "Press Ok to leave a message on the  Community Board!                                                                                                                     Press cancel to go to profile"
+          );
           if (r == true) {
             app.innerHTML = Outbox();
             outbox();
@@ -188,18 +221,8 @@ function populateAssessmentMenu() {
             );
           }
         },
-        (responses) => (app.innerHTML = ResponsesPage(responses)),
-        console.log(responses)
+        (responses) => (app.innerHTML = ResponsesPage(responses))
       );
-    }
-  });
-}
-function replyPost() {
-  app.innerHTML = MessageBoard();
-  app.addEventListener("click", (event) => {
-    if (event.target.classList.contains("replyButton")) {
-      console.log(event);
-      // const content = event.target.parentElement.querySelector('.replycontent').value;
     }
   });
 }
@@ -249,39 +272,36 @@ function outbox() {
           content: content,
         },
 
-        (messages) => (app.innerHTML = MessageBoard(messages)),
-        alert("Message Sent!")
+        (messages) => (
+          (app.innerHTML = MessageBoard(messages)), replyResponse()
+        ),
+        replyPost(),
+        alert("Message Posted On Community Board, Press Ok to view!")
       );
     }
-  });
-}
-
-function myInbox() {
-  const myMessages = document.querySelector(".nav__list_message");
-  myMessages.addEventListener("click", () => {
-    apiActions.getRequest;
   });
 }
 
 function replyPost() {
   app.addEventListener("click", (event) => {
     if (event.target.classList.contains("replyButton")) {
+      const title =
+        event.target.parentElement.querySelector(".replyTitle").value;
+      const subject =
+        event.target.parentElement.querySelector(".replySubject").value;
       const content =
-        event.target.parentElement.querySelector(".replycontent").value;
-
+        event.target.parentElement.querySelector(".replyContent").value;
       apiActions.postRequest(
-        "http://localhost:8080/post_message",
+        "http://localhost:8080/post_reply",
         {
           subject: subject,
           title: title,
           content: content,
         },
-        console.log(content),
-
-        alert("Reply Sent!"),
-
-        (messages) => (app.innerHTML = MessageBoard(messages)),
-        (message) => (app.innerHTML = InboxPage(message))
+        console.log(subject, title, content),
+        apiActions.getRequest("http://localhost:8080/view_reply", (reply) => {
+          app.innerHTML = InboxPage(reply);
+        })
       );
     }
   });
@@ -292,6 +312,7 @@ function messageBoard() {
   messageBoard.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
       app.innerHTML = MessageBoard(messages);
+      replyResponse();
     });
   });
 }
@@ -299,63 +320,9 @@ function messageBoard() {
 function myInbox() {
   const myMessages = document.querySelector(".nav__list_message");
   myMessages.addEventListener("click", () => {
-    apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
-      app.innerHTML = InboxPage(messages);
+    apiActions.getRequest("http://localhost:8080/view_reply", (replies) => {
+      app.innerHTML = InboxPage(replies);
     });
-  });
-}
-
-function triggers() {
-  const triggerElement = document.querySelector(".nav__list_triggers");
-  triggerElement.addEventListener("click", () => {
-    apiActions.getRequest("http://localhost:8080/triggers", (triggers) => {
-      app.innerHTML = TriggersPage(triggers);
-    });
-  });
-}
-
-function copingMechanisms() {
-  const copingElement = document.querySelector(".nav__list_coping_mechanisms");
-  copingElement.addEventListener("click", () => {
-    apiActions.getRequest(
-      "http://localhost:8080/coping",
-      (copingMechanisms) => {
-        app.innerHTML = CopingMechanismsPage(copingMechanisms);
-      }
-    );
-  });
-}
-
-function consequences() {
-  const consequencesElement = document.querySelector(".nav__list_consequences");
-  consequencesElement.addEventListener("click", () => {
-    apiActions.getRequest(
-      "http://localhost:8080/consequences",
-      (consequences) => {
-        app.innerHTML = ConsequencesPage(consequences);
-      }
-    );
-  });
-}
-
-function results() {
-  const resultsElement = document.querySelector(".nav__list_results");
-  resultsElement.addEventListener("click", () => {
-    apiActions.getRequest("http://localhost:8080/results", (results) => {
-      app.innerHTML = ResultsPage(results);
-    });
-  });
-}
-
-function alternatives() {
-  const alternativesElement = document.querySelector(".nav__list_alternatives");
-  alternativesElement.addEventListener("click", () => {
-    apiActions.getRequest(
-      "http://localhost:8080/alternatives",
-      (alternatives) => {
-        app.innerHTML = AlternativesPage(alternatives);
-      }
-    );
   });
 }
 
@@ -425,18 +392,9 @@ function initSlideShow(slideshow) {
   }, time);
 }
 
-function assessment() {
-  const assessmentElement = document.querySelector(".assessmentButton");
-  assessmentElement.addEventListener("click", () => {
-    app.innerHTML = AssessmentPage();
-    populateAssessmentMenu();
-  });
-}
-
 function assessmentHeader() {
   const assessElement = document.querySelector(".nav__list_assessment");
   assessElement.addEventListener("click", () => {
-    console.log("Firing!");
     app.innerHTML = AssessmentPage();
     populateAssessmentMenu();
   });
@@ -454,6 +412,7 @@ function assessmentCardHome() {
   const assessmentCard = document.querySelector("#assessment");
   assessmentCard.addEventListener("click", () => {
     app.innerHTML = AssessmentPage();
+    populateAssessmentMenu();
   });
 }
 function activitiesCardHome() {
