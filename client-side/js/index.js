@@ -36,8 +36,8 @@ import InstructionPage from "./pages/InstructionPage";
 import BlogPage from "./pages/BlogPage";
 import MoodResourcePage from "./pages/MoodResourcePage";
 import TriggerResourcePage from "./pages/TriggerResourcePage";
-import CopingResourcePage from "./pages/CopingResourcePage";
 import HealthyResponse from "./pages/HealthyResponses";
+import CopingResourcePage from "./pages/CopingResourcePage";
 
 const app = document.querySelector("#app");
 
@@ -570,6 +570,7 @@ function healthyResponses() {
   const hrPage = document.querySelector(".nav__list_healthyResponses");
   hrPage.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/map", (response) => {
+      console.log(response);
       app.innerHTML = HealthyResponse(response);
     });
   });
