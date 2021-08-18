@@ -16,6 +16,8 @@ export default function LoginDraft() {
       <h3 class="loginTOS">TERMS OF SERVICE</h3>
       </div>
    </div>
+
+
       `;
   }
 
