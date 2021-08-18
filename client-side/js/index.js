@@ -32,6 +32,7 @@ import InboxPage from "./pages/InboxPage";
 import MessageBoard from "./pages/MessageBoard";
 import IntakeForm from "./IntakeForm";
 import BlogPage from "./pages/BlogPage";
+import HealthyResponse from "./pages/HealthyResponses";
 
 const app = document.querySelector("#app");
 
@@ -54,6 +55,8 @@ function buildPage() {
   myInbox();
   assessmentHeader();
   reviews();
+  healthyResponses();
+  // showMoodDescription();
 }
 
 function navUserProfile() {
@@ -106,6 +109,8 @@ function renderUserLogin() {
         assessmentHeader(),
         reviews(),
         replyPost(),
+        healthyResponses(),
+        // showMoodDescription(),
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
@@ -174,11 +179,28 @@ function replyResponse() {
           mood: newMood,
           copingMechanism: tryCoping,
         },
-        console.log(newMood, tryCoping)
+        (response) => (app.innerHTML = HealthyResponse(response))
+        // showMoodDescription()
       );
     }
   });
 }
+
+// function showMoodDescription() {
+//   app.addEventListener("click", (event) => {
+//     if (event.target.classList.contains("responseMood")) {
+//       const definitionsDiv = event.target.parentElement.querySelector(
+//         ".responseDescriptions"
+//       );
+//       showDescriptionDiv(definitionsDiv);
+//     }
+//   });
+// }
+
+// function showDescriptionDiv(hiddenDiv) {
+//   const definitions = document.querySelector(hiddenDiv);
+//   definitions.style.display = "block";
+// }
 
 function populateAssessmentMenu() {
   app.innerHTML = AssessmentPage();
@@ -293,7 +315,6 @@ function replyPost() {
           title: title,
           content: content,
         },
-        console.log(subject, title, content),
         apiActions.getRequest("http://localhost:8080/view_reply", (reply) => {
           app.innerHTML = InboxPage(reply);
         })
@@ -392,6 +413,15 @@ function assessmentHeader() {
   });
 }
 
+function healthyResponseCardHome() {
+  const hrCard = document.querySelector("#responses");
+  hrCard.addEventListener("click", () => {
+    apiActions.getRequest("http://localhost:8080/map", (response) => {
+      app.innerHTML = HealthyResponse(response);
+    });
+  });
+}
+
 function profileCardHome() {
   const homeCards = document.querySelector("#profileCard");
   homeCards.addEventListener("click", () => {
@@ -463,6 +493,7 @@ function home() {
     appointmentCard();
     resourcesCard();
     blogCard();
+    healthyResponseCardHome();
     const url = "https://type.fit/api/quotes";
     const quoteDiv = document.querySelector(".inspirational_quote__container");
     getAffirmationApi(url, quoteDiv);
@@ -496,6 +527,14 @@ function activities() {
     });
   });
   // putWorksheet();
+}
+function healthyResponses() {
+  const hrPage = document.querySelector(".nav__list_healthyResponses");
+  hrPage.addEventListener("click", () => {
+    apiActions.getRequest("http://localhost:8080/map", (response) => {
+      app.innerHTML = HealthyResponse(response);
+    });
+  });
 }
 
 function activityWorksheet(activity) {
