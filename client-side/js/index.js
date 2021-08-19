@@ -568,13 +568,13 @@ function activities() {
               submitButton.addEventListener('click', (event) => {
                 // console.log(event.target.parentElement);
                 // const timeStamp = event.target.parentElement.querySelector('.timestamp').value;
-                const title = event.target.parentElement.querySelector('.title').value
+                // const title = event.target.parentElement.querySelector('.title').value
                 const answer1 = event.target.parentElement.querySelector('.answer1').value;
                 const answer2 = event.target.parentElement.querySelector('.answer2').value;
                 const answer3 = event.target.parentElement.querySelector('.answer3').value;
                 const answer4 = event.target.parentElement.querySelector('.answer4').value;
                 apiActions.putRequest('http://localhost:8080/profile/17/addWorksheetAnswers', {
-                  title: title,
+                  // title: title,
                   answer1: answer1,
                   answer2: answer2,
                   answer3: answer3,
