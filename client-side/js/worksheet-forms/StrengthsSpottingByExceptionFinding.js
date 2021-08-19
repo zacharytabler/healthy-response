@@ -3,7 +3,6 @@ import Activity from '../components/Activity';
 export default function Form(worksheet) {
     return `
         <div class="worksheetForm">
-            <input type='hidden' class='timestamp' value='${Date.now()}' />
             <input type='hidden' class='title' value='${worksheet.title}' />
             <input type='hidden' class='numberQA' value='4'/>
             <h1>Strengths Spotting By Exception Finding</h1>
@@ -19,3 +18,7 @@ export default function Form(worksheet) {
         </div>
     `;
 }
+
+
+
+{/* <input type='hidden' class='timestamp' value='${Date.now()}' /> */}

@@ -567,14 +567,13 @@ function activities() {
               const submitButton = document.querySelector('.submit');
               submitButton.addEventListener('click', (event) => {
                 // console.log(event.target.parentElement);
-                const timeStamp = event.target.parentElement.querySelector('.timestamp').value;
+                // const timeStamp = event.target.parentElement.querySelector('.timestamp').value;
                 const title = event.target.parentElement.querySelector('.title').value
                 const answer1 = event.target.parentElement.querySelector('.answer1').value;
                 const answer2 = event.target.parentElement.querySelector('.answer2').value;
                 const answer3 = event.target.parentElement.querySelector('.answer3').value;
                 const answer4 = event.target.parentElement.querySelector('.answer4').value;
-                apiActions.putRequest('http://localhost:8080/profile/17/addWorksheetAnswers'), {
-                  timeStamp: timeStamp,
+                apiActions.putRequest('http://localhost:8080/profile/17/addWorksheetAnswers', {
                   title: title,
                   answer1: answer1,
                   answer2: answer2,
@@ -587,8 +586,10 @@ function activities() {
                 //   answer9: answer9,
                 //   answer10: answer10,
                 },
-                console.log(answer1, answer2, answer3, answer4);
-                // (app.innerHTML = IntakeForm()),
+                (personInfo) => console.log(personInfo)
+                // console.log(answer1, answer2, answer3, answer4),
+                // (app.innerHTML = IntakeForm())
+                );
               });
             } else if ((pageType === 'instructions') && (worksheetId == sheet.id)) {
               instruction = sheet;
@@ -637,27 +638,3 @@ function copingCard() {
 //     location.reload();
 //   })}
 
-
-
-// function putWorksheet() {
-//   app.addEventListener('click', (event) => {
-//     console.log('Event target classlist: ' + event.target.classList)
-//     if (event.target.classList.contains('activity__title')) {
-//       const activity = event.target;
-//       console.log('Activity: ' + activity);
-//       // if (activity.)
-//     }
-//   });
-//   // renderWorksheet();
-// }
-
-// function renderWorksheet() {
-//   app.addEventListener('click', (event) => {
-//     console.log('Event target classlist: ' + event.target.classList)
-//     if (event.target.classList.contains('activity__title')) {
-//       const activity = event.target;
-//       console.log('Activity: ' + activity);
-//       // if (activity.)
-//     }
-//   });
-// }

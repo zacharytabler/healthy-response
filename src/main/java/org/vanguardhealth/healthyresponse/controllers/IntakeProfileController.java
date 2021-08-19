@@ -57,7 +57,7 @@ public class IntakeProfileController {
 //        User user = userRepo.findById(id).get();
         IntakeProfile intakeProfile = intakeRepo.findById(id).get();
         JSONObject newWorksheet = new JSONObject(worksheet);
-        String title = newWorksheet.getString("title");
+//        String title = newWorksheet.getString("title");
         if(!newWorksheet.getString("answer1").isEmpty()) {
             worksheet.addWorksheetAnswers(newWorksheet.getString("answer1"));
         }

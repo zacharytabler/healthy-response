@@ -35,6 +35,9 @@ function postRequest(location, requestBody, callback) {
 function putRequest(location, requestBody, callback) {
   fetch(location, {
     method: "PUT",
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(requestBody),
   })
     .then((response) => response.json())

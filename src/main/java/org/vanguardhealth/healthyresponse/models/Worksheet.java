@@ -10,24 +10,24 @@ public class Worksheet {
     @Id
     @GeneratedValue
     private Long id;
-    private String title;
-    private long timeStamp;
+//    private String title;
+//    private long timeStamp;
     private boolean acceptUserInput;
 
     @ManyToOne
     private Activity activity;
 
     private String instructions;
-    private String answer1;
-    private String answer2;
-    private String answer3;
-    private String answer4;
-    private String answer5;
-    private String answer6;
-    private String answer7;
-    private String answer8;
-    private String answer9;
-    private String answer10;
+    private String answer1 = "";
+    private String answer2 = "";
+    private String answer3 = "";
+    private String answer4 = "";
+    private String answer5 = "";
+    private String answer6 = "";
+    private String answer7 = "";
+    private String answer8 = "";
+    private String answer9 = "";
+    private String answer10 = "";
 
     @ManyToOne
     @JsonIgnore
@@ -40,9 +40,9 @@ public class Worksheet {
     public Worksheet() {}
 
     public Worksheet(String title, boolean acceptUserInput) {
-        this.title = title;
+//        this.title = title;
         this.acceptUserInput = acceptUserInput;
-        this.timeStamp = timeStamp;
+//        this.timeStamp = timeStamp;
         this.activity = activity;
         this.instructions = instructions;
         this.answer1 = answer1;
@@ -58,9 +58,9 @@ public class Worksheet {
     }
 
     public Worksheet(String title, boolean acceptUserInput, User user, String answer1) {
-        this.title = title;
+//        this.title = title;
         this.acceptUserInput = acceptUserInput;
-        this.timeStamp = timeStamp;
+//        this.timeStamp = timeStamp;
         this.user = user;
         this.answer1 = answer1;
         this.answer2 = answer2;
@@ -78,18 +78,18 @@ public class Worksheet {
         return id;
     }
 
-    public String getTitle() {
-        return title;
-    }
+//    public String getTitle() {
+//        return title;
+//    }
 
     public boolean isAcceptUserInput() {
         return acceptUserInput;
     }
 
-    public long getTimeStamp() {
-        timeStamp = System.currentTimeMillis();
-        return timeStamp;
-    }
+//    public long getTimeStamp() {
+//        timeStamp = System.currentTimeMillis();
+//        return timeStamp;
+//    }
 
     public Activity getActivity() {
         return activity;
