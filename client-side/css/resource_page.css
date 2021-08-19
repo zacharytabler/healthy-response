@@ -12,6 +12,7 @@
 .coping_disclaimer {
    padding-bottom: 2px;
    padding-top: 2px;
+   margin-bottom: 10px;
     align-items: center;
 }
 .coping_disclaimer:hover {

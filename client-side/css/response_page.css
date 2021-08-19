@@ -10,9 +10,13 @@
     margin-top: -25px;
     width: 65%;
 }
+
+.user_response {
+    font-size: 2vw; 
+}
+
 .response_quote__container {
     align-items: center;
-    font-size: 2vw; 
     margin-top: 50px;
 }
 

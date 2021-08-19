@@ -14,12 +14,13 @@
     font-size: 2vw;
     margin-top: 50px;
  }
- .up {
-     margin-top: -220px;
- }
-.home__card {
-   margin-top: -210px;
+.up {
+    margin-top: 220px;
 }
+.home__card {
+  margin-top: -210px; 
+} 
+
 .home_card_img {
     transition: 0.3s;
     width: 23%;
