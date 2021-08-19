@@ -4,9 +4,8 @@ import "../../css/resource_page.css";
 import HRLogoLong from "../../images/hr-logo-long.png";
 export default function TriggerResourcePage(trigger){
     return `
-    <div class = "home__container">
+    <div class = "response__container">
     <img class="home__HR_logo" src="${HRLogoLong}">
-    <div class="inspirational_quote__container">
     </br>
   ${trigger.map((trigger) => {
       return `
@@ -27,7 +26,7 @@ export default function TriggerResourcePage(trigger){
       <p class = "trigger_phoneNumber">${trigger.trigger.triggerPhoneResource3}</p>
       </div>
       </div>
-      <h3 class = "trigger_disclaimer"><center>Disclaimer: ${trigger.trigger.triggerDisclaimer}</center></h3>
+      <h4 class ="coping_disclaimer"><center>Disclaimer: ${trigger.trigger.triggerDisclaimer}</center></h4>
       `;
     })
     .join("")}

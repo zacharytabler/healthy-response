@@ -1,12 +1,11 @@
 import "../../css/response_page.css";
+import "../../css/resource_page.css";
 
 import HRLogoLong from "../../images/hr-logo-long.png";
 export default function CopingResourcePage(coping){
     return `
-    <div class = "home__container">
+    <div class ="response__container">
     <img class="home__HR_logo" src="${HRLogoLong}">
-    <div class="inspirational_quote__container">
-    </div>
   ${coping.map((response) => {
       return `
      <h2 class ="copingHeader">${response.copingMechanism.title} Resources</h2>
@@ -25,9 +24,8 @@ export default function CopingResourcePage(coping){
     <p class = "coping_phoneNumber">${response.copingMechanism.copingMechanismPhoneResource3}</p>
     </div>
     </div>
-    <h3 class = "coping_disclaimer"><center>Disclaimer: ${response.copingMechanism.copingDisclaimer}</center></h3>
+    <h4 class ="coping_disclaimer"><center>Disclaimer: ${response.copingMechanism.copingDisclaimer}</center></h4>
     `;
     })
-    .join("")}
-    
+    .join("")} 
   `}
