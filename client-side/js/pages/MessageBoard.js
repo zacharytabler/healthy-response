@@ -1,9 +1,6 @@
-import HRLogoLong from "../../images/hr-logo-long.png";
-
 export default function MessageBoard(messages) {
   return `
 <div class="messageBoard__container">
-  <img class="home__HR_logo" src="${HRLogoLong}">
   <h1 class="messageTitle">Message Board</h1>
     <div class="messageBoard">
     ${messages
@@ -18,7 +15,7 @@ export default function MessageBoard(messages) {
           <input type="text" class="replySubject" placeholder="Reply Subject">
           <input type="text" class="replyContent" placeholder="Reply Content">
           <button class="replyButton">Reply</button>
-      <div class="assessmentMenu">
+      <div class="assessmentMenuMB">
       <select name="cbtMood" id="assessMood" class="intakeMood">
           <option value="userMood" class="cbt1">To Feel..</option>
           <option value="Happy" class="cbt2">Happy</option>

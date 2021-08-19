@@ -1,13 +1,15 @@
-.messageTitle{
-    text-align: center;
-}
-
 .messageBoard__container{
-     background-color: rgb(236, 231, 231);
+    background-color: rgb(236, 231, 231);
+    justify-content: center;
     text-align: center;
 }
 
-.replyMB {
+.replyMB input {
+    width: 400px;
     justify-content: center;
-    width: 300px;
+}
+
+.assessmentMenuMB {
+    width: 400px;
+    justify-content: center;
 }
