@@ -11,16 +11,11 @@ export default function HealthyResponse(response){
         <div class="myResponse">
         <button class="responseMood">To feel: ${myResponse.mood.mood}</button>
         <p class="moodDescription">${myResponse.mood.moodDisclaimer}</p>
-        
+        <h1 class ="learnMore">Learn More Healthy Coping Methods</h1>
         <button class="responseCoping">Why not try, ${myResponse.copingMechanism.title}</button>
         <p class="copingDescription">${myResponse.copingMechanism.copingDisclaimer}</p>
-        <div class="responseDecriptions">
-        <h1 class ="learnMore">Learn More Healthy Coping Methods</h1>
-        
+        </div>
        
-
-        </div>
-        </div>
         `
     })}
     </div>

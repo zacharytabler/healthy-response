@@ -62,7 +62,6 @@ function buildPage() {
   reviews();
   toLegalPageFromLogin();
   healthyResponses();
-  // showMoodDescription();
 }
 
 function navUserProfile() {
@@ -117,7 +116,6 @@ function renderUserLogin() {
         replyPost(),
         toLegalPageFromLogin(),
         healthyResponses(),
-        // showMoodDescription(),
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
@@ -160,12 +158,6 @@ function createIntakeProfile() {
   });
 }
 
-function addBadgeToProfile() {
-  const badgeButton = document.querySelector(".addBadge");
-  badgeButton.addEventListener("click", () => {
-    console.log("firing");
-  });
-}
 
 function replyResponse() {
   const replyAssessButton = document.querySelector(".assessBtn");
@@ -187,7 +179,6 @@ function replyResponse() {
           copingMechanism: tryCoping,
         },
         (response) => (app.innerHTML = HealthyResponse(response))
-        // showMoodDescription()
       );
     }
   });
@@ -262,15 +253,6 @@ function loginDraft() {
   footerElement.innerHTML = "";
 }
 
-function moods() {
-  const moodElement = document.querySelector(".nav__list_moods");
-  moodElement.addEventListener("click", () => {
-    apiActions.getRequest("http://localhost:8080/moods", (moods) => {
-      app.innerHTML = MoodsPage(moods);
-    });
-  });
-}
-
 function messageBoard() {
   const messageBoard = document.querySelector(".nav__list_messageBoard");
   messageBoard.addEventListener("click", () => {
@@ -297,7 +279,7 @@ function outbox() {
         },
 
         (messages) => (
-          (app.innerHTML = MessageBoard(messages)), replyResponse()
+          (app.innerHTML = MessageBoard(messages))
         ),
         replyPost(),
         alert("Message Posted On Community Board, Press Ok to view!")
@@ -324,7 +306,8 @@ function replyPost() {
         },
         apiActions.getRequest("http://localhost:8080/view_reply", (reply) => {
           app.innerHTML = InboxPage(reply);
-        })
+        }),
+        replyResponse()
       );
     }
   });
@@ -539,24 +522,33 @@ function activities() {
   let instruction;
   apiActions.getRequest("http://localhost:8080/worksheets", (worksheets) => {
     worksheetsJson = worksheets;
-  })
-  const activitiesElement = document.querySelector('.nav__list_activities');
+  });
+  const activitiesElement = document.querySelector(".nav__list_activities");
   activitiesElement.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/activities", (activities) => {
       app.innerHTML = ActivitiesPage(activities);
-      const activityTitles = document.querySelectorAll('.activity__title');
+      const activityTitles = document.querySelectorAll(".activity__title");
       activityTitles.forEach((activityTitle) => {
-        activityTitle.addEventListener('click', (event) => {
-          const worksheetId = event.target.parentElement.parentElement.querySelector('.worksheetId').value;
-          const pageType = event.target.parentElement.parentElement.querySelector('.page').value;
-          let displayUrl = event.target.parentElement.parentElement.querySelector('.displayUrl').value;
+        activityTitle.addEventListener("click", (event) => {
+          const worksheetId =
+            event.target.parentElement.parentElement.querySelector(
+              ".worksheetId"
+            ).value;
+          const pageType =
+            event.target.parentElement.parentElement.querySelector(
+              ".page"
+            ).value;
+          let displayUrl =
+            event.target.parentElement.parentElement.querySelector(
+              ".displayUrl"
+            ).value;
           // console.log('Display URL: ' + displayUrl);
           worksheetsJson.forEach((sheet) => {
-            if ((pageType === 'forms') && (worksheetId == sheet.id)) {
+            if (pageType === "forms" && worksheetId == sheet.id) {
               worksheet = sheet;
               // console.log('Display URL: ' + displayUrl);
               app.innerHTML = WorksheetPage(worksheet, displayUrl);
-            } else if ((pageType === 'instructions') && (worksheetId == sheet.id)) {
+            } else if (pageType === "instructions" && worksheetId == sheet.id) {
               instruction = sheet;
               // console.log('Display URL: ' + displayUrl);
               // app.innerHTML = InstructionPage(instruction, displayUrl);
@@ -606,19 +598,11 @@ function copingCard() {
 }
 
 function toLegalPageFromLogin() {
-const loginTOS = document.querySelector(".loginTOS");
-loginTOS.addEventListener("click", () => {
+  const loginTOS = document.querySelector(".loginTOS");
+  loginTOS.addEventListener("click", () => {
     app.innerHTML = LegalPage();
   });
 }
-
-
-
-
-
-
-
-
 
 // function reset() {
 //   const resetElement = document.querySelector(".reset-button");
@@ -626,8 +610,6 @@ loginTOS.addEventListener("click", () => {
 //     console.log("firing!"),
 //     location.reload();
 //   })}
-
-
 
 // function putWorksheet() {
 //   app.addEventListener('click', (event) => {
