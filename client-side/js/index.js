@@ -60,8 +60,8 @@ function buildPage() {
   myInbox();
   assessmentHeader();
   reviews();
-  toLegalPageFromLogin();
   healthyResponses();
+  toLegalPageFromLogin();
 }
 
 function navUserProfile() {
@@ -114,8 +114,8 @@ function renderUserLogin() {
         assessmentHeader(),
         reviews(),
         replyPost(),
-        toLegalPageFromLogin(),
         healthyResponses(),
+        toLegalPageFromLogin(),
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
