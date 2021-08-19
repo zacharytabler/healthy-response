@@ -26,7 +26,7 @@ export default function MessageBoard(messages) {
       <select name="userCoping" id="assessCoping" class="intakeCoping">
           <option value="userCoping" class="cbt">
             Try this instead...</option>
-          <option value="Positive Self-talk" class="cbt">Positive Self-Talk</option>
+          <option value="Positive Self-Talk" class="cbt">Positive Self-Talk</option>
           <option value="Reflection" class="cbt">Reflection</option>
           <option value="Exercise" class="cbt">Exercise</option>
           <option value="Positive Friends" class="cbt">Positive Friends</option>
