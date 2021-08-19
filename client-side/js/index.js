@@ -158,7 +158,6 @@ function createIntakeProfile() {
   });
 }
 
-
 function replyResponse() {
   const replyAssessButton = document.querySelector(".assessBtn");
   replyAssessButton.addEventListener("click", (event) => {
@@ -258,6 +257,7 @@ function messageBoard() {
   messageBoard.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
       app.innerHTML = MessageBoard(messages);
+      replyResponse();
     });
   });
 }
@@ -278,9 +278,7 @@ function outbox() {
           content: content,
         },
 
-        (messages) => (
-          (app.innerHTML = MessageBoard(messages))
-        ),
+        (messages) => (app.innerHTML = MessageBoard(messages)),
         replyPost(),
         alert("Message Posted On Community Board, Press Ok to view!")
       );
