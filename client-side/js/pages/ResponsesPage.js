@@ -11,11 +11,12 @@ export default function ResponsesPage(responses) {
   ${responses.map((response) => {
       return `
     <div class="user_response">
-    <span class="mood_response">We hear you! You feel ${response.mood.mood},</span>
+    <span class="mood_response">We hear you! You feel</span>
+    <span style = "text-transform:lowercase">${response.mood.mood},</span>
     <input type='hidden' id='moodId' value='${response.mood.id}'>
-    <span class="trigger_response"> because of ${response.trigger.name},</span>
+    <span class="trigger_response" style = "text-transform:lowercase"> because of ${response.trigger.name},</span>
     <input type='hidden' id='triggerId' value='${response.trigger.id}'>
-    <span class="copingMechanism_response">which causes you to ${response.copingMechanism.title}.</span>
+    <span class="copingMechanism_response" style = "text-transform:lowercase">which causes you to ${response.copingMechanism.title}.</span>
     <input type='hidden' id='copingMechanismId' value='${response.copingMechanism.id}'>
     </div>
 <div class="home__container">
