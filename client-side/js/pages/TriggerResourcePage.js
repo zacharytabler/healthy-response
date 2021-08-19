@@ -13,7 +13,7 @@ export default function TriggerResourcePage(trigger){
       <h2 class= "triggerHeader">${trigger.trigger.name} Resources</h2>
       <div class="userClassContainer">
       <div class="userDiv1">
-      <img src = ${trigger.trigger.triggerImage} width="300" height="300" >
+      <img src = ${trigger.trigger.triggerImage}width="400" height="400">
       </div>
       <div class="userDiv2">
       <h4>Articles</h4>

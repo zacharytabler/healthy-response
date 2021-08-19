@@ -1,3 +1,5 @@
+import "../../css/userProfilePage.css";
+
 export default function userWelcome(users) {
   console.log(users);
   return `
@@ -5,10 +7,10 @@ export default function userWelcome(users) {
     ${users
       .map((user) => {
         return `
-        <h3 class="userName">Welcome ${user.firstName}!</h3>
+        <h2 class="userName">Welcome ${user.firstName}!</h2>
         </br>
       <div class="user_tile">
-      <h4 class="tile_header"> User Profile:</h4>
+      <h3 class="tile_header"> User Profile:</h3>
       <p class="userFirstName"><b>First Name:</b> ${user.firstName}</p>
       <p class="userLastName"><b> Last Name:</b>  ${user.lastName}</p>
       <p class="userEthnicity"><b> Ethnicity:</b> ${user.ethnicity}</p>

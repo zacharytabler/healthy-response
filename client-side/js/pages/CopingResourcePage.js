@@ -9,11 +9,10 @@ export default function CopingResourcePage(coping){
     </div>
   ${coping.map((response) => {
       return `
-     <h2 class = "copingHeader">${response.copingMechanism.title} Resources</h2>
+     <h2 class ="copingHeader">${response.copingMechanism.title} Resources</h2>
     <div class="userClassContainer">
     <div class="userDiv1">
-    <img src = ${response.copingMechanism.copingMechanismImage} width="400" height="400" >
-    </div>
+    <img src = ${response.copingMechanism.copingMechanismImage} width="400" height="400"></div>
     <div class="userDiv2">
     <h4>Articles</h4>
     <p class = "coping_article">${response.copingMechanism.copingMechanismArticle1}</p>

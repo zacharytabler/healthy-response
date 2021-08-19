@@ -1,0 +1,8 @@
+.user_tile {
+    background-color: lightslategrey;
+    width: 300px;
+    height: 300px;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
