@@ -4,7 +4,7 @@ export default function AppointmentPage() {
   
 
     <h1>Schedule an appointment</h1>
-    
+    <form id="form1" method="post" action="javascript:alert('Submitted')">
     <div class="container">
     <div class="card">
        

@@ -12,17 +12,14 @@ public class Reviews {
     private String email;
     private String subject;
 
-    public Reviews(long id, String fname, String lname, String email, String subject) {
-        this.id = id;
+    public Reviews( String fname, String lname, String email, String subject) {
         this.fname = fname;
         this.lname = lname;
         this.email = email;
         this.subject = subject;
     }
 
-    public long getId() {
-        return id;
-    }
+
 
     public String getFname() {
         return fname;
