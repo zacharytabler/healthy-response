@@ -18,6 +18,7 @@ export default function HomePage() {
   <div class="home__container">
  <img class="home__HR_logo" src="${HRLogoLong}">
         <div class="inspirational_quote__container"></div>
+        <div class="up"></div>
         <div class="home__card">
         <img class="home_card_img" id="profileCard" src="${Profile}">
         <img class="home_card_img round" id="assessment" src="${Assessment}">

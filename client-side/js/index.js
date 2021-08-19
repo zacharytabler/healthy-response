@@ -60,6 +60,7 @@ function buildPage() {
   myInbox();
   assessmentHeader();
   reviews();
+  toLegalPageFromLogin();
   healthyResponses();
   // showMoodDescription();
 }
@@ -114,6 +115,7 @@ function renderUserLogin() {
         assessmentHeader(),
         reviews(),
         replyPost(),
+        toLegalPageFromLogin(),
         healthyResponses(),
         // showMoodDescription(),
         (users) => (app.innerHTML = userWelcome(users))
@@ -602,6 +604,21 @@ function copingCard() {
     });
   });
 }
+
+function toLegalPageFromLogin() {
+const loginTOS = document.querySelector(".loginTOS");
+loginTOS.addEventListener("click", () => {
+    app.innerHTML = LegalPage();
+  });
+}
+
+
+
+
+
+
+
+
 
 // function reset() {
 //   const resetElement = document.querySelector(".reset-button");
