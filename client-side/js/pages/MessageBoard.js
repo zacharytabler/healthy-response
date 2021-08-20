@@ -1,10 +1,12 @@
 import '../../css/MessageBoard.css'
 import TopImg from '../../images/BlogBG.png'
+import HRLogoLong from "../../images/hr-logo-long.png";
 
 
 export default function MessageBoard(messages) {
   return `
 <div class="MB_img_s"></div>
+<img class="home__HR_logo" src="${HRLogoLong}">
     <div class="messageBoard">
     ${messages
       .map((post) => {
