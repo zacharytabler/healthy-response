@@ -359,7 +359,21 @@ function about() {
 function contact() {
   const contactElement = document.querySelector(".footer_list_contactUs");
   contactElement.addEventListener("click", () => {
-    app.innerHTML = ContactUsPage();
+app.innerHTML = ContactUsPage();
+submitContactPage();
+  });
+}
+
+function submitContactPage() {
+  const submitElement = document.querySelector(".submit-rating");
+  submitElement.addEventListener("click", () => {
+    apiActions.postRequest("http://localhost:8080/reviews",{
+      "firstName": document.querySelector("#fname").value,
+      "lastName": document.querySelector("#lname").value,
+      "email": document.querySelector("#email").value,
+    }, (reviews) => {
+      app.innerHTML = ReviewsPage(reviews);
+    });
   });
 }
 function appointment() {
