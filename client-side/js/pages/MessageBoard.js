@@ -1,7 +1,6 @@
 export default function MessageBoard(messages) {
   return `
-<div class="messageBoard__container">
-  <h1 class="messageTitle">Message Board</h1>
+  <h1>Message Board</h1>
     <div class="messageBoard">
     ${messages
       .map((post) => {
@@ -10,12 +9,12 @@ export default function MessageBoard(messages) {
           <p class="subject">${post.subject}</p>
           <p class="title">${post.title}</p>
           <p class="post">${post.content}</p>
-      <div class="replyMB">
+      <div class="reply">
           <input type="text" class="replyTitle" placeholder="Reply Title">
           <input type="text" class="replySubject" placeholder="Reply Subject">
           <input type="text" class="replyContent" placeholder="Reply Content">
           <button class="replyButton">Reply</button>
-      <div class="assessmentMenuMB">
+      <div class="assessmentMenu">
       <select name="cbtMood" id="assessMood" class="intakeMood">
           <option value="userMood" class="cbt1">To Feel..</option>
           <option value="Happy" class="cbt2">Happy</option>
@@ -27,7 +26,7 @@ export default function MessageBoard(messages) {
       <select name="userCoping" id="assessCoping" class="intakeCoping">
           <option value="userCoping" class="cbt">
             Try this instead...</option>
-          <option value="Positive Self-talk" class="cbt">Positive Self-Talk</option>
+          <option value="Positive Self-Talk" class="cbt">Positive Self-Talk</option>
           <option value="Reflection" class="cbt">Reflection</option>
           <option value="Exercise" class="cbt">Exercise</option>
           <option value="Positive Friends" class="cbt">Positive Friends</option>
@@ -47,6 +46,5 @@ export default function MessageBoard(messages) {
       .join("")}
     </div> 
     </div>   
-    </div>
     `;
 }
