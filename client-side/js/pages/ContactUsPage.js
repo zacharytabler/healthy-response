@@ -11,17 +11,21 @@ export default function ContactUsPage() {
           <label for="fname">First Name</label>
           <input type="text" id="fname" name="firstname" placeholder="Your name..">
           <span class="invalid" id="name-status"></span>
+          </br>
           <label for="lname">Last Name</label>
           <input type="text" id="lname" name="lastname" placeholder="Your last name..">
           <span class="invalid" id="name-status"></span>
+          </br>
           <label for="email">Email</label>
           <input type="text" id="email" name="email placeholder="Your email..">
           <span class="invalid" id="email-status"></span>
+          </br>
           <label for="email"> Your Thoughts </label>
+          </br>
           <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
           
           <div class="star-rating" >
-          <div class="thanks-msg">Thank you for your feedback !!! Rate Us </div>
+          <div class="thanks-msg">Thank you for your feedback! Please Rate Us! </div>
             <div class="star-input">
             <select class="form-control" id="rate">
             <option value="1star">1</option>

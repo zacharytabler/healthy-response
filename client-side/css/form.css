@@ -4,7 +4,7 @@ form
 }
 
 input[type=text], select, textarea {
-    width: 50%; 
+    width: 400px; 
     padding: 12px; 
     border: 1px solid #ccc; 
     border-radius: 4px; 
@@ -43,6 +43,6 @@ input[type=text], select, textarea {
   
    .container {
     border-radius: 5px;
-    background-color: gray;
+    background-color: rgb(236, 231, 231)ay;
     padding: 20px;
   }
