@@ -12,7 +12,7 @@ export default function Header() {
     <li class='nav__list_message'>My Messages</li>
     <li class='nav__list_messageBoard'>Message Board</li>
     <li class='nav__list_appointment'>Appointment</li>
-    <li class='nav__list_responses'>Responses</li>
+    <li class='nav__list_responses'>Resources</li>
   </ul>
 </nav>
         `;

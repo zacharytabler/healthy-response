@@ -9,7 +9,7 @@ export default function userWelcome(users) {
         return `
         <h2 class="userName">Welcome ${user.firstName}!</h2>
         </br>
-      <div class="user_tile">
+        <center><div class="user_tile">
       <h3 class="tile_header"> User Profile:</h3>
       <p class="userFirstName"><b>First Name:</b> ${user.firstName}</p>
       <p class="userLastName"><b> Last Name:</b>  ${user.lastName}</p>
@@ -20,10 +20,10 @@ export default function userWelcome(users) {
       <p class ="aboutMe"><b>About Me:</b>  ${user.aboutMe}</p>
       </br>
       <button class="addBadge">Click for badge</button>
-      <input type='hidden' id='userId' value='${user.id}'>
+      <input type='hidden' id='userId' value='${user.id}'></div></center>
         `;
       })
       .join("")}
-      </div>
+      </div> 
     `;
 }
