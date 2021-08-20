@@ -62,6 +62,8 @@ function buildPage() {
   reviews();
   healthyResponses();
   toLegalPageFromLogin();
+  toHomePageFromGuestLogin(); 
+  toProfilePageFromLogin();
 }
 
 function navUserProfile() {
@@ -84,7 +86,7 @@ function footer() {
 }
 
 function renderUserLogin() {
-  app.innerHTML = LoginDraft();
+  app.innerHTML = LoginDraft(); toLegalPageFromLogin(); toHomePageFromGuestLogin(); toProfilePageFromLogin();
   app.addEventListener("click", (event) => {
     if (event.target.classList.contains("loginButton")) {
       const userName =
@@ -602,6 +604,33 @@ function toLegalPageFromLogin() {
   });
 }
 
+function toHomePageFromGuestLogin() {
+  const loginGuest = document.querySelector(".loginGuest");
+  loginGuest.addEventListener("click", () => {
+    app.innerHTML = HomePage();
+    profileCardHome();
+    assessmentCardHome();
+    activitiesCardHome();
+    inboxCardHome();
+    communityMessageBoardCard();
+    appointmentCard();
+    resourcesCard();
+    blogCard();
+    healthyResponseCardHome();
+    const url = "https://type.fit/api/quotes";
+    const quoteDiv = document.querySelector(".inspirational_quote__container");
+    getAffirmationApi(url, quoteDiv);
+  });
+}
+
+function toProfilePageFromLogin() {
+  const loginProfile = document.querySelector(".loginProfile");
+  loginProfile.addEventListener("click", () => {
+    app.innerHTML = IntakeForm(); createIntakeProfile();
+    header();
+    footer();
+  });
+}
 // function reset() {
 //   const resetElement = document.querySelector(".reset-button");
 //   resetElement.addEventListener("click", () => {
