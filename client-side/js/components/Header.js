@@ -1,8 +1,8 @@
 export default function Header() {
   return `
-  <nav>
+<nav>
   	<input type="checkbox">
-	<label>&equiv;</label>
+	  <label>&equiv;</label>
   <ul class="nav__header">
     <li class='nav__list_home'>Home</li>
     <li class='nav__list_profile'>Profile</li>
