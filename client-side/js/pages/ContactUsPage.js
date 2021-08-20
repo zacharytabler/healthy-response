@@ -1,6 +1,6 @@
 export default function ContactUsPage() {
     return `
-  
+    <link rel="stylesheet" href="css/form.css">
       <h1> Talk To Us !! </h1> 
       <div class="container">
     
