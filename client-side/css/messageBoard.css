@@ -1,0 +1,31 @@
+.messageBoard__container{
+    background-color: rgb(236, 231, 231);
+    /* justify-content: center; */
+    padding: 30px;
+    text-align: center;
+}
+
+.messageBoardTable {
+    padding: 10px;
+}
+
+.replyMB {
+    padding: 20px;
+}
+
+.replyMB input {
+    width: 400px;
+}
+
+.assessmentMenuMB {
+    padding-top: 20px;
+    padding-left: 100px;
+    width: 300px;
+}
+
+  @media only screen and (min-width:400px) {
+      .messageBoard__container {
+          display: block;
+ margin-left: -10px;
+      }
+  }
