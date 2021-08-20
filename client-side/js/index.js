@@ -28,7 +28,6 @@ import "../css/form.css";
 import "../css/style.css";
 import "../css/home_page.css";
 import "../css/login.css";
-import "../css/messageBoard.css";
 import InboxPage from "./pages/InboxPage";
 import MessageBoard from "./pages/MessageBoard";
 import IntakeForm from "./IntakeForm";
