@@ -1,6 +1,11 @@
+import '../../css/style.css'
+import Img1 from "../../images/Assess-Img.png"
+import Img2 from "../../images/Assess-Img2.png"
 export default function AssessmentPage() {
   return `
-        <h2>Help us match you to the right support.</h2>
+  <img class="Img1__Assessment" src="${Img2}">
+  <div class="AssessmentGrid">
+  <img class="Img2__Assessment" src="${Img1}">
         <div class="assessmentMenu">
         <select name="cbtMood" id="assessMood" style="width: 100px;" class="intakeMood">
           <option value="userMood" class="cbt1">I feel..</option>

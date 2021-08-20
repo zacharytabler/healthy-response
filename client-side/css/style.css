@@ -27,6 +27,20 @@ body {
   margin-left: 200px;
   margin-top: 100px;
 }
-@media only screen and (min-width:1000px) {
-
+.AssessmentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template: 
+  "A1 A2";
+}
+.Img2__Assessment {
+  grid-area: A1;
+  margin-left: 110px;
+  border-radius: 20%;
+}
+.assessmentMenu {
+  grid-area: A2;
+}
+.Img1__Assessment {
+  height: 150px;
 }
