@@ -36,7 +36,6 @@ body {
 margin-left: -10px;
   }
   .Img1__Assessment {
-  
     width: 90%
   }
   .IntakeGrid {
@@ -52,7 +51,18 @@ margin-left: -10px;
     height: 500px;
     margin-left: 50px;
     margin-top: 20px;
-    
-  }
+     }
+     .Img1__Assessment  {
+       display: none;
+     }
+     .Img2__Assessment {
+       background-image: url(/images/Assess-Img2_s.png);
+       height: 250px;
+       background-repeat: no-repeat;
+       margin-left: 50px;
+     }
+     .assessmentMenu {
+       margin-top: 5px;
+     }
 
 }

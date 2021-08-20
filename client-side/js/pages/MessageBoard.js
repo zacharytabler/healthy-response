@@ -4,7 +4,7 @@ import TopImg from '../../images/BlogBG.png'
 
 export default function MessageBoard(messages) {
   return `
-<div class="boardGrid">
+<div class="MB_img_s"></div>
     <div class="messageBoard">
     ${messages
       .map((post) => {
@@ -50,6 +50,6 @@ export default function MessageBoard(messages) {
       .join("")}
     </div> 
     </div>  
-    </div> 
+  
     `;
 }
