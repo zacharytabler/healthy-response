@@ -19,7 +19,6 @@ export default function userWelcome(users) {
       <p class ="status"><b>Status:</b>  ${user.status}</p>
       <p class ="aboutMe"><b>About Me:</b>  ${user.aboutMe}</p>
       </br>
-      <button class="addBadge">Click for badge</button>
       <input type='hidden' id='userId' value='${user.id}'></div></center>
         `;
       })

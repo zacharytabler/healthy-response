@@ -12,7 +12,7 @@ export default function MoodResourcePage(moods){
     <h2 class="moodHeader">Resources For Being ${response.mood.mood}</h2>
     <div class="userClassContainer">
     <div class="userDiv1">
-    <center><img src = ${response.mood.moodImage} width="400" height="400" ></center></div>
+    <center><img src = ${response.mood.moodImage} width="300" height="300" ></center></div>
     <div class="userDiv2">
     <h4>Articles</h4>
     <p class = "mood_article">How You May Be Feeling: ${response.mood.moodArticle1}</p>
