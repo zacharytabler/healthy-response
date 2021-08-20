@@ -32,7 +32,7 @@
   .round {
       border-radius: 50%;
   }
-  @media only screen and (min-width:400px) {
+  @media only screen and (max-width:1000px) {
       .home__container {
           display: block;
  margin-left: -10px;
