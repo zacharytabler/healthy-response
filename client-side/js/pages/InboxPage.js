@@ -1,12 +1,12 @@
 import "../../css/inbox.css"
-import picture from "../../images/vhs-logo-gray.png"
-import logo from "../../images/hr-logo-heart.png"
+import picture from "../../images/Message_VHS.png"
+import logo from "../../images/Message_HR.png"
 export default function InboxPage(reply) {
   return `
   <div class='myInbox'>
   <aside class="messageAside">
-  <img src="${picture}">
-  <img src="${logo}">
+  <img class="message__Img1" src="${picture}">
+  <img class="message__Img2" src="${logo}">
   </aside>
   ${reply
     .map((replies) => {
