@@ -304,9 +304,9 @@ function replyPost() {
         },
         apiActions.getRequest("http://localhost:8080/view_reply", (reply) => {
           app.innerHTML = InboxPage(reply);
-        }),
-        replyResponse()
+        })
       );
+      replyResponse();
     }
   });
 }
