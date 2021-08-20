@@ -163,9 +163,10 @@ public class Populator implements CommandLineRunner {
         copingMechanismRepo.save(gratitudeList);
         copingMechanismRepo.save(prioritizeTasks);
 
-        Message testMessage = new Message("testtitle","testsbbject","testcontent");
+        Message testMessage = new Message("Welcome To The HR Community Message Board","Here is where we come together as a community to share experiences and for support!","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec mattis enim, sit amet bibendum lectus. Ut et malesuada mi. Suspendisse ligula mauris, congue ut odio nec, sodales maximus justo. Duis maximus ut urna et tempus. In quis arcu purus. Vivamus eu pulvinar augue. Integer efficitur egestas pretium. Proin in lectus ac dui dignissim tempor. " +
+                "Curabitur eget purus feugiat, rutrum est eget, eleifend lectus.");
         messageRepo.save(testMessage);
-        Reply testReply = new Reply ("TEST REPLY CONTENT", "TEST REPLY TITLE","TEST REPLY CONTENT");
+        Reply testReply = new Reply ("This is your Healthy Response personal inbox.", "Here lies the heart of HR experience!","Responses to your community board messages are shown here!");
         replyRepo.save(testReply);
 
     }
