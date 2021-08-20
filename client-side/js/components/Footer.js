@@ -6,6 +6,6 @@ export default function Footer() {
       <li class='footer_list_reviews'>Reviews</li>
       <li class='footer_list_legal'>Legal</li>
   </ul>
-<small>&copy VanGUARD Health Solutions 2021</small>
+<small class="vhs">&copy VanGUARD Health Solutions 2021</small>
     `;
 }

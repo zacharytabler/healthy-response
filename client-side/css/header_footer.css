@@ -31,9 +31,8 @@
 }
 
 nav {
-  background-color: rgb(165, 175, 177);
   font: normal bold 11px Arial, Sans-Serif;
-  color: whitesmoke;
+  color: rgb(17, 16, 16);
   height: 30px;
   display: flex;
   justify-content: center;
@@ -137,4 +136,12 @@ nav label {
     height: 330px;
     visibility: visible;
   }
+  .footer_nav li {
+    list-style-type: none;
+    font-size: large; 
+    margin-left: -11px;
+    padding: 11px; 
+  }
+
+
 }
