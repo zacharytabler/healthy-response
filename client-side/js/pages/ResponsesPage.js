@@ -18,7 +18,7 @@ export default function ResponsesPage(responses) {
     <span class="copingMechanism_response" style = "text-transform:lowercase">which causes you to ${response.copingMechanism.title}.</span>
     <input type='hidden' id='copingMechanismId' value='${response.copingMechanism.id}'>
     </div>
-<div class="response__container">
+<div class="response__card_container">
         <div class="response__card">
         <img class="response_card_img" id="moodCard" src="${response.mood.moodImage}">
         <img class="response_card_img" id="triggerCard" src="${response.trigger.triggerImage}">
