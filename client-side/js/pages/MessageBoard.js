@@ -1,23 +1,24 @@
 import '../../css/MessageBoard.css'
+import TopImg from '../../images/BlogBG.png'
 
 
 export default function MessageBoard(messages) {
   return `
-  <h1>Message Board</h1>
+<div class="MB_img_s"></div>
     <div class="messageBoard">
     ${messages
       .map((post) => {
         return `
-      <div class="messageBoardTable">
-          <p class="subject">${post.subject}</p>
-          <p class="title">${post.title}</p>
-          <p class="post">${post.content}</p>
-      <div class="reply">
+      <div class="messageBoardTable MB1">
+          <p class="subject"> SUBJECT: ${post.subject}</p>
+          <p class="title"> TITLE: ${post.title}</p>
+          <p class="post"> MESSAGE: ${post.content}</p>
+      <div class="reply MB2">
           <input type="text" class="replyTitle" placeholder="Reply Title">
           <input type="text" class="replySubject" placeholder="Reply Subject">
           <input type="text" class="replyContent" placeholder="Reply Content">
           <button class="replyButton">Reply</button>
-      <div class="assessmentMenu">
+      <div class="assessmentMenu MB3">
       <select name="cbtMood" id="assessMood" class="intakeMood">
           <option value="userMood" class="cbt1">To Feel..</option>
           <option value="Happy" class="cbt2">Happy</option>
@@ -48,6 +49,7 @@ export default function MessageBoard(messages) {
       })
       .join("")}
     </div> 
-    </div>   
+    </div>  
+  
     `;
 }
