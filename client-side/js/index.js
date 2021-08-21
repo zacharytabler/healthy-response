@@ -561,7 +561,6 @@ function activities() {
             if (pageType === "forms" && worksheetId == sheet.id) {
               worksheet = sheet;
               // console.log('Display URL: ' + displayUrl);
-<<<<<<< HEAD
               app.innerHTML = WorksheetPage(worksheet);
               const submitButton = document.querySelector('.submit');
               submitButton.addEventListener('click', (event) => {
@@ -590,14 +589,7 @@ function activities() {
                 // (app.innerHTML = IntakeForm())
                 );
               });
-            } else if ((pageType === 'instructions') && (worksheetId == sheet.id)) {
-||||||| 3fcea9a7
-              app.innerHTML = WorksheetPage(worksheet, displayUrl);
-            } else if ((pageType === 'instructions') && (worksheetId == sheet.id)) {
-=======
-              app.innerHTML = WorksheetPage(worksheet, displayUrl);
             } else if (pageType === "instructions" && worksheetId == sheet.id) {
->>>>>>> 708e808f3cf7b8905eafc2d9974c5a291c15912a
               instruction = sheet;
               // console.log('Display URL: ' + displayUrl);
               // app.innerHTML = InstructionPage(instruction, displayUrl);
