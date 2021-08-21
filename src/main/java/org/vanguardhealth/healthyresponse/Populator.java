@@ -29,16 +29,12 @@ public class Populator implements CommandLineRunner {
     private ActivityRepo activityRepo;
     @Resource
     private WorksheetRepo worksheetRepo;
-<<<<<<< HEAD
     @Resource
     private IntakeProfileRepository profileRepo;
-||||||| 3fcea9a7
-=======
     @Resource
     private MessageRepository messageRepo;
     @Resource
     private ReplyRepository replyRepo;
->>>>>>> 708e808f3cf7b8905eafc2d9974c5a291c15912a
 
     @Override
     public void run(String... args) throws Exception {
@@ -83,8 +79,6 @@ public class Populator implements CommandLineRunner {
         moodRepo.save(happy);
         moodRepo.save(satisfied);
         moodRepo.save(calm);
-
-
 
         User user1 = new User("user1", "user1");
         User admin1 = new User("admin1", "admin1");
