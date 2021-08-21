@@ -59,7 +59,6 @@ function buildPage() {
   messageBoard();
   myInbox();
   assessmentHeader();
-  reviews();
   healthyResponses();
   toLegalPageFromLogin();
   toHomePageFromGuestLogin(); 
@@ -114,7 +113,6 @@ function renderUserLogin() {
         messageBoard(),
         myInbox(),
         assessmentHeader(),
-        reviews(),
         replyPost(),
         healthyResponses(),
         toLegalPageFromLogin(),
@@ -631,6 +629,22 @@ function toHomePageFromGuestLogin() {
     resourcesCard();
     blogCard();
     healthyResponseCardHome();
+    header();
+    footer();
+    home();
+        responses();
+        about();
+        navUserProfile();
+        contact();
+        appointment();
+        legal();
+        activities();
+        messageBoard();
+        myInbox();
+        assessmentHeader();
+        replyPost();
+        healthyResponses();
+        toLegalPageFromLogin();
     const url = "https://type.fit/api/quotes";
     const quoteDiv = document.querySelector(".inspirational_quote__container");
     getAffirmationApi(url, quoteDiv);

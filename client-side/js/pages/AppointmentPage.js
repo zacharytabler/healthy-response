@@ -19,7 +19,7 @@ export default function AppointmentPage() {
                   <div class="time">
                       <label for="time"> Appointment Time:</label> <input id="time" type="time">
                   </div>
-                  <span>  Martial Status:</span>
+                  <span>  Marital Status:</span>
                   <select style="width: 280px" id="Mobility" name="Mobility">
     <option selected="">Please Select</option>
     <option>Married</option>
@@ -30,13 +30,13 @@ export default function AppointmentPage() {
   </select>
                   </div>
                   
-  <div><span> Any Disability</span>
+  <div><span> Any Disabilities:</span>
                   <select style="width: 280px" id="Mobility" name="Mobility">
     <option selected="">Please Select</option>
     <option>Yes</option>
     <option>No</option>
    </select> </div>
-  <div><span>  Veteran Status</span>
+  <div><span>  Veteran Status:</span>
   <select style="width: 280px" id="Mobility" name="Mobility">
   <option selected="">Please Select</option>
   <option> Still active</option></option>
@@ -50,22 +50,22 @@ export default function AppointmentPage() {
                       
                   </div> Any Concerns to Address: <span> </span>
               </div>
-              <textarea placeholder="e.g. Please do .. Also, .." cols="50" rows="5"></textarea>
+              <textarea class="shorter left" placeholder="e.g. Please do .. Also, .." cols="50" rows="5"></textarea>
           </div>
           <div class="contact__container">
-              <div class="section">
-                  <div class="box">
+              <div class="section ">
+                  <div class="box shorter">
                       
                   </div><span>Contact Information</span>
               </div>
-              <form action="" class="form__contact">
-                  <div class="cname">
+              <form action="" class="form__contact ">
+                  <div class="cname shorter">
                       <label for="cname">Name:</label> <input placeholder="e.g. John Doe" id="cname" type="text">
                   </div>
-                  <div class="cnum">
+                  <div class="cnum shorter">
                       <label for="cnum">Phone Number:</label> <input id="cnum" type="text">
                   </div>
-                  <div class="email">
+                  <div class="email shorter">
                       <label for="cemail">Email Address:</label> <input placeholder="e.g. example@email.com" id="cemail" type="email">
                       </div>
               </form>
