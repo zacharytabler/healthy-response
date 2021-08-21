@@ -6,6 +6,7 @@ export default function userWelcome(users) {
   <div class="userClass">
     ${users
       .map((user) => {
+        console.log(user);
         return `
         <h2 class="userName">Welcome ${user.firstName}!</h2>
         </br>
@@ -18,6 +19,7 @@ export default function userWelcome(users) {
       <p class="userState"><b>State:</b> ${user.state}</p>
       <p class ="status"><b>Status:</b>  ${user.status}</p>
       <p class ="aboutMe"><b>About Me:</b>  ${user.aboutMe}</p>
+      <p class ="worksheets"><b>About Me:</b>  ${user.worksheet}</p>
       </br>
       <input type='hidden' id='userId' value='${user.id}'></div></center>
         `;
@@ -26,3 +28,5 @@ export default function userWelcome(users) {
       </div> 
     `;
 }
+
+{/* <p class ="aboutMe"><b>About Me:</b>  ${user.aboutMe}</p> */}

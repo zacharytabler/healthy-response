@@ -23,7 +23,8 @@ public class IntakeProfile {
     @Lob
     private String aboutMe;
 
-    @OneToMany(mappedBy = "profile")
+//    @OneToMany(mappedBy = "profile")
+    @OneToMany
     private Collection<Worksheet> worksheets;
 
     @OneToMany(mappedBy = "badge")
@@ -90,7 +91,7 @@ public class IntakeProfile {
 
     public IntakeProfile(){}
     public IntakeProfile(String firstName, String lastName, String ethnicity, String city,
-                         String state,String status, String aboutMe) {
+                         String state,String status, String aboutMe, Worksheet...worksheets) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ethnicity = ethnicity;

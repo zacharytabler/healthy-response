@@ -91,6 +91,8 @@ public class Populator implements CommandLineRunner {
         Worksheet worksheet1 = new Worksheet(worksheetTitle1, false);
         Worksheet worksheet2 = new Worksheet(worksheetTitle2, true);
 
+
+
         String activityDescription1 = "Self-criticism can be regarded as the opposite of self-compassion. Whereas self-compassion involves a positive and accepting relationship with the self, self-criticism can be construed as negative and punishing thoughts directed toward one‘s personal characteristics. Self-criticism typically concerns judgment and self-blame regarding shortcomings, such as the inability to accomplish personal goals or meet other people’s expectations.The goal of this exercise is to increase awareness of inner criticism and promote a more self-compassionate stance towards the self.";
         String activityDescription2 = "A key technique in Positive CBT is borrowed from solution-focused therapy, namely first identifying and then analyzing times when a problem did not exist. Consider what was different when the problem was absent (Molnar and de Shazer, 1987). Rather than focusing on the who, what, when, and where of problems, exception finding about focusing on the who, what, when, and where of exception times. Consequently, this increases awareness of strengths relative to goals, rather than deficiencies relative to problems.";
 
@@ -112,7 +114,7 @@ public class Populator implements CommandLineRunner {
 //        user1.addWorksheet(worksheet1);
 //        user1.addWorksheet(worksheet2);
 
-        IntakeProfile profile = new IntakeProfile("John", "Doe", "Asian", "Columbus", "OH", "status", "About Me" );
+        IntakeProfile profile = new IntakeProfile("John", "Doe", "Asian", "Columbus", "OH", "feeling worried", "I am a software developer & like to play darts" );
         profileRepo.save(profile);
 
         Trigger finances = new Trigger("Financial Issues", "Healthy Response is not a diagnostic tool. Only a trained medical professional, like a doctor or mental health professional, can help you determine the next best steps for you.","https://i.ibb.co/sJ0Y49j/Finanical-Issues.png", "<a href=https://www.apa.org/topics/stress/holiday-money target=_blank>Dealing with financial stress</a>", "<a href=https://www.verywellmind.com/understanding-and-preventing-financial-stress-3144546 target=_blank>Coping With Financial Stress in Your Life</a>", "<a href=https://www.verywellmind.com/how-to-handle-the-stress-of-a-financial-crisis-3144545 target=_blank>Dealing With the Stress of a Financial Crisis</a>", "<a href=tel:741741>Crisis Text Line: Text “home” to 741741</a>","","");

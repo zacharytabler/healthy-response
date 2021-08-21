@@ -1,7 +1,4 @@
-// import Worksheet from './Worksheet';
-
 export default function Activity(activity) {
-    // console.log(activity);
     return `
         <div class="activity__container">
             <input type='hidden' class='activityId' value='${activity.id}'/>
@@ -17,7 +14,7 @@ function returnUrlAndPageType(activity) {
     if (activity.worksheet.acceptUserInput) {
         return `
         <input type='hidden' class='displayUrl' value='../worksheet-forms/${activity.worksheet.title}.js'/>
-        <input type='hidden' class='page' value='forms'/>
+        <input type='hidden' class='pageType' value='forms'/>
         `
     } else {
         return `

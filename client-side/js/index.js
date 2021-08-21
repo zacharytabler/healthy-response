@@ -510,22 +510,12 @@ function home() {
 }
 
 function getAffirmationApi(url, quoteDiv) {
-  // const affirmation_api_url ="https://zenquotes.io/api/quotes/";
-  // const affirmation_api_url = 'https://zenquotes.io/api/today/';
 
   apiActions.getRequest(url, (quotes) => {
     quoteDiv.innerHTML = InspirationalQuote(
       quotes[Math.floor(Math.random() * quotes.length)]
     );
-    // quotes.forEach((quote, index) => {
-    //   quoteDiv.innerHTML = InspirationalQuote(quote);
-    // });
   });
-
-  // apiActions.getRequest(url, (quote) => {
-  //     console.log(quote);
-  //     quoteDiv.innerHTML = InspirationalQuote(quote[0]);
-  // });
 }
 
 function activities() {
@@ -534,42 +524,28 @@ function activities() {
   let instruction;
   apiActions.getRequest("http://localhost:8080/worksheets", (worksheets) => {
     worksheetsJson = worksheets;
-  });
-  const activitiesElement = document.querySelector(".nav__list_activities");
+  })
+  const activitiesElement = document.querySelector('.nav__list_activities');
   activitiesElement.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/activities", (activities) => {
       app.innerHTML = ActivitiesPage(activities);
-      const activityTitles = document.querySelectorAll(".activity__title");
+      const activityTitles = document.querySelectorAll('.activity__title');
       activityTitles.forEach((activityTitle) => {
-        activityTitle.addEventListener("click", (event) => {
-          const worksheetId =
-            event.target.parentElement.parentElement.querySelector(
-              ".worksheetId"
-            ).value;
-          const pageType =
-            event.target.parentElement.parentElement.querySelector(
-              ".page"
-            ).value;
-          let displayUrl =
-            event.target.parentElement.parentElement.querySelector(
-              ".displayUrl"
-            ).value;
-          // console.log('Display URL: ' + displayUrl);
+        activityTitle.addEventListener('click', (event) => {
+          const worksheetId = event.target.parentElement.parentElement.querySelector('.worksheetId').value;
+          const pageType = event.target.parentElement.parentElement.querySelector('.pageType').value;
           worksheetsJson.forEach((sheet) => {
-            if (pageType === "forms" && worksheetId == sheet.id) {
+            if ((pageType === 'forms') && (worksheetId == sheet.id)) {
               worksheet = sheet;
-              // console.log('Display URL: ' + displayUrl);
               app.innerHTML = WorksheetPage(worksheet);
               const submitButton = document.querySelector('.submit');
               submitButton.addEventListener('click', (event) => {
-                // console.log(event.target.parentElement);
-                // const timeStamp = event.target.parentElement.querySelector('.timestamp').value;
-                // const title = event.target.parentElement.querySelector('.title').value
                 const answer1 = event.target.parentElement.querySelector('.answer1').value;
                 const answer2 = event.target.parentElement.querySelector('.answer2').value;
                 const answer3 = event.target.parentElement.querySelector('.answer3').value;
                 const answer4 = event.target.parentElement.querySelector('.answer4').value;
-                apiActions.putRequest('http://localhost:8080/profile/17/addWorksheetAnswers', {
+                console.log(answer1);
+                apiActions.postRequest('http://localhost:8080/profile/22/addWorksheetAnswers', {
                   // title: title,
                   answer1: answer1,
                   answer2: answer2,
@@ -583,14 +559,11 @@ function activities() {
                 //   answer10: answer10,
                 },
                 (personInfo) => console.log(personInfo)
-                // console.log(answer1, answer2, answer3, answer4),
                 // (app.innerHTML = IntakeForm())
                 );
               });
-            } else if (pageType === "instructions" && worksheetId == sheet.id) {
+            } else if ((pageType === 'instructions') && (worksheetId == sheet.id)) {
               instruction = sheet;
-              // console.log('Display URL: ' + displayUrl);
-              // app.innerHTML = InstructionPage(instruction, displayUrl);
               app.innerHTML = InstructionPage(displayUrl);
             }
           });
@@ -599,6 +572,7 @@ function activities() {
     });
   });
 }
+
 function healthyResponses() {
   const hrPage = document.querySelector(".nav__list_healthyResponses");
   hrPage.addEventListener("click", () => {

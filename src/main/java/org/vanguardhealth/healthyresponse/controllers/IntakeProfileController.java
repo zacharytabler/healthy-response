@@ -63,44 +63,61 @@ public class IntakeProfileController {
             return intakeRepo.findAll();
     }
 
-    @PutMapping("/profile/{id}/addWorksheetAnswers")
-    public Optional <IntakeProfile> addWorksheetAnswers(@PathVariable Long id, @RequestBody Worksheet worksheet) {
+    @PostMapping("/profile/{id}/addWorksheetAnswers")
+    public Optional <IntakeProfile> addWorksheetAnswers(@PathVariable Long id, @RequestBody String body) {
 //        User user = userRepo.findById(id).get();
         IntakeProfile intakeProfile = intakeRepo.findById(id).get();
-        JSONObject newWorksheet = new JSONObject(worksheet);
+        JSONObject newWorksheet = new JSONObject(body);
 //        String title = newWorksheet.getString("title");
-        if(!newWorksheet.getString("answer1").isEmpty()) {
-            worksheet.addWorksheetAnswers(newWorksheet.getString("answer1"));
-        }
-        if(!newWorksheet.getString("answer2").isEmpty()) {
-            worksheet.addWorksheetAnswers(newWorksheet.getString("answer2"));
-        }
-        if(!newWorksheet.getString("answer3").isEmpty()) {
-            worksheet.addWorksheetAnswers(newWorksheet.getString("answer3"));
-        }
-        if(!newWorksheet.getString("answer4").isEmpty()) {
-            worksheet.addWorksheetAnswers(newWorksheet.getString("answer4"));
-        }
-        if(!newWorksheet.getString("answer5").isEmpty()) {
-            worksheet.addWorksheetAnswers(newWorksheet.getString("answer5"));
-        }
-        if(!newWorksheet.getString("answer6").isEmpty()) {
-            worksheet.addWorksheetAnswers(newWorksheet.getString("answer6"));
-        }
-        if(!newWorksheet.getString("answer7").isEmpty()) {
-            worksheet.addWorksheetAnswers(newWorksheet.getString("answer7"));
-        }
-        if(!newWorksheet.getString("answer8").isEmpty()) {
-            worksheet.addWorksheetAnswers(newWorksheet.getString("answer8"));
-        }
-        if(!newWorksheet.getString("answer9").isEmpty()) {
-            worksheet.addWorksheetAnswers(newWorksheet.getString("answer9"));
-        }
-        if(!newWorksheet.getString("answer10").isEmpty()) {
-            worksheet.addWorksheetAnswers(newWorksheet.getString("answer10"));
-        }
+//        if(!newWorksheet.getString("answer1").isEmpty()) {
+//            worksheet.addWorksheetAnswers(newWorksheet.getString("answer1"));
+//        }
+//        if(!newWorksheet.getString("answer2").isEmpty()) {
+//            worksheet.addWorksheetAnswers(newWorksheet.getString("answer2"));
+//        }
+//        if(!newWorksheet.getString("answer3").isEmpty()) {
+//            worksheet.addWorksheetAnswers(newWorksheet.getString("answer3"));
+//        }
+//        if(!newWorksheet.getString("answer4").isEmpty()) {
+//            worksheet.addWorksheetAnswers(newWorksheet.getString("answer4"));
+//        }
+//        if(!newWorksheet.getString("answer5").isEmpty()) {
+//            worksheet.addWorksheetAnswers(newWorksheet.getString("answer5"));
+//        }
+//        if(!newWorksheet.getString("answer6").isEmpty()) {
+//            worksheet.addWorksheetAnswers(newWorksheet.getString("answer6"));
+//        }
+//        if(!newWorksheet.getString("answer7").isEmpty()) {
+//            worksheet.addWorksheetAnswers(newWorksheet.getString("answer7"));
+//        }
+//        if(!newWorksheet.getString("answer8").isEmpty()) {
+//            worksheet.addWorksheetAnswers(newWorksheet.getString("answer8"));
+//        }
+//        if(!newWorksheet.getString("answer9").isEmpty()) {
+//            worksheet.addWorksheetAnswers(newWorksheet.getString("answer9"));
+//        }
+//        if(!newWorksheet.getString("answer10").isEmpty()) {
+//            worksheet.addWorksheetAnswers(newWorksheet.getString("answer10"));
+//        }
 
-        intakeProfile.addWorksheet(worksheet);
+        System.out.println("JSON OBJECT !!! " + newWorksheet);
+
+        String ans1 = newWorksheet.getString("answer1");
+        String ans2 = newWorksheet.getString("answer2");
+        String ans3 = newWorksheet.getString("answer3");
+        String ans4 = newWorksheet.getString("answer4");
+
+        System.out.println("ANSWER1 !!!  " + ans1);
+        System.out.println("ANSWER2 !!!  " + ans2);
+        System.out.println("ANSWER3 !!!  " + ans3);
+        System.out.println("ANSWER4 !!!  " + ans4);
+
+        Worksheet worksheetToAdd = new Worksheet(ans1, ans2, ans3, ans4);
+        System.out.println("NEW WORKSHEET!!! " + worksheetToAdd.getAnswer1());
+
+        intakeProfile.addWorksheet(worksheetToAdd);
+        worksheetRepo.save(worksheetToAdd);
+        intakeRepo.save(intakeProfile);
         return intakeRepo.findById(id);
     }
 }

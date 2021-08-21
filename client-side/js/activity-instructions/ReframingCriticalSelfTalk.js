@@ -1,6 +1,3 @@
-// import Activity from '../components/Activity';
-// import Activity from '../components/Activity';
-
 {/* <input type='hidden' class='instruction' value='${activity.worksheet.title}'/>
 <input type='hidden' class='instructionId' value='${activity.worksheet.id}'/> */}
 
@@ -32,5 +29,4 @@ export default function Display() {
             <li>Identify a trigger to remind yourself to do this awareness exercise. The trigger could be a word, a gesture, a physical reminder (e.g. a picture, quote, etc).</li>
         </ul>
     `;
-    // putInstruction(display)
 }
