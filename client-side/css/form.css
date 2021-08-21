@@ -1,5 +1,10 @@
+form
+{
+    text-align: center;
+}
+
 input[type=text], select, textarea {
-    width: 100%; 
+    width: 350px; 
     padding: 12px; 
     border: 1px solid #ccc; 
     border-radius: 4px; 
@@ -10,7 +15,7 @@ input[type=text], select, textarea {
   }
   
   
-  input[type=submit] {
+  input form[type=submit] {
     background-color: red;
     color: white;
     padding: 12px 20px;
@@ -18,7 +23,7 @@ input[type=text], select, textarea {
     border-radius: 4px;
     cursor: pointer;
   }
-  
+  input[type= slect]
   button{
     background-color: red;
     color: white;
@@ -34,9 +39,13 @@ input[type=text], select, textarea {
     background-color: blue;
   }
   
+  #subject {
+    height:189px;
+    width: 648px;
+  }
   
    .container {
     border-radius: 5px;
-    background-color: gray;
+    background-color: rgb(236, 231, 231)ay;
     padding: 20px;
   }

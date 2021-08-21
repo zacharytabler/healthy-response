@@ -36,6 +36,7 @@ import InstructionPage from "./pages/InstructionPage";
 import BlogPage from "./pages/BlogPage";
 import MoodResourcePage from "./pages/MoodResourcePage";
 import TriggerResourcePage from "./pages/TriggerResourcePage";
+import HealthyResponse from "./pages/HealthyResponses";
 import CopingResourcePage from "./pages/CopingResourcePage";
 
 const app = document.querySelector("#app");
@@ -57,9 +58,12 @@ function buildPage() {
   activities();
   messageBoard();
   myInbox();
-  replyPost();
   assessmentHeader();
   reviews();
+  healthyResponses();
+  toLegalPageFromLogin();
+  toHomePageFromGuestLogin(); 
+  toProfilePageFromLogin();
 }
 
 function navUserProfile() {
@@ -82,7 +86,7 @@ function footer() {
 }
 
 function renderUserLogin() {
-  app.innerHTML = LoginDraft();
+  app.innerHTML = LoginDraft(); toLegalPageFromLogin(); toHomePageFromGuestLogin(); toProfilePageFromLogin();
   app.addEventListener("click", (event) => {
     if (event.target.classList.contains("loginButton")) {
       const userName =
@@ -109,9 +113,11 @@ function renderUserLogin() {
         activities(),
         messageBoard(),
         myInbox(),
-        replyPost(),
         assessmentHeader(),
         reviews(),
+        replyPost(),
+        healthyResponses(),
+        toLegalPageFromLogin(),
         (users) => (app.innerHTML = userWelcome(users))
       );
     }
@@ -154,6 +160,47 @@ function createIntakeProfile() {
   });
 }
 
+function replyResponse() {
+  const replyAssessButton = document.querySelector(".assessBtn");
+  replyAssessButton.addEventListener("click", (event) => {
+    if (
+      event.target.parentElement.parentElement.parentElement.querySelector(
+        ".assessmentMenu"
+      )
+    ) {
+      const newMood =
+        event.target.parentElement.querySelector("#assessMood").value;
+      const tryCoping =
+        event.target.parentElement.querySelector("#assessCoping").value;
+
+      apiActions.postRequest(
+        "http://localhost:8080/map/response",
+        {
+          mood: newMood,
+          copingMechanism: tryCoping,
+        },
+        (response) => (app.innerHTML = HealthyResponse(response))
+      );
+    }
+  });
+}
+
+// function showMoodDescription() {
+//   app.addEventListener("click", (event) => {
+//     if (event.target.classList.contains("responseMood")) {
+//       const definitionsDiv = event.target.parentElement.querySelector(
+//         ".responseDescriptions"
+//       );
+//       showDescriptionDiv(definitionsDiv);
+//     }
+//   });
+// }
+
+// function showDescriptionDiv(hiddenDiv) {
+//   const definitions = document.querySelector(hiddenDiv);
+//   definitions.style.display = "block";
+// }
+
 function populateAssessmentMenu() {
   app.innerHTML = AssessmentPage();
   const assessmentButton = document.querySelector(".assessBtn");
@@ -175,7 +222,9 @@ function populateAssessmentMenu() {
           copingMechanism: copingMechanism,
         },
         function myFunction() {
-          var r = confirm("Would you like to leave a message for an Admin?");
+          var r = confirm(
+            "Press Ok to leave a message on the  Community Board!                                                                                                                     Press cancel to go to profile"
+          );
           if (r == true) {
             app.innerHTML = Outbox();
             outbox();
@@ -188,18 +237,8 @@ function populateAssessmentMenu() {
             );
           }
         },
-        (responses) => (app.innerHTML = ResponsesPage(responses)),
-        console.log(responses)
+        (responses) => (app.innerHTML = ResponsesPage(responses))
       );
-    }
-  });
-}
-function replyPost() {
-  app.innerHTML = MessageBoard();
-  app.addEventListener("click", (event) => {
-    if (event.target.classList.contains("replyButton")) {
-      console.log(event);
-      // const content = event.target.parentElement.querySelector('.replycontent').value;
     }
   });
 }
@@ -215,20 +254,12 @@ function loginDraft() {
   footerElement.innerHTML = "";
 }
 
-function moods() {
-  const moodElement = document.querySelector(".nav__list_moods");
-  moodElement.addEventListener("click", () => {
-    apiActions.getRequest("http://localhost:8080/moods", (moods) => {
-      app.innerHTML = MoodsPage(moods);
-    });
-  });
-}
-
 function messageBoard() {
   const messageBoard = document.querySelector(".nav__list_messageBoard");
   messageBoard.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
       app.innerHTML = MessageBoard(messages);
+      replyResponse();
     });
   });
 }
@@ -250,39 +281,34 @@ function outbox() {
         },
 
         (messages) => (app.innerHTML = MessageBoard(messages)),
-        alert("Message Sent!")
+        replyPost(),
+        alert("Message Posted On Community Board, Press Ok to view!")
       );
     }
-  });
-}
-
-function myInbox() {
-  const myMessages = document.querySelector(".nav__list_message");
-  myMessages.addEventListener("click", () => {
-    apiActions.getRequest;
   });
 }
 
 function replyPost() {
   app.addEventListener("click", (event) => {
     if (event.target.classList.contains("replyButton")) {
+      const title =
+        event.target.parentElement.querySelector(".replyTitle").value;
+      const subject =
+        event.target.parentElement.querySelector(".replySubject").value;
       const content =
-        event.target.parentElement.querySelector(".replycontent").value;
-
+        event.target.parentElement.querySelector(".replyContent").value;
       apiActions.postRequest(
-        "http://localhost:8080/post_message",
+        "http://localhost:8080/post_reply",
         {
           subject: subject,
           title: title,
           content: content,
         },
-        console.log(content),
-
-        alert("Reply Sent!"),
-
-        (messages) => (app.innerHTML = MessageBoard(messages)),
-        (message) => (app.innerHTML = InboxPage(message))
+        apiActions.getRequest("http://localhost:8080/view_reply", (reply) => {
+          app.innerHTML = InboxPage(reply);
+        })
       );
+      replyResponse();
     }
   });
 }
@@ -292,6 +318,7 @@ function messageBoard() {
   messageBoard.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
       app.innerHTML = MessageBoard(messages);
+      replyResponse();
     });
   });
 }
@@ -299,63 +326,9 @@ function messageBoard() {
 function myInbox() {
   const myMessages = document.querySelector(".nav__list_message");
   myMessages.addEventListener("click", () => {
-    apiActions.getRequest("http://localhost:8080/view_messages", (messages) => {
-      app.innerHTML = InboxPage(messages);
+    apiActions.getRequest("http://localhost:8080/view_reply", (replies) => {
+      app.innerHTML = InboxPage(replies);
     });
-  });
-}
-
-function triggers() {
-  const triggerElement = document.querySelector(".nav__list_triggers");
-  triggerElement.addEventListener("click", () => {
-    apiActions.getRequest("http://localhost:8080/triggers", (triggers) => {
-      app.innerHTML = TriggersPage(triggers);
-    });
-  });
-}
-
-function copingMechanisms() {
-  const copingElement = document.querySelector(".nav__list_coping_mechanisms");
-  copingElement.addEventListener("click", () => {
-    apiActions.getRequest(
-      "http://localhost:8080/coping",
-      (copingMechanisms) => {
-        app.innerHTML = CopingMechanismsPage(copingMechanisms);
-      }
-    );
-  });
-}
-
-function consequences() {
-  const consequencesElement = document.querySelector(".nav__list_consequences");
-  consequencesElement.addEventListener("click", () => {
-    apiActions.getRequest(
-      "http://localhost:8080/consequences",
-      (consequences) => {
-        app.innerHTML = ConsequencesPage(consequences);
-      }
-    );
-  });
-}
-
-function results() {
-  const resultsElement = document.querySelector(".nav__list_results");
-  resultsElement.addEventListener("click", () => {
-    apiActions.getRequest("http://localhost:8080/results", (results) => {
-      app.innerHTML = ResultsPage(results);
-    });
-  });
-}
-
-function alternatives() {
-  const alternativesElement = document.querySelector(".nav__list_alternatives");
-  alternativesElement.addEventListener("click", () => {
-    apiActions.getRequest(
-      "http://localhost:8080/alternatives",
-      (alternatives) => {
-        app.innerHTML = AlternativesPage(alternatives);
-      }
-    );
   });
 }
 
@@ -388,7 +361,21 @@ function about() {
 function contact() {
   const contactElement = document.querySelector(".footer_list_contactUs");
   contactElement.addEventListener("click", () => {
-    app.innerHTML = ContactUsPage();
+app.innerHTML = ContactUsPage();
+submitContactPage();
+  });
+}
+
+function submitContactPage() {
+  const submitElement = document.querySelector(".submit-rating");
+  submitElement.addEventListener("click", () => {
+    apiActions.postRequest("http://localhost:8080/reviews",{
+      "firstName": document.querySelector("#fname").value,
+      "lastName": document.querySelector("#lname").value,
+      "email": document.querySelector("#email").value,
+    }, (reviews) => {
+      app.innerHTML = ReviewsPage(reviews);
+    });
   });
 }
 function appointment() {
@@ -425,20 +412,20 @@ function initSlideShow(slideshow) {
   }, time);
 }
 
-function assessment() {
-  const assessmentElement = document.querySelector(".assessmentButton");
-  assessmentElement.addEventListener("click", () => {
+function assessmentHeader() {
+  const assessElement = document.querySelector(".nav__list_assessment");
+  assessElement.addEventListener("click", () => {
     app.innerHTML = AssessmentPage();
     populateAssessmentMenu();
   });
 }
 
-function assessmentHeader() {
-  const assessElement = document.querySelector(".nav__list_assessment");
-  assessElement.addEventListener("click", () => {
-    console.log("Firing!");
-    app.innerHTML = AssessmentPage();
-    populateAssessmentMenu();
+function healthyResponseCardHome() {
+  const hrCard = document.querySelector("#responses");
+  hrCard.addEventListener("click", () => {
+    apiActions.getRequest("http://localhost:8080/map", (response) => {
+      app.innerHTML = HealthyResponse(response);
+    });
   });
 }
 
@@ -454,6 +441,7 @@ function assessmentCardHome() {
   const assessmentCard = document.querySelector("#assessment");
   assessmentCard.addEventListener("click", () => {
     app.innerHTML = AssessmentPage();
+    populateAssessmentMenu();
   });
 }
 function activitiesCardHome() {
@@ -516,6 +504,7 @@ function home() {
     appointmentCard();
     resourcesCard();
     blogCard();
+    healthyResponseCardHome();
     const url = "https://type.fit/api/quotes";
     const quoteDiv = document.querySelector(".inspirational_quote__container");
     getAffirmationApi(url, quoteDiv);
@@ -547,22 +536,32 @@ function activities() {
   let instruction;
   apiActions.getRequest("http://localhost:8080/worksheets", (worksheets) => {
     worksheetsJson = worksheets;
-  })
-  const activitiesElement = document.querySelector('.nav__list_activities');
+  });
+  const activitiesElement = document.querySelector(".nav__list_activities");
   activitiesElement.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/activities", (activities) => {
       app.innerHTML = ActivitiesPage(activities);
-      const activityTitles = document.querySelectorAll('.activity__title');
+      const activityTitles = document.querySelectorAll(".activity__title");
       activityTitles.forEach((activityTitle) => {
-        activityTitle.addEventListener('click', (event) => {
-          const worksheetId = event.target.parentElement.parentElement.querySelector('.worksheetId').value;
-          const pageType = event.target.parentElement.parentElement.querySelector('.page').value;
-          let displayUrl = event.target.parentElement.parentElement.querySelector('.displayUrl').value;
+        activityTitle.addEventListener("click", (event) => {
+          const worksheetId =
+            event.target.parentElement.parentElement.querySelector(
+              ".worksheetId"
+            ).value;
+          const pageType =
+            event.target.parentElement.parentElement.querySelector(
+              ".page"
+            ).value;
+          let displayUrl =
+            event.target.parentElement.parentElement.querySelector(
+              ".displayUrl"
+            ).value;
           // console.log('Display URL: ' + displayUrl);
           worksheetsJson.forEach((sheet) => {
-            if ((pageType === 'forms') && (worksheetId == sheet.id)) {
+            if (pageType === "forms" && worksheetId == sheet.id) {
               worksheet = sheet;
               // console.log('Display URL: ' + displayUrl);
+<<<<<<< HEAD
               app.innerHTML = WorksheetPage(worksheet);
               const submitButton = document.querySelector('.submit');
               submitButton.addEventListener('click', (event) => {
@@ -592,6 +591,13 @@ function activities() {
                 );
               });
             } else if ((pageType === 'instructions') && (worksheetId == sheet.id)) {
+||||||| 3fcea9a7
+              app.innerHTML = WorksheetPage(worksheet, displayUrl);
+            } else if ((pageType === 'instructions') && (worksheetId == sheet.id)) {
+=======
+              app.innerHTML = WorksheetPage(worksheet, displayUrl);
+            } else if (pageType === "instructions" && worksheetId == sheet.id) {
+>>>>>>> 708e808f3cf7b8905eafc2d9974c5a291c15912a
               instruction = sheet;
               // console.log('Display URL: ' + displayUrl);
               // app.innerHTML = InstructionPage(instruction, displayUrl);
@@ -600,6 +606,15 @@ function activities() {
           });
         });
       });
+    });
+  });
+}
+function healthyResponses() {
+  const hrPage = document.querySelector(".nav__list_healthyResponses");
+  hrPage.addEventListener("click", () => {
+    apiActions.getRequest("http://localhost:8080/map", (response) => {
+      console.log(response);
+      app.innerHTML = HealthyResponse(response);
     });
   });
 }
@@ -631,6 +646,40 @@ function copingCard() {
   });
 }
 
+function toLegalPageFromLogin() {
+  const loginTOS = document.querySelector(".loginTOS");
+  loginTOS.addEventListener("click", () => {
+    app.innerHTML = LegalPage();
+  });
+}
+
+function toHomePageFromGuestLogin() {
+  const loginGuest = document.querySelector(".loginGuest");
+  loginGuest.addEventListener("click", () => {
+    app.innerHTML = HomePage();
+    profileCardHome();
+    assessmentCardHome();
+    activitiesCardHome();
+    inboxCardHome();
+    communityMessageBoardCard();
+    appointmentCard();
+    resourcesCard();
+    blogCard();
+    healthyResponseCardHome();
+    const url = "https://type.fit/api/quotes";
+    const quoteDiv = document.querySelector(".inspirational_quote__container");
+    getAffirmationApi(url, quoteDiv);
+  });
+}
+
+function toProfilePageFromLogin() {
+  const loginProfile = document.querySelector(".loginProfile");
+  loginProfile.addEventListener("click", () => {
+    app.innerHTML = IntakeForm(); createIntakeProfile();
+    header();
+    footer();
+  });
+}
 // function reset() {
 //   const resetElement = document.querySelector(".reset-button");
 //   resetElement.addEventListener("click", () => {
@@ -638,3 +687,53 @@ function copingCard() {
 //     location.reload();
 //   })}
 
+<<<<<<< HEAD
+||||||| 3fcea9a7
+
+
+// function putWorksheet() {
+//   app.addEventListener('click', (event) => {
+//     console.log('Event target classlist: ' + event.target.classList)
+//     if (event.target.classList.contains('activity__title')) {
+//       const activity = event.target;
+//       console.log('Activity: ' + activity);
+//       // if (activity.)
+//     }
+//   });
+//   // renderWorksheet();
+// }
+
+// function renderWorksheet() {
+//   app.addEventListener('click', (event) => {
+//     console.log('Event target classlist: ' + event.target.classList)
+//     if (event.target.classList.contains('activity__title')) {
+//       const activity = event.target;
+//       console.log('Activity: ' + activity);
+//       // if (activity.)
+//     }
+//   });
+// }
+=======
+// function putWorksheet() {
+//   app.addEventListener('click', (event) => {
+//     console.log('Event target classlist: ' + event.target.classList)
+//     if (event.target.classList.contains('activity__title')) {
+//       const activity = event.target;
+//       console.log('Activity: ' + activity);
+//       // if (activity.)
+//     }
+//   });
+//   // renderWorksheet();
+// }
+
+// function renderWorksheet() {
+//   app.addEventListener('click', (event) => {
+//     console.log('Event target classlist: ' + event.target.classList)
+//     if (event.target.classList.contains('activity__title')) {
+//       const activity = event.target;
+//       console.log('Activity: ' + activity);
+//       // if (activity.)
+//     }
+//   });
+// }
+>>>>>>> 708e808f3cf7b8905eafc2d9974c5a291c15912a
