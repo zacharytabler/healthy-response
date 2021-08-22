@@ -19,7 +19,7 @@ function returnUrlAndPageType(activity) {
     } else {
         return `
         <input type='hidden' class='displayUrl' value='../activity-instructions/${activity.worksheet.title}.js'/>
-        <input type='hidden' class='page' value='instructions'/>
+        <input type='hidden' class='pageType' value='instructions'/>
         `
     }
 }

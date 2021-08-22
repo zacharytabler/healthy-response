@@ -19,7 +19,15 @@ export default function userWelcome(users) {
       <p class="userState"><b>State:</b> ${user.state}</p>
       <p class ="status"><b>Status:</b>  ${user.status}</p>
       <p class ="aboutMe"><b>About Me:</b>  ${user.aboutMe}</p>
-      <p class ="worksheets"><b>About Me:</b>  ${user.worksheet}</p>
+    
+      <b />
+      <b />
+      <b />
+      <p class ="worksheets"><b>Worksheet Answers</b></p>
+      <p class ="worksheets"> ${user.worksheets[0].answer1}</p>
+      <p class ="worksheets"> ${user.worksheets[0].answer2}</p>
+      <p class ="worksheets"> ${user.worksheets[0].answer3}</p>
+      <p class ="worksheets"> ${user.worksheets[0].answer4}</p>
       </br>
       <input type='hidden' id='userId' value='${user.id}'></div></center>
         `;

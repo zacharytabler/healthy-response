@@ -564,7 +564,7 @@ function activities() {
               });
             } else if ((pageType === 'instructions') && (worksheetId == sheet.id)) {
               instruction = sheet;
-              app.innerHTML = InstructionPage(displayUrl);
+              app.innerHTML = InstructionPage();
             }
           });
         });
