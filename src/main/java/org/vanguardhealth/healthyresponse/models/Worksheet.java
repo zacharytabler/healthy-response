@@ -10,7 +10,7 @@ public class Worksheet {
     @Id
     @GeneratedValue
     private Long id;
-//    private String title;
+    private String title;
 //    private long timeStamp;
     private boolean acceptUserInput;
 
@@ -33,7 +33,7 @@ public class Worksheet {
     public Worksheet() {}
 
     public Worksheet(String title, boolean acceptUserInput) {
-//        this.title = title;
+        this.title = title;
         this.acceptUserInput = acceptUserInput;
 //        this.timeStamp = timeStamp;
         this.activity = activity;
@@ -62,7 +62,8 @@ public class Worksheet {
 //        this.answer10 = answer10;
 //    }
 
-    public Worksheet(String answer1, String answer2, String answer3, String answer4) {
+    public Worksheet(String title, String answer1, String answer2, String answer3, String answer4) {
+        this.title = title;
         this.answer1= answer1;
         this.answer2 = answer2;
         this.answer3 = answer3;
@@ -73,9 +74,9 @@ public class Worksheet {
         return id;
     }
 
-//    public String getTitle() {
-//        return title;
-//    }
+    public String getTitle() {
+        return title;
+    }
 
     public boolean isAcceptUserInput() {
         return acceptUserInput;

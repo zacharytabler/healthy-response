@@ -1,4 +1,5 @@
 import "../../css/userProfilePage.css";
+import ProfileWorksheet from '../components/ProfileWorksheet';
 
 export default function userWelcome(users) {
   console.log(users);
@@ -20,15 +21,8 @@ export default function userWelcome(users) {
       <p class ="status"><b>Status:</b>  ${user.status}</p>
       <p class ="aboutMe"><b>About Me:</b>  ${user.aboutMe}</p>
     
-      <b />
-      <b />
-      <b />
-      <p class ="worksheets"><b>Worksheet Answers</b></p>
-      <p class ="worksheets"> ${user.worksheets[0].answer1}</p>
-      <p class ="worksheets"> ${user.worksheets[0].answer2}</p>
-      <p class ="worksheets"> ${user.worksheets[0].answer3}</p>
-      <p class ="worksheets"> ${user.worksheets[0].answer4}</p>
-      </br>
+      <br />
+      ${ worksheets(user.worksheets) }
       <input type='hidden' id='userId' value='${user.id}'></div></center>
         `;
       })
@@ -38,3 +32,17 @@ export default function userWelcome(users) {
 }
 
 {/* <p class ="aboutMe"><b>About Me:</b>  ${user.aboutMe}</p> */}
+
+function worksheets(worksheets) {
+  return `
+  <p class ="worksheets"><b>Worksheet Submissions</b></p>
+  <div class="worksheet__title"> 
+    <a class="worksheet__link" href='#'>${worksheets[0].title}   </a>
+    <input type="button" class="delete" value="Delete" />
+    <input type='hidden' class='worksheetId' value='${0}'/>
+  </div>
+  </br>
+  `;
+  console.log(document.querySelect)
+
+}

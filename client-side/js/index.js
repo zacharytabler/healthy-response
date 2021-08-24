@@ -38,8 +38,10 @@ import MoodResourcePage from "./pages/MoodResourcePage";
 import TriggerResourcePage from "./pages/TriggerResourcePage";
 import HealthyResponse from "./pages/HealthyResponses";
 import CopingResourcePage from "./pages/CopingResourcePage";
+import ProfileWorksheet from "./components/ProfileWorksheet";
 
 const app = document.querySelector("#app");
+let worksheets;
 
 buildPage();
 
@@ -71,8 +73,26 @@ function navUserProfile() {
     const app = document.querySelector("#app");
     apiActions.getRequest("http://localhost:8080/intake_profile", (user) => {
       app.innerHTML = userWelcome(user);
+      worksheets = user[0].worksheets;
+      wireUpWorksheets();
     });
   });
+}
+
+function wireUpWorksheets() {
+  const worksheetTitles = document.querySelectorAll('.worksheet__title');
+  console.log(worksheetTitles);
+  worksheetTitles.forEach((worksheetTitle) => {
+    console.log(worksheetTitle);
+    worksheetTitle.addEventListener('click', (event) => {
+      console.log(event);
+      if (event.target.classList.contains('worksheet__link')) {
+        const hiddenField = event.target.parentElement.querySelector('.worksheetId');
+        app.innerHTML = ProfileWorksheet(worksheets[hiddenField.value]);
+      }
+    })
+  });
+  
 }
 
 function header() {
@@ -231,6 +251,7 @@ function populateAssessmentMenu() {
               "http://localhost:8080/intake_profile",
               (user) => {
                 app.innerHTML = userWelcome(user);
+                wireUpWorksheets();
               }
             );
           }
@@ -540,13 +561,14 @@ function activities() {
               app.innerHTML = WorksheetPage(worksheet);
               const submitButton = document.querySelector('.submit');
               submitButton.addEventListener('click', (event) => {
+                const title = event.target.parentElement.querySelector('.title').value;
                 const answer1 = event.target.parentElement.querySelector('.answer1').value;
                 const answer2 = event.target.parentElement.querySelector('.answer2').value;
                 const answer3 = event.target.parentElement.querySelector('.answer3').value;
                 const answer4 = event.target.parentElement.querySelector('.answer4').value;
                 console.log(answer1);
                 apiActions.postRequest('http://localhost:8080/profile/22/addWorksheetAnswers', {
-                  // title: title,
+                  title: title,
                   answer1: answer1,
                   answer2: answer2,
                   answer3: answer3,

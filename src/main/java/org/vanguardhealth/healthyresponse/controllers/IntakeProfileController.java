@@ -102,17 +102,19 @@ public class IntakeProfileController {
 
         System.out.println("JSON OBJECT !!! " + newWorksheet);
 
+        String title = newWorksheet.getString("title");
         String ans1 = newWorksheet.getString("answer1");
         String ans2 = newWorksheet.getString("answer2");
         String ans3 = newWorksheet.getString("answer3");
         String ans4 = newWorksheet.getString("answer4");
 
+        System.out.println("TITLE !!!" + title);
         System.out.println("ANSWER1 !!!  " + ans1);
         System.out.println("ANSWER2 !!!  " + ans2);
         System.out.println("ANSWER3 !!!  " + ans3);
         System.out.println("ANSWER4 !!!  " + ans4);
 
-        Worksheet worksheetToAdd = new Worksheet(ans1, ans2, ans3, ans4);
+        Worksheet worksheetToAdd = new Worksheet(title, ans1, ans2, ans3, ans4);
         System.out.println("NEW WORKSHEET!!! " + worksheetToAdd.getAnswer1());
 
         intakeProfile.addWorksheet(worksheetToAdd);

@@ -19,9 +19,8 @@ public class UserController {
     @Resource
     private UserRepo userRepo;
     @Resource
-
     private MessageRepository messageRepo;
-
+    @Resource
     private CopingMechanismRepo copingRepo;
     @Resource
     private ResultRepo resultRepo;
