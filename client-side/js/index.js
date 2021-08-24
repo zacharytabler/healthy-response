@@ -74,33 +74,18 @@ function navUserProfile() {
     apiActions.getRequest("http://localhost:8080/intake_profile", (user) => {
       app.innerHTML = userWelcome(user);
       worksheets = user[0].worksheets;
-      // renderWorksheet();
-      renderOneWorksheetFromProfile(worksheets);
+      renderWorksheetFromProfile(worksheets);
     });
   });
 }
 
-function renderWorksheet(worksheet) {
-  console.log(worksheet);
-  const worksheetTitle = document.querySelector('.worksheet__title');
-  console.log(worksheetTitle);
-  // worksheetTitle.addEventListener('click', (event) => {
-  //     if (event.target.classList.contains('worksheet__link')) {
-  //         app.innerHTML = ProfileWorksheet(worksheet);
-  //     }
-  // });
-}
-
-function renderOneWorksheetFromProfile(worksheets) {
+function renderWorksheetFromProfile(worksheets) {
   const worksheetTitles = document.querySelectorAll('.worksheet__title');
-  console.log(worksheetTitles);
-  worksheetTitles.forEach((worksheetTitle) => {
-    console.log(worksheetTitle);
+  worksheetTitles.forEach((worksheetTitle, index) => {
     worksheetTitle.addEventListener('click', (event) => {
-      console.log(event);
       if (event.target.classList.contains('worksheet__link')) {
-        const hiddenField = event.target.parentElement.querySelector('.worksheetId');
-        app.innerHTML = ProfileWorksheet(worksheets[hiddenField.value]);
+        console.log(worksheets[index]);
+        app.innerHTML = ProfileWorksheet(worksheets[index]);
       }
     })
   });
@@ -262,6 +247,7 @@ function populateAssessmentMenu() {
             apiActions.getRequest(
               "http://localhost:8080/intake_profile",
               (user) => {
+                console.log('getting here....???' + user);
                 app.innerHTML = userWelcome(user);
               }
             );

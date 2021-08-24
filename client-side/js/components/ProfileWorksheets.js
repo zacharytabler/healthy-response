@@ -26,17 +26,3 @@ export default function ProfileWorksheets(user) {
       `;
     }
   }
-
-//   ${renderWorksheet(worksheet, date)}
-
-// function renderWorksheet(worksheet, date) {
-//     const app = document.querySelector("#app");
-//     console.log(worksheet);
-//     // const worksheetTitle = document.querySelector('.worksheet__title');
-//     // console.log(worksheetTitle);
-//     app.addEventListener('click', (event) => {
-//         if (event.target.classList.contains('worksheet__link')) {
-//             return ProfileWorksheet(worksheet, date);
-//         };
-//     });
-// }
