@@ -1,10 +1,12 @@
 import ProfileWorksheet from './ProfileWorksheet';
 
-export default function ProfileWorksheet(worksheets) {
+export default function ProfileWorksheets(user) {
     return `
         <div class="profile_worksheets__container">
-            ${worksheets.map(worksheet => {
+            ${user.worksheets.map(worksheet => {
+                const date = new Date(worksheet.timestamp);
                 return `
+                
                     ${ProfileWorksheet(worksheet)}
                 `;
             }).join('')}

@@ -20,11 +20,12 @@ export default function userWelcome(users) {
       <p class="userState"><b>State:</b> ${user.state}</p>
       <p class ="status"><b>Status:</b>  ${user.status}</p>
       <p class ="aboutMe"><b>About Me:</b>  ${user.aboutMe}</p>
-    
       <br />
-      ${ worksheets(user.worksheets) }
+      <p class ="worksheets"><b>Worksheet Submissions</b></p>
+      ${ worksheets(user)}
       <input type='hidden' id='userId' value='${user.id}'></div></center>
         `;
+
       })
       .join("")}
       </div> 
@@ -33,16 +34,20 @@ export default function userWelcome(users) {
 
 {/* <p class ="aboutMe"><b>About Me:</b>  ${user.aboutMe}</p> */}
 
-function worksheets(worksheets) {
-  return `
-  <p class ="worksheets"><b>Worksheet Submissions</b></p>
-  <div class="worksheet__title"> 
-    <a class="worksheet__link" href='#'>${worksheets[0].title}   </a>
-    <input type="button" class="delete" value="Delete" />
-    <input type='hidden' class='worksheetId' value='${0}'/>
-  </div>
-  </br>
-  `;
-  console.log(document.querySelect)
-
+function worksheets(user) {
+  if(user.worksheets.length > 0) {
+    return `
+    <div class="worksheet__title"> 
+      <a class="worksheet__link" href='#'>${user.worksheets[0].title}   </a>
+      <input type="button" class="delete" value="Delete" />
+      <input type='hidden' class='worksheetId' value='${0}'/>
+    </div>
+    </br>
+    `;
+    console.log(document.querySelect);
+  } else {
+    return `
+    <p>No activity worksheet submissions yet</p>
+    `;
+  }
 }

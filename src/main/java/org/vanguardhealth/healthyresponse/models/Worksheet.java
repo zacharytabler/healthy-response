@@ -11,7 +11,7 @@ public class Worksheet {
     @GeneratedValue
     private Long id;
     private String title;
-//    private long timeStamp;
+    private int timeStampSeconds;
     private boolean acceptUserInput;
 
     @ManyToOne
@@ -35,14 +35,7 @@ public class Worksheet {
     public Worksheet(String title, boolean acceptUserInput) {
         this.title = title;
         this.acceptUserInput = acceptUserInput;
-//        this.timeStamp = timeStamp;
         this.activity = activity;
-        this.instructions = instructions;
-        this.answer1 = answer1;
-        this.answer2 = answer2;
-        this.answer3 = answer3;
-        this.answer4 = answer4;
-
     }
 
 //    public Worksheet(String title, boolean acceptUserInput, User user, String answer1) {
@@ -64,6 +57,7 @@ public class Worksheet {
 
     public Worksheet(String title, String answer1, String answer2, String answer3, String answer4) {
         this.title = title;
+        this.timeStampSeconds = (int) (System.currentTimeMillis()/ 1000);
         this.answer1= answer1;
         this.answer2 = answer2;
         this.answer3 = answer3;
@@ -82,10 +76,10 @@ public class Worksheet {
         return acceptUserInput;
     }
 
-//    public long getTimeStamp() {
+    public int getTimeStampSeconds() {
 //        timeStamp = System.currentTimeMillis();
-//        return timeStamp;
-//    }
+        return timeStampSeconds;
+    }
 
     public Activity getActivity() {
         return activity;
@@ -110,18 +104,6 @@ public class Worksheet {
     public String getAnswer4() {
         return answer4;
     }
-
-//        public void addWorksheetAnswers(String answer) {
-//            if (answer1 == null) {
-//                answer1 = answer;
-//            } else if (answer2 == null) {
-//                answer2 = answer;
-//            } else if (answer3 == null) {
-//                answer3 = answer;
-//            } else if (answer4 == null) {
-//                answer4 = answer;
-//            }
-//        }
 
     public User getUser() {
         return user;

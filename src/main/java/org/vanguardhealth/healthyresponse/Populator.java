@@ -84,7 +84,7 @@ public class Populator implements CommandLineRunner {
         User admin1 = new User("admin1", "admin1");
 
         String activityTitle1 = "Reframing Critical Self Talk";
-        String worksheetTitle1 = activityTitle1 + "Worksheet";
+        String worksheetTitle1 = activityTitle1 + " Worksheet";
         String activityTitle2 = "Strengths Spotting by Exception Finding";
         String worksheetTitle2 = activityTitle2 + "Worksheet";
 
@@ -112,7 +112,7 @@ public class Populator implements CommandLineRunner {
 //        user1.addWorksheet(worksheet1);
 //        user1.addWorksheet(worksheet2);
 
-        IntakeProfile profile = new IntakeProfile("John", "Doe", "Asian", "Columbus", "OH", "feeling worried", "I am a software developer & like to play darts" );
+        IntakeProfile profile = new IntakeProfile("Jane", "Doe", "Asian", "Columbus", "OH", "feeling worried", "I am a software developer & like to play darts" );
         profileRepo.save(profile);
 
         Trigger finances = new Trigger("Financial Issues", "Healthy Response is not a diagnostic tool. Only a trained medical professional, like a doctor or mental health professional, can help you determine the next best steps for you.","https://i.ibb.co/sJ0Y49j/Finanical-Issues.png", "<a href=https://www.apa.org/topics/stress/holiday-money target=_blank>Dealing with financial stress</a>", "<a href=https://www.verywellmind.com/understanding-and-preventing-financial-stress-3144546 target=_blank>Coping With Financial Stress in Your Life</a>", "<a href=https://www.verywellmind.com/how-to-handle-the-stress-of-a-financial-crisis-3144545 target=_blank>Dealing With the Stress of a Financial Crisis</a>", "<a href=tel:741741>Crisis Text Line: Text “home” to 741741</a>","","");
