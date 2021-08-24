@@ -249,6 +249,8 @@ function populateAssessmentMenu() {
               (user) => {
                 console.log('getting here....???' + user);
                 app.innerHTML = userWelcome(user);
+                worksheets = user[0].worksheets;
+                renderWorksheetFromProfile(worksheets);
               }
             );
           }
@@ -450,6 +452,8 @@ function profileCardHome() {
   homeCards.addEventListener("click", () => {
     apiActions.getRequest("http://localhost:8080/intake_profile", (user) => {
       app.innerHTML = userWelcome(user);
+      worksheets = user[0].worksheets;
+      renderWorksheetFromProfile(worksheets);
     });
   });
 }
