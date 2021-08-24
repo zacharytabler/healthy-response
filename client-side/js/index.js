@@ -74,12 +74,24 @@ function navUserProfile() {
     apiActions.getRequest("http://localhost:8080/intake_profile", (user) => {
       app.innerHTML = userWelcome(user);
       worksheets = user[0].worksheets;
-      wireUpWorksheets();
+      // renderWorksheet();
+      renderOneWorksheetFromProfile(worksheets);
     });
   });
 }
 
-function wireUpWorksheets() {
+function renderWorksheet(worksheet) {
+  console.log(worksheet);
+  const worksheetTitle = document.querySelector('.worksheet__title');
+  console.log(worksheetTitle);
+  // worksheetTitle.addEventListener('click', (event) => {
+  //     if (event.target.classList.contains('worksheet__link')) {
+  //         app.innerHTML = ProfileWorksheet(worksheet);
+  //     }
+  // });
+}
+
+function renderOneWorksheetFromProfile(worksheets) {
   const worksheetTitles = document.querySelectorAll('.worksheet__title');
   console.log(worksheetTitles);
   worksheetTitles.forEach((worksheetTitle) => {
@@ -92,13 +104,13 @@ function wireUpWorksheets() {
       }
     })
   });
-  
 }
 
 function header() {
   const headerElement = document.querySelector(".header");
   headerElement.innerHTML = Header();
 }
+
 function footer() {
   const footerElement = document.querySelector(".footer");
   footerElement.innerHTML = Footer();
@@ -251,7 +263,6 @@ function populateAssessmentMenu() {
               "http://localhost:8080/intake_profile",
               (user) => {
                 app.innerHTML = userWelcome(user);
-                wireUpWorksheets();
               }
             );
           }

@@ -11,7 +11,7 @@ public class Worksheet {
     @GeneratedValue
     private Long id;
     private String title;
-    private int timeStampSeconds;
+    private long timeStampMillis;
     private boolean acceptUserInput;
 
     @ManyToOne
@@ -57,7 +57,7 @@ public class Worksheet {
 
     public Worksheet(String title, String answer1, String answer2, String answer3, String answer4) {
         this.title = title;
-        this.timeStampSeconds = (int) (System.currentTimeMillis()/ 1000);
+        this.timeStampMillis = System.currentTimeMillis();
         this.answer1= answer1;
         this.answer2 = answer2;
         this.answer3 = answer3;
@@ -76,9 +76,8 @@ public class Worksheet {
         return acceptUserInput;
     }
 
-    public int getTimeStampSeconds() {
-//        timeStamp = System.currentTimeMillis();
-        return timeStampSeconds;
+    public long getTimeStampMillis() {
+        return timeStampMillis;
     }
 
     public Activity getActivity() {

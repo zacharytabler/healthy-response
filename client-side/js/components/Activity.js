@@ -15,11 +15,11 @@ function returnUrlAndPageType(activity) {
         return `
         <input type='hidden' class='displayUrl' value='../worksheet-forms/${activity.worksheet.title}.js'/>
         <input type='hidden' class='pageType' value='forms'/>
-        `
+        `;
     } else {
         return `
         <input type='hidden' class='displayUrl' value='../activity-instructions/${activity.worksheet.title}.js'/>
         <input type='hidden' class='pageType' value='instructions'/>
-        `
+        `;
     }
 }

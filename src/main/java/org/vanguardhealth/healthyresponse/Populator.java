@@ -84,9 +84,9 @@ public class Populator implements CommandLineRunner {
         User admin1 = new User("admin1", "admin1");
 
         String activityTitle1 = "Reframing Critical Self Talk";
-        String worksheetTitle1 = activityTitle1 + " Worksheet";
+        String worksheetTitle1 = activityTitle1 + " Instructions";
         String activityTitle2 = "Strengths Spotting by Exception Finding";
-        String worksheetTitle2 = activityTitle2 + "Worksheet";
+        String worksheetTitle2 = activityTitle2 + " Worksheet";
 
         Worksheet worksheet1 = new Worksheet(worksheetTitle1, false);
         Worksheet worksheet2 = new Worksheet(worksheetTitle2, true);
