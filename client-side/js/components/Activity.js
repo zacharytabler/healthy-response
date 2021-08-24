@@ -1,23 +1,25 @@
-import Worksheet from './Worksheet';
-
 export default function Activity(activity) {
-    console.log(activity.worksheet.acceptUserInput);
     return `
         <div class="activity__container">
-            ${activity.worksheet.title}
-            <input type='hidden' id='activityId' value=${activity.id}/>
-            <input type='hidden' id='worksheetTitle' value=${activity.worksheet.title} + '.js'/>
-            if (activity.worksheet.acceptUserInput) {
-                <a href='../worksheet-forms/${activity.worksheet.title}'>
-                <h2 class='activity__title'>${activity.title}</h2>
-                </a>
-                <p class='activities-list__description'>${activity.description}</p>
-            } else {
-                <a href='../activity-instructions/${activity.worksheet.title}'>
-                    <h2 class='activity__title'>${activity.title}</h2>
-                    <p class='activities-list__description'>${activity.description}</p>
-                </a>
-            }
+            <input type='hidden' class='activityId' value='${activity.id}'/>
+            <input type='hidden' class='worksheetId' value='${activity.worksheet.id}'/>
+            ${ returnUrlAndPageType(activity) }
+            <a class='activity__title' href='#'><h2>${activity.title}</h2></a>
+            <p class='activities-list__description'>${activity.description}</p>
         </div>
     `;
+}
+
+function returnUrlAndPageType(activity) {
+    if (activity.worksheet.acceptUserInput) {
+        return `
+        <input type='hidden' class='displayUrl' value='../worksheet-forms/${activity.worksheet.title}.js'/>
+        <input type='hidden' class='pageType' value='forms'/>
+        `;
+    } else {
+        return `
+        <input type='hidden' class='displayUrl' value='../activity-instructions/${activity.worksheet.title}.js'/>
+        <input type='hidden' class='pageType' value='instructions'/>
+        `;
+    }
 }

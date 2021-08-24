@@ -11,7 +11,7 @@ public class Worksheet {
     @GeneratedValue
     private Long id;
     private String title;
-    private int timeStamp;
+    private long timeStampMillis;
     private boolean acceptUserInput;
 
     @ManyToOne
@@ -22,51 +22,46 @@ public class Worksheet {
     private String answer2;
     private String answer3;
     private String answer4;
-    private String answer5;
-    private String answer6;
-    private String answer7;
-    private String answer8;
-    private String answer9;
-    private String answer10;
 
     @ManyToOne
+    @JsonIgnore
     private User user;
+
+    @ManyToOne
+    private IntakeProfile profile;
 
     public Worksheet() {}
 
     public Worksheet(String title, boolean acceptUserInput) {
         this.title = title;
         this.acceptUserInput = acceptUserInput;
-        this.timeStamp = timeStamp;
         this.activity = activity;
-        this.instructions = instructions;
-        this.answer1 = answer1;
-        this.answer2 = answer2;
-        this.answer3 = answer3;
-        this.answer4 = answer4;
-        this.answer5 = answer5;
-        this.answer6 = answer6;
-        this.answer7 = answer7;
-        this.answer8 = answer8;
-        this.answer9 = answer9;
-        this.answer10 = answer10;
     }
 
-    public Worksheet(String title, boolean acceptUserInput, User user, String answer1) {
+//    public Worksheet(String title, boolean acceptUserInput, User user, String answer1) {
+////        this.title = title;
+//        this.acceptUserInput = acceptUserInput;
+////        this.timeStamp = timeStamp;
+//        this.user = user;
+//        this.answer1 = answer1;
+//        this.answer2 = answer2;
+//        this.answer3 = answer3;
+//        this.answer4 = answer4;
+//        this.answer5 = answer5;
+//        this.answer6 = answer6;
+//        this.answer7 = answer7;
+//        this.answer8 = answer8;
+//        this.answer9 = answer9;
+//        this.answer10 = answer10;
+//    }
+
+    public Worksheet(String title, String answer1, String answer2, String answer3, String answer4) {
         this.title = title;
-        this.acceptUserInput = acceptUserInput;
-        this.timeStamp = timeStamp;
-        this.user = user;
-        this.answer1 = answer1;
+        this.timeStampMillis = System.currentTimeMillis();
+        this.answer1= answer1;
         this.answer2 = answer2;
         this.answer3 = answer3;
         this.answer4 = answer4;
-        this.answer5 = answer5;
-        this.answer6 = answer6;
-        this.answer7 = answer7;
-        this.answer8 = answer8;
-        this.answer9 = answer9;
-        this.answer10 = answer10;
     }
 
     public Long getId() {
@@ -81,8 +76,8 @@ public class Worksheet {
         return acceptUserInput;
     }
 
-    public int getTimeStamp() {
-        return timeStamp;
+    public long getTimeStampMillis() {
+        return timeStampMillis;
     }
 
     public Activity getActivity() {
@@ -107,30 +102,6 @@ public class Worksheet {
 
     public String getAnswer4() {
         return answer4;
-    }
-
-    public String getAnswer5() {
-        return answer5;
-    }
-
-    public String getAnswer6() {
-        return answer6;
-    }
-
-    public String getAnswer7() {
-        return answer7;
-    }
-
-    public String getAnswer8() {
-        return answer8;
-    }
-
-    public String getAnswer9() {
-        return answer9;
-    }
-
-    public String getAnswer10() {
-        return answer10;
     }
 
     public User getUser() {

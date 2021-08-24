@@ -1,6 +1,9 @@
 package org.vanguardhealth.healthyresponse.models;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -20,6 +23,20 @@ public class IntakeProfile {
     @Lob
     private String aboutMe;
 
+//    @OneToMany(mappedBy = "profile")
+    @OneToMany
+    private Collection<Worksheet> worksheets;
+
+    @OneToMany(mappedBy = "badge")
+    private List<Badge> badge;
+
+    public List<Badge> getBadge() {
+        return badge;
+    }
+
+    public void setBadge(List<Badge> badge) {
+        this.badge = badge;
+    }
     public Long getId() {
         return id;
     }
@@ -64,9 +81,17 @@ public class IntakeProfile {
         return aboutMe;
     }
 
+    public Collection<Worksheet> getWorksheets() {
+        return worksheets;
+    }
+
+    public void addWorksheet(Worksheet worksheetToAdd) {
+        worksheets.add(worksheetToAdd);
+    }
+
     public IntakeProfile(){}
     public IntakeProfile(String firstName, String lastName, String ethnicity, String city,
-                         String state,String status, String aboutMe) {
+                         String state,String status, String aboutMe, Worksheet...worksheets) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ethnicity = ethnicity;
@@ -74,6 +99,7 @@ public class IntakeProfile {
         this.state = state;
         this.status = status;
         this.aboutMe = aboutMe;
+        this.worksheets = new HashSet<>();
     }
     public IntakeProfile(String firstName, String lastName,String ethnicity, String city,
                          String state, String zipcode, boolean active, String status, String aboutMe) {
