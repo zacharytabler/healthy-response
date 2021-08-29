@@ -6,7 +6,6 @@ import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 import org.vanguardhealth.healthyresponse.models.Badge;
 import org.vanguardhealth.healthyresponse.models.IntakeProfile;
-import org.vanguardhealth.healthyresponse.models.User;
 import org.vanguardhealth.healthyresponse.models.Worksheet;
 import org.vanguardhealth.healthyresponse.repositories.IntakeProfileRepository;
 import org.vanguardhealth.healthyresponse.repositories.WorksheetRepo;
@@ -122,4 +121,12 @@ public class IntakeProfileController {
         intakeRepo.save(intakeProfile);
         return intakeRepo.findById(id);
     }
+
+    @DeleteMapping("/profile/{id}/deleteWorksheet")
+    public Optional<IntakeProfile> deleteWorksheet(@PathVariable Long profileId, Long worksheetId) {
+        Worksheet worksheetToDelete = worksheetRepo.findById(worksheetId).get();
+        worksheetRepo.delete(worksheetToDelete);
+        return intakeRepo.findById(profileId);
+    }
+
 }
