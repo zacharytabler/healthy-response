@@ -1,5 +1,6 @@
 {/* <input type='hidden' class='instruction' value='${activity.worksheet.title}'/>
 <input type='hidden' class='instructionId' value='${activity.worksheet.id}'/> */}
+import "../../css/activities.css"
 
 export default function Display() {
     return `

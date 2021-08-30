@@ -1,5 +1,9 @@
+import "../../css/activities.css"
+import nst from "../../images/nst.jpg"
 export default function Activity(activity) {
+    
     return `
+        
         <div class="activity__container">
             <input type='hidden' class='activityId' value='${activity.id}'/>
             <input type='hidden' class='worksheetId' value='${activity.worksheet.id}'/>
