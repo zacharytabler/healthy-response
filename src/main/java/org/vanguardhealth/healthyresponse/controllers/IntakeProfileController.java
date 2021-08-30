@@ -122,11 +122,10 @@ public class IntakeProfileController {
         return intakeRepo.findById(id);
     }
 
-    @DeleteMapping("/profile/{id}/deleteWorksheet")
+    @DeleteMapping("/profile/{profileId}/deleteWorksheet/{worksheetId}")
     public Optional<IntakeProfile> deleteWorksheet(@PathVariable Long profileId, Long worksheetId) {
         Worksheet worksheetToDelete = worksheetRepo.findById(worksheetId).get();
         worksheetRepo.delete(worksheetToDelete);
         return intakeRepo.findById(profileId);
     }
-
 }
