@@ -101,10 +101,13 @@ function deleteWorksheet() {
     console.log(worksheetId);
     apiActions.deleteRequest('http://localhost:8080/profile/22/deleteWorksheet/' + worksheetId,
      (profileInfo) => {
-       console.log(profileInfo);
+       console.log(profileInfo),
+       apiActions.getRequest("http://localhost:8080/intake_profile", (user) => {
+        app.innerHTML = userWelcome(user);
+       });
       //  navUserProfile();
       // toProfilePageFromLogin();
-      app.innerHTML = userWelcome(profileInfo);
+      // app.innerHTML = userWelcome(profileInfo);
       // worksheets = profile[0].worksheets;
       // renderWorksheetFromProfile(worksheets);
       // deleteWorksheet();
@@ -603,7 +606,10 @@ function activities() {
                 //   answer9: answer9,
                 //   answer10: answer10,
                 },
-                (personInfo) => console.log(personInfo)
+                (personInfo) => console.log(personInfo),
+                apiActions.getRequest("http://localhost:8080/intake_profile", (user) => {
+                app.innerHTML = userWelcome(user);
+                })
                 // (app.innerHTML = IntakeForm())
                 );
               });
