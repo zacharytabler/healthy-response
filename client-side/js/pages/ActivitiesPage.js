@@ -1,8 +1,11 @@
 import Activities from '../components/Activities';
-
+import "../../css/activities.css"
 export default function ActivitiesPage(activities) {
     return `
-        <h1>Activities Page</h1>
+        <div class="bdrp">
+        <h1>Get Involved In Your Mental Health Today!</h1>
         ${Activities(activities)}
+        </div>
+       
     `;
 }

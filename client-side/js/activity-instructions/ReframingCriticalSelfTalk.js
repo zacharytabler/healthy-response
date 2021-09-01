@@ -1,9 +1,10 @@
 {/* <input type='hidden' class='instruction' value='${activity.worksheet.title}'/>
 <input type='hidden' class='instructionId' value='${activity.worksheet.id}'/> */}
+import "../../css/activities.css"
 
 export default function Display() {
     return `
-        
+        <div class="cst">
         <h1 >Reframing Critical Self Talk</h1>
 
         <p class='instructions-intro'>Self-criticism can be regarded as the opposite of self-compassion. Whereas self-compassion
@@ -28,5 +29,7 @@ export default function Display() {
             <li>If you notice yourself fighting the inner critic, try to gently let go. Replying to your negative inner voice with another negative voice is likely to increase frustration and inner conflict, strengthening the inner critic.</li>
             <li>Identify a trigger to remind yourself to do this awareness exercise. The trigger could be a word, a gesture, a physical reminder (e.g. a picture, quote, etc).</li>
         </ul>
+        </div>
+        
     `;
 }

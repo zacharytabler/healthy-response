@@ -1,5 +1,5 @@
 import Activity from '../components/Activity';
-
+import "../../css/activities.css"
 export default function Form(worksheet) {
     return `
         <div class="worksheetForm">

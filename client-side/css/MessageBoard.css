@@ -19,29 +19,31 @@
 .messageBoard {
   background-image: url("https://images.unsplash.com/photo-1569437061241-a848be43cc82?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
   background-attachment: fixed;
-  background-size:auto;
+  background-size: auto;
   background-repeat: repeat-x;
   background-position-y: center;
-  
+  opacity: 90%;
 }
-.messageBoardTable{
+.messageBoardTable {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  
 }
-.subject,.title,.post,.content{
+.subject,
+.title,
+.post,
+.content {
   justify-content: left;
   padding: 10px;
   margin: auto;
-  border-color:aliceblue;
+  border-color: aliceblue;
   border-style: ridge;
   background-color: aliceblue;
   border-radius: 5px;
   width: 550px;
-  height:max-content;
+  height: max-content;
   color: black;
-  font-size:medium;
+  font-size: medium;
 }
 @media only screen and (max-width: 1000px) {
   .MB1 {
