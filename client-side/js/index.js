@@ -75,6 +75,7 @@ function navUserProfile() {
       app.innerHTML = userWelcome(user);
       worksheets = user[0].worksheets;
       renderWorksheetFromProfile(worksheets);
+      deleteWorksheet();
     });
   });
 }
@@ -88,6 +89,23 @@ function renderWorksheetFromProfile(worksheets) {
         app.innerHTML = ProfileWorksheet(worksheets[index]);
       }
     })
+  });
+}
+
+function deleteWorksheet() {
+  console.log('getting to delete???');
+  const deleteButton = document.querySelector('.delete__worksheet');
+  deleteButton.addEventListener("click", (event) => {
+    console.log("hello, anyone home?");
+    const worksheetId = event.target.parentElement.querySelector('.worksheetId').value;
+    console.log(worksheetId);
+    apiActions.deleteRequest('http://localhost:8080/profile/22/deleteWorksheet/' + worksheetId,
+     (profile) => {
+      app.innerHTML = userWelcome(user);
+      worksheets = user[0].worksheets;
+      renderWorksheetFromProfile(worksheets);
+      deleteWorksheet();
+    });
   });
 }
 
@@ -251,6 +269,7 @@ function populateAssessmentMenu() {
                 app.innerHTML = userWelcome(user);
                 worksheets = user[0].worksheets;
                 renderWorksheetFromProfile(worksheets);
+                deleteWorksheet();
               }
             );
           }
@@ -454,6 +473,7 @@ function profileCardHome() {
       app.innerHTML = userWelcome(user);
       worksheets = user[0].worksheets;
       renderWorksheetFromProfile(worksheets);
+      deleteWorksheet();
     });
   });
 }
@@ -532,7 +552,6 @@ function home() {
 }
 
 function getAffirmationApi(url, quoteDiv) {
-
   apiActions.getRequest(url, (quotes) => {
     quoteDiv.innerHTML = InspirationalQuote(
       quotes[Math.floor(Math.random() * quotes.length)]
