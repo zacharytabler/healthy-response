@@ -1,6 +1,6 @@
 export default function ProfileWorksheet(worksheet) {
     const date = new Date(worksheet.timeStampMillis);
-    console.log(date);
+    console.log(date.toLocaleTimeString());
     return `
         <div class="profile_worksheet__container">
             <input type='hidden' class='worksheetId' value='${worksheet.id}'/>

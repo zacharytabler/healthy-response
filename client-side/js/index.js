@@ -102,7 +102,7 @@ function deleteWorksheet() {
     apiActions.deleteRequest('http://localhost:8080/profile/22/deleteWorksheet/' + worksheetId,
      (profile) => {
        console.log(profile);
-       createIntakeProfile();
+       navUserProfile();
       // app.innerHTML = userWelcome(profile);
       // worksheets = profile[0].worksheets;
       // renderWorksheetFromProfile(worksheets);

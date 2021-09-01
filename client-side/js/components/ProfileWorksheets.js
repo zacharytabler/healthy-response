@@ -10,7 +10,7 @@ export default function ProfileWorksheets(user) {
                     return `
                         <div class="worksheet__title"> 
                             <a class="worksheet__link" href='#'>${worksheet.title}</a>
-                            <span> ${date} </span>
+                            <span> ${date.toLocaleDateString()} </span>
                             <input type="button" class="delete__worksheet" value="Delete" />
                             <input type='hidden' class='worksheetId' value='${worksheet.id}'/>
                             <input type='hidden' class='profileId' value='${user.id}'/>
