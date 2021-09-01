@@ -75,7 +75,6 @@ function navUserProfile() {
       app.innerHTML = userWelcome(user);
       worksheets = user[0].worksheets;
       renderWorksheetFromProfile(worksheets);
-      console.log('why isnt it getting to the delete worksheet?');
       deleteWorksheet();
     });
   });
@@ -102,10 +101,12 @@ function deleteWorksheet() {
     console.log(worksheetId);
     apiActions.deleteRequest('http://localhost:8080/profile/22/deleteWorksheet/' + worksheetId,
      (profile) => {
-      app.innerHTML = userWelcome(profile);
-      worksheets = profile[0].worksheets;
-      renderWorksheetFromProfile(worksheets);
-      deleteWorksheet();
+       console.log(profile);
+       createIntakeProfile();
+      // app.innerHTML = userWelcome(profile);
+      // worksheets = profile[0].worksheets;
+      // renderWorksheetFromProfile(worksheets);
+      // deleteWorksheet();
     });
   });
 }
