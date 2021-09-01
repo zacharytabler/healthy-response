@@ -100,10 +100,11 @@ function deleteWorksheet() {
     const worksheetId = event.target.parentElement.querySelector('.worksheetId').value;
     console.log(worksheetId);
     apiActions.deleteRequest('http://localhost:8080/profile/22/deleteWorksheet/' + worksheetId,
-     (profile) => {
-       console.log(profile);
-       navUserProfile();
-      // app.innerHTML = userWelcome(profile);
+     (profileInfo) => {
+       console.log(profileInfo);
+      //  navUserProfile();
+      // toProfilePageFromLogin();
+      app.innerHTML = userWelcome(profileInfo);
       // worksheets = profile[0].worksheets;
       // renderWorksheetFromProfile(worksheets);
       // deleteWorksheet();
