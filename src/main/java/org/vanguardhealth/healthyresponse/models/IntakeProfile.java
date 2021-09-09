@@ -24,7 +24,7 @@ public class IntakeProfile {
     private String aboutMe;
 
 //    @OneToMany(mappedBy = "profile")
-    @OneToMany
+    @OneToMany(mappedBy = "profile")
     private Collection<Worksheet> worksheets;
 
     @OneToMany(mappedBy = "badge")
