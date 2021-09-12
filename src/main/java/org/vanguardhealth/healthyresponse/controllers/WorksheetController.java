@@ -2,12 +2,14 @@ package org.vanguardhealth.healthyresponse.controllers;
 
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
+import org.vanguardhealth.healthyresponse.models.IntakeProfile;
 import org.vanguardhealth.healthyresponse.models.Worksheet;
 import org.vanguardhealth.healthyresponse.repositories.UserRepo;
 import org.vanguardhealth.healthyresponse.repositories.WorksheetRepo;
 
 import javax.annotation.Resource;
 import java.util.Collection;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin

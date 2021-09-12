@@ -55,13 +55,14 @@ public class Worksheet {
 //        this.answer10 = answer10;
 //    }
 
-    public Worksheet(String title, String answer1, String answer2, String answer3, String answer4) {
+    public Worksheet(IntakeProfile profile, String title, String answer1, String answer2, String answer3, String answer4) {
         this.title = title;
         this.timeStampMillis = System.currentTimeMillis();
         this.answer1= answer1;
         this.answer2 = answer2;
         this.answer3 = answer3;
         this.answer4 = answer4;
+        this.profile = profile;
     }
 
     public Long getId() {

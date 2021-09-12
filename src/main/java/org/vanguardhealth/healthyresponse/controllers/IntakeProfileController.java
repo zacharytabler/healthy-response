@@ -6,7 +6,6 @@ import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 import org.vanguardhealth.healthyresponse.models.Badge;
 import org.vanguardhealth.healthyresponse.models.IntakeProfile;
-import org.vanguardhealth.healthyresponse.models.User;
 import org.vanguardhealth.healthyresponse.models.Worksheet;
 import org.vanguardhealth.healthyresponse.repositories.IntakeProfileRepository;
 import org.vanguardhealth.healthyresponse.repositories.WorksheetRepo;
@@ -114,12 +113,21 @@ public class IntakeProfileController {
         System.out.println("ANSWER3 !!!  " + ans3);
         System.out.println("ANSWER4 !!!  " + ans4);
 
-        Worksheet worksheetToAdd = new Worksheet(title, ans1, ans2, ans3, ans4);
+        Worksheet worksheetToAdd = new Worksheet(intakeProfile, title, ans1, ans2, ans3, ans4);
         System.out.println("NEW WORKSHEET!!! " + worksheetToAdd.getAnswer1());
 
-        intakeProfile.addWorksheet(worksheetToAdd);
+//        intakeProfile.addWorksheet(worksheetToAdd);
         worksheetRepo.save(worksheetToAdd);
         intakeRepo.save(intakeProfile);
         return intakeRepo.findById(id);
+    }
+
+    @DeleteMapping("/profile/{profileId}/deleteWorksheet/{worksheetId}")
+    public Iterable<IntakeProfile> deleteWorksheet(@PathVariable Long profileId, @PathVariable Long worksheetId) {
+        Worksheet worksheetToDelete = worksheetRepo.findById(worksheetId).get();
+//        worksheetRepo.delete(worksheetToDelete);
+        worksheetRepo.deleteById(worksheetId);
+//        return intakeRepo.findById(profileId);
+        return intakeRepo.findAll();
     }
 }
