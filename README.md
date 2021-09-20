@@ -1,7 +1,7 @@
 # Healthy Response 💓
 ## "Your Emotional HR"
 
-![alt-text](https://im7.ezgif.com/tmp/ezgif-7-d2437e87e7f2.gif)
+![alt-text](https://i.ibb.co/wC1WN25/healthy-response.gif)
 
 ### Key Features 🔑
 * Users have the ability to post messages to a community message board and receive messages in an inbox
