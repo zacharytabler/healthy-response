@@ -3,6 +3,12 @@
 
 ![alt-text](https://im7.ezgif.com/tmp/ezgif-7-d2437e87e7f2.gif)
 
+### Key Features 🔑
+* Users have the ability to post messages to a community message board and receive messages in an inbox.
+* Users receive a personalized list of support resources based upon how they answer the Healthy Response assessment.
+* Users have the ability to interact with the app through CBT focused worksheets and activities.
+* Users receive "Healthy Response" suggestions from other users based on their message board posts.
+
 ### Authors 🖊️
 * Nick Billhardt - **[Github](https://github.com/nbillhardt)**, **[Portfolio](https://nbillhardt.github.io/)**
 * Jordan Easter - **[Github](https://github.com/jordaneaster)**, **[Portfolio](https://)**
@@ -10,6 +16,12 @@
 * Chelsea James - **[Github](https://github.com/ChelsMarea1)**, **[Portfolio](https://ChelsMarea1.github.io/)**
 * Kit Sidhu - **[Github](https://github.com/kitsi)**, **[Portfolio](https://kitsi.github.io/)**
 * Zachary Tabler -  **[Github](https://github.com/zacharytabler)**, **[Portfolio](https://zacharytabler.github.io/)** 
+
+### What We Learned 📚
+* Building Functions With JavaScript
+* Working with Java Collections
+* Creating Post Requests Using The MVC Design Pattern
+* The Importance Of The Agile Methodology In Managing A Project
 
 ### How To Use 🔧
 This application contains both server side and client side functionality.
