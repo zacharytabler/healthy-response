@@ -34,7 +34,7 @@ $ https://github.com/zacharytabler/healthy-response.git
 # Go into the repository and launch your IDE
 $cd healthy-response
 ```
-Run your Spring server and you should see a println statement in your console verifying that you are wired up, note the server should be running on localhost:8080
+Run your Spring server and you should see a println statement in your console verifying that you are wired up, note the server should be running on http://localhost:8080
 
 cd into the client-side folder
 
@@ -46,6 +46,6 @@ $ npm install
 # Start the server
 $ npm start
 ```
-npm start should spin up a server at http://localhost:8080/
+npm start should spin up a server at http://localhost:1234/
 
 Inspect the browser and you should see a log statement verifying the front end is wired up
