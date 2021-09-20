@@ -33,7 +33,7 @@
 * The Importance Of The Agile Methodology In Managing A Project
 
 ### How To Use 🔧
-This application contains both server side and client side functionality.
+This application contains both server side and client side functionality
 
 From your command line, clone Healthy Response
 ```bash
