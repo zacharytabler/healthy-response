@@ -4,10 +4,19 @@
 ![alt-text](https://im7.ezgif.com/tmp/ezgif-7-d2437e87e7f2.gif)
 
 ### Key Features 🔑
-* Users have the ability to post messages to a community message board and receive messages in an inbox.
-* Users receive a personalized list of support resources based upon how they answer the Healthy Response assessment.
-* Users have the ability to interact with the app through CBT focused worksheets and activities.
-* Users receive "Healthy Response" suggestions from other users based on their message board posts.
+* Users have the ability to post messages to a community message board and receive messages in an inbox
+* Users receive a personalized list of support resources based upon how they answer the Healthy Response assessment
+* Users have the ability to interact with the app through CBT focused worksheets and activities
+* Users receive "Healthy Response" suggestions from other users based on their message board posts
+
+### Technologies Used 🧰
+* Java
+* JavaScript
+* HTML
+* CSS
+* Spring Boot
+* APIs
+* Git
 
 ### Authors 🖊️
 * Nick Billhardt - **[Github](https://github.com/nbillhardt)**, **[Portfolio](https://nbillhardt.github.io/)**
